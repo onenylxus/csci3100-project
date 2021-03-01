@@ -1,0 +1,14 @@
+{
+  "extends": ["airbnb", "airbnb/hooks", "prettier", "plugin:react/recommended"],
+  "plugins": ["prettier", "react"],
+  "rules": {
+    "func-names": 0,
+    "import/no-unresolved": 0,
+    "no-console": 0,
+    "no-unused-vars": 2,
+    "no-use-before-define": 2,
+    "prettier/prettier": 2,
+    "react/jsx-filename-extension": 0,
+    "react/style-prop-object": 0
+  }
+}

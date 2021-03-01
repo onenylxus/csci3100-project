@@ -1,0 +1,18 @@
+# Node.js dependencies
+/node_modules
+
+# Expo folders
+/.expo
+/web-build
+
+# Expo file types
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+# macOS files
+.DS_Store
