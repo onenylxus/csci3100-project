@@ -7,7 +7,7 @@
     "no-console": 0,
     "no-unused-vars": 2,
     "no-use-before-define": 2,
-    "prettier/prettier": 2,
+    "prettier/prettier": 1,
     "react/jsx-filename-extension": 0,
     "react/style-prop-object": 0
   }

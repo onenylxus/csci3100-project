@@ -23,6 +23,10 @@ export default function App() {
         title="Click here to increment"
         onPress={() => setCount(count + 1)}
       />
+      <Button
+        title="Click here to decrement"
+        onPress={() => setCount(Math.max(count - 1, 0))}
+      />
       <Text>{count}</Text>
       <StatusBar style="auto" />
     </View>
