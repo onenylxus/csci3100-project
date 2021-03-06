@@ -3,10 +3,11 @@ import React from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
 import Style from '../assets/style';
 
-// Export login form
-export default function LoginForm() {
+// Export register form
+export default function RegisterForm() {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [email, setEmail] = React.useState('');
 
   return (
     <View>
@@ -20,14 +21,19 @@ export default function LoginForm() {
       <TextInput
         style={Style.textInput}
         placeholder="Password"
-        secureTextEntry
         onChangeText={(text) => setPassword(text)}
       />
+      <Text style={{ alignItems: 'flex-start' }}>CUHK link email:</Text>
+      <TextInput
+        style={Style.textInput}
+        placeholder="CUHK link email"
+        onChangeText={(text) => setEmail(text)}
+      />
       <Button
-        title="Login"
+        title="Register"
         onPress={() =>
           console.log(
-            `Login request sent with username ${username} and password ${password}`
+            `Register request sent with username ${username}, password ${password} and email ${email}`
           )
         }
       />

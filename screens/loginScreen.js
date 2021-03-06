@@ -16,6 +16,20 @@ export default function LoginScreen({ navigation }) {
       >
         Continue as guest
       </Text>
+      <View style={{ flexDirection: 'row' }}>
+        <Text
+          style={{ ...Style.hyperlink, alignItems: 'flex-start', margin: 8 }}
+          onPress={() => navigation.navigate('Register')}
+        >
+          Create Account
+        </Text>
+        <Text
+          style={{ ...Style.hyperlink, alignItems: 'flex-end', margin: 8 }}
+          onPress={() => navigation.navigate('Home')}
+        >
+          Forget Password
+        </Text>
+      </View>
     </View>
   );
 }
