@@ -25,9 +25,9 @@ export default function LoginScreen({ navigation }) {
         </Text>
         <Text
           style={{ ...Style.hyperlink, alignItems: 'flex-end', margin: 8 }}
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => navigation.navigate('ForgotPassword')}
         >
-          Forget Password
+          Forgot Password
         </Text>
       </View>
     </View>
