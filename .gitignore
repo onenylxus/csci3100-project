@@ -16,3 +16,6 @@ npm-debug.*
 
 # macOS files
 .DS_Store
+
+# Secret
+secret.json

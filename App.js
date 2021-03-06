@@ -7,7 +7,7 @@ import Header from './components/Header';
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
-import forgotPasswordScreen from './screens/forgotPasswordScreen';
+import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
 
 // Stack
 const Stack = createStackNavigator();
@@ -22,7 +22,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="ForgotPassword" component={forgotPasswordScreen} options={NoHeader} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} options={NoHeader} />
         <Stack.Screen name="Home" component={HomeScreen} options={Header} />
         <Stack.Screen name="Login" component={LoginScreen} options={NoHeader} />
         <Stack.Screen name="Register" component={RegisterScreen} options={NoHeader} />

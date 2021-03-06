@@ -2,12 +2,32 @@
 import React from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
 import Style from '../assets/style';
+import secret from '../secret.json';
 
 // Export register form
 export default function RegisterForm() {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [email, setEmail] = React.useState('');
+
+  function submitData() {
+    /* eslint-disable no-undef */
+    fetch(`https://${secret.ngrokUrl}/create`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+        password,
+        email,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+    /* eslint-enable no-undef */
+  }
 
   return (
     <View>
@@ -31,11 +51,12 @@ export default function RegisterForm() {
       />
       <Button
         title="Register"
-        onPress={() =>
+        onPress={() => {
           console.log(
             `Register request sent with username ${username}, password ${password} and email ${email}`
-          )
-        }
+          );
+          submitData();
+        }}
       />
     </View>
   );
