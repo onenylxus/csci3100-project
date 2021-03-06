@@ -10,14 +10,25 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
 
+  hyperlink: {
+    color: '#0000ff',
+    textDecorationLine: 'underline',
+  },
+
   loginTitle: {
     fontSize: 20,
     marginBottom: 20,
   },
 
+  postBox: {
+    minWidth: '75%',
+    margin: 4,
+    backgroundColor: '#f8f8f8',
+  },
+
   textInput: {
     minWidth: '75%',
-    marginVertical: 4,
+    margin: 4,
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderWidth: 1,

@@ -5,11 +5,9 @@ import Style from '../assets/style';
 
 // Export login form
 export default function LoginForm() {
-  // State
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
-  // Render output
   return (
     <View>
       <TextInput

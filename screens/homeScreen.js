@@ -7,7 +7,7 @@ import Style from '../assets/style';
 export default function HomeScreen() {
   return (
     <View style={Style.container}>
-      <Text>Home</Text>
+      <Text>Homepage</Text>
     </View>
   );
 }
