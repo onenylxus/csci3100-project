@@ -1,34 +1,31 @@
 // Import
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './screens/homeScreen';
+import LoginScreen from './screens/loginScreen';
 
-// Stylesheet
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// Stack
+const Stack = createStackNavigator();
 
 // Export application
 export default function App() {
-  const [count, setCount] = React.useState(0);
   return (
-    <View style={styles.container}>
-      <Text>CU There</Text>
-      <Button
-        title="Click here to increment"
-        onPress={() => setCount(count + 1)}
-      />
-      <Button
-        title="Click here to decrement"
-        onPress={() => setCount(Math.max(count - 1, 0))}
-      />
-      <Text>{count}</Text>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
       <StatusBar style="auto" />
-    </View>
+    </NavigationContainer>
   );
 }
