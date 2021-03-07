@@ -1,7 +1,6 @@
 // Require
 const express = require('express');
 const mongoose = require('mongoose');
-const secret = require('../secret.json');
 
 // Schema calls
 require('./Client');
@@ -10,14 +9,14 @@ const Client = mongoose.model('client');
 
 // Variables
 const app = express();
-const url = secret.connectionUrl;
-const port = 8080;
+const uri = process.env.MONGODB_URI;
+const port = process.env.PORT || 8080;
 
 // Use body parser
 app.use(express.json());
 
 // Mongoose setup
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.on('connected', () => {
   console.log('Connected to MongoDB');
 });

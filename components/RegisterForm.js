@@ -1,8 +1,8 @@
 // Import
 import React from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
+import Source from '../assets/source';
 import Style from '../assets/style';
-import secret from '../secret.json';
 
 // Export register form
 export default function RegisterForm() {
@@ -12,7 +12,7 @@ export default function RegisterForm() {
 
   function submitData() {
     /* eslint-disable no-undef */
-    fetch(`https://${secret.ngrokUrl}/create`, {
+    fetch(`https://${Source.heroku}/create`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

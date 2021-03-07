@@ -1,0 +1,20 @@
+{
+  "name": "csci3100-project-server",
+  "version": "0.1.0",
+  "description": "CU There server",
+  "author": "CSCI3100 Group F3",
+  "license": "Apache-2.0",
+  "private": "true",
+  "main": "main.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.19"
+  },
+  "devDependencies": {
+    "eslint": "^7.21.0",
+    "prettier": "^2.2.1"
+  },
+  "scripts": {
+    "start": "node ."
+  }
+}
