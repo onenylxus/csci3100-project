@@ -1,7 +1,6 @@
 // Require
 const express = require('express');
 const mongoose = require('mongoose');
-const secret = require('../secret.json');
 
 // Schema calls
 require('./Client');
@@ -10,7 +9,7 @@ const Client = mongoose.model('client');
 
 // Variables
 const app = express();
-const url = secret.connectionUrl;
+const url = process.env.dbAccounts;
 const port = 8080;
 
 // Use body parser

@@ -14,7 +14,6 @@
     "expo-status-bar": "~1.0.3",
     "express": "^4.17.1",
     "mongoose": "^5.11.19",
-    "ngrok": "^3.4.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "^0.63.4",
@@ -40,7 +39,6 @@
   },
   "scripts": {
     "host": "node server/main.js",
-    "ngrok": "ngrok http 8080",
     "prestart": "yarn",
     "start": "expo start",
     "android": "expo start --android",
