@@ -9,7 +9,7 @@ const Client = mongoose.model('client');
 
 // Variables
 const app = express();
-const url = process.env.dbAccounts;
+const url = process.env.MONDODB_URL;
 const port = process.env.PORT || 8080;
 
 // Use body parser
