@@ -10,7 +10,7 @@ const Client = mongoose.model('client');
 // Variables
 const app = express();
 const url = process.env.dbAccounts;
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 // Use body parser
 app.use(express.json());
