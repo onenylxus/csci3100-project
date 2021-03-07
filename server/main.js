@@ -9,14 +9,14 @@ const Client = mongoose.model('client');
 
 // Variables
 const app = express();
-const url = process.env.MONDODB_URL;
+const uri = process.env.MONDODB_URI;
 const port = process.env.PORT || 8080;
 
 // Use body parser
 app.use(express.json());
 
 // Mongoose setup
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.on('connected', () => {
   console.log('Connected to MongoDB');
 });

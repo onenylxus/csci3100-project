@@ -36,7 +36,6 @@
     "prettier": "^2.2.1"
   },
   "scripts": {
-    "host": "node server/main.js",
     "prestart": "yarn",
     "start": "expo start",
     "android": "expo start --android",

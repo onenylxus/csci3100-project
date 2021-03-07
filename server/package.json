@@ -15,7 +15,6 @@
     "prettier": "^2.2.1"
   },
   "scripts": {
-    "prestart": "yarn",
     "start": "node ."
   }
 }
