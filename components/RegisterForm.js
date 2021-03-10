@@ -13,20 +13,43 @@ export default function RegisterForm() {
   function submitData() {
     /* eslint-disable no-undef */
     fetch(`https://${Source.heroku}/create`, {
-      method: 'post',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
+      // mode: 'cors',
       body: JSON.stringify({
-        username,
-        password,
-        email,
+        username, // letter+digit, length 4-20, filter (x)
+        password, // letter+digit, length 6+, filter (x)
+        email, // 1155xxxxxx@link.cuhk.edu.hk or xxx@link.cuhk.edu.hk
       }),
     })
       .then((res) => res.json())
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     /* eslint-enable no-undef */
+  }
+
+  function verifyData() {
+    // Check username
+    if (!username.match(/[\w]{4,20}/)) {
+      console.log('Invalid username');
+      return;
+    }
+
+    // Check password31
+    if (!password.match(/[\w]{6}\w*/)) {
+      console.log('Invalid password');
+      return;
+    }
+
+    // Check email
+    if (!email.match(/1155[\d]{6}@(link\.)?cuhk\.edu\.hk/)) {
+      console.log('Invalid email');
+      return;
+    }
+
+    submitData();
   }
 
   return (
@@ -55,7 +78,7 @@ export default function RegisterForm() {
           console.log(
             `Register request sent with username ${username}, password ${password} and email ${email}`
           );
-          submitData();
+          verifyData();
         }}
       />
     </View>
