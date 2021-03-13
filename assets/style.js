@@ -33,7 +33,6 @@ export default StyleSheet.create({
   },
 
   textInput: {
-    
     borderColor: '#444444',
     backgroundColor: '#f8f8f8',
     alignItems: 'center',
