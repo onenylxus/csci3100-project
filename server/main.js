@@ -2,15 +2,23 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-// Schema calls
-require('./Client');
-
-const Client = mongoose.model('client');
+const ChatroomSchema = require('./Chatroom');
+const ClientSchema = require('./Client');
+const CommentSchema = require('./Comment');
+const MessageSchema = require('./Message');
+const PostSchema = require('./Post');
 
 // Variables
 const app = express();
 const uri = process.env.MONGODB_URI;
 const port = process.env.PORT || 8080;
+
+// Schema settings
+const Chatroom = mongoose.model('chatroom', ChatroomSchema, 'chatrooms');
+const Client = mongoose.model('client', ClientSchema, 'clients');
+const Comment = mongoose.model('comment', CommentSchema, 'comments');
+const Message = mongoose.model('message', MessageSchema, 'messages');
+const Post = mongoose.model('post', PostSchema, 'posts');
 
 // Use body parser
 app.use(express.json());
@@ -26,7 +34,19 @@ mongoose.connection.on('error', (err) => {
 
 // Build express application
 app.get('/', (req, res) => {
+  Chatroom.find({}).then((data) => {
+    res.send(data);
+  });
   Client.find({}).then((data) => {
+    res.send(data);
+  });
+  Comment.find({}).then((data) => {
+    res.send(data);
+  });
+  Message.find({}).then((data) => {
+    res.send(data);
+  });
+  Post.find({}).then((data) => {
     res.send(data);
   });
 });

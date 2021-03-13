@@ -5,6 +5,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     flex: 1,
+    paddingHorizontal: 32,
     backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
@@ -21,18 +22,18 @@ export default StyleSheet.create({
   },
 
   postBox: {
-    minWidth: '75%',
+    width: '75%',
     margin: 4,
     backgroundColor: '#f8f8f8',
   },
 
+  sectionText: {
+    alignSelf: 'flex-start',
+    marginLeft: '10%',
+  },
+
   textInput: {
-    minWidth: '75%',
-    margin: 4,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderWidth: 1,
-    borderRadius: 16,
+    
     borderColor: '#444444',
     backgroundColor: '#f8f8f8',
     alignItems: 'center',
@@ -47,5 +48,18 @@ export default StyleSheet.create({
   invalidTextInput: {
     borderColor: '#ff0000',
     backgroundColor: '#f8aaaa',
+  },
+
+  errorMessage: {
+    maxWidth: '80%',
+    fontSize: 11,
+    color: '#ff0000',
+    alignContent: 'flex-start',
+  },
+
+  inputContainer: {
+    justifyContent: 'center',
+    marginBottom: 16,
+    alignItems: 'center',
   },
 });

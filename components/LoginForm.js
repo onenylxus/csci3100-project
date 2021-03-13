@@ -10,19 +10,23 @@ export default function LoginForm() {
 
   return (
     <View>
-      <Text style={{ alignItems: 'flex-start' }}>Username:</Text>
-      <TextInput
-        style={Style.textInput}
-        placeholder="Username"
-        onChangeText={(text) => setUsername(text)}
-      />
-      <Text style={{ alignItems: 'flex-start' }}>Password:</Text>
-      <TextInput
-        style={Style.textInput}
-        placeholder="Password"
-        secureTextEntry
-        onChangeText={(text) => setPassword(text)}
-      />
+      <View style={Style.inputContainer}>
+        <Text style={Style.sectionText}>Username:</Text>
+        <TextInput
+          style={Style.textInput}
+          placeholder="Username"
+          onChangeText={(text) => setUsername(text)}
+        />
+      </View>
+      <View style={Style.inputContainer}>
+        <Text style={Style.sectionText}>Password:</Text>
+        <TextInput
+          style={Style.textInput}
+          placeholder="Password"
+          secureTextEntry
+          onChangeText={(text) => setPassword(text)}
+        />
+      </View>
       <Button
         title="Login"
         onPress={() =>
