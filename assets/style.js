@@ -38,4 +38,14 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  validTextInput: {
+    borderColor: '#00ff00',
+    backgroundColor: '#aaf8aa',
+  },
+
+  invalidTextInput: {
+    borderColor: '#ff0000',
+    backgroundColor: '#f8aaaa',
+  },
 });

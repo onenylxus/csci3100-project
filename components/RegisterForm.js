@@ -9,8 +9,15 @@ export default function RegisterForm() {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [email, setEmail] = React.useState('');
-
+  const [usernameState, setUsernameState] = React.useState(2);
+  const [passwordState, setPasswordState] = React.useState(2);
+  const [emailState, setEmailState] = React.useState(2);
+  
   function submitData() {
+    console.log(
+      `Register request sent with username ${username}, password ${password} and email ${email}`
+    );
+
     /* eslint-disable no-undef */
     fetch(`https://${Source.heroku}/create`, {
       method: 'POST',
@@ -19,9 +26,9 @@ export default function RegisterForm() {
       },
       // mode: 'cors',
       body: JSON.stringify({
-        username, // letter+digit, length 4-20, filter (x)
-        password, // letter+digit, length 6+, filter (x)
-        email, // 1155xxxxxx@link.cuhk.edu.hk or xxx@link.cuhk.edu.hk
+        username,
+        password,
+        email,
       }),
     })
       .then((res) => res.json())
@@ -30,56 +37,50 @@ export default function RegisterForm() {
     /* eslint-enable no-undef */
   }
 
-  function verifyData() {
-    // Check username
-    if (!username.match(/[\w]{4,20}/)) {
-      console.log('Invalid username');
-      return;
-    }
+  function changeUsername(text) {
+    setUsername(text);
+    setUsernameState(text.length > 0 ? /[\w]{4,20}/.test(text) : 2);
+  }
 
-    // Check password31
-    if (!password.match(/[\w]{6}\w*/)) {
-      console.log('Invalid password');
-      return;
-    }
+  function changePassword(text) {
+    setPassword(text);
+    setPasswordState(text.length > 0 ? /[\w]{6}\w*/.test(text) : 2);
+  }
 
-    // Check email
-    if (!email.match(/1155[\d]{6}@(link\.)?cuhk\.edu\.hk/)) {
-      console.log('Invalid email');
-      return;
-    }
+  function changeEmail(text) {
+    setEmail(text);
+    setEmailState(text.length > 0 ? /1155[\d]{6}@(link\.)?cuhk\.edu\.hk/.test(text) : 2);
+  }
 
-    submitData();
+  let validStyle = { ...Style.textInput, ...Style.validTextInput };
+  let invalidStyle = { ...Style.textInput, ...Style.invalidTextInput };
+  function styleByState(state) {
+    return state === 2 ? Style.textInput : (!!state ? validStyle : invalidStyle);
   }
 
   return (
     <View>
       <Text style={{ alignItems: 'flex-start' }}>Username:</Text>
       <TextInput
-        style={Style.textInput}
+        style={styleByState(usernameState)}
         placeholder="Username"
-        onChangeText={(text) => setUsername(text)}
+        onChangeText={(text) => changeUsername(text)}
       />
       <Text style={{ alignItems: 'flex-start' }}>Password:</Text>
       <TextInput
-        style={Style.textInput}
+        style={styleByState(passwordState)}
         placeholder="Password"
-        onChangeText={(text) => setPassword(text)}
+        onChangeText={(text) => changePassword(text)}
       />
       <Text style={{ alignItems: 'flex-start' }}>CUHK link email:</Text>
       <TextInput
-        style={Style.textInput}
+        style={styleByState(emailState)}
         placeholder="CUHK link email"
-        onChangeText={(text) => setEmail(text)}
+        onChangeText={(text) => changeEmail(text)}
       />
       <Button
         title="Register"
-        onPress={() => {
-          console.log(
-            `Register request sent with username ${username}, password ${password} and email ${email}`
-          );
-          verifyData();
-        }}
+        onPress={() => (usernameState && passwordState && emailState) ? submitData() : console.log('Some input are invalid')}
       />
     </View>
   );
