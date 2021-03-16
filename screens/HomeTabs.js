@@ -5,8 +5,10 @@ import ProfileScreen from './ProfileScreen';
 import CreatePostScreen from './CreatePostScreen';
 import FeedScreen from './FeedScreen';
 
+// Tab
 const Tab = createBottomTabNavigator();
 
+// Export home tabs
 export default function HomeTabs() {
   return (
     <Tab.Navigator>

@@ -13,18 +13,17 @@ export default function RegisterForm() {
   const [passwordState, setPasswordState] = React.useState(2);
   const [emailState, setEmailState] = React.useState(2);
 
-  function submitData() {
+  async function submitData() {
     console.log(
       `Register request sent with username ${username}, password ${password} and email ${email}`
     );
 
     /* eslint-disable no-undef */
-    fetch(`https://${Source.heroku}/create`, {
+    const response = await fetch(`https://${Source.heroku}/createClient`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': ['application/json', 'text/plain'],
       },
-      // mode: 'cors',
       body: JSON.stringify({
         username,
         password,
@@ -35,6 +34,16 @@ export default function RegisterForm() {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     /* eslint-enable no-undef */
+
+    console.log(response);
+  }
+
+  function confirmRegister() {
+    if (usernameState % 2 && passwordState % 2 && emailState % 2) {
+      submitData();
+    } else {
+      console.log('Some input are invalid');
+    }
   }
 
   function changeUsername(text) {
@@ -62,6 +71,7 @@ export default function RegisterForm() {
 
   return (
     <View>
+      {/* Username */}
       <View style={Style.inputContainer}>
         <Text style={Style.sectionText}>Username:</Text>
         <TextInput
@@ -75,6 +85,8 @@ export default function RegisterForm() {
           </Text>
         </View>
       </View>
+
+      {/* Password */}
       <View style={Style.inputContainer}>
         <Text style={Style.sectionText}>Password:</Text>
         <TextInput
@@ -88,6 +100,8 @@ export default function RegisterForm() {
           </Text>
         </View>
       </View>
+
+      {/* Email */}
       <View style={Style.inputContainer}>
         <Text style={Style.sectionText}>CUHK link email:</Text>
         <TextInput
@@ -103,14 +117,7 @@ export default function RegisterForm() {
         </View>
       </View>
 
-      <Button
-        title="Register"
-        onPress={() =>
-          usernameState === 1 && passwordState === 1 && emailState === 1
-            ? submitData()
-            : console.log('Some input are invalid')
-        }
-      />
+      <Button title="Register" onPress={confirmRegister} />
     </View>
   );
 }

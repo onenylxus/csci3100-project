@@ -2,25 +2,19 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-const ChatroomSchema = require('./Chatroom');
-const ClientSchema = require('./Client');
-const CommentSchema = require('./Comment');
-const MessageSchema = require('./Message');
-const PostSchema = require('./Post');
+const Chatroom = require('./schemas/Chatroom');
+const Client = require('./schemas/Client');
+const Comment = require('./schemas/Comment');
+const Message = require('./schemas/Message');
+const Post = require('./schemas/Post');
+const Register = require('./schemas/Register');
 
 // Variables
 const app = express();
 const uri = process.env.MONGODB_URI;
 const port = process.env.PORT || 8080;
 
-// Schema settings
-const Chatroom = mongoose.model('chatroom', ChatroomSchema, 'chatrooms');
-const Client = mongoose.model('client', ClientSchema, 'clients');
-const Comment = mongoose.model('comment', CommentSchema, 'comments');
-const Message = mongoose.model('message', MessageSchema, 'messages');
-const Post = mongoose.model('post', PostSchema, 'posts');
-
-// Use body parser
+// Use express JSON
 app.use(express.json());
 
 // Mongoose setup
@@ -32,7 +26,7 @@ mongoose.connection.on('error', (err) => {
   console.log(err);
 });
 
-// Build express application
+// Main site
 app.get('/', (req, res) => {
   Chatroom.find({}).then((data) => {
     res.send(data);
@@ -49,10 +43,13 @@ app.get('/', (req, res) => {
   Post.find({}).then((data) => {
     res.send(data);
   });
+  Register.find({}).then((data) => {
+    res.send(data);
+  });
 });
 
-// Create
-app.post('/create', (req, res) => {
+// Create client
+app.post('/createClient', (req, res) => {
   console.log(req.body);
   const client = new Client({
     username: req.body.username,
@@ -68,11 +65,11 @@ app.post('/create', (req, res) => {
     .catch((err) => console.log(err));
 });
 
-// Read
-// app.post('/read', (req, res) => {});
+// Read client
+// app.post('/readClient', (req, res) => {});
 
-// Update
-app.post('/update', (req, res) => {
+// Update client
+app.post('/updateClient', (req, res) => {
   Client.findByIdAndUpdate(req.body.id, {
     username: req.body.username,
     password: req.body.password,
@@ -85,12 +82,17 @@ app.post('/update', (req, res) => {
     .catch((err) => console.log(err));
 });
 
-// Delete
-app.post('/delete', (req, res) => {
+// Delete client
+app.post('/deleteClient', (req, res) => {
   Client.findByIdAndRemove(req.body.id).then((data) => {
     console.log(data);
     res.send('Data deleted');
   });
+});
+
+// Other requests
+app.use('*', (req, res) => {
+  res.status(404).json({ msg: 'Not found' });
 });
 
 // Listen to port

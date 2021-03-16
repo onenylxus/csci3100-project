@@ -7,6 +7,8 @@
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/bottom-tabs": "^5.11.8",
     "@react-navigation/native": "^5.9.3",
