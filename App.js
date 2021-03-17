@@ -7,7 +7,7 @@ import Header from './components/Header';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
-import HomeTabs from './screens/HomeTabs';
+import HomeTabs from './screens/HomeTab';
 
 // Stack
 const Stack = createStackNavigator();

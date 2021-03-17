@@ -2,16 +2,16 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faHome, faUser, faPlus } from '@fortawesome/free-solid-svg-icons';
-import ProfileScreen from './ProfileScreen';
-import CreatePostScreen from './CreatePostScreen';
-import FeedScreen from './FeedScreen';
+import { faHome, faPlus, faUser } from '@fortawesome/free-solid-svg-icons';
+import CreatePostStack from './CreatePostStack';
+import FeedStack from './FeedStack';
+import ProfileStack from './ProfileStack';
 
 // Tab
 const Tab = createBottomTabNavigator();
 
 // Export home tabs
-export default function HomeTabs() {
+export default function HomeTab() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -33,9 +33,9 @@ export default function HomeTabs() {
         inactiveTintColor: 'gray',
       }}
     >
-      <Tab.Screen name="Feed" component={FeedScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
-      <Tab.Screen name="CreatePost" component={CreatePostScreen} />
+      <Tab.Screen name="Feed" component={FeedStack} />
+      <Tab.Screen name="Profile" component={ProfileStack} />
+      <Tab.Screen name="CreatePost" component={CreatePostStack} />
     </Tab.Navigator>
   );
 }
