@@ -14,6 +14,7 @@ export default function RegisterForm() {
   const [emailState, setEmailState] = React.useState(2);
 
   async function submitData() {
+    const code = Math.trunc(Math.random() * 10 ** 7);
     console.log(
       `Register request sent with username ${username}, password ${password} and email ${email}`
     );
@@ -28,6 +29,7 @@ export default function RegisterForm() {
         username,
         password,
         email,
+        code,
       }),
     })
       .then((res) => res.json())
@@ -42,6 +44,7 @@ export default function RegisterForm() {
       body: JSON.stringify({
         username,
         email,
+        code,
       }),
     })
       .then((res) => console.log(res))

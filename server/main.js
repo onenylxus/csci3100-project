@@ -102,7 +102,7 @@ app.post('/createRegister', (req, res) => {
     username: req.body.username,
     password: req.body.password,
     email: req.body.email,
-    code: `${Math.trunc(Math.random() * 10 ** 7)}`,
+    code: req.body.code,
   });
   register
     .save()
