@@ -1,7 +1,8 @@
 // Require
 const express = require('express');
 const mongoose = require('mongoose');
-const { sendEmail } = require('./email');
+const Source = require('../assets/source');
+const Transporter = require('./transporter');
 
 // Schema
 require('./schemas/Chatroom');
@@ -58,11 +59,25 @@ app.get('/', (req, res) => {
   });
 });
 
-// Create email
-app.post('/createEmail', (req, res) => {
-  sendEmail(req.body.email)
-    .then(() => res.send('Email sent'))
-    .catch((err) => console.log(err));
+// Send email
+app.post('/sendEmail', async (req, res) => {
+  console.log(`Attempt to send email to ${req.body.email}`);
+  Transporter.sendMail(
+    {
+      from: `"CU There" <${Source.appEmail}>`,
+      to: req.body.email,
+      subject: `Confirmation email for ${req.body.username}`,
+      text: 'abc',
+      html: 'abc',
+    },
+    (err, info) => {
+      if (err) {
+        return console.log(err);
+      }
+      res.send({ message: 'Email sent', message_id: info.messageId });
+      return res;
+    }
+  );
 });
 
 // Create client
@@ -76,7 +91,7 @@ app.post('/createClient', (req, res) => {
     .save()
     .then((data) => {
       console.log(data);
-      res.send('Data created');
+      res.send({ message: 'Data created' });
     })
     .catch((err) => console.log(err));
 });
@@ -93,7 +108,7 @@ app.post('/updateClient', (req, res) => {
   })
     .then((data) => {
       console.log(data);
-      res.send('Data updated');
+      res.send({ message: 'Data updated' });
     })
     .catch((err) => console.log(err));
 });
@@ -102,13 +117,13 @@ app.post('/updateClient', (req, res) => {
 app.post('/deleteClient', (req, res) => {
   Client.findByIdAndRemove(req.body.id).then((data) => {
     console.log(data);
-    res.send('Data deleted');
+    res.send({ message: 'Data deleted' });
   });
 });
 
 // Other requests
 app.use('*', (req, res) => {
-  res.status(404).json({ msg: 'Not found' });
+  res.status(404).json({ message: 'Not found' });
 });
 
 // Listen to port

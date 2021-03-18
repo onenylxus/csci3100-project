@@ -2,7 +2,8 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import SVGIcon from '@fortawesome/free-solid-svg-icons';
+// prettier-ignore
+import { faComment, faHome, faPlus, faUser } from '@fortawesome/free-solid-svg-icons';
 import ChatroomStack from './ChatroomStack';
 import CreatePostStack from './CreatePostStack';
 import FeedStack from './FeedStack';
@@ -20,13 +21,13 @@ export default function HomeTab() {
           let icon;
           // Set different 'icons' for each route
           if (route.name === 'Feed') {
-            icon = SVGIcon.faHome;
+            icon = faHome;
           } else if (route.name === 'Profile') {
-            icon = SVGIcon.faUser;
+            icon = faUser;
           } else if (route.name === 'CreatePost') {
-            icon = SVGIcon.faPlus;
+            icon = faPlus;
           } else if (route.name === 'Chatroom') {
-            icon = SVGIcon.faComment;
+            icon = faComment;
           }
           return <FontAwesomeIcon icon={icon} color={color} />;
         },

@@ -22,7 +22,7 @@ export default function RegisterForm() {
     const response = await fetch(`https://${Source.heroku}/createClient`, {
       method: 'POST',
       headers: {
-        'Content-Type': ['application/json', 'text/plain'],
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         username,
@@ -37,7 +37,7 @@ export default function RegisterForm() {
     const mail = await fetch(`https://${Source.heroku}/sendEmail`, {
       method: 'POST',
       headers: {
-        'Content-Type': ['application/json', 'text/plain'],
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         email,
@@ -46,6 +46,7 @@ export default function RegisterForm() {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     /* eslint-enable no-undef */
+
     console.log(response);
     console.log(mail);
   }
