@@ -61,4 +61,10 @@ export default StyleSheet.create({
     marginBottom: 16,
     alignItems: 'center',
   },
+
+  createPostBox: {
+    width: '95%',
+    height: 100,
+  },
+
 });
