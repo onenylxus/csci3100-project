@@ -63,8 +63,18 @@ export default StyleSheet.create({
   },
 
   createPostBox: {
+    borderColor: '#444444',
+    backgroundColor: '#f8f8f8',
     width: '95%',
     height: 100,
+    margin: 16,
+    textAlign: 'left',
+    textAlignVertical: 'top',
   },
 
+  profilePicture: {
+    flex: 1,
+    alignSelf: 'flex-start',
+    margin: 20,
+  },
 });
