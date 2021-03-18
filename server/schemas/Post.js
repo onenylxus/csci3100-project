@@ -10,6 +10,4 @@ const PostSchema = new mongoose.Schema({
   comments: String,
   tags: String,
 });
-
-// Export
-module.exports = mongoose.model('post', PostSchema);
+mongoose.model('post', PostSchema);

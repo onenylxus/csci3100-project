@@ -6,7 +6,6 @@ const RegisterSchema = new mongoose.Schema({
   username: String,
   password: String,
   email: String,
+  code: String,
 });
-
-// Export
-module.exports = mongoose.model('register', RegisterSchema);
+mongoose.model('register', RegisterSchema);
