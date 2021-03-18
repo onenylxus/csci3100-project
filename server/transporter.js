@@ -3,6 +3,7 @@ const nodemailer = require('nodemailer');
 
 // Create transporter
 module.exports = nodemailer.createTransport({
+  service: 'Gmail',
   host: 'csci3100cuthere@gmail.com',
   port: 587,
   secure: false,
