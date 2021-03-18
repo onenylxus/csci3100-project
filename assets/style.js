@@ -74,7 +74,13 @@ export default StyleSheet.create({
 
   profilePicture: {
     flex: 1,
+    flexDirection: 'row',
     alignSelf: 'flex-start',
     margin: 20,
+  },
+
+  profileUsername: {
+    flex: 1,
+    fontSize: 24,
   },
 });

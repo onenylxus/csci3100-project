@@ -8,18 +8,27 @@ import Style from '../assets/style';
 // Export profile screen
 export default function ProfileScreen() {
   return (
-    <View style={[Style.container, { flexDirection: 'column' }]}>
+    <View style={Style.container}>
       <View style={Style.profilePicture}>
         <View>
-          <FontAwesomeIcon icon={faUserPlus} size={150} style={{ flex: 1 }} />
-          <Text style={{ flex: 3 }}>Username</Text>
+          <FontAwesomeIcon icon={faUserPlus} size={150} />
+          <Button
+            title="Edit Profile"
+            onPress={() => console.log(`Edit profile request sent.`)}
+          />
+          <Text style={Style.profileUsername}>
+            <br />
+            Username
+            <br />
+            Major: XXXXXX
+            <br />
+            College: XXXXX
+          </Text>
         </View>
-        <Button
-          title="Edit Profile"
-          onPress={() => console.log(`Edit profile request sent.`)}
-        />
+        <View style={{ marginTop: 40 }}>
+          <Text>Current Posts</Text>
+        </View>
       </View>
-      <View style={{ flex: 1 }}>Profile page</View>
     </View>
   );
 }
