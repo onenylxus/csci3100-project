@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // Export
-module.exports = async (register) => {
+module.exports.sendEmail = async (register) => {
   await transporter.sendMail({
     from: 'CU There <example@gmail.com>',
     to: register.email,

@@ -1,6 +1,7 @@
 // Require
 const express = require('express');
 const mongoose = require('mongoose');
+const { sendEmail } = require('./email');
 
 const Chatroom = require('./schemas/Chatroom');
 const Client = require('./schemas/Client');
@@ -48,9 +49,15 @@ app.get('/', (req, res) => {
   });
 });
 
+// Create email
+app.post('/createEmail', (req, res) => {
+  sendEmail(req.body.email)
+    .then(() => res.send('Email sent'))
+    .catch((err) => console.log(err));
+});
+
 // Create client
 app.post('/createClient', (req, res) => {
-  console.log(req.body);
   const client = new Client({
     username: req.body.username,
     password: req.body.password,
