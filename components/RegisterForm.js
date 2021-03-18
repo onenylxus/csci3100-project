@@ -19,7 +19,7 @@ export default function RegisterForm() {
     );
 
     /* eslint-disable no-undef */
-    const response = await fetch(`https://${Source.heroku}/createClient`, {
+    await fetch(`https://${Source.heroku}/createClient`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ export default function RegisterForm() {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
 
-    const mail = await fetch(`https://${Source.heroku}/sendEmail`, {
+    await fetch(`https://${Source.heroku}/sendEmail`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -46,9 +46,6 @@ export default function RegisterForm() {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     /* eslint-enable no-undef */
-
-    console.log(response);
-    console.log(mail);
   }
 
   function confirmRegister() {

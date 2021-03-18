@@ -63,7 +63,7 @@ app.post('/sendEmail', async (req, res) => {
   console.log(`Attempt to send email to ${req.body.email}`);
   Transporter.sendMail(
     {
-      from: `"CU There" <csci3100cuthere@gmail.com>`,
+      from: `csci3100cuthere@gmail.com`,
       to: req.body.email,
       subject: `Confirmation email for ${req.body.username}`,
       text: 'abc',
@@ -90,7 +90,7 @@ app.post('/createClient', (req, res) => {
     .save()
     .then((data) => {
       console.log(data);
-      res.send({ message: 'Data created' });
+      res.send('Data created');
     })
     .catch((err) => console.log(err));
 });
