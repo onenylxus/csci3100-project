@@ -114,7 +114,12 @@ app.post('/createRegister', (req, res) => {
 });
 
 // Read client
-// app.post('/readClient', (req, res) => {});
+app.post('/readClient', (req, res) => {
+  Client.findById(req.body.id).then((data) => {
+    console.log(data);
+    res.send('Client data found');
+  });
+});
 
 // Update client
 app.post('/updateClient', (req, res) => {

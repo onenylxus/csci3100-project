@@ -1,11 +1,14 @@
 // Import
 import React from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export register form
 export default function RegisterForm() {
+  const navigation = useNavigation();
+
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [email, setEmail] = React.useState('');
@@ -55,6 +58,7 @@ export default function RegisterForm() {
   function confirmRegister() {
     if (usernameState % 2 && passwordState % 2 && emailState % 2) {
       submitData();
+      navigation.navigate('Verification');
     } else {
       console.log('Some input are invalid');
     }

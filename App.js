@@ -3,13 +3,12 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Header from './components/Header';
-import LoginScreen from './screens/LoginScreen';
-// import RegisterScreen from './screens/RegisterScreen';
-// import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
-import HomeTabs from './screens/HomeTab';
-import RegisterStack from './screens/RegisterStack';
 import ForgotPasswordStack from './screens/ForgotPasswordStack';
+import Header from './components/Header';
+import HomeTabs from './screens/HomeTab';
+import LoginScreen from './screens/LoginScreen';
+import RegisterStack from './screens/RegisterStack';
+import VerificationScreen from './screens/VerificationScreen';
 
 // Stack
 const Stack = createStackNavigator();
@@ -25,6 +24,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="ForgotPassword" component={ForgotPasswordStack} options={NoHeader} />
         <Stack.Screen name="Tabs" component={HomeTabs} options={Header} />
+        <Stack.Screen name="Verification" component={VerificationScreen} options={NoHeader} />
         <Stack.Screen name="Login" component={LoginScreen} options={Header} />
         <Stack.Screen name="Register" component={RegisterStack} options={Header} />
       </Stack.Navigator>
