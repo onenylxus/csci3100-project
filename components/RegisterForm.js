@@ -19,7 +19,7 @@ export default function RegisterForm() {
     );
 
     /* eslint-disable no-undef */
-    await fetch(`https://${Source.heroku}/createClient`, {
+    await fetch(`https://${Source.heroku}/createRegister`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -40,6 +40,7 @@ export default function RegisterForm() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        username,
         email,
       }),
     })

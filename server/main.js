@@ -1,6 +1,7 @@
 // Require
 const express = require('express');
 const mongoose = require('mongoose');
+const emailContext = require('./emailContext');
 const Transporter = require('./transporter');
 
 // Schema
@@ -66,8 +67,8 @@ app.post('/sendEmail', async (req, res) => {
       from: `csci3100cuthere@gmail.com`,
       to: req.body.email,
       subject: `Confirmation email for ${req.body.username}`,
-      text: 'abc',
-      html: 'abc',
+      html: emailContext.html(req.body.code),
+      text: emailContext.text(req.body.code),
     },
     (err, info) => {
       if (err) {
@@ -91,6 +92,23 @@ app.post('/createClient', (req, res) => {
     .then((data) => {
       console.log(data);
       res.send('Data created');
+    })
+    .catch((err) => console.log(err));
+});
+
+// Create register
+app.post('/createRegister', (req, res) => {
+  const register = new Register({
+    username: req.body.username,
+    password: req.body.password,
+    email: req.body.email,
+    code: `${Math.trunc(Math.random() * 10 ** 7)}`,
+  });
+  register
+    .save()
+    .then((data) => {
+      console.log(data);
+      res.send('Register data created');
     })
     .catch((err) => console.log(err));
 });
