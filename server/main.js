@@ -67,8 +67,8 @@ app.post('/sendEmail', async (req, res) => {
       from: `csci3100cuthere@gmail.com`,
       to: req.body.email,
       subject: `Confirmation email for ${req.body.username}`,
-      html: emailContext.html(req.body.code),
       text: emailContext.text(req.body.code),
+      html: emailContext.html(req.body.code),
     },
     (err, info) => {
       if (err) {
