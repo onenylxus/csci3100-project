@@ -9,6 +9,4 @@ const CommentSchema = new mongoose.Schema({
   numOfDislike: Number,
   timestamp: Number,
 });
-
-// Export
-module.exports = mongoose.model('comment', CommentSchema);
+mongoose.model('comment', CommentSchema);

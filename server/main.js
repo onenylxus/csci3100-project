@@ -1,13 +1,24 @@
 // Require
 const express = require('express');
 const mongoose = require('mongoose');
+const emailContext = require('./emailContext');
+const Transporter = require('./transporter');
 
-const Chatroom = require('./schemas/Chatroom');
-const Client = require('./schemas/Client');
-const Comment = require('./schemas/Comment');
-const Message = require('./schemas/Message');
-const Post = require('./schemas/Post');
-const Register = require('./schemas/Register');
+// Schema
+require('./schemas/Chatroom');
+require('./schemas/Client');
+require('./schemas/Comment');
+require('./schemas/Message');
+require('./schemas/Post');
+require('./schemas/Register');
+
+// Models
+const Chatroom = mongoose.model('chatroom');
+const Client = mongoose.model('client');
+const Comment = mongoose.model('comment');
+const Message = mongoose.model('message');
+const Post = mongoose.model('post');
+const Register = mongoose.model('register');
 
 // Variables
 const app = express();
@@ -48,9 +59,29 @@ app.get('/', (req, res) => {
   });
 });
 
+// Send email
+app.post('/sendEmail', async (req, res) => {
+  console.log(`Attempt to send email to ${req.body.email}`);
+  Transporter.sendMail(
+    {
+      from: `csci3100cuthere@gmail.com`,
+      to: req.body.email,
+      subject: `Confirmation email for ${req.body.username}`,
+      text: emailContext.text(req.body.code),
+      html: emailContext.html(req.body.code),
+    },
+    (err, info) => {
+      if (err) {
+        return console.log(err);
+      }
+      res.send({ message: 'Email sent', message_id: info.messageId });
+      return res;
+    }
+  );
+});
+
 // Create client
 app.post('/createClient', (req, res) => {
-  console.log(req.body);
   const client = new Client({
     username: req.body.username,
     password: req.body.password,
@@ -61,6 +92,23 @@ app.post('/createClient', (req, res) => {
     .then((data) => {
       console.log(data);
       res.send('Data created');
+    })
+    .catch((err) => console.log(err));
+});
+
+// Create register
+app.post('/createRegister', (req, res) => {
+  const register = new Register({
+    username: req.body.username,
+    password: req.body.password,
+    email: req.body.email,
+    code: req.body.code,
+  });
+  register
+    .save()
+    .then((data) => {
+      console.log(data);
+      res.send('Register data created');
     })
     .catch((err) => console.log(err));
 });
@@ -77,7 +125,7 @@ app.post('/updateClient', (req, res) => {
   })
     .then((data) => {
       console.log(data);
-      res.send('Data updated');
+      res.send({ message: 'Data updated' });
     })
     .catch((err) => console.log(err));
 });
@@ -86,13 +134,13 @@ app.post('/updateClient', (req, res) => {
 app.post('/deleteClient', (req, res) => {
   Client.findByIdAndRemove(req.body.id).then((data) => {
     console.log(data);
-    res.send('Data deleted');
+    res.send({ message: 'Data deleted' });
   });
 });
 
 // Other requests
 app.use('*', (req, res) => {
-  res.status(404).json({ msg: 'Not found' });
+  res.status(404).json({ message: 'Not found' });
 });
 
 // Listen to port

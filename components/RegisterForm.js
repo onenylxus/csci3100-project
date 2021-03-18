@@ -14,28 +14,42 @@ export default function RegisterForm() {
   const [emailState, setEmailState] = React.useState(2);
 
   async function submitData() {
+    const code = Math.trunc(Math.random() * 10 ** 7);
     console.log(
       `Register request sent with username ${username}, password ${password} and email ${email}`
     );
 
     /* eslint-disable no-undef */
-    const response = await fetch(`https://${Source.heroku}/createClient`, {
+    await fetch(`https://${Source.heroku}/createRegister`, {
       method: 'POST',
       headers: {
-        'Content-Type': ['application/json', 'text/plain'],
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         username,
         password,
         email,
+        code,
       }),
     })
       .then((res) => res.json())
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-    /* eslint-enable no-undef */
 
-    console.log(response);
+    await fetch(`https://${Source.heroku}/sendEmail`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+        email,
+        code,
+      }),
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+    /* eslint-enable no-undef */
   }
 
   function confirmRegister() {
