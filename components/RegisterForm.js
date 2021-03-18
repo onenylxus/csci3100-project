@@ -33,9 +33,21 @@ export default function RegisterForm() {
       .then((res) => res.json())
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-    /* eslint-enable no-undef */
 
+    const mail = await fetch(`https://${Source.heroku}/sendEmail`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': ['application/json', 'text/plain'],
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+    /* eslint-enable no-undef */
     console.log(response);
+    console.log(mail);
   }
 
   function confirmRegister() {

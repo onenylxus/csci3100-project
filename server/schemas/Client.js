@@ -7,6 +7,4 @@ const ClientSchema = new mongoose.Schema({
   password: String,
   email: String,
 });
-
-// Export
-module.exports = mongoose.model('client', ClientSchema);
+mongoose.model('client', ClientSchema);

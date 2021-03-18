@@ -3,12 +3,21 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { sendEmail } = require('./email');
 
-const Chatroom = require('./schemas/Chatroom');
-const Client = require('./schemas/Client');
-const Comment = require('./schemas/Comment');
-const Message = require('./schemas/Message');
-const Post = require('./schemas/Post');
-const Register = require('./schemas/Register');
+// Schema
+require('./schemas/Chatroom');
+require('./schemas/Client');
+require('./schemas/Comment');
+require('./schemas/Message');
+require('./schemas/Post');
+require('./schemas/Register');
+
+// Models
+const Chatroom = mongoose.model('chatroom');
+const Client = mongoose.model('client');
+const Comment = mongoose.model('comment');
+const Message = mongoose.model('message');
+const Post = mongoose.model('post');
+const Register = mongoose.model('register');
 
 // Variables
 const app = express();

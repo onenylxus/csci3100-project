@@ -7,6 +7,4 @@ const RegisterSchema = new mongoose.Schema({
   password: String,
   email: String,
 });
-
-// Export
-module.exports = mongoose.model('register', RegisterSchema);
+mongoose.model('register', RegisterSchema);

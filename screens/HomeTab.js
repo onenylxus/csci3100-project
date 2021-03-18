@@ -2,7 +2,8 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faHome, faPlus, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faComment, faHome, faPlus, faUser } from '@fortawesome/free-solid-svg-icons';
+import ChatroomStack from './ChatroomStack';
 import CreatePostStack from './CreatePostStack';
 import FeedStack from './FeedStack';
 import ProfileStack from './ProfileStack';
@@ -24,6 +25,8 @@ export default function HomeTab() {
             icon = faUser;
           } else if (route.name === 'CreatePost') {
             icon = faPlus;
+          } else if (route.name === 'Chatroom') {
+            icon = faComment;
           }
           return <FontAwesomeIcon icon={icon} color={color} />;
         },
@@ -34,8 +37,9 @@ export default function HomeTab() {
       }}
     >
       <Tab.Screen name="Feed" component={FeedStack} />
-      <Tab.Screen name="Profile" component={ProfileStack} />
       <Tab.Screen name="CreatePost" component={CreatePostStack} />
+      <Tab.Screen name="Chatroom" component={ChatroomStack} />
+      <Tab.Screen name="Profile" component={ProfileStack} />
     </Tab.Navigator>
   );
 }

@@ -7,6 +7,4 @@ const ChatroomSchema = new mongoose.Schema({
   icon: String,
   name: String,
 });
-
-// Export
-module.exports = mongoose.model('client', ChatroomSchema);
+mongoose.model('client', ChatroomSchema);
