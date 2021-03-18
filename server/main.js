@@ -1,7 +1,6 @@
 // Require
 const express = require('express');
 const mongoose = require('mongoose');
-const Source = require('../assets/source');
 const Transporter = require('./transporter');
 
 // Schema
@@ -64,7 +63,7 @@ app.post('/sendEmail', async (req, res) => {
   console.log(`Attempt to send email to ${req.body.email}`);
   Transporter.sendMail(
     {
-      from: `"CU There" <${Source.appEmail}>`,
+      from: `"CU There" <csci3100cuthere@gmail.com>`,
       to: req.body.email,
       subject: `Confirmation email for ${req.body.username}`,
       text: 'abc',
