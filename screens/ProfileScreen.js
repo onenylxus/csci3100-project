@@ -17,12 +17,9 @@ export default function ProfileScreen({ navigation }) {
             onPress={() => navigation.navigate('EditProfile')}
           />
           <Text style={Style.profileUsername}>
-            <br />
-            Username
-            <br />
-            Major: XXXXXX
-            <br />
-            College: XXXXX
+            Username{'\n'}
+            Major: XXXXXX{'\n'}
+            College: XXXXX{'\n'}
           </Text>
         </View>
         <View style={{ marginTop: 40 }}>

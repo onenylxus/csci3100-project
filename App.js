@@ -9,7 +9,7 @@ import HomeTab from './screens/navigators/HomeTab';
 import LoginScreen from './screens/LoginScreen';
 import RegisterStack from './screens/navigators/RegisterStack';
 import VerificationScreen from './screens/VerificationScreen';
-import EditProfileScreen from './screens/EditProfileSCreen';
+import EditProfileScreen from './screens/EditProfileScreen';
 
 // Stack
 const Stack = createStackNavigator();

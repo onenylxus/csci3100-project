@@ -3,11 +3,12 @@ import React from 'react';
 import { Text, View, Button } from 'react-native';
 import Style from '../assets/style';
 
-// Export chatroom screen
+// Export EditProfile screen
+
 export default function EditProfileScreen({ navigation }) {
   return (
     <View style={Style.container}>
-      <Text>Edit Peofile</Text>
+      <Text>Edit Profile</Text>
       <View style={{ flexDirection: 'row', margin: 20 }}>
         <View style={{ margin: 20 }}>
           <Button
