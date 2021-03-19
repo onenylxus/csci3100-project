@@ -1,8 +1,6 @@
 // Require
 const express = require('express');
 const mongoose = require('mongoose');
-const emailContext = require('./emailContext');
-const Transporter = require('./transporter');
 
 // Schema
 require('./schemas/Chatroom');
@@ -10,7 +8,7 @@ require('./schemas/Client');
 require('./schemas/Comment');
 require('./schemas/Message');
 require('./schemas/Post');
-require('./schemas/Register');
+require('./schemas/Token');
 
 // Models
 const Chatroom = mongoose.model('chatroom');
@@ -18,7 +16,12 @@ const Client = mongoose.model('client');
 const Comment = mongoose.model('comment');
 const Message = mongoose.model('message');
 const Post = mongoose.model('post');
-const Register = mongoose.model('register');
+const Token = mongoose.model('token');
+
+// Controller
+const controller = {
+  register: require('./controller/register'),
+};
 
 // Variables
 const app = express();
@@ -54,13 +57,16 @@ app.get('/', (req, res) => {
   Post.find({}).then((data) => {
     res.send(data);
   });
-  Register.find({}).then((data) => {
+  Token.find({}).then((data) => {
     res.send(data);
   });
 });
 
+// Register
+app.post('/register', controller.register);
+
 // Send email
-app.post('/sendEmail', async (req, res) => {
+/* app.post('/sendEmail', async (req, res) => {
   console.log(`Attempt to send email to ${req.body.email}`);
   Transporter.sendMail(
     {
@@ -78,10 +84,10 @@ app.post('/sendEmail', async (req, res) => {
       return res;
     }
   );
-});
+}); */
 
 // Create client
-app.post('/createClient', (req, res) => {
+/* app.post('/createClient', (req, res) => {
   const client = new Client({
     username: req.body.username,
     password: req.body.password,
@@ -94,10 +100,10 @@ app.post('/createClient', (req, res) => {
       res.send('Data created');
     })
     .catch((err) => console.log(err));
-});
+}); */
 
 // Create register
-app.post('/createRegister', (req, res) => {
+/* app.post('/createRegister', (req, res) => {
   const register = new Register({
     username: req.body.username,
     password: req.body.password,
@@ -111,35 +117,29 @@ app.post('/createRegister', (req, res) => {
       res.send('Register data created');
     })
     .catch((err) => console.log(err));
-});
+}); */
 
 // Read client
-app.get('/readClient', (req, res) => {
+/* app.get('/readClient', (req, res) => {
   Client.findById(req.body.id).then((data) => {
     console.log(data);
     res.send('Client data found');
   });
-});
+}); */
 
 // Read register
-app.get('/readRegister', (req, res) => {
-  Register.findOne({ email: req.body.email }).then((savedUser) => {
+/* app.get('/readRegister', (req, res) => {
+  Client.findOne({ email: req.body.email }).then((savedUser) => {
     if (savedUser) {
       res.status(422).json({ error: 'This email has been registered' });
     } else {
       res.send(savedUser);
     }
   });
-});
-
-// Code verification
-app.get('/codeVerification', (req, res) => {
-  Register.findOne({ email: req.body.email });
-  console.log(res);
-});
+}); */
 
 // Update client
-app.post('/updateClient', (req, res) => {
+/* app.post('/updateClient', (req, res) => {
   Client.findByIdAndUpdate(req.body.id, {
     username: req.body.username,
     password: req.body.password,
@@ -150,18 +150,18 @@ app.post('/updateClient', (req, res) => {
       res.send({ message: 'Data updated' });
     })
     .catch((err) => console.log(err));
-});
+}); */
 
 // Delete client
-app.post('/deleteClient', (req, res) => {
+/* app.post('/deleteClient', (req, res) => {
   Client.findByIdAndRemove(req.body.id).then((data) => {
     console.log(data);
     res.send({ message: 'Data deleted' });
   });
-});
+}); */
 
 // Other requests
-app.use('*', (req, res) => {
+app.get('*', (req, res) => {
   res.status(404).json({ message: 'Not found' });
 });
 

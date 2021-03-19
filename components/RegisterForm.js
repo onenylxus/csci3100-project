@@ -17,13 +17,12 @@ export default function RegisterForm() {
   const [emailState, setEmailState] = React.useState(2);
 
   async function submitData() {
-    const code = Math.trunc(Math.random() * 10 ** 7);
     console.log(
       `Register request sent with username ${username}, password ${password} and email ${email}`
     );
 
     /* eslint-disable no-undef */
-    await fetch(`https://${Source.heroku}/createRegister`, {
+    await fetch(`https://${Source.heroku}/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -32,22 +31,6 @@ export default function RegisterForm() {
         username,
         password,
         email,
-        code,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-
-    await fetch(`https://${Source.heroku}/sendEmail`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username,
-        email,
-        code,
       }),
     })
       .then((res) => console.log(res))
