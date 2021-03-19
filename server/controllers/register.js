@@ -5,8 +5,8 @@ const emailContext = require('../emailContext');
 const transporter = require('../transporter');
 
 // Schema
-require('../schemas/client');
-require('../schemas/token');
+require('../schemas/Client');
+require('../schemas/Token');
 
 // Models
 const Client = mongoose.model('client');
