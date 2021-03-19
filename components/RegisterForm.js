@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { Button, Text, TextInput, View } from 'react-native';
+import { Alert, Button, Text, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Source from '../assets/source';
 import Style from '../assets/style';
@@ -17,13 +17,12 @@ export default function RegisterForm() {
   const [emailState, setEmailState] = React.useState(2);
 
   async function submitData() {
-    const code = Math.trunc(Math.random() * 10 ** 7);
     console.log(
       `Register request sent with username ${username}, password ${password} and email ${email}`
     );
 
     /* eslint-disable no-undef */
-    await fetch(`https://${Source.heroku}/createRegister`, {
+    await fetch(`https://${Source.heroku}/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -32,35 +31,45 @@ export default function RegisterForm() {
         username,
         password,
         email,
-        code,
       }),
     })
-      .then((res) => res.json())
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-
-    await fetch(`https://${Source.heroku}/sendEmail`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username,
-        email,
-        code,
-      }),
-    })
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          navigation.navigate('Verification');
+        } else {
+          return Alert.alert(
+            'Error',
+            'Either your username or your email has been registered by another user, please try again.',
+            [
+              {
+                text: 'Retry',
+                onPress: () => undefined,
+                style: 'destructive',
+              },
+            ]
+          );
+        }
+      })
       .catch((err) => console.log(err));
     /* eslint-enable no-undef */
   }
 
-  function confirmRegister() {
+  async function confirmRegister() {
     if (usernameState % 2 && passwordState % 2 && emailState % 2) {
       submitData();
-      navigation.navigate('Verification');
     } else {
-      console.log('Some input are invalid');
+      return Alert.alert(
+        'Some input are invald',
+        'Some of your inputs above are invalid. Please try again.',
+        [
+          {
+            text: 'Retry',
+            onPress: () => undefined,
+            style: 'destructive',
+          },
+        ]
+      );
     }
   }
 

@@ -7,6 +7,6 @@ const CommentSchema = new mongoose.Schema({
   username: String,
   numOfLike: Number,
   numOfDislike: Number,
-  timestamp: Number,
+  timestamp: { type: Date, required: true, default: Date.now },
 });
 mongoose.model('comment', CommentSchema);
