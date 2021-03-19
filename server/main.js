@@ -20,7 +20,7 @@ const Token = mongoose.model('token');
 
 // Controller
 const controller = {
-  register: require('./controller/register'),
+  register: require('./controllers/register'),
 };
 
 // Variables
