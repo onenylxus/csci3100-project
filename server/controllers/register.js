@@ -21,7 +21,6 @@ module.exports = function register(req, res) {
   Client.findOne({ username }).then((data1) => {
     if (data1) {
       return res.status(422).send({
-        title: 'Username error',
         error: 'This username is used by someone else.',
       });
     }
@@ -30,7 +29,6 @@ module.exports = function register(req, res) {
     Client.findOne({ email }).then((data) => {
       if (data) {
         return res.status(422).send({
-          title: 'Email error',
           error: 'This email has been registered.',
         });
       }
