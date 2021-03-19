@@ -9,6 +9,7 @@ import HomeTab from './screens/navigators/HomeTab';
 import LoginScreen from './screens/LoginScreen';
 import RegisterStack from './screens/navigators/RegisterStack';
 import VerificationScreen from './screens/VerificationScreen';
+import EditProfileScreen from './screens/EditProfileSCreen';
 
 // Stack
 const Stack = createStackNavigator();
@@ -27,8 +28,8 @@ export default function App() {
         <Stack.Screen name="Verification" component={VerificationScreen} options={NoHeader} />
         <Stack.Screen name="Login" component={LoginScreen} options={Header} />
         <Stack.Screen name="Register" component={RegisterStack} options={Header} />
+        <Stack.Screen name="EditProfile" component={EditProfileScreen} options={Header} />
       </Stack.Navigator>
-      
       <StatusBar style="auto" />
     </NavigationContainer>
   );

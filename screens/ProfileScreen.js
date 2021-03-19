@@ -6,7 +6,7 @@ import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import Style from '../assets/style';
 
 // Export profile screen
-export default function ProfileScreen() {
+export default function ProfileScreen({ navigation }) {
   return (
     <View style={Style.container}>
       <View style={Style.profilePicture}>
@@ -14,7 +14,7 @@ export default function ProfileScreen() {
           <FontAwesomeIcon icon={faUserPlus} size={150} />
           <Button
             title="Edit Profile"
-            onPress={() => console.log(`Edit profile request sent.`)}
+            onPress={() => navigation.navigate('EditProfile')}
           />
           <Text style={Style.profileUsername}>
             <br />
