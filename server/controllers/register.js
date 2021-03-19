@@ -4,7 +4,7 @@ const CryptoJS = require('crypto-js');
 const emailContext = require('../emailContext');
 const transporter = require('../transporter');
 
-// Schema
+// Schemas
 require('../schemas/Client');
 require('../schemas/Token');
 
@@ -29,7 +29,7 @@ module.exports = function register(req, res) {
       password,
       email,
     });
-    client.save((err) => res.status(500).send({ msg: err.message }));
+    client.save((err) => res.status(500).send({ error: err }));
 
     // Create token and save to database
     const key = CryptoJS.lib.WordArray.random(16);
@@ -37,7 +37,7 @@ module.exports = function register(req, res) {
       _clientId: client._id,
       code: CryptoJS.SHA256(key, { outputLength: 32 }),
     });
-    token.save((err) => res.status(500).send({ msg: err.message }));
+    token.save((err) => res.status(500).send({ error: err }));
 
     // Send email
     const url = `https://cu-there-server.herokuapp.com/verify?=${token.code}`;
