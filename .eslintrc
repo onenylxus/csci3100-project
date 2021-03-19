@@ -2,6 +2,7 @@
   "extends": ["airbnb", "airbnb/hooks", "prettier", "plugin:react/recommended"],
   "plugins": ["prettier", "react"],
   "rules": {
+    "consistent-return": 0,
     "func-names": 0,
     "global-require": 0,
     "import/no-unresolved": 0,

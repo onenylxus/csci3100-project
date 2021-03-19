@@ -39,6 +39,7 @@ export default function RegisterForm() {
   }
 
   async function confirmRegister() {
+    /*
     if (!(usernameState % 2 && passwordState % 2 && emailState % 2)) {
       return Alert.alert(
         'Some input are invald',
@@ -52,9 +53,9 @@ export default function RegisterForm() {
         ]
       );
     }
-    /* eslint-disable no-undef */
+
     let bool = false;
-    await fetch(`https://${Source.heroku}/readRegister`, {
+    await fetch(`https://${Source.heroku}/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -68,7 +69,6 @@ export default function RegisterForm() {
         bool = !!res;
       })
       .catch((err) => console.log(err));
-    /* eslint-enable no-undef */
 
     if (bool) {
       return Alert.alert(
@@ -86,6 +86,24 @@ export default function RegisterForm() {
     submitData();
     navigation.navigate('Verification');
     return console.log('All inputs are valid');
+    */
+
+    if (usernameState % 2 && passwordState % 2 && emailState % 2) {
+      submitData();
+      navigation.navigate('Verification');
+    } else {
+      return Alert.alert(
+        'Some input are invald',
+        'Some of your inputs above are invalid. Please try again.',
+        [
+          {
+            text: 'Retry',
+            onPress: () => console.log('Retry pressed'),
+            style: 'destructive',
+          },
+        ]
+      );
+    }
   }
 
   function changeUsername(text) {
