@@ -33,64 +33,17 @@ export default function RegisterForm() {
         email,
       }),
     })
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        navigation.navigate('Verification');
+      })
       .catch((err) => console.log(err));
     /* eslint-enable no-undef */
   }
 
   async function confirmRegister() {
-    /*
-    if (!(usernameState % 2 && passwordState % 2 && emailState % 2)) {
-      return Alert.alert(
-        'Some input are invald',
-        'Some of your inputs above are invalid. Please try again.',
-        [
-          {
-            text: 'Retry',
-            onPress: () => console.log('Retry pressed'),
-            style: 'destructive',
-          },
-        ]
-      );
-    }
-
-    let bool = false;
-    await fetch(`https://${Source.heroku}/register`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-      }),
-    })
-      .then((res) => {
-        console.log('There exist some email');
-        bool = !!res;
-      })
-      .catch((err) => console.log(err));
-
-    if (bool) {
-      return Alert.alert(
-        'Email already exist',
-        'The email you used to register has already been used, please try again.',
-        [
-          {
-            text: 'Retry',
-            onPress: () => console.log('Retry pressed'),
-            style: 'destructive',
-          },
-        ]
-      );
-    }
-    submitData();
-    navigation.navigate('Verification');
-    return console.log('All inputs are valid');
-    */
-
     if (usernameState % 2 && passwordState % 2 && emailState % 2) {
       submitData();
-      navigation.navigate('Verification');
     } else {
       return Alert.alert(
         'Some input are invald',
