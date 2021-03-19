@@ -8,7 +8,7 @@ import Style from '../assets/style';
 export default function LoginScreen({ navigation }) {
   return (
     <View style={Style.container}>
-      <Text style={Style.loginTitle}>CU There</Text>
+      <Text style={Style.loginTitle}>Welcome to CU There</Text>
       <LoginForm />
       <Text
         style={{ ...Style.hyperlink, marginTop: 20 }}

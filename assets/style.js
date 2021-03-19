@@ -70,7 +70,6 @@ export default StyleSheet.create({
     margin: 16,
     textAlign: 'left',
     textAlignVertical: 'top',
-    outlineColor: 'orange',
   },
 
   profilePicture: {
@@ -92,7 +91,7 @@ export default StyleSheet.create({
     backgroundColor: '#fff',
     borderWidth: 0.5,
     borderColor: '#000',
-    width: '50%',
+    width: 200,
     height: 40,
     borderRadius: 5,
     margin: 10,

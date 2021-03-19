@@ -18,7 +18,7 @@ export default function SearchBar() {
       />
       <TextInput
         placeholder="Search"
-        style={{ outline: 'none', width: '100%' }}
+        style={{ outline: 'none', width: 175 }}
         // onChangeText={(text) => setsearchWord(text)}
       />
     </View>
