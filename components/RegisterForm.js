@@ -38,13 +38,17 @@ export default function RegisterForm() {
         if (res.status === 200) {
           navigation.navigate('Verification');
         } else {
-          return Alert.alert('Error', res.status, [
-            {
-              text: 'Retry',
-              onPress: () => undefined,
-              style: 'destructive',
-            },
-          ]);
+          return Alert.alert(
+            'Error',
+            'Either your username or your email has been registered by another user, please try again.',
+            [
+              {
+                text: 'Retry',
+                onPress: () => undefined,
+                style: 'destructive',
+              },
+            ]
+          );
         }
       })
       .catch((err) => console.log(err));
