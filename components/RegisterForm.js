@@ -35,7 +35,9 @@ export default function RegisterForm() {
     })
       .then((res) => {
         console.log(res);
-        navigation.navigate('Verification');
+        if (res.status === 200) {
+          navigation.navigate('Verification');
+        }
       })
       .catch((err) => console.log(err));
     /* eslint-enable no-undef */

@@ -53,7 +53,10 @@ module.exports = function register(req, res) {
         if (err) {
           return console.log(err);
         }
-        res.send({ message: 'Email sent', message_id: info.messageId });
+        res.status(200).send({
+          message: 'Email sent',
+          message_id: info.messageId,
+        });
         return res;
       }
     );
