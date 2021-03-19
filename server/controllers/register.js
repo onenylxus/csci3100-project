@@ -20,8 +20,7 @@ module.exports = function register(req, res) {
   // Check username existence
   Client.findOne({ username }).then((data1) => {
     if (data1) {
-      res.set('Content-Type', 'application/json');
-      return res.status(422).send({
+      return res.status(422).json({
         error: 'This username is used by someone else.',
       });
     }
@@ -29,8 +28,7 @@ module.exports = function register(req, res) {
     // Check email existence
     Client.findOne({ email }).then((data) => {
       if (data) {
-        res.set('Content-Type', 'application/json');
-        return res.status(422).send({
+        return res.status(422).json({
           error: 'This email has been registered.',
         });
       }
@@ -41,7 +39,7 @@ module.exports = function register(req, res) {
         password,
         email,
       });
-      client.save().catch((err) => res.status(500).send({ error: err }));
+      client.save().catch((err) => res.status(500).json({ error: err }));
 
       // Create token and save to database
       const key = CryptoJS.lib.WordArray.random(16);
@@ -49,7 +47,7 @@ module.exports = function register(req, res) {
         _clientId: client._id,
         code: CryptoJS.SHA256(key, { outputLength: 32 }),
       });
-      token.save().catch((err) => res.status(500).send({ error: err }));
+      token.save().catch((err) => res.status(500).json({ error: err }));
 
       // Send email
       const url = `https://cu-there-server.herokuapp.com/verify?=${token.code}`;
