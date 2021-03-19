@@ -72,7 +72,7 @@ export default function RegisterForm() {
     /* eslint-disable no-undef */
     let bool = false;
     await fetch(`https://${Source.heroku}/readRegister`, {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -81,7 +81,7 @@ export default function RegisterForm() {
       }),
     })
       .then((res) => {
-        console.log(res);
+        console.log('There exist some email');
         bool = !!res;
       })
       .catch((err) => console.log(err));
