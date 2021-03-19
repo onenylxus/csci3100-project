@@ -37,6 +37,14 @@ export default function RegisterForm() {
         console.log(res);
         if (res.status === 200) {
           navigation.navigate('Verification');
+        } else {
+          return Alert.alert(res.title, res.error, [
+            {
+              text: 'Retry',
+              onPress: () => undefined,
+              style: 'destructive',
+            },
+          ]);
         }
       })
       .catch((err) => console.log(err));
@@ -53,7 +61,7 @@ export default function RegisterForm() {
         [
           {
             text: 'Retry',
-            onPress: () => console.log('Retry pressed'),
+            onPress: () => undefined,
             style: 'destructive',
           },
         ]

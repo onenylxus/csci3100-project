@@ -17,48 +17,61 @@ module.exports = function register(req, res) {
   // Fetch request body
   const { username, password, email } = req.body;
 
-  // Check email existence
-  Client.findOne({ email }).then((data) => {
-    if (data) {
-      return res.status(422).send({ error: 'This email has been registered' });
+  // Check username existence
+  Client.findOne({ username }).then((data1) => {
+    if (data1) {
+      return res.status(422).send({
+        title: 'Username error',
+        error: 'This username is used by someone else.',
+      });
     }
 
-    // Create client and save to database
-    const client = new Client({
-      username,
-      password,
-      email,
-    });
-    client.save().catch((err) => res.status(500).send({ error: err }));
-
-    // Create token and save to database
-    const key = CryptoJS.lib.WordArray.random(16);
-    const token = new Token({
-      _clientId: client._id,
-      code: CryptoJS.SHA256(key, { outputLength: 32 }),
-    });
-    token.save().catch((err) => res.status(500).send({ error: err }));
-
-    // Send email
-    const url = `https://cu-there-server.herokuapp.com/verify?=${token.code}`;
-    transporter.sendMail(
-      {
-        from: `csci3100cuthere@gmail.com`,
-        to: email,
-        subject: `Confirmation email for ${username}`,
-        text: emailContext.text(url),
-        html: emailContext.html(url),
-      },
-      (err, info) => {
-        if (err) {
-          return console.log(err);
-        }
-        res.status(200).send({
-          message: 'Email sent',
-          message_id: info.messageId,
+    // Check email existence
+    Client.findOne({ email }).then((data) => {
+      if (data) {
+        return res.status(422).send({
+          title: 'Email error',
+          error: 'This email has been registered.',
         });
-        return res;
       }
-    );
+
+      // Create client and save to database
+      const client = new Client({
+        username,
+        password,
+        email,
+      });
+      client.save().catch((err) => res.status(500).send({ error: err }));
+
+      // Create token and save to database
+      const key = CryptoJS.lib.WordArray.random(16);
+      const token = new Token({
+        _clientId: client._id,
+        code: CryptoJS.SHA256(key, { outputLength: 32 }),
+      });
+      token.save().catch((err) => res.status(500).send({ error: err }));
+
+      // Send email
+      const url = `https://cu-there-server.herokuapp.com/verify?=${token.code}`;
+      transporter.sendMail(
+        {
+          from: `csci3100cuthere@gmail.com`,
+          to: email,
+          subject: `Confirmation email for ${username}`,
+          text: emailContext.text(url),
+          html: emailContext.html(url),
+        },
+        (err, info) => {
+          if (err) {
+            return console.log(err);
+          }
+          res.status(200).send({
+            message: 'Email sent',
+            message_id: info.messageId,
+          });
+          return res;
+        }
+      );
+    });
   });
 };
