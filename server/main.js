@@ -125,9 +125,10 @@ app.get('/readClient', (req, res) => {
 app.get('/readRegister', (req, res) => {
   Register.findOne({ email: req.body.email }).then((savedUser) => {
     if (savedUser) {
-      return res.status(422).json({ error: 'This email has been registered' });
+      res.status(422).json({ error: 'This email has been registered' });
+    } else {
+      res.send(savedUser);
     }
-    return console.log('New user with a new email');
   });
 });
 

@@ -87,7 +87,7 @@ export default function RegisterForm() {
       .catch((err) => console.log(err));
     /* eslint-enable no-undef */
 
-    if (!bool) {
+    if (bool) {
       return Alert.alert(
         'Email already exist',
         'The email you used to register has already been used, please try again.',
