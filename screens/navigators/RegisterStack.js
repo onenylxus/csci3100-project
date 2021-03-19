@@ -1,14 +1,16 @@
 // Import
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import CreatePostScreen from './CreatePostScreen';
+import RegisterScreen from '../RegisterScreen';
 
+// Stack
 const Stack = createStackNavigator();
 
-export default function CreatePostStack() {
+// Export register stack
+export default function RegisterStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="CreatePost" component={CreatePostScreen} />
+      <Stack.Screen name="Register" component={RegisterScreen} />
     </Stack.Navigator>
   );
 }

@@ -1,14 +1,16 @@
 // Import
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import ProfileScreen from './ProfileScreen';
+import ChatroomScreen from '../ChatroomScreen';
 
+// Stack
 const Stack = createStackNavigator();
 
-export default function ProfileStack() {
+// Export chatroom stack
+export default function ChatroomStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Profile" component={ProfileScreen} />
+      <Stack.Screen name="Chatroom" component={ChatroomScreen} />
     </Stack.Navigator>
   );
 }

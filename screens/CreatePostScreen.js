@@ -1,8 +1,8 @@
 // Import
 import React from 'react';
 import { Text, View } from 'react-native';
-import Style from '../assets/style';
 import CreatePostForm from '../components/CreatePostForm';
+import Style from '../assets/style';
 
 // Export create post screen
 export default function CreatePostScreen() {

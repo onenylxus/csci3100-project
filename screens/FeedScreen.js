@@ -1,10 +1,10 @@
 // Import
 import React from 'react';
-import { Text, View, ScrollView } from 'react-native';
+import { Text, ScrollView, View } from 'react-native';
 import Style from '../assets/style';
 
-// Export home screen
-export default function HomeScreen() {
+// Export feed screen
+export default function FeedScreen() {
   return (
     <View style={Style.container}>
       <ScrollView>

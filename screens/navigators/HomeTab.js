@@ -12,23 +12,31 @@ import ProfileStack from './ProfileStack';
 // Tab
 const Tab = createBottomTabNavigator();
 
-// Export home tabs
+// Export home tab
 export default function HomeTab() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color }) => {
           let icon;
-          // Set different 'icons' for each route
-          if (route.name === 'Feed') {
-            icon = faHome;
-          } else if (route.name === 'Profile') {
-            icon = faUser;
-          } else if (route.name === 'CreatePost') {
-            icon = faPlus;
-          } else if (route.name === 'Chatroom') {
-            icon = faComment;
+
+          switch (route.name) {
+            case 'Chatroom':
+              icon = faComment;
+              break;
+            case 'CreatePost':
+              icon = faPlus;
+              break;
+            case 'Feed':
+              icon = faHome;
+              break;
+            case 'Profile':
+              icon = faUser;
+              break;
+            default:
+              break;
           }
+
           return <FontAwesomeIcon icon={icon} color={color} />;
         },
       })}

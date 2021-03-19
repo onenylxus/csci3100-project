@@ -1,14 +1,16 @@
 // Import
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import FeedScreen from './FeedScreen';
+import ProfileScreen from '../ProfileScreen';
 
+// Stack
 const Stack = createStackNavigator();
 
-export default function FeedStack() {
+// Export profile stack
+export default function ProfileStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Feed" component={FeedScreen} />
+      <Stack.Screen name="Profile" component={ProfileScreen} />
     </Stack.Navigator>
   );
 }

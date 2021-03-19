@@ -3,15 +3,14 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import ForgotPasswordScreen from './ForgotPasswordScreen';
 
+// Stack
 const Stack = createStackNavigator();
 
-export default function CreatePostStack() {
+// Export forgot password stack
+export default function ForgotPasswordStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="Back to Login Page"
-        component={ForgotPasswordScreen}
-      />
+      <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
     </Stack.Navigator>
   );
 }

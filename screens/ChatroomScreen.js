@@ -3,7 +3,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import Style from '../assets/style';
 
-// Export home screen
+// Export chatroom screen
 export default function ChatroomScreen() {
   return (
     <View style={Style.container}>

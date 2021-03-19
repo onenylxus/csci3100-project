@@ -1,14 +1,16 @@
 // Import
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import ChatroomScreen from './ChatroomScreen';
+import FeedScreen from '../FeedScreen';
 
+// Stack
 const Stack = createStackNavigator();
 
-export default function ChatroomStack() {
+// Export feed stack
+export default function FeedStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Chatroom" component={ChatroomScreen} />
+      <Stack.Screen name="Feed" component={FeedScreen} />
     </Stack.Navigator>
   );
 }

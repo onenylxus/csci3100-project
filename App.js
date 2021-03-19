@@ -5,9 +5,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import ForgotPasswordStack from './screens/ForgotPasswordStack';
 import Header from './components/Header';
-import HomeTabs from './screens/HomeTab';
+import HomeTab from './screens/navigators/HomeTab';
 import LoginScreen from './screens/LoginScreen';
-import RegisterStack from './screens/RegisterStack';
+import RegisterStack from './screens/navigators/RegisterStack';
 import VerificationScreen from './screens/VerificationScreen';
 
 // Stack
@@ -23,7 +23,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="ForgotPassword" component={ForgotPasswordStack} options={NoHeader} />
-        <Stack.Screen name="Tabs" component={HomeTabs} options={Header} />
+        <Stack.Screen name="Tabs" component={HomeTab} options={Header} />
         <Stack.Screen name="Verification" component={VerificationScreen} options={NoHeader} />
         <Stack.Screen name="Login" component={LoginScreen} options={Header} />
         <Stack.Screen name="Register" component={RegisterStack} options={Header} />
