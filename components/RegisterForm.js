@@ -38,7 +38,7 @@ export default function RegisterForm() {
         if (res.status === 200) {
           navigation.navigate('Verification');
         } else {
-          return Alert.alert('Error', res.error, [
+          return Alert.alert('Error', res.status, [
             {
               text: 'Retry',
               onPress: () => undefined,

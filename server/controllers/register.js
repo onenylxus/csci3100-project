@@ -20,6 +20,7 @@ module.exports = function register(req, res) {
   // Check username existence
   Client.findOne({ username }).then((data1) => {
     if (data1) {
+      res.set('Content-Type', 'application/json');
       return res.status(422).send({
         error: 'This username is used by someone else.',
       });
@@ -28,6 +29,7 @@ module.exports = function register(req, res) {
     // Check email existence
     Client.findOne({ email }).then((data) => {
       if (data) {
+        res.set('Content-Type', 'application/json');
         return res.status(422).send({
           error: 'This email has been registered.',
         });
