@@ -114,11 +114,27 @@ app.post('/createRegister', (req, res) => {
 });
 
 // Read client
-app.post('/readClient', (req, res) => {
+app.get('/readClient', (req, res) => {
   Client.findById(req.body.id).then((data) => {
     console.log(data);
     res.send('Client data found');
   });
+});
+
+// Read register
+app.get('/readRegister', (req, res) => {
+  Register.findOne({ email: req.body.email }).then((savedUser) => {
+    if (savedUser) {
+      return res.status(422).json({ error: 'This email has been registered' });
+    }
+    return console.log('New user with a new email');
+  });
+});
+
+// Code verification
+app.get('/codeVerification', (req, res) => {
+  Register.findOne({ email: req.body.email });
+  console.log(res);
 });
 
 // Update client

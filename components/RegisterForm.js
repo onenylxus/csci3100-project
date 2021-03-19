@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { Button, Text, TextInput, View } from 'react-native';
+import { Alert, Button, Text, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Source from '../assets/source';
 import Style from '../assets/style';
@@ -55,13 +55,54 @@ export default function RegisterForm() {
     /* eslint-enable no-undef */
   }
 
-  function confirmRegister() {
-    if (usernameState % 2 && passwordState % 2 && emailState % 2) {
-      submitData();
-      navigation.navigate('Verification');
-    } else {
-      console.log('Some input are invalid');
+  async function confirmRegister() {
+    if (!(usernameState % 2 && passwordState % 2 && emailState % 2)) {
+      return Alert.alert(
+        'Some input are invald',
+        'Some of your inputs above are invalid. Please try again.',
+        [
+          {
+            text: 'Retry',
+            onPress: () => console.log('Retry pressed'),
+            style: 'destructive',
+          },
+        ]
+      );
     }
+    /* eslint-disable no-undef */
+    let bool = false;
+    await fetch(`https://${Source.heroku}/readRegister`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    })
+      .then((res) => {
+        console.log(res);
+        bool = !!res;
+      })
+      .catch((err) => console.log(err));
+    /* eslint-enable no-undef */
+
+    if (!bool) {
+      return Alert.alert(
+        'Email already exist',
+        'The email you used to register has already been used, please try again.',
+        [
+          {
+            text: 'Retry',
+            onPress: () => console.log('Retry pressed'),
+            style: 'destructive',
+          },
+        ]
+      );
+    }
+    submitData();
+    navigation.navigate('Verification');
+    return console.log('All inputs are valid');
   }
 
   function changeUsername(text) {
