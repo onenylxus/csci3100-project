@@ -1,13 +1,13 @@
 // Import
 import React from 'react';
-import { TextInput, View } from 'react-native';
+import { TextInput, View, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import Style from '../assets/style';
 
 // Export Search Bar
 export default function SearchBar() {
-  // const [searchWord, setsearchWord] = React.useState('');
+  const [searchWord, setsearchWord] = React.useState('');
 
   return (
     <View style={Style.SectionStyle}>
@@ -19,8 +19,16 @@ export default function SearchBar() {
       <TextInput
         placeholder="Search"
         style={{ outline: 'none', width: 175 }}
-        // onChangeText={(text) => setsearchWord(text)}
+        value={searchWord}
+        onChangeText={(value) => setsearchWord(value)}
       />
+      <TouchableOpacity onPress={() => setsearchWord('')}>
+        <FontAwesomeIcon
+          icon={faTimesCircle}
+          size={15}
+          style={{ marginHorizontal: 5, marginVertical: 12 }}
+        />
+      </TouchableOpacity>
     </View>
   );
 }

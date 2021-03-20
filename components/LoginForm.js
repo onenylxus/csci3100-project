@@ -1,14 +1,20 @@
 // Import
 import React from 'react';
-import { Button, Text, TextInput, View } from 'react-native';
+import { Button, Text, TextInput, View, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faUser, faUnlock } from '@fortawesome/free-solid-svg-icons';
+import {
+  faUser,
+  faLock,
+  faEyeSlash,
+  faEye,
+} from '@fortawesome/free-solid-svg-icons';
 import Style from '../assets/style';
 
 // Export login form
 export default function LoginForm() {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [visibility, setVisibility] = React.useState(true);
 
   return (
     <View>
@@ -22,7 +28,7 @@ export default function LoginForm() {
           />
           <TextInput
             placeholder="Username"
-            style={{ outline: 'none', width: 175 }}
+            style={{ outline: 'none', width: 200 }}
             onChangeText={(text) => setUsername(text)}
           />
         </View>
@@ -31,16 +37,25 @@ export default function LoginForm() {
         <Text style={Style.sectionText}>Password:</Text>
         <View style={Style.SectionStyle}>
           <FontAwesomeIcon
-            icon={faUnlock}
+            icon={faLock}
             size={15}
             style={{ marginHorizontal: 5, marginVertical: 12 }}
           />
           <TextInput
             placeholder="Password"
             style={{ outline: 'none', width: 175 }}
-            secureTextEntry
             onChangeText={(text) => setPassword(text)}
+            secureTextEntry={visibility}
+            clearTextOnFocus={false}
+            enablesReturnKeyAutomatically
           />
+          <TouchableOpacity onPress={() => setVisibility(!visibility)}>
+            <FontAwesomeIcon
+              icon={visibility ? faEyeSlash : faEye}
+              size={15}
+              style={{ marginHorizontal: 5, marginVertical: 12 }}
+            />
+          </TouchableOpacity>
         </View>
       </View>
       <Button
