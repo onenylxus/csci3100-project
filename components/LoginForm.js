@@ -18,6 +18,7 @@ export default function LoginForm() {
 
   return (
     <View>
+      {/* Username */}
       <View style={Style.inputContainer}>
         <Text style={Style.sectionText}>Username:</Text>
         <View style={Style.SectionStyle}>
@@ -33,6 +34,7 @@ export default function LoginForm() {
           />
         </View>
       </View>
+      {/* Password */}
       <View style={Style.inputContainer}>
         <Text style={Style.sectionText}>Password:</Text>
         <View style={Style.SectionStyle}>

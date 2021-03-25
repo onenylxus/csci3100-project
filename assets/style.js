@@ -72,22 +72,63 @@ export default StyleSheet.create({
     textAlignVertical: 'top',
   },
 
-  profilePicture: {
-    flex: 1,
-    flexDirection: 'row',
-    alignSelf: 'flex-start',
-    margin: 20,
+  profileContainerPC: {
+    width: '60%',
+    alignSelf: 'center',
+    paddingTop: 32,
   },
 
-  profileUsername: {
-    flex: 1,
+  profileContainerPhone: {
+    width: '90%',
+    alignSelf: 'center',
+    paddingTop: 32,
+  },
+
+  profilePicturePhone: {
+    justifyContent: 'flex-start',
+    marginHorizontal: 20,
+  },
+
+  profilePicturePC: {
+    justifyContent: 'flex-start',
+    marginHorizontal: 30,
+  },
+
+  editProfileButtonPhone: {
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginHorizontal: 10,
+  },
+
+  editProfileButtonPC: {
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginHorizontal: 30,
+  },
+
+  userInfoPhone: {
+    fontSize: 16,
+    justifyContent: 'flex-start',
+    alignSelf: 'flex-start',
+    margin: 10,
+  },
+
+  userInfoPC: {
     fontSize: 24,
+    justifyContent: 'flex-start',
+    alignSelf: 'flex-start',
+    margin: 10,
+  },
+
+  profilePost: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+    margin: 10,
   },
 
   SectionStyle: {
     flexDirection: 'row',
-    // justifyContent: 'center',
-    // alignItems: 'center',
     backgroundColor: '#fff',
     borderWidth: 0.5,
     borderColor: '#000',
