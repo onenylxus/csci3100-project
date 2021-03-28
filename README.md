@@ -6,22 +6,20 @@ We have used the following technologies in this project:
 
 1. MongoDB with Mongoose
 2. Express
-3. React Native
+3. React Native with Expo
 4. Node.js
-5. Expo
-6. JavaScript
-
+5. JavaScript
 
 For more information, please check out [`package.json`](https://github.com/onenylxus/csci3100-project/blob/master/package.json) to check all dependencies used in this project.
 
 ## Installation
-### Step 1: Clone this repository
+#### Step 1: Clone this repository
 
 ```shell
 git clone https://github.com/onenylxus/csci3100-project.git
 ```
 
-### Step 2: Check if your computer has already installed `npm`, `yarn` and `expo-cli`
+#### Step 2: Check if your computer has already installed `npm`, `yarn` and `expo-cli`
 You can check these by
 
 ```shell
@@ -36,9 +34,9 @@ If you have not installed Node.js, visit [https://nodejs.org/en/](https://nodejs
 npm install -g yarn expo-cli
 ```
 
-Step 3: For Android users, install **Expo Go** on Google Play store.
+#### Step 3: For Android users, install **Expo Go** on Google Play store.
 
-Step 4: Run the `start` script in `npm`
+#### Step 4: Run the `start` script in `npm`
 
 ```shell
 yarn run start

@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { TextInput, View, TouchableOpacity } from 'react-native';
+import { TextInput, TouchableOpacity, View } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faSearch, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import Style from '../assets/style';
