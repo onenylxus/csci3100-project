@@ -75,18 +75,18 @@ export default function RegisterForm() {
 
   function changeUsername(text) {
     setUsername(text);
-    setUsernameState(text.length > 0 ? /^[\w]{4,20}$/.test(text) : 2);
+    setUsernameState(text.length > 0 ? /^\w{4,20}$/.test(text) : 2);
   }
 
   function changePassword(text) {
     setPassword(text);
-    setPasswordState(text.length > 0 ? /^[\w]{6}\w*$/.test(text) : 2);
+    setPasswordState(text.length > 0 ? /^\w{6}\w*$/.test(text) : 2);
   }
 
   function changeEmail(text) {
     setEmail(text);
     setEmailState(
-      text.length > 0 ? /^1155[\d]{6}@(link\.)?cuhk\.edu\.hk$/.test(text) : 2
+      text.length > 0 ? /^1155\d{6}@(link\.)?cuhk\.edu\.hk$/.test(text) : 2
     );
   }
 

@@ -20,3 +20,6 @@ npm-debug.*
 
 # Eslint files
 /.eslintcache
+
+# Error files
+/yarn-error.log
