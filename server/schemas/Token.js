@@ -15,7 +15,7 @@ const TokenSchema = new mongoose.Schema({
   timestamp: {
     type: Date,
     default: Date.now,
-    expires: 300,
+    expires: 900,
   },
 });
 mongoose.model('token', TokenSchema);
