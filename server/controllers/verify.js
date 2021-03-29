@@ -25,14 +25,14 @@ module.exports = function verify(req, res) {
     // Update client verify status by token code
     Client.findByIdAndUpdate(data1._clidentId, {
       isVerified: true,
-    }).then((err, data) => {
+    }).then((err) => {
       if (err) {
         return console.log(err);
       }
 
       // Send status
       res.status(200).send({
-        message: `User ${data.username} verified`,
+        message: 'User verified',
       });
       return res;
     });
