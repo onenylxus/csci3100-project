@@ -45,12 +45,12 @@ module.exports = function register(req, res) {
       const key = CryptoJS.lib.WordArray.random(16);
       const token = new Token({
         _clientId: client._id,
-        code: CryptoJS.SHA256(key, { outputLength: 32 }),
+        code: CryptoJS.SHA256(key, { outputLength: 16 }),
       });
       token.save().catch((err) => res.status(500).json({ error: err }));
 
       // Send email
-      const url = `https://cu-there-server.herokuapp.com/verify/${token.code}`;
+      const url = `https://cu-there-server.herokuapp.com/verify?token=${token.code}`;
       transporter.sendMail(
         {
           from: `csci3100cuthere@gmail.com`,
