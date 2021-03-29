@@ -50,7 +50,7 @@ module.exports = function register(req, res) {
       token.save().catch((err) => res.status(500).json({ error: err }));
 
       // Send email
-      const url = `https://cu-there-server.herokuapp.com/verify?=${token.code}`;
+      const url = `https://cu-there-server.herokuapp.com/verify/${token.code}`;
       transporter.sendMail(
         {
           from: `csci3100cuthere@gmail.com`,
