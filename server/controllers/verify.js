@@ -12,7 +12,7 @@ const Token = mongoose.model('token');
 // Export
 module.exports = function verify(req, res) {
   // Fetch parameters
-  const { token } = req.params();
+  const { token } = req.params;
 
   // Find token
   Token.findOne({ code: token }).then((data1) => {
@@ -29,6 +29,8 @@ module.exports = function verify(req, res) {
       if (err) {
         return console.log(err);
       }
+
+      // Send status
       res.status(200).send({
         message: `User ${data.username} verified`,
       });
