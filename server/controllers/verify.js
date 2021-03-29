@@ -23,7 +23,7 @@ module.exports = function verify(req, res) {
       });
     }
     // Update client verify status by token code
-    Client.update(
+    Client.updateOne(
       { _id: data1._clidentId },
       {
         $set: { isVerified: true },
