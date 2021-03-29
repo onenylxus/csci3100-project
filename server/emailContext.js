@@ -4,7 +4,7 @@ const text = (url) =>
 
 // Email HTML
 const html = (url) =>
-  `Hi there,<br /><br /> We are happy that you signed up for CUThere! To continue the verification process, please click the following link.<br /><br /> Click this: ${url}<br /><br />Welcome to CUThere!<br />The CUThere Team`;
+  `Hi there,<br /><br /> We are happy that you signed up for CUThere! To continue the verification process, please click the following link.<br /><br /> Click this: <a href="${url}">${url}</a><br /><br />Welcome to CUThere!<br />The CUThere Team`;
 
 // Export
 module.exports = { text, html };
