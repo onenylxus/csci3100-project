@@ -22,22 +22,25 @@ module.exports = function verify(req, res) {
         error: 'Not exist',
       });
     }
+
     // Update client verify status by token code
     Client.updateOne(
       { _id: data1._clidentId },
       {
         $set: { isVerified: true },
-      }
-    ).then((err) => {
-      if (err) {
-        return console.log(err);
-      }
+      },
+      (err, data) => {
+        if (err) {
+          return console.log(err);
+        }
 
-      // Send status
-      res.status(200).send({
-        message: 'User verified',
-      });
-      return res;
-    });
+        // Send status
+        console.log(data);
+        res.status(200).send({
+          message: 'User verified',
+        });
+        return res;
+      }
+    );
   });
 };
