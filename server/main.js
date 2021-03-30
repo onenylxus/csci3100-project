@@ -71,7 +71,7 @@ app.get('/', (req, res) => {
 app.post('/register', controller.register);
 
 // Verification link
-app.get('/verify', controller.verify);
+app.post('/verify', controller.verify);
 
 // Other requests
 app.get('*', (req, res) => {
