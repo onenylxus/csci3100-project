@@ -3,10 +3,17 @@ const mongoose = require('mongoose');
 
 // Token schema
 const TokenSchema = new mongoose.Schema({
-  _clientId: {
-    type: mongoose.Schema.Types.ObjectId,
+  username: {
+    type: String,
     required: true,
-    ref: 'Client',
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
   },
   code: {
     type: String,
@@ -15,6 +22,9 @@ const TokenSchema = new mongoose.Schema({
   timestamp: {
     type: Date,
     default: Date.now,
+    expires: 900,
   },
 });
+
+// Modeling
 mongoose.model('token', TokenSchema);

@@ -8,4 +8,6 @@ const ClientSchema = new mongoose.Schema({
   email: { type: String, required: true },
   isVerified: { type: Boolean, default: false },
 });
+
+// Modeling
 mongoose.model('client', ClientSchema);

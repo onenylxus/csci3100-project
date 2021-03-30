@@ -10,4 +10,6 @@ const PostSchema = new mongoose.Schema({
   comments: String,
   tags: String,
 });
+
+// Modeling
 mongoose.model('post', PostSchema);
