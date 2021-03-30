@@ -10,27 +10,33 @@ const Client = mongoose.model('client');
 const Token = mongoose.model('token');
 
 // Export
-module.exports = async function verify(req, res) {
-  // Fetch parameters
-  const { token } = req.query;
+module.exports = function verify(req, res) {
+  // Get token
+  const { token } = req.params;
 
   // Find token
-  await Token.findOne({ code: token }).then((data1) => {
-    // Check token existence
-    if (!data1) {
-      return res.status(422).json({
-        error: 'Not exist',
-      });
+  Token.exists({ token }).then((err, bool) => {
+    if (err) {
+      console.log(err);
+    } else if (!bool) {
+      return res.status(422).send({ msg: 'Token not found.' });
     }
+  });
 
-    Client.findById(data1._clientId)
-      .update({ $set: { isVerified: true } })
-      .then((data) => {
-        console.log(data);
-        res.status(200).send({
-          message: 'User verified',
-        });
-        return res;
-      });
+  // Get token
+  Token.findOne({ token }).then((data) => {
+    // Create client
+    const client = new Client({
+      username: data.username,
+      password: data.password,
+      email: data.email,
+    });
+    client.save();
+
+    // Remove token
+    data.remove();
+
+    // Return
+    return res.status(200).send({ msg: 'Client created.' });
   });
 };
