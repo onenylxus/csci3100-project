@@ -26,9 +26,7 @@ module.exports = function verify(req, res) {
     // Update client verify status by token code
     Client.updateOne(
       { _id: data1._clidentId },
-      {
-        $set: { isVerified: true },
-      },
+      { isVerified: true },
       (err, data) => {
         if (err) {
           return console.log(err);
