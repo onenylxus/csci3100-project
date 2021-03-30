@@ -1,7 +1,6 @@
 // Require
 const mongoose = require('mongoose');
 const CryptoJS = require('crypto-js');
-const emailContext = require('../emailContext');
 const transporter = require('../transporter');
 
 // Schemas
@@ -50,13 +49,14 @@ module.exports = function register(req, res) {
       token.save().catch((err) => res.status(500).json({ error: err }));
 
       // Send email
+      const url = `https://cu-there-server.herokuapp.com/verify?token=${token.code}`;
       transporter.sendMail(
         {
           from: `csci3100cuthere@gmail.com`,
           to: email,
           subject: `Confirmation email for ${username}`,
-          text: emailContext.text(token.code),
-          html: emailContext.html(token.code),
+          text: `Hi there,\n\n We are happy that you signed up for CUThere! To continue the verification process, please click the following link.\n\n Click this: ${url}\n\nWelcome to CUThere!\nThe CUThere Team`,
+          html: `Hi there,<br /><br /> We are happy that you signed up for CUThere! To continue the verification process, please click the following link.<br /><br /> Click this: <a href="${url}">${url}</a><br /><br />Welcome to CUThere!<br />The CUThere Team`,
         },
         (err, info) => {
           if (err) {
