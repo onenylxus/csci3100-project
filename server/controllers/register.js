@@ -67,6 +67,9 @@ module.exports = function register(req, res) {
       subject: `Confirmation email for ${username}`,
       html: `Hi there,<br /><br />We are happy that you signed up for CUThere! To continue the verification process, please click the following link.<br /><br /> Click this: <a href="${url}">${url}</a><br /><br />Welcome to CUThere!<br />The CUThere Team`,
     })
+    .then((data) => {
+      console.log(data);
+    })
     .catch((err) => {
       console.log(err);
     });
