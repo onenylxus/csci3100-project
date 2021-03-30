@@ -14,15 +14,33 @@ export default function ChatroomScreen() {
           <SearchBar />
         </View>
         <ScrollView>
-          <TouchableOpacity style={Style.chatBox}>hi</TouchableOpacity>
-          <TouchableOpacity style={Style.chatBox}>hi</TouchableOpacity>
-          <TouchableOpacity style={Style.chatBox}>hi</TouchableOpacity>
-          <TouchableOpacity style={Style.chatBox}>hi</TouchableOpacity>
-          <TouchableOpacity style={Style.chatBox}>hi</TouchableOpacity>
-          <TouchableOpacity style={Style.chatBox}>hi</TouchableOpacity>
-          <TouchableOpacity style={Style.chatBox}>hi</TouchableOpacity>
-          <TouchableOpacity style={Style.chatBox}>hi</TouchableOpacity>
-          <TouchableOpacity style={Style.chatBox}>hi</TouchableOpacity>
+          <TouchableOpacity style={Style.chatBox}>
+            <Text>hi</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={Style.chatBox}>
+            <Text>hi</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={Style.chatBox}>
+            <Text>hi</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={Style.chatBox}>
+            <Text>hi</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={Style.chatBox}>
+            <Text>hi</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={Style.chatBox}>
+            <Text>hi</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={Style.chatBox}>
+            <Text>hi</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={Style.chatBox}>
+            <Text>hi</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={Style.chatBox}>
+            <Text>hi</Text>
+          </TouchableOpacity>
         </ScrollView>
       </Col>
       <Col size={2} style={Style.chatRoomRight}>
