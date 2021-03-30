@@ -6,7 +6,7 @@ import Style from '../assets/style';
 import SearchBar from '../components/SearchBar';
 
 // Export chatroom screen
-export default function FeedScreen() {
+export default function ChatroomScreen() {
   return (
     <Grid style={Style.profileContainerPC}>
       <Col size={1} style={Style.chatRoomLeft}>
