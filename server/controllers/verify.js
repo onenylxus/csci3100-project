@@ -33,6 +33,7 @@ module.exports = function verify(req, res) {
         }
 
         // Send status
+        console.log('hello');
         console.log(data);
         res.status(200).send({
           message: 'User verified',
