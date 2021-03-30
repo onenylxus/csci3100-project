@@ -73,7 +73,7 @@ export default StyleSheet.create({
   },
 
   profileContainerPC: {
-    width: '60%',
+    width: 1000,
     alignSelf: 'center',
     paddingTop: 32,
   },
@@ -120,11 +120,23 @@ export default StyleSheet.create({
     margin: 10,
   },
 
+  infoLayerPhone: {
+    height: 120,
+  },
+
+  infoLayerPC: {
+    height: 170,
+  },
+
   profilePost: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ffffff',
     margin: 10,
+    backgroundColor: 'white',
+  },
+
+  individualPost: {
+    backgroundColor: '#ffffff',
   },
 
   SectionStyle: {
@@ -136,5 +148,26 @@ export default StyleSheet.create({
     height: 40,
     borderRadius: 5,
     margin: 10,
+  },
+
+  chatRoomLeft: {
+    borderWidth: 1,
+    borderRightWidth: 0.5,
+    borderColor: '#DEDEDE',
+    backgroundColor: 'white',
+  },
+
+  chatRoomRight: {
+    borderWidth: 1,
+    borderLeftWidth: 0.5,
+    borderColor: '#DEDEDE',
+    backgroundColor: 'white',
+  },
+
+  chatBox: {
+    height: 100,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: '#F0F0F0',
   },
 });

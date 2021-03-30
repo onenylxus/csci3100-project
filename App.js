@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import ForgotPasswordStack from './screens/ForgotPasswordStack';
+import ForgotPasswordStack from './screens/navigators/ForgotPasswordStack';
 import Header from './components/Header';
 import HomeTab from './screens/navigators/HomeTab';
 import LoginScreen from './screens/LoginScreen';

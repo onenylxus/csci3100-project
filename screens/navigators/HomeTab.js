@@ -43,6 +43,7 @@ export default function HomeTab() {
       tabBarOptions={{
         activeTintColor: 'tomato',
         inactiveTintColor: 'gray',
+        scrollEnabled: false,
       }}
     >
       <Tab.Screen name="Feed" component={FeedStack} />

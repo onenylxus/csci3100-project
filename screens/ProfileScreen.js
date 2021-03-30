@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { Text, Button, Dimensions } from 'react-native';
+import { Text, Button, Dimensions, View } from 'react-native';
 import { Row, Col, Grid } from 'react-native-easy-grid';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +12,7 @@ export default function ProfileScreen({ navigation }) {
   const windowWidth = Dimensions.get('window').width;
 
   function styleByDevice(widthOfDevice, component) {
-    if (widthOfDevice < 800) {
+    if (widthOfDevice < 1100) {
       // Style of Small Screen
       switch (component) {
         case 'container':
@@ -32,6 +32,9 @@ export default function ProfileScreen({ navigation }) {
 
         case 'userInfo':
           return Style.userInfoPhone;
+
+        case 'infoLayer':
+          return Style.infoLayerPhone;
 
         default:
           break;
@@ -58,37 +61,44 @@ export default function ProfileScreen({ navigation }) {
       case 'userInfo':
         return Style.userInfoPC;
 
+      case 'infoLayer':
+        return Style.infoLayerPC;
+
       default:
         break;
     }
   }
 
   return (
-    <Grid style={styleByDevice(windowWidth, 'container')}>
-      <Row size={1}>
-        <Col size={styleByDevice(windowWidth, 'propicLayer')}>
-          <Row size={1} style={styleByDevice(windowWidth, 'propic')}>
-            <FontAwesomeIcon
-              icon={faUserPlus}
-              size={styleByDevice(windowWidth, 'propicSize')}
-            />
+    <View style={{ flex: 1 }}>
+      <Grid style={styleByDevice(windowWidth, 'container')}>
+        <View style={styleByDevice(windowWidth, 'infoLayer')}>
+          <Row size={1}>
+            <Col size={styleByDevice(windowWidth, 'propicLayer')}>
+              <Row size={1} style={styleByDevice(windowWidth, 'propic')}>
+                <FontAwesomeIcon
+                  icon={faUserPlus}
+                  size={styleByDevice(windowWidth, 'propicSize')}
+                />
+              </Row>
+              <Row size={0.5} style={styleByDevice(windowWidth, 'button')}>
+                <Button
+                  title="Edit Profile"
+                  onPress={() => navigation.navigate('EditProfile')}
+                />
+              </Row>
+            </Col>
+            <Text style={styleByDevice(windowWidth, 'userInfo')}>
+              Username{'\n'}
+              Major: XXXXXX{'\n'}
+              College: XXXXX{'\n'}
+            </Text>
           </Row>
-          <Row size={0.5} style={styleByDevice(windowWidth, 'button')}>
-            <Button
-              title="Edit Profile"
-              onPress={() => navigation.navigate('EditProfile')}
-            />
-          </Row>
-        </Col>
-        <Text style={styleByDevice(windowWidth, 'userInfo')}>
-          Username{'\n'}
-          Major: XXXXXX{'\n'}
-          College: XXXXX{'\n'}
-        </Text>
-      </Row>
-      <Row size={3} style={Style.profilePost}>
-        <Text>Current Posts</Text>
-      </Row>
-    </Grid>
+        </View>
+        <Row style={Style.profilePost}>
+          <Text>Current Posts</Text>
+        </Row>
+      </Grid>
+    </View>
   );
 }
