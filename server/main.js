@@ -2,22 +2,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-// Schema
-require('./schemas/Chatroom');
-require('./schemas/Client');
-require('./schemas/Comment');
-require('./schemas/Message');
-require('./schemas/Post');
-require('./schemas/Token');
-
-// Models
-const Chatroom = mongoose.model('chatroom');
-const Client = mongoose.model('client');
-const Comment = mongoose.model('comment');
-const Message = mongoose.model('message');
-const Post = mongoose.model('post');
-const Token = mongoose.model('token');
-
 // Controller
 const controller = {
   register: require('./controllers/register'),
@@ -46,31 +30,14 @@ mongoose.connection.on('error', (err) => {
 
 // Main site
 app.get('/', (req, res) => {
-  Chatroom.find({}).then((data) => {
-    res.send(data);
-  });
-  Client.find({}).then((data) => {
-    res.send(data);
-  });
-  Comment.find({}).then((data) => {
-    res.send(data);
-  });
-  Message.find({}).then((data) => {
-    res.send(data);
-  });
-  Post.find({}).then((data) => {
-    res.send(data);
-  });
-  Token.find({}).then((data) => {
-    res.send(data);
-  });
+  res.send('CU There');
 });
 
 // Register
 app.post('/register', controller.register);
 
 // Verification link
-app.get('/verify', controller.verify);
+app.get('/verify/:token', controller.verify);
 
 // Other requests
 app.get('*', (req, res) => {

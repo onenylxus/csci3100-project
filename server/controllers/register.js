@@ -59,7 +59,7 @@ module.exports = function register(req, res) {
   token.save();
 
   // Send email
-  const url = `https://cu-there-server.herokuapp.com/verify?token=${token.code}`;
+  const url = `https://cu-there-server.herokuapp.com/verify/${token.code}`;
   transporter.sendMail(
     {
       from: `csci3100cuthere@gmail.com`,
