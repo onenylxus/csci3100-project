@@ -139,7 +139,7 @@ export default function RegisterForm() {
         <View style={{ opacity: !emailState * 100 }}>
           <Text style={Style.errorMessage}>
             Email must be a CUHK link email address (example:
-            1155123456@cuhk.link.edu.hk)
+            1155123456@link.cuhk.edu.hk)
           </Text>
         </View>
       </View>

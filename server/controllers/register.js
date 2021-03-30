@@ -60,25 +60,15 @@ module.exports = function register(req, res) {
 
   // Send email
   const url = `https://cu-there-server.herokuapp.com/verify/${token.code}`;
-  let sent = false;
-  transporter.sendMail(
-    {
+  transporter
+    .sendMail({
       from: `csci3100cuthere@gmail.com`,
       to: email,
       subject: `Confirmation email for ${username}`,
       html: `Hi there,<br /><br />We are happy that you signed up for CUThere! To continue the verification process, please click the following link.<br /><br /> Click this: <a href="${url}">${url}</a><br /><br />Welcome to CUThere!<br />The CUThere Team`,
-    },
-    (err, info) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(info);
-        sent = true;
-      }
-    }
-  );
-
-  if (sent) {
-    return res.status(200).send({ msg: 'Email sent.' });
-  }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  return res.status(200).send({ msg: 'Email sent. ' });
 };

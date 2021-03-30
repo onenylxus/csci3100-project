@@ -18,6 +18,7 @@ app.use(express.json());
 
 // Mongoose setup
 mongoose.connect(uri, {
+  useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
