@@ -13,7 +13,7 @@ const Token = mongoose.model('token');
 module.exports = function verify(req, res) {
   // Fetch parameters
   const { token } = req.query;
-
+  console.log(token);
   // Find token
   Token.findOne({ code: token }).then((data1) => {
     // Check token existence

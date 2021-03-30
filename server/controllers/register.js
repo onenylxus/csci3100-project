@@ -55,7 +55,6 @@ module.exports = function register(req, res) {
           from: `csci3100cuthere@gmail.com`,
           to: email,
           subject: `Confirmation email for ${username}`,
-          text: `Hi there,\n\n We are happy that you signed up for CUThere! To continue the verification process, please click the following link.\n\n Click this: ${url}\n\nWelcome to CUThere!\nThe CUThere Team`,
           html: `Hi there,<br /><br /> We are happy that you signed up for CUThere! To continue the verification process, please click the following link.<br /><br /> Click this: <a href="${url}">${url}</a><br /><br />Welcome to CUThere!<br />The CUThere Team`,
         },
         (err, info) => {
