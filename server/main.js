@@ -34,7 +34,6 @@ app.use(express.json());
 
 // Mongoose setup
 mongoose.connect(uri, {
-  useFindAndModify: false,
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

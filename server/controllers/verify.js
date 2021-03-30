@@ -24,7 +24,7 @@ module.exports = function verify(req, res) {
     }
 
     // Update client verify status by token code
-    Client.findByIdAndUpdate(
+    /* Client.findByIdAndUpdate(
       data1._clientId,
       { $set: { isVerified: true } },
       (err, data) => {
@@ -40,6 +40,16 @@ module.exports = function verify(req, res) {
         });
         return res;
       }
-    );
+    ); */
+
+    Client.findById(data1._clientId)
+      .update({ $set: { isVerified: true } })
+      .then((data) => {
+        console.log(data);
+        res.status(200).send({
+          message: 'User verified',
+        });
+        return res;
+      });
   });
 };
