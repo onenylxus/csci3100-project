@@ -170,4 +170,28 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#F0F0F0',
   },
+
+  chatRoomContainerPhone: {
+    width: '90%',
+    alignSelf: 'center',
+    paddingTop: 5,
+    backgroundColor: 'white',
+  },
+
+  messageBar: {
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    borderWidth: 0.5,
+    borderColor: '#000',
+    width: 610,
+    height: 40,
+    borderRadius: 5,
+    margin: 10,
+  },
+
+  sendMessageButtom: {
+    justifyContent: 'center',
+    alignContent: 'center',
+    marginHorizontal: 5,
+  },
 });

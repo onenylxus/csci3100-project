@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { Text, Button, Dimensions, View } from 'react-native';
+import { Text, Button, Dimensions, View, ScrollView } from 'react-native';
 import { Row, Col, Grid } from 'react-native-easy-grid';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
@@ -70,35 +70,37 @@ export default function ProfileScreen({ navigation }) {
   }
 
   return (
-    <View style={{ flex: 1 }}>
-      <Grid style={styleByDevice(windowWidth, 'container')}>
-        <View style={styleByDevice(windowWidth, 'infoLayer')}>
-          <Row size={1}>
-            <Col size={styleByDevice(windowWidth, 'propicLayer')}>
-              <Row size={1} style={styleByDevice(windowWidth, 'propic')}>
-                <FontAwesomeIcon
-                  icon={faUserPlus}
-                  size={styleByDevice(windowWidth, 'propicSize')}
-                />
-              </Row>
-              <Row size={0.5} style={styleByDevice(windowWidth, 'button')}>
-                <Button
-                  title="Edit Profile"
-                  onPress={() => navigation.navigate('EditProfile')}
-                />
-              </Row>
-            </Col>
-            <Text style={styleByDevice(windowWidth, 'userInfo')}>
-              Username{'\n'}
-              Major: XXXXXX{'\n'}
-              College: XXXXX{'\n'}
-            </Text>
+    <ScrollView>
+      <View style={{ flex: 1 }}>
+        <Grid style={styleByDevice(windowWidth, 'container')}>
+          <View style={styleByDevice(windowWidth, 'infoLayer')}>
+            <Row size={1}>
+              <Col size={styleByDevice(windowWidth, 'propicLayer')}>
+                <Row size={1} style={styleByDevice(windowWidth, 'propic')}>
+                  <FontAwesomeIcon
+                    icon={faUserPlus}
+                    size={styleByDevice(windowWidth, 'propicSize')}
+                  />
+                </Row>
+                <Row size={0.5} style={styleByDevice(windowWidth, 'button')}>
+                  <Button
+                    title="Edit Profile"
+                    onPress={() => navigation.navigate('EditProfile')}
+                  />
+                </Row>
+              </Col>
+              <Text style={styleByDevice(windowWidth, 'userInfo')}>
+                Username{'\n'}
+                Major: XXXXXX{'\n'}
+                College: XXXXX{'\n'}
+              </Text>
+            </Row>
+          </View>
+          <Row style={Style.profilePost}>
+            <Text>Current Posts</Text>
           </Row>
-        </View>
-        <Row style={Style.profilePost}>
-          <Text>Current Posts</Text>
-        </Row>
-      </Grid>
-    </View>
+        </Grid>
+      </View>
+    </ScrollView>
   );
 }
