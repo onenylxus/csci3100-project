@@ -33,7 +33,11 @@ const port = process.env.PORT || 8080;
 app.use(express.json());
 
 // Mongoose setup
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(uri, {
+  useFindAndModify: false,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 mongoose.connection.on('connected', () => {
   console.log('Connected to MongoDB');
 });
