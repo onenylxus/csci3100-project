@@ -10,57 +10,63 @@ require('../schemas/Token');
 const Client = mongoose.model('client');
 const Token = mongoose.model('token');
 
-// Export
+// Exports
 module.exports = function register(req, res) {
   // Fetch request body
   const { username, password, email } = req.body;
 
-  // Check duplication
-  let bool = false;
+  // Check username existence
+  Client.findOne({ username }).then((data1) => {
+    if (data1) {
+      return res.status(422).json({
+        error: 'This username is used by someone else.',
+      });
+    }
 
-  Client.exists({ username }).then((bool1) => {
-    console.log('bool1' + bool1);
-    bool |= bool1;
-  });
+    // Check email existence
+    Client.findOne({ email }).then((data2) => {
+      if (data2) {
+        return res.status(422).json({
+          error: 'This email has been registered.',
+        });
+      }
 
-  Client.exists({ email }).then((bool2) => {
-    console.log('bool2' + bool2);
-    bool |= bool2;
-  });
+      Token.findOne({ username }).then((data3) => {
+        if (data3) {
+          return res.status(422).json({
+            error: 'This username is used by someone else.',
+          });
+        }
+        Token.findOne({ email }).then((data4) => {
+          if (data4) {
+            return res.status(422).json({
+              error: 'This email has been registered.',
+            });
+          }
 
-  Token.exists({ username }).then((bool3) => {
-    console.log('bool3' + bool3);
-    bool |= bool3;
-  });
+          // Create token and save to database
+          const token = new Token({
+            username,
+            password,
+            email,
+            code: String(Math.trunc(Math.random() * 10 ** 6)).padStart(6, '0'),
+          });
+          token.save();
 
-  Token.exists({ email }).then((bool4) => {
-    console.log('bool4' + bool4);
-    bool |= bool4;
-  });
-
-  if (bool) {
-    return res.status(422).json({ msg: 'Username or email is used.' });
-  }
-
-  // Create token and save to database
-  const token = new Token({
-    username,
-    password,
-    email,
-    code: String(Math.trunc(Math.random() * 10 ** 6)).padStart(6, '0'),
-  });
-  token.save();
-
-  // Send email
-  try {
-    transporter.sendMail({
-      from: `csci3100cuthere@gmail.com`,
-      to: email,
-      subject: `Confirmation email for ${username}`,
-      html: `Hello,<br /></br >Your verification code is ${token.code}. This code will expire in 15 minutes.<br /><br />CU There team`,
+          // Send email
+          try {
+            transporter.sendMail({
+              from: `csci3100cuthere@gmail.com`,
+              to: email,
+              subject: `Confirmation email for ${username}`,
+              html: `Hello,<br /></br >Your verification code is ${token.code}. This code will expire in 15 minutes.<br /><br />CU There team`,
+            });
+            return res.status(200).json({ msg: 'Email sent. ' });
+          } catch (err) {
+            console.log(err);
+          }
+        });
+      });
     });
-    return res.status(200).json({ msg: 'Email sent. ' });
-  } catch (err) {
-    console.log(err);
-  }
+  });
 };
