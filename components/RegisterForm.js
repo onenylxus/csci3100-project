@@ -149,6 +149,9 @@ export default function RegisterForm() {
             style={{ width: 175 }}
             placeholder="Password"
             onChangeText={(text) => changePassword(text)}
+            secureTextEntry={visibility}
+            clearTextOnFocus={false}
+            enablesReturnKeyAutomatically
           />
           <TouchableOpacity onPress={() => setVisibility(!visibility)}>
             <FontAwesomeIcon
