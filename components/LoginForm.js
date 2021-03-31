@@ -29,7 +29,7 @@ export default function LoginForm() {
           />
           <TextInput
             placeholder="Username"
-            style={{ outline: 'none', width: 200 }}
+            style={{ width: 200 }}
             onChangeText={(text) => setUsername(text)}
           />
         </View>
@@ -45,7 +45,7 @@ export default function LoginForm() {
           />
           <TextInput
             placeholder="Password"
-            style={{ outline: 'none', width: 175 }}
+            style={{ width: 175 }}
             onChangeText={(text) => setPassword(text)}
             secureTextEntry={visibility}
             clearTextOnFocus={false}

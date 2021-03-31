@@ -44,12 +44,9 @@ export default StyleSheet.create({
   },
 
   textInput: {
-    borderColor: '#444444',
-    backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
     width: 200,
-    outline: 'none',
   },
 
   validTextInput: {

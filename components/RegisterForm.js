@@ -106,25 +106,25 @@ export default function RegisterForm() {
     );
   }
 
-  const validStyle = { ...Style.textInput, ...Style.validTextInput };
-  const invalidStyle = { ...Style.textInput, ...Style.invalidTextInput };
+  const validStyle = { ...Style.validTextInput };
+  const invalidStyle = { ...Style.invalidTextInput };
   function styleByState(state) {
     return state === 2 ? Style.textInput : state ? validStyle : invalidStyle;
   }
 
   return (
     <View>
-      {/* Userna me */}
+      {/* Username */}
       <View style={Style.inputContainer}>
         <Text style={Style.sectionText}>Username:</Text>
-        <View style={Style.SectionStyle}>
+        <View style={{ ...Style.SectionStyle, ...styleByState(usernameState) }}>
           <FontAwesomeIcon
             icon={faUser}
             size={15}
             style={{ marginHorizontal: 5, marginVertical: 12 }}
           />
           <TextInput
-            style={styleByState(usernameState)}
+            style={{ width: 200 }}
             placeholder="Username"
             onChangeText={(text) => changeUsername(text)}
           />
@@ -139,14 +139,14 @@ export default function RegisterForm() {
       {/* Password */}
       <View style={Style.inputContainer}>
         <Text style={Style.sectionText}>Password:</Text>
-        <View style={Style.SectionStyle}>
+        <View style={{ ...Style.SectionStyle, ...styleByState(passwordState) }}>
           <FontAwesomeIcon
             icon={faLock}
             size={15}
             style={{ marginHorizontal: 5, marginVertical: 12 }}
           />
           <TextInput
-            style={styleByState(passwordState)}
+            style={{ width: 175 }}
             placeholder="Password"
             onChangeText={(text) => changePassword(text)}
           />
@@ -168,14 +168,14 @@ export default function RegisterForm() {
       {/* Email */}
       <View style={Style.inputContainer}>
         <Text style={Style.sectionText}>CUHK link email:</Text>
-        <View style={Style.SectionStyle}>
+        <View style={{ ...Style.SectionStyle, ...styleByState(emailState) }}>
           <FontAwesomeIcon
             icon={faEnvelope}
             size={15}
             style={{ marginHorizontal: 5, marginVertical: 12 }}
           />
           <TextInput
-            style={styleByState(emailState)}
+            style={{ width: 200 }}
             placeholder="CUHK link email"
             onChangeText={(text) => changeEmail(text)}
           />
