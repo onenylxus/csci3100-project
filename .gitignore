@@ -20,3 +20,10 @@ npm-debug.*
 
 # Eslint files
 /.eslintcache
+
+# Image files
+/assets/icons
+!/assets/icons/adaptive-icon.png
+!/assets/icons/favicon.png
+!/assets/icons/icon.png
+!/assets/icons/splash.png

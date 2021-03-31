@@ -7,7 +7,7 @@ export default function Header({ navigation }) {
   return {
     headerTitle: 'CU There',
     headerStyle: {
-      backgroundColor: '#6600ff',
+      backgroundColor: '#69C6F0',
     },
     headerTintColor: '#ffffff',
     headerLeft: null,

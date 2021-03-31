@@ -1,7 +1,22 @@
 // Import
 import React from 'react';
-import { Alert, Button, Text, TextInput, View } from 'react-native';
+import {
+  Alert,
+  Button,
+  Text,
+  TextInput,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import {
+  faUser,
+  faLock,
+  faEyeSlash,
+  faEye,
+  faEnvelope,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import Source from '../assets/source';
 import Style from '../assets/style';
 
@@ -15,6 +30,7 @@ export default function RegisterForm() {
   const [usernameState, setUsernameState] = React.useState(2);
   const [passwordState, setPasswordState] = React.useState(2);
   const [emailState, setEmailState] = React.useState(2);
+  const [visibility, setVisibility] = React.useState(true);
 
   async function submitData() {
     console.log(
@@ -98,14 +114,21 @@ export default function RegisterForm() {
 
   return (
     <View>
-      {/* Username */}
+      {/* Userna me */}
       <View style={Style.inputContainer}>
         <Text style={Style.sectionText}>Username:</Text>
-        <TextInput
-          style={styleByState(usernameState)}
-          placeholder="Username"
-          onChangeText={(text) => changeUsername(text)}
-        />
+        <View style={Style.SectionStyle}>
+          <FontAwesomeIcon
+            icon={faUser}
+            size={15}
+            style={{ marginHorizontal: 5, marginVertical: 12 }}
+          />
+          <TextInput
+            style={styleByState(usernameState)}
+            placeholder="Username"
+            onChangeText={(text) => changeUsername(text)}
+          />
+        </View>
         <View style={{ opacity: !usernameState * 100 }}>
           <Text style={Style.errorMessage}>
             Username must be of length 4-20 characters
@@ -116,11 +139,25 @@ export default function RegisterForm() {
       {/* Password */}
       <View style={Style.inputContainer}>
         <Text style={Style.sectionText}>Password:</Text>
-        <TextInput
-          style={styleByState(passwordState)}
-          placeholder="Password"
-          onChangeText={(text) => changePassword(text)}
-        />
+        <View style={Style.SectionStyle}>
+          <FontAwesomeIcon
+            icon={faLock}
+            size={15}
+            style={{ marginHorizontal: 5, marginVertical: 12 }}
+          />
+          <TextInput
+            style={styleByState(passwordState)}
+            placeholder="Password"
+            onChangeText={(text) => changePassword(text)}
+          />
+          <TouchableOpacity onPress={() => setVisibility(!visibility)}>
+            <FontAwesomeIcon
+              icon={visibility ? faEyeSlash : faEye}
+              size={15}
+              style={{ marginHorizontal: 5, marginVertical: 12 }}
+            />
+          </TouchableOpacity>
+        </View>
         <View style={{ opacity: !passwordState * 100 }}>
           <Text style={Style.errorMessage}>
             Password must be of length greater than 6 characters
@@ -131,11 +168,18 @@ export default function RegisterForm() {
       {/* Email */}
       <View style={Style.inputContainer}>
         <Text style={Style.sectionText}>CUHK link email:</Text>
-        <TextInput
-          style={styleByState(emailState)}
-          placeholder="CUHK link email"
-          onChangeText={(text) => changeEmail(text)}
-        />
+        <View style={Style.SectionStyle}>
+          <FontAwesomeIcon
+            icon={faEnvelope}
+            size={15}
+            style={{ marginHorizontal: 5, marginVertical: 12 }}
+          />
+          <TextInput
+            style={styleByState(emailState)}
+            placeholder="CUHK link email"
+            onChangeText={(text) => changeEmail(text)}
+          />
+        </View>
         <View style={{ opacity: !emailState * 100 }}>
           <Text style={Style.errorMessage}>
             Email must be a CUHK link email address (example:
