@@ -1,6 +1,5 @@
 // Require
 const mongoose = require('mongoose');
-const CryptoJS = require('crypto-js');
 const transporter = require('../transporter');
 
 // Schemas
@@ -17,11 +16,13 @@ module.exports = async function register(req, res) {
   const { username, password, email } = req.body;
 
   // Check duplication
+  let dupe = false;
+
   await Client.exists({ username }, (err, bool1) => {
     if (err) {
       console.log(err);
     } else if (bool1) {
-      return res.status(422).send({ msg: 'Username is used by someone else.' });
+      dupe = true;
     }
   });
 
@@ -29,7 +30,7 @@ module.exports = async function register(req, res) {
     if (err) {
       console.log(err);
     } else if (bool2) {
-      return res.status(422).send({ msg: 'Email is used by someone else.' });
+      dupe = true;
     }
   });
 
@@ -37,7 +38,7 @@ module.exports = async function register(req, res) {
     if (err) {
       console.log(err);
     } else if (bool3) {
-      return res.status(422).send({ msg: 'Username is used by someone else.' });
+      dupe = true;
     }
   });
 
@@ -45,16 +46,20 @@ module.exports = async function register(req, res) {
     if (err) {
       console.log(err);
     } else if (bool4) {
-      return res.status(422).send({ msg: 'Email is used by someone else.' });
+      dupe = true;
     }
   });
+
+  if (dupe) {
+    return res.status(422).send({ msg: 'Username or email is used.' });
+  }
 
   // Create token and save to database
   const token = new Token({
     username,
     password,
     email,
-    code: CryptoJS.lib.WordArray.random(16),
+    code: String(Math.trunc(Math.random() * 10 ** 6)).padStart(6, '0'),
   });
   await token.save();
 
@@ -64,7 +69,7 @@ module.exports = async function register(req, res) {
       from: `csci3100cuthere@gmail.com`,
       to: email,
       subject: `Confirmation email for ${username}`,
-      html: `<a href="https://cu-there-server.herokuapp.com/verifytest/${token.code}">Click here to verify</a>`,
+      html: `Hello,<br /></br >Your verification code is ${token.code}. This code will expire in 15 minutes.<br /><br />CU There team`,
     });
     return res.status(200).send({ msg: 'Email sent. ' });
   } catch (err) {
