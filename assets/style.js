@@ -32,11 +32,23 @@ export default StyleSheet.create({
     marginLeft: '10%',
   },
 
+  SectionStyle: {
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    borderWidth: 0.5,
+    borderColor: '#000',
+    width: 225,
+    height: 40,
+    borderRadius: 5,
+    margin: 10,
+  },
+
   textInput: {
     borderColor: '#444444',
-    backgroundColor: '#f8f8f8',
+    backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
+    width: 200,
   },
 
   validTextInput: {
@@ -138,17 +150,6 @@ export default StyleSheet.create({
 
   individualPost: {
     backgroundColor: '#ffffff',
-  },
-
-  SectionStyle: {
-    flexDirection: 'row',
-    backgroundColor: '#fff',
-    borderWidth: 0.5,
-    borderColor: '#000',
-    width: 225,
-    height: 40,
-    borderRadius: 5,
-    margin: 10,
   },
 
   chatRoomLeft: {

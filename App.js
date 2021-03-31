@@ -10,6 +10,7 @@ import LoginScreen from './screens/LoginScreen';
 import RegisterStack from './screens/navigators/RegisterStack';
 import VerificationScreen from './screens/VerificationScreen';
 import EditProfileScreen from './screens/EditProfileScreen';
+import AddInfoScreen from './screens/AddInfoScreen';
 
 // Stack
 const Stack = createStackNavigator();
@@ -29,6 +30,7 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} options={Header} />
         <Stack.Screen name="Register" component={RegisterStack} options={Header} />
         <Stack.Screen name="EditProfile" component={EditProfileScreen} options={Header} />
+        <Stack.Screen name="AddInfo" component={AddInfoScreen} options={NoHeader} />
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
