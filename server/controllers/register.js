@@ -58,15 +58,15 @@ module.exports = async function register(req, res) {
   });
   await token.save();
 
-  const link = `https://cu-there-server.herokuapp.com/verifytest/${token.code}`;
-
   // Send email
   try {
     transporter.sendMail({
       from: `csci3100cuthere@gmail.com`,
       to: email,
       subject: `Confirmation email for ${username}`,
-      text: 'Click this: '.concat(link),
+      text:
+        'Click this: https://cu-there-server.herokuapp.com/verifytest/' +
+        token.code,
     });
 
     return res.status(200).send({ msg: 'Email sent. ' });
