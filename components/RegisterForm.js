@@ -36,7 +36,7 @@ export default function RegisterForm() {
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
-          navigation.navigate('Verification');
+          navigation.navigate('Verification', { username });
         } else {
           return Alert.alert(
             'Error',
