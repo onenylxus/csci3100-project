@@ -1,7 +1,7 @@
 // Import
 import React, { useState } from 'react';
 import { Text, View, Dimensions, Button } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import { Picker } from '@react-native-community/picker';
 import Style from '../assets/style';
 
 // Export EditProfile screen
