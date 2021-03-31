@@ -49,7 +49,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: 200,
-    outline: 'none',
   },
 
   validTextInput: {

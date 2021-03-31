@@ -114,7 +114,7 @@ export default function RegisterForm() {
 
   return (
     <View>
-      {/* Userna me */}
+      {/* Username */}
       <View style={Style.inputContainer}>
         <Text style={Style.sectionText}>Username:</Text>
         <View style={Style.SectionStyle}>
