@@ -11,46 +11,50 @@ const Client = mongoose.model('client');
 const Token = mongoose.model('token');
 
 // Export
-module.exports = async function register(req, res) {
+module.exports = function register(req, res) {
   // Fetch request body
   const { username, password, email } = req.body;
 
   // Check duplication
-  let dupe = false;
+  let bool = false;
 
-  await Client.exists({ username }, (err, bool1) => {
+  Client.exists({ username }, (err, bool1) => {
     if (err) {
       console.log(err);
+      bool = true;
     } else if (bool1) {
-      dupe = true;
+      bool = true;
     }
   });
 
-  await Client.exists({ email }, (err, bool2) => {
+  Client.exists({ email }, (err, bool2) => {
     if (err) {
       console.log(err);
+      bool = true;
     } else if (bool2) {
-      dupe = true;
+      bool = true;
     }
   });
 
-  await Token.exists({ username }, (err, bool3) => {
+  Token.exists({ username }, (err, bool3) => {
     if (err) {
       console.log(err);
+      bool = true;
     } else if (bool3) {
-      dupe = true;
+      bool = true;
     }
   });
 
-  await Token.exists({ email }, (err, bool4) => {
+  Token.exists({ email }, (err, bool4) => {
     if (err) {
       console.log(err);
+      bool = true;
     } else if (bool4) {
-      dupe = true;
+      bool = true;
     }
   });
 
-  if (dupe) {
+  if (bool) {
     return res.status(422).send({ msg: 'Username or email is used.' });
   }
 
@@ -61,7 +65,7 @@ module.exports = async function register(req, res) {
     email,
     code: String(Math.trunc(Math.random() * 10 ** 6)).padStart(6, '0'),
   });
-  await token.save();
+  token.save();
 
   // Send email
   try {
