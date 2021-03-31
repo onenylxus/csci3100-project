@@ -66,7 +66,7 @@ module.exports = async function register(req, res) {
       from: `csci3100cuthere@gmail.com`,
       to: email,
       subject: `Confirmation email for ${username}`,
-      html: `<p>Click this: <a href="${link}">Here</a></p>`,
+      text: 'Click this: '.concat(link),
     });
 
     return res.status(200).send({ msg: 'Email sent. ' });
