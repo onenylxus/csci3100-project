@@ -1,15 +1,24 @@
 // Import
 import React from 'react';
-import { Text, Button, Dimensions, View, ScrollView } from 'react-native';
+import {
+  Text,
+  Button,
+  Dimensions,
+  View,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import { Row, Col, Grid } from 'react-native-easy-grid';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faUserPlus, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import Style from '../assets/style';
 
 // Export profile screen
 
 export default function ProfileScreen({ navigation }) {
   const windowWidth = Dimensions.get('window').width;
+  // const [selectedOption, setSelectedOption] = React.useState();
+  // let controller;
 
   function styleByDevice(widthOfDevice, component) {
     if (widthOfDevice < 1100) {
@@ -97,7 +106,12 @@ export default function ProfileScreen({ navigation }) {
             </Row>
           </View>
           <Row style={Style.profilePost}>
-            <Text>Current Posts</Text>
+            <View>
+              <TouchableOpacity style={{ alignSelf: 'flex-end', margin: 5 }}>
+                <FontAwesomeIcon icon={faEllipsisH} />
+              </TouchableOpacity>
+            </View>
+            <Text>Post 1</Text>
           </Row>
         </Grid>
       </View>

@@ -1834,6 +1834,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.10.tgz#5dda643e19e587793bc2034dd9bf7398ad43d401"
   integrity sha512-rk4sWFsmtOw8oyx8SD3KSvawwaK7gRBSEIy2TAwURyGt+3TizssXP1r8nx3zY+R7v2vYYHXZ+k2/GULAT/bcaQ==
 
+"@react-native-picker/picker@^1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-1.12.0.tgz#215d7c950935c8f1a834af0832a93122b4bab0f1"
+  integrity sha512-LxtFcuQ/jxsNwH9byM4mMSusqGfaj0LHXTh6fJgvIKOBjAWwV+FjWHszQSPCbnycdezirf8dFLhF9phcNuE8CA==
+
 "@react-navigation/bottom-tabs@^5.11.8":
   version "5.11.8"
   resolved "https://registry.yarnpkg.com/@react-navigation/bottom-tabs/-/bottom-tabs-5.11.8.tgz#0af8d5859b1ad781bdd86e8236ceaed60dc355fe"
@@ -6701,6 +6706,13 @@ react-native-device-detection@^0.2.1:
   resolved "https://registry.yarnpkg.com/react-native-device-detection/-/react-native-device-detection-0.2.1.tgz#6b50bf7bf9137a395f9dfd0f2b1d01aeee170a49"
   integrity sha512-0ErWdxoB4DPLuzzjgS3nUyzauo1YoJ0QjQJZMjx0dr3MGdF3SE9T3Lb2lKj3kPsTQYy5qnlWZ24DmQkHZlIjgw==
 
+react-native-dropdown-picker@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-dropdown-picker/-/react-native-dropdown-picker-4.0.2.tgz#03cc48d6f817ff1348323c99f35afbc69640e1e7"
+  integrity sha512-x6OZ5YNzFc5PEwWFDYQBBxYq6qvCnc8NPX9d9UsXpaLizTSXLT0kWLsUzsJOMm6SVsUxWY7FOAyXsB4JUSyKdQ==
+  dependencies:
+    react-native-vector-icons "^7.0.0"
+
 react-native-easy-grid@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/react-native-easy-grid/-/react-native-easy-grid-0.2.2.tgz#f0be33620be1ebe2d2295918eb58b0a27e8272ab"
@@ -6774,6 +6786,20 @@ react-native-svg@^12.1.0:
   dependencies:
     css-select "^2.1.0"
     css-tree "^1.0.0-alpha.39"
+
+react-native-vector-icons@^7.0.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-7.1.0.tgz#145487d617b2a81d395d2cf64e6e065fcab3a454"
+  integrity sha512-V2a1zJ4i+kS8O4j183gIwX14St9AxxXabxwYpFBgRhvr2NDXyFcjHDEAgrOYYlt2W57e20aN1tBDU/I+wn9WtQ==
+  dependencies:
+    lodash.frompairs "^4.0.1"
+    lodash.isequal "^4.5.0"
+    lodash.isstring "^4.0.1"
+    lodash.omit "^4.5.0"
+    lodash.pick "^4.4.0"
+    lodash.template "^4.5.0"
+    prop-types "^15.7.2"
+    yargs "^15.0.2"
 
 react-native-web@~0.13.12:
   version "0.13.18"
@@ -8348,7 +8374,7 @@ yargs@^14.2.0:
     y18n "^4.0.0"
     yargs-parser "^15.0.1"
 
-yargs@^15.1.0:
+yargs@^15.0.2, yargs@^15.1.0:
   version "15.4.1"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-15.4.1.tgz#0d87a16de01aee9d8bec2bfbf74f67851730f4f8"
   integrity sha512-aePbxDmcYW++PaqBsJ+HYUFwCdv4LVvdnhBy78E57PIor8/OVvhMrADFFEDh8DHDFRv/O9i3lPhsENjO7QX0+A==

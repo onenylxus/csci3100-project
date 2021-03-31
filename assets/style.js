@@ -129,10 +129,11 @@ export default StyleSheet.create({
   },
 
   profilePost: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
     margin: 10,
     backgroundColor: 'white',
+    flexDirection: 'column',
   },
 
   individualPost: {
