@@ -19,18 +19,22 @@ module.exports = function register(req, res) {
   let bool = false;
 
   Client.exists({ username }).then((bool1) => {
+    console.log('bool1' + bool1);
     bool |= bool1;
   });
 
   Client.exists({ email }).then((bool2) => {
+    console.log('bool2' + bool2);
     bool |= bool2;
   });
 
   Token.exists({ username }).then((bool3) => {
+    console.log('bool3' + bool3);
     bool |= bool3;
   });
 
   Token.exists({ email }).then((bool4) => {
+    console.log('bool4' + bool4);
     bool |= bool4;
   });
 
