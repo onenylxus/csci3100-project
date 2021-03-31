@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
 app.post('/register', controller.register);
 
 // Verification link
-app.get('/verify/:token', controller.verify);
+// app.get('/verify/:token', controller.verify);
 
 // Other requests
 app.get('*', (req, res) => {

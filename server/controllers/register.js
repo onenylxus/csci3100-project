@@ -1,7 +1,7 @@
 // Require
 const mongoose = require('mongoose');
 const CryptoJS = require('crypto-js');
-// const transporter = require('../transporter');
+const transporter = require('../transporter');
 
 // Schemas
 require('../schemas/Client');
@@ -59,7 +59,6 @@ module.exports = async function register(req, res) {
   await token.save();
 
   // Send email
-  /*
   try {
     transporter.sendMail({
       from: `csci3100cuthere@gmail.com`,
@@ -72,5 +71,4 @@ module.exports = async function register(req, res) {
   } catch (err) {
     console.log(err);
   }
-  */
 };
