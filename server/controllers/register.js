@@ -64,7 +64,7 @@ module.exports = async function register(req, res) {
       from: `csci3100cuthere@gmail.com`,
       to: email,
       subject: `Confirmation email for ${username}`,
-      html: `<button onclick="window.location.href="https://cu-there-server.herokuapp.com/verifytest/${token.code}">Click here to verify</>`,
+      html: `<a href="window.location.href="https://cu-there-server.herokuapp.com/verifytest/${token.code}">Click here to verify</a>`,
     });
     return res.status(200).send({ msg: 'Email sent. ' });
   } catch (err) {
