@@ -28,7 +28,7 @@ export default function VerificationForm() {
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
-          navigation.navigate('Tabs');
+          navigation.navigate('AddInfo', { username });
         } else {
           return Alert.alert(
             'Error',
