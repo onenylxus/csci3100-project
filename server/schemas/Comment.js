@@ -9,4 +9,6 @@ const CommentSchema = new mongoose.Schema({
   numOfDislike: Number,
   timestamp: { type: Date, required: true, default: Date.now },
 });
+
+// Modeling
 mongoose.model('comment', CommentSchema);
