@@ -1,16 +1,14 @@
 // Require
 const express = require('express');
-const fs = require('fs');
 const mongoose = require('mongoose');
 
 // Controller
-const controller = {};
-console.log(fs.readdirSync('./controllers').endsWith('.js'));
-fs.readdirSync('./controllers')
-  .endsWith('.js')
-  .forEach((ctrl) => {
-    controller[ctrl.slice(0, -3)] = require(`./controllers/${ctrl}`);
-  });
+const path = './controllers/';
+const controller = {
+  addInfo: require(path + 'addInfo'),
+  register: require(path + 'register'),
+  verify: require(path + 'verify'),
+};
 
 // Variables
 const app = express();
@@ -38,14 +36,14 @@ app.get('/', (req, res) => {
   res.send('CU There');
 });
 
+// Add Info-form
+app.post('/addInfo', controller.addInfo);
+
 // Register
 app.post('/register', controller.register);
 
 // Verification link
 app.post('/verify', controller.verify);
-
-// Add Info-form
-app.post('/addInfo', controller.addInfo);
 
 // Other requests
 app.get('*', (req, res) => {
