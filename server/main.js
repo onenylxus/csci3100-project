@@ -5,11 +5,11 @@ const mongoose = require('mongoose');
 
 // Controller
 const controller = {};
+console.log(fs.readdirSync('./controllers').endsWith('.js'));
 fs.readdirSync('./controllers')
   .endsWith('.js')
   .forEach((ctrl) => {
-    // eslint-disable-next-line import/no-dynamic-require
-    controller[ctrl.slice(-3)] = require(`./controllers/${ctrl}`);
+    controller[ctrl.slice(0, -3)] = require(`./controllers/${ctrl}`);
   });
 
 // Variables
