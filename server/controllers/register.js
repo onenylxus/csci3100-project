@@ -35,7 +35,7 @@ module.exports = function register(req, res) {
   });
 
   if (bool) {
-    return res.status(422).send({ msg: 'Username or email is used.' });
+    return res.status(422).json({ msg: 'Username or email is used.' });
   }
 
   // Create token and save to database
@@ -55,7 +55,7 @@ module.exports = function register(req, res) {
       subject: `Confirmation email for ${username}`,
       html: `Hello,<br /></br >Your verification code is ${token.code}. This code will expire in 15 minutes.<br /><br />CU There team`,
     });
-    return res.status(200).send({ msg: 'Email sent. ' });
+    return res.status(200).json({ msg: 'Email sent. ' });
   } catch (err) {
     console.log(err);
   }
