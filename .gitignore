@@ -27,3 +27,6 @@ npm-debug.*
 !/assets/icons/favicon.png
 !/assets/icons/icon.png
 !/assets/icons/splash.png
+
+# Error files
+/yarn-error.log

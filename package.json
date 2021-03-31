@@ -47,6 +47,7 @@
     "prettier": "^2.2.1"
   },
   "scripts": {
+    "update-cli": "npm update -g expo-cli",
     "prestart": "yarn",
     "start": "expo start",
     "android": "expo start --android",

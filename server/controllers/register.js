@@ -1,7 +1,5 @@
 // Require
 const mongoose = require('mongoose');
-const CryptoJS = require('crypto-js');
-const emailContext = require('../emailContext');
 const transporter = require('../transporter');
 
 // Schemas
@@ -12,64 +10,61 @@ require('../schemas/Token');
 const Client = mongoose.model('client');
 const Token = mongoose.model('token');
 
-// Export
+// Exports
 module.exports = function register(req, res) {
   // Fetch request body
   const { username, password, email } = req.body;
-
   // Check username existence
   Client.findOne({ username }).then((data1) => {
     if (data1) {
       return res.status(422).json({
-        error: 'This username is used by someone else.',
+        error: 'This username has been used by someone else.',
       });
     }
-
     // Check email existence
-    Client.findOne({ email }).then((data) => {
-      if (data) {
+    Client.findOne({ email }).then((data2) => {
+      if (data2) {
         return res.status(422).json({
           error: 'This email has been registered.',
         });
       }
 
-      // Create client and save to database
-      const client = new Client({
-        username,
-        password,
-        email,
-      });
-      client.save().catch((err) => res.status(500).json({ error: err }));
-
-      // Create token and save to database
-      const key = CryptoJS.lib.WordArray.random(16);
-      const token = new Token({
-        _clientId: client._id,
-        code: CryptoJS.SHA256(key, { outputLength: 32 }),
-      });
-      token.save().catch((err) => res.status(500).json({ error: err }));
-
-      // Send email
-      const url = `https://cu-there-server.herokuapp.com/verify?=${token.code}`;
-      transporter.sendMail(
-        {
-          from: `csci3100cuthere@gmail.com`,
-          to: email,
-          subject: `Confirmation email for ${username}`,
-          text: emailContext.text(url),
-          html: emailContext.html(url),
-        },
-        (err, info) => {
-          if (err) {
-            return console.log(err);
-          }
-          res.status(200).send({
-            message: 'Email sent',
-            message_id: info.messageId,
+      Token.findOne({ username }).then((data3) => {
+        if (data3) {
+          return res.status(422).json({
+            error: 'This username has been used by someone else.',
           });
-          return res;
         }
-      );
+        Token.findOne({ email }).then((data4) => {
+          if (data4) {
+            return res.status(422).json({
+              error: 'This email has been registered.',
+            });
+          }
+
+          // Create token and save to database
+          const token = new Token({
+            username,
+            password,
+            email,
+            code: String(Math.trunc(Math.random() * 10 ** 6)).padStart(6, '0'),
+          });
+          token.save();
+
+          // Send email
+          try {
+            transporter.sendMail({
+              from: `csci3100cuthere@gmail.com`,
+              to: email,
+              subject: `Confirmation email for ${username}`,
+              html: `Hello,<br /></br >Your verification code is ${token.code}. This code will expire in 15 minutes.<br /><br />CU There team`,
+            });
+            return res.status(200).json({ msg: 'Email sent. ' });
+          } catch (err) {
+            console.log(err);
+          }
+        });
+      });
     });
   });
 };
