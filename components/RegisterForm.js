@@ -36,7 +36,7 @@ export default function RegisterForm() {
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
-          navigation.navigate('Verification');
+          navigation.navigate('Verification', { username });
         } else {
           return Alert.alert(
             'Error',
@@ -75,18 +75,18 @@ export default function RegisterForm() {
 
   function changeUsername(text) {
     setUsername(text);
-    setUsernameState(text.length > 0 ? /^[\w]{4,20}$/.test(text) : 2);
+    setUsernameState(text.length > 0 ? /^\w{4,20}$/.test(text) : 2);
   }
 
   function changePassword(text) {
     setPassword(text);
-    setPasswordState(text.length > 0 ? /^[\w]{6}\w*$/.test(text) : 2);
+    setPasswordState(text.length > 0 ? /^\w{6}\w*$/.test(text) : 2);
   }
 
   function changeEmail(text) {
     setEmail(text);
     setEmailState(
-      text.length > 0 ? /^1155[\d]{6}@(link\.)?cuhk\.edu\.hk$/.test(text) : 2
+      text.length > 0 ? /^1155\d{6}@(link\.)?cuhk\.edu\.hk$/.test(text) : 2
     );
   }
 
@@ -139,7 +139,7 @@ export default function RegisterForm() {
         <View style={{ opacity: !emailState * 100 }}>
           <Text style={Style.errorMessage}>
             Email must be a CUHK link email address (example:
-            1155123456@cuhk.link.edu.hk)
+            1155123456@link.cuhk.edu.hk)
           </Text>
         </View>
       </View>
