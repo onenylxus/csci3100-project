@@ -40,6 +40,9 @@ app.post('/register', controller.register);
 // Verification link
 app.post('/verify', controller.verify);
 
+// Add Info-form
+app.post('/addInfo', controller.addInfo);
+
 // Other requests
 app.get('*', (req, res) => {
   res.status(404).json({ message: 'Not found' });

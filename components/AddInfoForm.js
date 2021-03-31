@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { Button, Text, TextInput, View } from 'react-native';
+import { Alert, Button, Text, TextInput, View } from 'react-native';
 import { Picker } from '@react-native-community/picker';
 import { RadioButton } from 'react-native-paper';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -14,17 +14,58 @@ export default function AddInfoForm() {
   const { username } = route.params;
   const [gender, setGender] = React.useState('');
   const [college, setCollege] = React.useState('');
+  const [name, setName] = React.useState('');
+  const [major, setMajor] = React.useState('');
 
   async function confirmAddInfo() {
-    console.log(username);
-    navigation.navigate('Tabs');
+    /* eslint-disable no-undef */
+    await fetch(`https://${Source.heroku}/addInfo`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+        gender,
+        college,
+        name,
+        major,
+      }),
+    }).then((res) => {
+      console.log(res);
+      if (res.status === 200) {
+        navigation.navigate('Tabs', { username });
+      } else {
+        return Alert.alert(
+          'Some informations are missing',
+          'Some fields are missing, do you want to continue without these information? (You can edit these informations in the application later.',
+          [
+            {
+              text: 'Cancel',
+              onPress: () => undefined,
+              style: 'cancel',
+            },
+            {
+              text: 'Continue',
+              onPress: () => navigation.navigate('Tabs', { username }),
+              style: 'destructive',
+            },
+          ]
+        );
+      }
+    });
   }
+
   return (
     <View>
       {/* Name */}
       <Text style={Style.sectionText}>Name:</Text>
       <View style={Style.SectionStyle}>
-        <TextInput style={Style.textInput} placeholder="Name" />
+        <TextInput
+          style={Style.textInput}
+          placeholder="Name"
+          onChangeText={(text) => setName(text)}
+        />
       </View>
 
       {/* Gender */}
@@ -39,7 +80,11 @@ export default function AddInfoForm() {
       {/* Major */}
       <Text style={Style.sectionText}>Major:</Text>
       <View style={Style.SectionStyle}>
-        <TextInput style={Style.textInput} placeholder="Major" />
+        <TextInput
+          style={Style.textInput}
+          placeholder="Major"
+          onChangeText={(text) => setMajor(text)}
+        />
       </View>
       {/* College */}
       <Text style={Style.sectionText}>College:</Text>
