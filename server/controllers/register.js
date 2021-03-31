@@ -18,40 +18,20 @@ module.exports = function register(req, res) {
   // Check duplication
   let bool = false;
 
-  Client.exists({ username }, (err, bool1) => {
-    if (err) {
-      console.log(err);
-      bool = true;
-    } else if (bool1) {
-      bool = true;
-    }
+  Client.exists({ username }).then((bool1) => {
+    bool |= bool1;
   });
 
-  Client.exists({ email }, (err, bool2) => {
-    if (err) {
-      console.log(err);
-      bool = true;
-    } else if (bool2) {
-      bool = true;
-    }
+  Client.exists({ email }).then((bool2) => {
+    bool |= bool2;
   });
 
-  Token.exists({ username }, (err, bool3) => {
-    if (err) {
-      console.log(err);
-      bool = true;
-    } else if (bool3) {
-      bool = true;
-    }
+  Token.exists({ username }).then((bool3) => {
+    bool |= bool3;
   });
 
-  Token.exists({ email }, (err, bool4) => {
-    if (err) {
-      console.log(err);
-      bool = true;
-    } else if (bool4) {
-      bool = true;
-    }
+  Token.exists({ email }).then((bool4) => {
+    bool |= bool4;
   });
 
   if (bool) {
