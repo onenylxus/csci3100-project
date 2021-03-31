@@ -11,25 +11,31 @@ const Token = mongoose.model('token');
 
 // Export
 module.exports = function verify(req, res) {
-  // Get token
-  const { token } = req.params;
+  // Fetch request body
+  const { username, code } = req.body;
 
-  // Find token
-  Token.exists({ token }).then((err, bool) => {
-    if (err) {
-      console.log(err);
-    } else if (!bool) {
-      return res.status(422).send({ msg: 'Token not found.' });
+  // Fetch token
+  Token.findOne({ username }).then((data) => {
+    // Check token existence
+    if (!data) {
+      return res.status(422).json({
+        error: 'The token is expired',
+      });
     }
-  });
 
-  // Get token
-  Token.findOne({ token }).then((data) => {
+    // Check code match
+    if (code !== data.code) {
+      return res.status(422).json({
+        error: 'Your verification code is invalid.',
+      });
+    }
+
     // Create client
     const client = new Client({
       username: data.username,
       password: data.password,
       email: data.email,
+      isPublic: true,
     });
     client.save();
 
