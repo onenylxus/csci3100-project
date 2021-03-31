@@ -1,12 +1,16 @@
 // Require
 const express = require('express');
+const fs = require('fs');
 const mongoose = require('mongoose');
 
 // Controller
-const controller = {
-  register: require('./controllers/register'),
-  verify: require('./controllers/verify'),
-};
+const controller = {};
+fs.readdirSync('./controllers')
+  .endsWith('.js')
+  .forEach((ctrl) => {
+    // eslint-disable-next-line import/no-dynamic-require
+    controller[ctrl.slice(-3)] = require(`./controllers/${ctrl}`);
+  });
 
 // Variables
 const app = express();
