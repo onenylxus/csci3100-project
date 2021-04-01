@@ -187,4 +187,10 @@ export default StyleSheet.create({
     alignContent: 'center',
     marginHorizontal: 5,
   },
+
+  submitAndCancelButton: {
+    flexDirection: 'row',
+    margin: 20,
+    justifyContent: 'center',
+  },
 });

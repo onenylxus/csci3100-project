@@ -99,7 +99,7 @@ export default function EditProfileScreen({ navigation }) {
             enablesReturnKeyAutomatically
           />
         </View>
-        <View style={{ flexDirection: 'row', margin: 20 }}>
+        <View style={Style.submitAndCancelButton}>
           <View style={{ margin: 20 }}>
             <Button
               title="Submit"
