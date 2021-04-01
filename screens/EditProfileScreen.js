@@ -1,14 +1,20 @@
 // Import
-import React, { useState } from 'react';
-import { Text, View, Dimensions, Button } from 'react-native';
-import { Picker } from '@react-native-community/picker';
+import React from 'react';
+import {
+  View,
+  Button,
+  Text,
+  Dimensions,
+  TextInput,
+  ScrollView,
+} from 'react-native';
+import CollegePicker from '../components/CollegePicker';
+import MajorPicker from '../components/MajorPicker';
 import Style from '../assets/style';
 
 // Export EditProfile screen
 
 export default function EditProfileScreen({ navigation }) {
-  const [selectedCollege, setSelectedCollege] = useState();
-  const [selectedMajor, setSelectedMajor] = useState();
   const windowWidth = Dimensions.get('window').width;
 
   function styleByDevice(widthOfDevice, component) {
@@ -16,10 +22,13 @@ export default function EditProfileScreen({ navigation }) {
       // Style of Small Screen
       switch (component) {
         case 'width':
-          return '90%';
+          return '100%';
 
         case 'pickerWidth':
           return '100%';
+
+        case 'scrollBar':
+          return false;
 
         default:
           break;
@@ -34,6 +43,9 @@ export default function EditProfileScreen({ navigation }) {
       case 'pickerWidth':
         return 250;
 
+      case 'scrollBar':
+        return true;
+
       default:
         break;
     }
@@ -41,273 +53,67 @@ export default function EditProfileScreen({ navigation }) {
 
   return (
     <View style={Style.container}>
-      <Text style={{ fontSize: 28 }}>Edit Your Profile</Text>
-
-      {/* College */}
-      <View
-        style={{
-          marginVertical: 40,
-          flexDirection: 'column',
-          width: styleByDevice(windowWidth, 'width'),
-        }}
+      <ScrollView
+        showsVerticalScrollIndicator={styleByDevice(windowWidth, 'scrollBar')}
       >
-        <Text>College: {selectedCollege}</Text>
-        <View>
-          <Picker
+        <Text style={{ fontSize: 28, alignSelf: 'center' }}>
+          Edit Your Profile
+        </Text>
+        <View
+          style={{
+            flexDirection: 'column',
+            width: styleByDevice(windowWidth, 'width'),
+          }}
+        >
+          <CollegePicker />
+        </View>
+        <View
+          style={{
+            flexDirection: 'column',
+            width: styleByDevice(windowWidth, 'width'),
+          }}
+        >
+          <MajorPicker />
+        </View>
+        <View
+          style={{
+            marginVertical: 40,
+            flexDirection: 'column',
+            width: styleByDevice(windowWidth, 'width'),
+          }}
+        >
+          <Text>Bio: </Text>
+          <TextInput
             style={{
+              borderColor: '#000000',
+              borderWidth: 1,
+              backgroundColor: '#f8f8f8',
+              height: 100,
+              margin: 16,
+              textAlign: 'left',
+              textAlignVertical: 'top',
               width: styleByDevice(windowWidth, 'pickerWidth'),
               alignSelf: 'center',
             }}
-            selectedValue={selectedCollege}
-            onValueChange={(itemValue) => setSelectedCollege(itemValue)}
-          >
-            <Picker.Item label="Select an option" value="Select an option" />
-            <Picker.Item label="Chung Chi College" value="Chung Chi College" />
-            <Picker.Item label="New Asia College" value="New Asia College" />
-            <Picker.Item label="United College" value="United College" />
-            <Picker.Item label="Shaw College" value="Shaw College" />
-            <Picker.Item
-              label="Morningside College"
-              value="Morningside College"
-            />
-            <Picker.Item label="S.H. Ho College" value="S.H. Ho College" />
-            <Picker.Item label="CW Chu College" value="CW Chu College" />
-            <Picker.Item
-              label="Wu Yee Sun College"
-              value="Wu Yee Sun College"
-            />
-            <Picker.Item
-              label="Lee Wo Sing College"
-              value="Lee Wo Sing College"
-            />
-          </Picker>
-        </View>
-      </View>
-
-      {/* Major */}
-      <View
-        style={{
-          marginVertical: 40,
-          flexDirection: 'column',
-          width: styleByDevice(windowWidth, 'width'),
-        }}
-      >
-        <Text>Major: {selectedMajor}</Text>
-        <View>
-          <Picker
-            style={{
-              width: styleByDevice(windowWidth, 'pickerWidth'),
-              alignSelf: 'center',
-            }}
-            selectedValue={selectedMajor}
-            onValueChange={(itemValue) => setSelectedMajor(itemValue)}
-          >
-            <Picker.Item label="Select an option" value="Select an option" />
-            <Picker.Item label="Anthropology" value="Anthropology" />
-            <Picker.Item
-              label="Architectural Studies"
-              value="Architectural Studies"
-            />
-            <Picker.Item
-              label="Artificial Intelligence: Systems and Technologies"
-              value="Artificial Intelligence: Systems and Technologies"
-            />
-            <Picker.Item
-              label="Bimodal Bilingual Studies"
-              value="Bimodal Bilingual Studies"
-            />
-            <Picker.Item label="Biochemistry" value="Biochemistry" />
-            <Picker.Item label="Biology" value="Biology" />
-            <Picker.Item
-              label="Biomedical Engineering"
-              value="Biomedical Engineering"
-            />
-            <Picker.Item
-              label="Biomedical Sciences"
-              value="Biomedical Sciences"
-            />
-            <Picker.Item
-              label="Cell and Molecular Biology"
-              value="Cell and Molecular Biology"
-            />
-            <Picker.Item label="Chemistry" value="Chemistry" />
-            <Picker.Item label="Chinese Medicine" value="Chinese Medicine" />
-            <Picker.Item
-              label="Chinese Language and Literature"
-              value="Chinese Language and Literature"
-            />
-            <Picker.Item label="Chinese Studies" value="Chinese Studies" />
-            <Picker.Item
-              label="Community Health Practice"
-              value="Community Health Practice"
-            />
-            <Picker.Item
-              label="Computer Engineering"
-              value="Computer Engineering"
-            />
-            <Picker.Item label="Computer Science" value="Computer Science" />
-            <Picker.Item
-              label="Cultural Management"
-              value="Cultural Management"
-            />
-            <Picker.Item label="Cultural Studies" value="Cultural Studies" />
-            <Picker.Item
-              label="Data Science and Policy Studies"
-              value="Data Science and Policy Studies"
-            />
-            <Picker.Item
-              label="Early Childhood Education"
-              value="Early Childhood Education"
-            />
-            <Picker.Item
-              label="Earth System Science"
-              value="Earth System Science"
-            />
-            <Picker.Item label="Economics" value="Economics" />
-            <Picker.Item
-              label="Electronic Engineering"
-              value="Electronic Engineering"
-            />
-            <Picker.Item
-              label="Energy and Environmental Engineering"
-              value="Energy and Environmental Engineering"
-            />
-            <Picker.Item label="English" value="English" />
-            <Picker.Item
-              label="Environmental Science"
-              value="Environmental Science"
-            />
-            <Picker.Item
-              label="Exercise Science and Health Education"
-              value="Exercise Science and Health Education"
-            />
-            <Picker.Item
-              label="Financial Technology"
-              value="Financial Technology"
-            />
-            <Picker.Item label="Fine Arts" value="Fine Arts" />
-            <Picker.Item
-              label="Food and Nutritional Sciences"
-              value="Food and Nutritional Sciences"
-            />
-            <Picker.Item label="Gender Studies" value="Gender Studies" />
-            <Picker.Item
-              label="Geography and Resource Management"
-              value="Geography and Resource Management"
-            />
-            <Picker.Item label="Gerontology" value="Gerontology" />
-            <Picker.Item
-              label="Global Business Studies"
-              value="Global Business Studies"
-            />
-            <Picker.Item
-              label="Global Communication"
-              value="Global Communication"
-            />
-            <Picker.Item label="Global Studies" value="Global Studies" />
-            <Picker.Item
-              label="Government and Public Administration"
-              value="Government and Public Administration"
-            />
-            <Picker.Item label="History" value="History" />
-            <Picker.Item
-              label="Hospitality and Real Estate"
-              value="Hospitality and Real Estate"
-            />
-            <Picker.Item
-              label="Information Engineering"
-              value="Information Engineering"
-            />
-            <Picker.Item
-              label="Insurance, Financial and Actuarial Analysis"
-              value="Insurance, Financial and Actuarial Analysis"
-            />
-            <Picker.Item label="Integrated BBA" value="Integrated BBA" />
-            <Picker.Item label="Japanese Studies" value="Japanese Studies" />
-            <Picker.Item
-              label="Journalism and Communication"
-              value="Journalism and Communication"
-            />
-            <Picker.Item label="Law" value="Law" />
-            <Picker.Item label="Liberal Studies" value="Liberal Studies" />
-            <Picker.Item label="Linguistics" value="Linguistics" />
-            <Picker.Item label="Mathematics" value="Mathematics" />
-            <Picker.Item
-              label="Mathematics and Information Engineering"
-              value="Mathematics and Information Engineering"
-            />
-            <Picker.Item
-              label="Mathematics and Mathematics Education"
-              value="Mathematics and Mathematics Education"
-            />
-            <Picker.Item
-              label="M.B., Ch.B. − Global Physician-Leadership Stream"
-              value="M.B., Ch.B. − Global Physician-Leadership Stream"
-            />
-            <Picker.Item
-              label="Mechanical and Automation Engineering"
-              value="Mechanical and Automation Engineering"
-            />
-            <Picker.Item
-              label="Medicine Programme (M.B., Ch.B.)"
-              value="Medicine Programme (M.B., Ch.B.)"
-            />
-            <Picker.Item
-              label="Molecular Biotechnology"
-              value="Molecular Biotechnology"
-            />
-            <Picker.Item label="Music" value="Music" />
-            <Picker.Item label="Natural Sciences" value="Natural Sciences" />
-            <Picker.Item label="Nursing" value="Nursing" />
-            <Picker.Item label="Pharmacy" value="Pharmacy" />
-            <Picker.Item label="Philosophy" value="Philosophy" />
-            <Picker.Item
-              label="Physical Education, Exercise Science and Health"
-              value="Physical Education, Exercise Science and Health"
-            />
-            <Picker.Item label="Physics" value="Physics" />
-            <Picker.Item
-              label="Professional Accountancy"
-              value="Professional Accountancy"
-            />
-            <Picker.Item label="Psychology" value="Psychology" />
-            <Picker.Item label="Public Health" value="Public Health" />
-            <Picker.Item
-              label="Quantitative Finance"
-              value="Quantitative Finance"
-            />
-            <Picker.Item label="Religious Studies" value="Religious Studies" />
-            <Picker.Item
-              label="Risk Management Science"
-              value="Risk Management Science"
-            />
-            <Picker.Item label="Social Work" value="Social Work" />
-            <Picker.Item label="Sociology" value="Sociology" />
-            <Picker.Item label="Statistics" value="Statistics" />
-            <Picker.Item
-              label="Systems Engineering and Engineering Management"
-              value="Systems Engineering and Engineering Management"
-            />
-            <Picker.Item label="Theology" value="Theology" />
-            <Picker.Item label="Translation" value="Translation" />
-            <Picker.Item label="Urban Studies" value="Urban Studies" />
-          </Picker>
-        </View>
-      </View>
-      <View style={{ flexDirection: 'row', margin: 20 }}>
-        <View style={{ margin: 20 }}>
-          <Button
-            title="Submit"
-            onPress={() => navigation.navigate('Profile')}
+            multiline
+            enablesReturnKeyAutomatically
           />
         </View>
-        <View style={{ margin: 20 }}>
-          <Button
-            title="Cancel"
-            onPress={() => navigation.navigate('Profile')}
-          />
+        <View style={{ flexDirection: 'row', margin: 20 }}>
+          <View style={{ margin: 20 }}>
+            <Button
+              title="Submit"
+              onPress={() => navigation.navigate('Profile')}
+            />
+          </View>
+          <View style={{ margin: 20 }}>
+            <Button
+              title="Cancel"
+              onPress={() => navigation.navigate('Profile')}
+            />
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 }

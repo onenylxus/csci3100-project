@@ -13,6 +13,7 @@ export default function CreatePostForm() {
         style={Style.createPostBox}
         multiline
         scrollEnabled
+        enablesReturnKeyAutomatically
         placeholder="What's on your mind?"
         // onChangeText={(text) => setPost(text)}
       />

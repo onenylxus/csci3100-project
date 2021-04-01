@@ -67,7 +67,8 @@ export default StyleSheet.create({
   },
 
   createPostBox: {
-    borderColor: '#444444',
+    borderColor: '#000000',
+    borderWidth: 1,
     backgroundColor: '#f8f8f8',
     width: '95%',
     height: 100,
@@ -133,8 +134,6 @@ export default StyleSheet.create({
   },
 
   profilePost: {
-    // justifyContent: 'center',
-    // alignItems: 'center',
     margin: 10,
     backgroundColor: 'white',
     flexDirection: 'column',
