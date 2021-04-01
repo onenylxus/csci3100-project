@@ -7,7 +7,7 @@ import Style from '../assets/style';
 
 // Export Message Bar
 export default function MessageBar() {
-  const [message, setmessage] = React.useState('');
+  const [message, setMessage] = React.useState('');
 
   return (
     <View style={Style.messageBar}>
@@ -20,7 +20,7 @@ export default function MessageBar() {
         placeholder="Write Message"
         style={{ outline: 'none', width: 530 }}
         value={message}
-        onChangeText={(value) => setmessage(value)}
+        onChangeText={(value) => setMessage(value)}
       />
       <TouchableOpacity style={Style.sendMessageButtom}>
         <Text style={{ color: 'blue' }}>Send</Text>

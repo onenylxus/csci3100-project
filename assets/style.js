@@ -134,9 +134,40 @@ export default StyleSheet.create({
   },
 
   profilePost: {
-    margin: 10,
+    paddingHorizontal: 10,
+    marginVertical: 20,
     backgroundColor: 'white',
     flexDirection: 'column',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#F0F0F0',
+  },
+
+  postBar: {
+    flexDirection: 'row',
+    margin: 5,
+    borderTopWidth: 1,
+    borderColor: '#F0F0F0',
+  },
+
+  commentBox: {
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#F0F0F0',
+    backgroundColor: 'white',
+    flexDirection: 'column',
+  },
+
+  commentBar: {
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    borderWidth: 0.5,
+    borderColor: '#000',
+    width: 300,
+    height: 40,
+    borderRadius: 15,
+    margin: 10,
+    alignSelf: 'center',
   },
 
   individualPost: {
@@ -180,6 +211,7 @@ export default StyleSheet.create({
     height: 40,
     borderRadius: 5,
     margin: 10,
+    alignSelf: 'center',
   },
 
   sendMessageButtom: {

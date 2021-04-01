@@ -15,7 +15,9 @@ import {
   faEllipsisH,
   faThumbsUp,
   faThumbsDown,
+  faCommentAlt,
 } from '@fortawesome/free-solid-svg-icons';
+import CommentBox from '../components/CommentBox';
 import Style from '../assets/style';
 
 // Export profile screen
@@ -24,6 +26,7 @@ export default function ProfileScreen({ navigation }) {
   const windowWidth = Dimensions.get('window').width;
   const [like, setLike] = React.useState(false);
   const [dislike, setDislike] = React.useState(false);
+  const [showComment, setShowComment] = React.useState(false);
 
   function styleByDevice(widthOfDevice, component) {
     if (widthOfDevice < 1100) {
@@ -117,14 +120,7 @@ export default function ProfileScreen({ navigation }) {
               </TouchableOpacity>
             </View>
             <Text>Post 1</Text>
-            <View
-              style={{
-                flexDirection: 'row',
-                margin: 5,
-                borderTopWidth: 1,
-                borderColor: '#F0F0F0',
-              }}
-            >
+            <View style={Style.postBar}>
               <TouchableOpacity
                 style={{ flexDirection: 'row' }}
                 onPress={() => {
@@ -162,11 +158,28 @@ export default function ProfileScreen({ navigation }) {
                 </Text>
                 <FontAwesomeIcon
                   icon={faThumbsDown}
-                  style={{ color: '#FB7676', margin: 5 }}
+                  style={{ color: '#FB7676', margin: 5, marginRight: 15 }}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{ flexDirection: 'row' }}
+                onPress={() => setShowComment(!showComment)}
+              >
+                <Text
+                  style={{
+                    alignSelf: 'center',
+                  }}
+                >
+                  Comment
+                </Text>
+                <FontAwesomeIcon
+                  icon={faCommentAlt}
+                  style={{ margin: 5, marginRight: 15 }}
                 />
               </TouchableOpacity>
             </View>
           </Row>
+          {showComment ? <CommentBox /> : null}
         </Grid>
       </View>
     </ScrollView>
