@@ -10,15 +10,20 @@ import {
 } from 'react-native';
 import { Row, Col, Grid } from 'react-native-easy-grid';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faUserPlus, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import {
+  faUserPlus,
+  faEllipsisH,
+  faThumbsUp,
+  faThumbsDown,
+} from '@fortawesome/free-solid-svg-icons';
 import Style from '../assets/style';
 
 // Export profile screen
 
 export default function ProfileScreen({ navigation }) {
   const windowWidth = Dimensions.get('window').width;
-  // const [selectedOption, setSelectedOption] = React.useState();
-  // let controller;
+  const [like, setLike] = React.useState(false);
+  const [dislike, setDislike] = React.useState(false);
 
   function styleByDevice(widthOfDevice, component) {
     if (widthOfDevice < 1100) {
@@ -112,6 +117,55 @@ export default function ProfileScreen({ navigation }) {
               </TouchableOpacity>
             </View>
             <Text>Post 1</Text>
+            <View
+              style={{
+                flexDirection: 'row',
+                margin: 5,
+                borderTopWidth: 1,
+                borderColor: '#F0F0F0',
+              }}
+            >
+              <TouchableOpacity
+                style={{ flexDirection: 'row' }}
+                onPress={() => {
+                  setLike(!like);
+                  setDislike(false);
+                }}
+              >
+                <Text
+                  style={{
+                    alignSelf: 'center',
+                    color: like ? 'blue' : 'black',
+                  }}
+                >
+                  Like
+                </Text>
+                <FontAwesomeIcon
+                  icon={faThumbsUp}
+                  style={{ color: '#83CCFF', margin: 5, marginRight: 15 }}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{ flexDirection: 'row' }}
+                onPress={() => {
+                  setDislike(!dislike);
+                  setLike(false);
+                }}
+              >
+                <Text
+                  style={{
+                    alignSelf: 'center',
+                    color: dislike ? 'blue' : 'black',
+                  }}
+                >
+                  Dislike
+                </Text>
+                <FontAwesomeIcon
+                  icon={faThumbsDown}
+                  style={{ color: '#FB7676', margin: 5 }}
+                />
+              </TouchableOpacity>
+            </View>
           </Row>
         </Grid>
       </View>

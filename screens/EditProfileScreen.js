@@ -56,9 +56,36 @@ export default function EditProfileScreen({ navigation }) {
       <ScrollView
         showsVerticalScrollIndicator={styleByDevice(windowWidth, 'scrollBar')}
       >
-        <Text style={{ fontSize: 28, alignSelf: 'center' }}>
+        <Text style={{ fontSize: 28, alignSelf: 'center', marginVertical: 20 }}>
           Edit Your Profile
         </Text>
+        <View
+          style={{
+            marginVertical: 40,
+            flexDirection: 'column',
+            width: styleByDevice(windowWidth, 'width'),
+          }}
+        >
+          <Text>Profile Picture: </Text>
+        </View>
+        <View
+          style={{
+            marginVertical: 40,
+            flexDirection: 'column',
+            width: styleByDevice(windowWidth, 'width'),
+          }}
+        >
+          <Text>Real Name: </Text>
+          <TextInput
+            style={{
+              borderColor: '#000000',
+              borderWidth: 1,
+              backgroundColor: '#f8f8f8',
+              width: styleByDevice(windowWidth, 'pickerWidth'),
+              alignSelf: 'center',
+            }}
+          />
+        </View>
         <View
           style={{
             flexDirection: 'column',
