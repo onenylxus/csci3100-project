@@ -27,6 +27,7 @@ module.exports = function register(req, res) {
 
   // Existing client and email
   clientUsername.then((data) => {
+    console.log(data);
     // Client exist
     if (data) {
       bool = true;
