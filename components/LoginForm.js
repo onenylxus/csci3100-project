@@ -27,6 +27,8 @@ export default function LoginForm() {
   const [password, setPassword] = React.useState('');
   const [visibility, setVisibility] = React.useState(true);
 
+  let status = 0;
+
   async function submitData() {
     await fetch(`https://${Source.heroku}/login`, {
       method: 'POST',
@@ -38,12 +40,16 @@ export default function LoginForm() {
         password,
       }),
     })
+      .then((res) => {
+        status = res.status;
+        return res;
+      })
       .then((res) => res.json())
       .then((res) => {
-        if (res.status === 200) {
+        if (status === 200) {
           console.log(res.msg);
           navigation.navigate('Tabs', { username });
-        } else if (res.status === 422) {
+        } else if (status === 422) {
           console.log(res.error);
           switch (res.error) {
             case 'accountError':
