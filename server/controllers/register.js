@@ -11,15 +11,15 @@ const Client = mongoose.model('client');
 const Token = mongoose.model('token');
 
 // Exports
-module.exports = async function register(req, res) {
+module.exports = function register(req, res) {
   // Fetch request body
   const { username, password, email } = req.body;
 
   // Fetch client and token by username and email
-  const clientUsername = await Client.findOne({ username });
-  const clientEmail = await Client.findOne({ email });
-  const tokenUsername = await Token.findOne({ username });
-  const tokenEmail = await Token.findOne({ email });
+  const clientUsername = Client.findOne({ username });
+  const clientEmail = Client.findOne({ email });
+  const tokenUsername = Token.findOne({ username });
+  const tokenEmail = Token.findOne({ email });
 
   // Check username existence
   clientUsername.then((data1) => {

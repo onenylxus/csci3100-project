@@ -20,16 +20,12 @@ module.exports = function verify(req, res) {
   token.then((data) => {
     // Check token existence
     if (!data) {
-      return res.status(422).send({
-        error: 'The token is expired',
-      });
+      return res.status(422).send({});
     }
 
     // Check code match
     if (code !== data.code) {
-      return res.status(422).send({
-        error: 'Your verification code is invalid.',
-      });
+      return res.status(422).send({});
     }
 
     // Create client
