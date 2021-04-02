@@ -18,7 +18,7 @@ export default function MessageBar() {
       />
       <TextInput
         placeholder="Write Message"
-        style={{ outline: 'none', width: 530 }}
+        style={{ width: 530 }}
         value={message}
         onChangeText={(value) => setMessage(value)}
       />

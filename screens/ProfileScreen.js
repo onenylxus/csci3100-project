@@ -7,6 +7,7 @@ import {
   View,
   ScrollView,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 import { Row, Col, Grid } from 'react-native-easy-grid';
 import PostBox from '../components/PostBox';
@@ -88,10 +89,9 @@ export default function ProfileScreen({ navigation }) {
                       width: 64,
                       height: 64,
                       margin: 8,
-                      borderRadius: 16,
+                      borderRadius: 32,
                     }}
                     source={require('../assets/images/defaultprofile.png')}
-                    capInsets
                   />
                 </Row>
                 <Row size={0.5} style={styleByDevice(windowWidth, 'button')}>
@@ -99,6 +99,12 @@ export default function ProfileScreen({ navigation }) {
                     title="Edit Profile"
                     onPress={() => navigation.navigate('EditProfile')}
                   />
+                  <TouchableOpacity style={{ marginHorizontal: 15 }}>
+                    <Text>4 Followers</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={{ marginHorizontal: 15 }}>
+                    <Text>4 Following</Text>
+                  </TouchableOpacity>
                 </Row>
               </Col>
               <Text style={styleByDevice(windowWidth, 'userInfo')}>
@@ -108,6 +114,12 @@ export default function ProfileScreen({ navigation }) {
               </Text>
             </Row>
           </View>
+          <Row style={{ alignContent: 'center', justifyContent: 'center' }}>
+            <PostBox />
+          </Row>
+          <Row style={{ alignContent: 'center', justifyContent: 'center' }}>
+            <PostBox />
+          </Row>
           <Row style={{ alignContent: 'center', justifyContent: 'center' }}>
             <PostBox />
           </Row>

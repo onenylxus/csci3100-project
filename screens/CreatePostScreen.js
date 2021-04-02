@@ -8,7 +8,7 @@ import Style from '../assets/style';
 export default function CreatePostScreen({ navigation }) {
   return (
     <View style={Style.container}>
-      <Text>Create Post</Text>
+      <Text style={{ alignSelf: 'flex-start' }}>Create Post</Text>
       <CreatePostForm />
       <Button title="Post it!" onPress={() => navigation.navigate('Profile')} />
     </View>

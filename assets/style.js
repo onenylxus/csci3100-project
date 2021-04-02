@@ -75,6 +75,7 @@ export default StyleSheet.create({
     margin: 16,
     textAlign: 'left',
     textAlignVertical: 'top',
+    borderRadius: 2,
   },
 
   profileContainerPC: {
@@ -84,7 +85,7 @@ export default StyleSheet.create({
   },
 
   profileContainerPhone: {
-    width: '90%',
+    marginHorizontal: 5,
     alignSelf: 'center',
     paddingTop: 32,
   },
@@ -134,13 +135,16 @@ export default StyleSheet.create({
   },
 
   profilePost: {
-    paddingHorizontal: 10,
-    marginVertical: 20,
+    width: '95%',
+    marginTop: 20,
+    marginBottom: 10,
     backgroundColor: 'white',
     flexDirection: 'column',
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#F0F0F0',
+    justifyContent: 'center',
+    alignSelf: 'center',
   },
 
   postBar: {
@@ -189,6 +193,7 @@ export default StyleSheet.create({
   },
 
   chatBox: {
+    flexDirection: 'row',
     height: 100,
     borderTopWidth: 1,
     borderBottomWidth: 1,
@@ -196,10 +201,11 @@ export default StyleSheet.create({
   },
 
   chatRoomContainerPhone: {
-    width: '90%',
+    width: '95%',
     alignSelf: 'center',
-    paddingTop: 5,
+    marginTop: 5,
     backgroundColor: 'white',
+    borderRadius: 10,
   },
 
   messageBar: {
@@ -224,5 +230,17 @@ export default StyleSheet.create({
     flexDirection: 'row',
     margin: 20,
     justifyContent: 'center',
+  },
+
+  SearchBarStyle: {
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    borderWidth: 0.5,
+    borderColor: '#000',
+    width: '95%',
+    height: 40,
+    borderRadius: 5,
+    alignSelf: 'center',
+    marginTop: 10,
   },
 });
