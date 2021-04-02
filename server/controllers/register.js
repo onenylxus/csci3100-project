@@ -21,42 +21,59 @@ module.exports = function register(req, res) {
   const tokenUsername = Token.findOne({ username });
   const tokenEmail = Token.findOne({ email });
 
+  console.log(clientUsername);
+
+  let bool = false;
+
   // Existing client and email
   clientUsername.then((data) => {
     // Client exist
     if (data) {
-      return res.status(422).send({
-        error: 'clientUsernameError',
-      });
+      bool = true;
     }
   });
+  if (bool) {
+    return res.status(422).send({
+      error: 'clientUsernameError',
+    });
+  }
 
   clientEmail.then((data) => {
     // Client exist
     if (data) {
-      return res.status(422).send({
-        error: 'clientEmailError',
-      });
+      bool = true;
     }
   });
+  if (bool) {
+    return res.status(422).send({
+      error: 'clientEmailError',
+    });
+  }
 
   tokenUsername.then((data) => {
     // Token exist
     if (data) {
-      return res.status(422).send({
-        error: 'tokenUsernameError',
-      });
+      bool = true;
     }
   });
+  if (bool) {
+    return res.status(422).send({
+      error: 'tokenUsernameError',
+    });
+  }
 
   tokenEmail.then((data) => {
     // Token exist
     if (data) {
-      return res.status(422).send({
-        error: 'tokenEmailError',
-      });
+      bool = true;
     }
   });
+  if (bool) {
+    return res.status(422).send({
+      error: 'tokenEmailError',
+    });
+  }
+
   // Create token and save to database
   const token = new Token({
     username,
