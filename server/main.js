@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const path = './controllers/';
 const controller = {
   addInfo: require(path + 'addInfo'),
+  login: require(path + 'login'),
   register: require(path + 'register'),
   verify: require(path + 'verify'),
 };
@@ -38,6 +39,9 @@ app.get('/', (req, res) => {
 
 // Add Info-form
 app.post('/addInfo', controller.addInfo);
+
+// Login
+app.post('/login', controller.login);
 
 // Register
 app.post('/register', controller.register);

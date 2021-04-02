@@ -15,19 +15,17 @@ module.exports = function verify(req, res) {
   const { username, code } = req.body;
 
   // Fetch token
-  Token.findOne({ username }).then((data) => {
+  const token = Token.findOne({ username });
+
+  token.then((data) => {
     // Check token existence
     if (!data) {
-      return res.status(422).json({
-        error: 'The token is expired',
-      });
+      return res.status(422).send({});
     }
 
     // Check code match
     if (code !== data.code) {
-      return res.status(422).json({
-        error: 'Your verification code is invalid.',
-      });
+      return res.status(422).send({});
     }
 
     // Create client

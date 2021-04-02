@@ -18,6 +18,8 @@ export default function AddInfoForm() {
   const [name, setName] = React.useState('');
   const [major, setMajor] = React.useState('');
 
+  let status = 0;
+
   async function submitData() {
     await fetch(`https://${Source.heroku}/addInfo`, {
       method: 'POST',
@@ -33,8 +35,13 @@ export default function AddInfoForm() {
       }),
     })
       .then((res) => {
+        status = res.status;
+        return res;
+      })
+      .then((res) => res.json())
+      .then((res) => {
         console.log(res);
-        if (res.status === 200) {
+        if (status === 200) {
           navigation.navigate('Tabs', { username });
         }
       })
@@ -46,7 +53,7 @@ export default function AddInfoForm() {
       submitData();
     } else {
       return Alert.alert(
-        'Some informations are missing',
+        'Some information are missing',
         'Some fields are missing, do you want to continue without these information? (You can edit these informations in the application later.)',
         [
           {
@@ -56,9 +63,7 @@ export default function AddInfoForm() {
           },
           {
             text: 'Continue',
-            onPress: () => {
-              submitData();
-            },
+            onPress: submitData,
             style: 'destructive',
           },
         ]

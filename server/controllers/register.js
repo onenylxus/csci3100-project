@@ -14,31 +14,39 @@ const Token = mongoose.model('token');
 module.exports = function register(req, res) {
   // Fetch request body
   const { username, password, email } = req.body;
+
+  // Fetch client and token by username and email
+  const clientUsername = Client.findOne({ username });
+  const clientEmail = Client.findOne({ email });
+  const tokenUsername = Token.findOne({ username });
+  const tokenEmail = Token.findOne({ email });
+
   // Check username existence
-  Client.findOne({ username }).then((data1) => {
+  clientUsername.then((data1) => {
     if (data1) {
-      return res.status(422).json({
-        error: 'This username has been used by someone else.',
+      return res.status(422).send({
+        error: 'clientUsernameError',
       });
     }
     // Check email existence
-    Client.findOne({ email }).then((data2) => {
+    clientEmail.then((data2) => {
       if (data2) {
-        return res.status(422).json({
-          error: 'This email has been registered.',
+        return res.status(422).send({
+          error: 'clientEmailError',
         });
       }
 
-      Token.findOne({ username }).then((data3) => {
+      tokenUsername.then((data3) => {
         if (data3) {
-          return res.status(422).json({
-            error: 'This username has been used by someone else.',
+          return res.status(422).send({
+            error: 'tokenUsernameError',
           });
         }
-        Token.findOne({ email }).then((data4) => {
+
+        tokenEmail.then((data4) => {
           if (data4) {
-            return res.status(422).json({
-              error: 'This email has been registered.',
+            return res.status(422).send({
+              error: 'tokenEmailError',
             });
           }
 
@@ -59,7 +67,7 @@ module.exports = function register(req, res) {
               subject: `Confirmation email for ${username}`,
               html: `Hello, thank you for signing up to CU There!<br /></br >Your verification code is ${token.code}. This code will expire in 15 minutes.<br /><br />CU There team`,
             });
-            return res.status(200).json({ msg: 'Email sent. ' });
+            return res.status(200).send({ msg: 'Email sent. ' });
           } catch (err) {
             console.log(err);
           }
