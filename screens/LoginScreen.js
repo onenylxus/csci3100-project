@@ -12,7 +12,7 @@ export default function LoginScreen({ navigation }) {
       <LoginForm />
       <Text
         style={{ ...Style.hyperlink, marginTop: 20 }}
-        onPress={() => navigation.navigate('Tabs')}
+        onPress={() => navigation.navigate('Feed')}
       >
         Continue as guest
       </Text>
