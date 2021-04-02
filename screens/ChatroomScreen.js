@@ -6,9 +6,8 @@ import {
   ScrollView,
   TouchableOpacity,
   Dimensions,
+  Image,
 } from 'react-native';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { Grid, Col } from 'react-native-easy-grid';
 import Style from '../assets/style';
 import SearchBar from '../components/SearchBar';
@@ -28,36 +27,17 @@ export default function ChatroomScreen() {
           </View>
           <ScrollView>
             <TouchableOpacity style={Style.chatBox}>
-              <FontAwesomeIcon
-                icon={faUser}
-                size={15}
-                style={{ marginHorizontal: 5, marginVertical: 12 }}
+              <Image
+                style={{
+                  width: 64,
+                  height: 64,
+                  margin: 8,
+                  borderRadius: 28,
+                  alignSelf: 'center',
+                }}
+                source={require('../assets/images/defaultprofile.png')}
               />
-              <Text>hi</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={Style.chatBox}>
-              <Text>hi</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={Style.chatBox}>
-              <Text>hi</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={Style.chatBox}>
-              <Text>hi</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={Style.chatBox}>
-              <Text>hi</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={Style.chatBox}>
-              <Text>hi</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={Style.chatBox}>
-              <Text>hi</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={Style.chatBox}>
-              <Text>hi</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={Style.chatBox}>
-              <Text>hi</Text>
+              <Text style={{ alignSelf: 'center' }}>hi</Text>
             </TouchableOpacity>
           </ScrollView>
         </Col>
@@ -73,36 +53,41 @@ export default function ChatroomScreen() {
 
   // Small Screen
   return (
-    <View style={Style.chatRoomContainerPhone}>
-      <SearchBar />
+    <View style={{ marginBottom: 50 }}>
+      <View>
+        <SearchBar />
+      </View>
       <ScrollView>
-        <TouchableOpacity style={Style.chatBox}>
-          <Text>hi</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={Style.chatBox}>
-          <Text>hi</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={Style.chatBox}>
-          <Text>hi</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={Style.chatBox}>
-          <Text>hi</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={Style.chatBox}>
-          <Text>hi</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={Style.chatBox}>
-          <Text>hi</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={Style.chatBox}>
-          <Text>hi</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={Style.chatBox}>
-          <Text>hi</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={Style.chatBox}>
-          <Text>hi</Text>
-        </TouchableOpacity>
+        <View style={Style.chatRoomContainerPhone}>
+          <TouchableOpacity style={Style.chatBox}>
+            <Image
+              style={{
+                width: 64,
+                height: 64,
+                margin: 8,
+                borderRadius: 28,
+                alignSelf: 'center',
+              }}
+              source={require('../assets/images/defaultprofile.png')}
+            />
+            <Text style={{ alignSelf: 'center' }}>hi</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={Style.chatRoomContainerPhone}>
+          <TouchableOpacity style={Style.chatBox}>
+            <Image
+              style={{
+                width: 64,
+                height: 64,
+                margin: 8,
+                borderRadius: 28,
+                alignSelf: 'center',
+              }}
+              source={require('../assets/images/defaultprofile.png')}
+            />
+            <Text style={{ alignSelf: 'center' }}>hi</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </View>
   );

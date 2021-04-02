@@ -1,6 +1,8 @@
 // Import
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, Image } from 'react-native';
+import { Col, Grid } from 'react-native-easy-grid';
+// import { List } from 'react-native-paper';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {
   faEllipsisH,
@@ -8,6 +10,7 @@ import {
   faThumbsDown,
   faCommentAlt,
 } from '@fortawesome/free-solid-svg-icons';
+
 import CommentBox from './CommentBox';
 import Style from '../assets/style';
 
@@ -20,11 +23,32 @@ export default function PostBox() {
   return (
     <View style={Style.profilePost}>
       <View>
-        <TouchableOpacity style={{ alignSelf: 'flex-end', margin: 5 }}>
-          <FontAwesomeIcon icon={faEllipsisH} />
-        </TouchableOpacity>
+        <Grid>
+          <Col style={{ flexDirection: 'row', marginTop: 15 }}>
+            <Image
+              style={{
+                width: 64,
+                height: 64,
+                marginHorizontal: 8,
+                borderRadius: 28,
+              }}
+              source={require('../assets/images/defaultprofile.png')}
+            />
+            <View style={{ flexDirection: 'column', marginTop: 15 }}>
+              <Text>Username</Text>
+              <Text>Date</Text>
+            </View>
+          </Col>
+          <Col>
+            <View style={{ justifyContent: 'flex-end' }}>
+              <TouchableOpacity style={{ alignSelf: 'flex-end', margin: 15 }}>
+                <FontAwesomeIcon icon={faEllipsisH} />
+              </TouchableOpacity>
+            </View>
+          </Col>
+        </Grid>
       </View>
-      <Text>Post 1</Text>
+      <Text style={{ margin: 15, fontSize: 22 }}>Post content</Text>
       <View style={Style.postBar}>
         <TouchableOpacity
           style={{ flexDirection: 'row' }}
@@ -33,18 +57,11 @@ export default function PostBox() {
             setDislike(false);
           }}
         >
-          <Text
-            style={{
-              alignSelf: 'center',
-              color: like ? 'blue' : 'black',
-            }}
-          >
-            Like
-          </Text>
           <FontAwesomeIcon
             icon={faThumbsUp}
-            style={{ color: '#83CCFF', margin: 5, marginRight: 15 }}
+            style={{ color: like ? '#83CCFF' : 'lightgrey', margin: 5 }}
           />
+          <Text style={{ alignSelf: 'center', marginRight: 15 }}>4</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{ flexDirection: 'row' }}
@@ -53,18 +70,11 @@ export default function PostBox() {
             setLike(false);
           }}
         >
-          <Text
-            style={{
-              alignSelf: 'center',
-              color: dislike ? 'blue' : 'black',
-            }}
-          >
-            Dislike
-          </Text>
           <FontAwesomeIcon
             icon={faThumbsDown}
-            style={{ color: '#FB7676', margin: 5, marginRight: 15 }}
+            style={{ color: dislike ? '#FB7676' : 'lightgrey', margin: 5 }}
           />
+          <Text style={{ alignSelf: 'center', marginRight: 15 }}>4</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{ flexDirection: 'row' }}

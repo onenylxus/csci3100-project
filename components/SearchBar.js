@@ -10,7 +10,7 @@ export default function SearchBar() {
   const [searchWord, setsearchWord] = React.useState('');
 
   return (
-    <View style={Style.SectionStyle}>
+    <View style={Style.SearchBarStyle}>
       <FontAwesomeIcon
         icon={faSearch}
         size={15}
@@ -18,7 +18,7 @@ export default function SearchBar() {
       />
       <TextInput
         placeholder="Search"
-        style={{ outline: 'none', width: 175 }}
+        style={{ width: '85%' }}
         value={searchWord}
         onChangeText={(value) => setsearchWord(value)}
       />

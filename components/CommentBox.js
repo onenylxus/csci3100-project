@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { TextInput, TouchableOpacity, View, Text } from 'react-native';
+import { TextInput, TouchableOpacity, View, Text, Image } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import Style from '../assets/style';
@@ -11,9 +11,21 @@ export default function CommentBox() {
 
   return (
     <View style={Style.commentBox}>
-      <Text style={{ alignSelf: 'center' }}>Comments</Text>
-      <Text style={{ alignSelf: 'center' }}>Comment 1</Text>
-      <Text style={{ alignSelf: 'center' }}>Comment 2</Text>
+      <View style={{ flexDirection: 'row' }}>
+        <Image
+          style={{
+            width: 48,
+            height: 48,
+            margin: 10,
+            borderRadius: 28,
+          }}
+          source={require('../assets/images/defaultprofile.png')}
+        />
+        <View style={{ flexDirection: 'column', marginTop: 15 }}>
+          <Text>Username</Text>
+          <Text>Comment content</Text>
+        </View>
+      </View>
       <View style={Style.commentBar}>
         <FontAwesomeIcon
           icon={faPen}
