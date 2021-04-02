@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { Grid, Col } from 'react-native-easy-grid';
 import Style from '../assets/style';
 import SearchBar from '../components/SearchBar';
@@ -26,6 +28,11 @@ export default function ChatroomScreen() {
           </View>
           <ScrollView>
             <TouchableOpacity style={Style.chatBox}>
+              <FontAwesomeIcon
+                icon={faUser}
+                size={15}
+                style={{ marginHorizontal: 5, marginVertical: 12 }}
+              />
               <Text>hi</Text>
             </TouchableOpacity>
             <TouchableOpacity style={Style.chatBox}>

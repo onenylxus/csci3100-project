@@ -6,27 +6,16 @@ import {
   Dimensions,
   View,
   ScrollView,
-  TouchableOpacity,
+  Image,
 } from 'react-native';
 import { Row, Col, Grid } from 'react-native-easy-grid';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import {
-  faUserPlus,
-  faEllipsisH,
-  faThumbsUp,
-  faThumbsDown,
-  faCommentAlt,
-} from '@fortawesome/free-solid-svg-icons';
-import CommentBox from '../components/CommentBox';
+import PostBox from '../components/PostBox';
 import Style from '../assets/style';
 
 // Export profile screen
 
 export default function ProfileScreen({ navigation }) {
   const windowWidth = Dimensions.get('window').width;
-  const [like, setLike] = React.useState(false);
-  const [dislike, setDislike] = React.useState(false);
-  const [showComment, setShowComment] = React.useState(false);
 
   function styleByDevice(widthOfDevice, component) {
     if (widthOfDevice < 1100) {
@@ -94,9 +83,15 @@ export default function ProfileScreen({ navigation }) {
             <Row size={1}>
               <Col size={styleByDevice(windowWidth, 'propicLayer')}>
                 <Row size={1} style={styleByDevice(windowWidth, 'propic')}>
-                  <FontAwesomeIcon
-                    icon={faUserPlus}
-                    size={styleByDevice(windowWidth, 'propicSize')}
+                  <Image
+                    style={{
+                      width: 64,
+                      height: 64,
+                      margin: 8,
+                      borderRadius: 16,
+                    }}
+                    source={require('../assets/images/defaultprofile.png')}
+                    capInsets
                   />
                 </Row>
                 <Row size={0.5} style={styleByDevice(windowWidth, 'button')}>
@@ -108,78 +103,14 @@ export default function ProfileScreen({ navigation }) {
               </Col>
               <Text style={styleByDevice(windowWidth, 'userInfo')}>
                 Username{'\n'}
-                Major: XXXXXX{'\n'}
-                College: XXXXX{'\n'}
+                Major:{'\n'}
+                College:{'\n'}
               </Text>
             </Row>
           </View>
-          <Row style={Style.profilePost}>
-            <View>
-              <TouchableOpacity style={{ alignSelf: 'flex-end', margin: 5 }}>
-                <FontAwesomeIcon icon={faEllipsisH} />
-              </TouchableOpacity>
-            </View>
-            <Text>Post 1</Text>
-            <View style={Style.postBar}>
-              <TouchableOpacity
-                style={{ flexDirection: 'row' }}
-                onPress={() => {
-                  setLike(!like);
-                  setDislike(false);
-                }}
-              >
-                <Text
-                  style={{
-                    alignSelf: 'center',
-                    color: like ? 'blue' : 'black',
-                  }}
-                >
-                  Like
-                </Text>
-                <FontAwesomeIcon
-                  icon={faThumbsUp}
-                  style={{ color: '#83CCFF', margin: 5, marginRight: 15 }}
-                />
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={{ flexDirection: 'row' }}
-                onPress={() => {
-                  setDislike(!dislike);
-                  setLike(false);
-                }}
-              >
-                <Text
-                  style={{
-                    alignSelf: 'center',
-                    color: dislike ? 'blue' : 'black',
-                  }}
-                >
-                  Dislike
-                </Text>
-                <FontAwesomeIcon
-                  icon={faThumbsDown}
-                  style={{ color: '#FB7676', margin: 5, marginRight: 15 }}
-                />
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={{ flexDirection: 'row' }}
-                onPress={() => setShowComment(!showComment)}
-              >
-                <Text
-                  style={{
-                    alignSelf: 'center',
-                  }}
-                >
-                  Comment
-                </Text>
-                <FontAwesomeIcon
-                  icon={faCommentAlt}
-                  style={{ margin: 5, marginRight: 15 }}
-                />
-              </TouchableOpacity>
-            </View>
+          <Row style={{ alignContent: 'center', justifyContent: 'center' }}>
+            <PostBox />
           </Row>
-          {showComment ? <CommentBox /> : null}
         </Grid>
       </View>
     </ScrollView>

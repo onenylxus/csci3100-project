@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import Style from '../assets/style';
 
-// Export feed screen
-export default function FeedScreen() {
+// Export Comment Box
+export default function CommentBox() {
   const [comment, setComment] = React.useState('');
 
   return (
