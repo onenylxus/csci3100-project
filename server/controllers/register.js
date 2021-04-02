@@ -26,15 +26,7 @@ module.exports = async function register(req, res) {
   let bool = false;
 
   // Existing client and email
-  await clientUsername.then((data) => {
-    // Client exist
-    if (data) {
-      bool = true;
-    }
-  });
-  console.log('bool: ');
-  console.log(bool);
-  if (bool) {
+  if (clientUsername !== null && clientUsername._id.toString()) {
     return res.status(422).send({
       error: 'clientUsernameError',
     });
