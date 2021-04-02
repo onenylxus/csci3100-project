@@ -46,7 +46,7 @@ export default function AddInfoForm() {
       submitData();
     } else {
       return Alert.alert(
-        'Some informations are missing',
+        'Some information are missing',
         'Some fields are missing, do you want to continue without these information? (You can edit these informations in the application later.)',
         [
           {
@@ -56,9 +56,7 @@ export default function AddInfoForm() {
           },
           {
             text: 'Continue',
-            onPress: () => {
-              submitData();
-            },
+            onPress: submitData,
             style: 'destructive',
           },
         ]

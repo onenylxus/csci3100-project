@@ -1,6 +1,13 @@
 // Import
 import React from 'react';
-import { Button, Text, TextInput, View, TouchableOpacity } from 'react-native';
+import {
+  Alert,
+  Button,
+  Text,
+  TextInput,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {
   faUser,
@@ -8,13 +15,58 @@ import {
   faEyeSlash,
   faEye,
 } from '@fortawesome/free-solid-svg-icons';
+import { useNavigation } from '@react-navigation/native';
+import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export login form
 export default function LoginForm() {
+  const navigation = useNavigation();
+
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [visibility, setVisibility] = React.useState(true);
+
+  async function submitData() {
+    await fetch(`https://${Source.heroku}/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    })
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          navigation.navigate('Tabs', { username });
+        }
+      })
+      .catch((err) => console.log(err));
+  }
+
+  async function confirmLogin() {
+    if ([username, password].every((data) => data.length > 0)) {
+      console.log(
+        `Login request sent with username ${username} and password ${password}`
+      );
+      submitData();
+    } else {
+      return Alert.alert(
+        'Some information are missing',
+        'Some fields are missing. Fill out all fields and try again.',
+        [
+          {
+            text: 'OK',
+            onPress: () => undefined,
+            style: 'destructive',
+          },
+        ]
+      );
+    }
+  }
 
   return (
     <View>
@@ -60,14 +112,7 @@ export default function LoginForm() {
           </TouchableOpacity>
         </View>
       </View>
-      <Button
-        title="Login"
-        onPress={() =>
-          console.log(
-            `Login request sent with username ${username} and password ${password}`
-          )
-        }
-      />
+      <Button title="Login" onPress={confirmLogin} />
     </View>
   );
 }
