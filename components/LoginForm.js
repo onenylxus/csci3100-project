@@ -47,10 +47,8 @@ export default function LoginForm() {
       .then((res) => res.json())
       .then((res) => {
         if (status === 200) {
-          console.log(res.msg);
           navigation.navigate('Tabs', { username });
         } else if (status === 422) {
-          console.log(res.error);
           switch (res.error) {
             case 'accountError':
               return Alert.alert(

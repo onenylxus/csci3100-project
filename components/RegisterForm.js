@@ -32,11 +32,12 @@ export default function RegisterForm() {
   const [emailState, setEmailState] = React.useState(2);
   const [visibility, setVisibility] = React.useState(true);
 
+  let status = 0;
+
   async function submitData() {
     console.log(
       `Register request sent with username ${username}, password ${password} and email ${email}`
     );
-
     await fetch(`https://${Source.heroku}/register`, {
       method: 'POST',
       headers: {
@@ -48,23 +49,50 @@ export default function RegisterForm() {
         email,
       }),
     })
+      .then((res) => {
+        status = res.status;
+        return res;
+      })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
-        if (res.status === 200) {
+        if (status === 200) {
           navigation.navigate('Verification', { username });
-        } else {
-          return Alert.alert(
-            'Error',
-            'Either your username or your email has been registered by another user, please try again.',
-            [
-              {
-                text: 'Retry',
-                onPress: () => undefined,
-                style: 'destructive',
-              },
-            ]
-          );
+        } else if (status === 422) {
+          switch (res.error) {
+            // Username error
+            case 'clientUsernameError':
+            case 'tokenUsernameError':
+              return Alert.alert(
+                'Error',
+                'Your username has been registered by another user, please try again.',
+                [
+                  {
+                    text: 'Retry',
+                    onPress: () => undefined,
+                    style: 'destructive',
+                  },
+                ]
+              );
+
+            // Email error
+            case 'clientEmailError':
+            case 'tokenEmailError':
+              return Alert.alert(
+                'Error',
+                'This email has been registered by another user, please try again.',
+                [
+                  {
+                    text: 'Retry',
+                    onPress: () => undefined,
+                    style: 'destructive',
+                  },
+                ]
+              );
+
+            // Unknown error
+            default:
+              return new Error();
+          }
         }
       })
       .catch((err) => console.log(err));

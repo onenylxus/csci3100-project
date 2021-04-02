@@ -14,57 +14,68 @@ const Token = mongoose.model('token');
 module.exports = function register(req, res) {
   // Fetch request body
   const { username, password, email } = req.body;
-  // Check username existence
-  Client.findOne({ username }).then((data1) => {
-    if (data1) {
+
+  // Fetch client and token by username and email
+  const clientUsername = Client.findOne({ username });
+  const clientEmail = Client.findOne({ email });
+  const tokenUsername = Token.findOne({ username });
+  const tokenEmail = Token.findOne({ email });
+
+  // Existing client and email
+  clientUsername.then((data) => {
+    // Client exist
+    if (data) {
       return res.status(422).send({
-        error: 'This username has been used by someone else.',
+        error: 'clientUsernameError',
       });
     }
-    // Check email existence
-    Client.findOne({ email }).then((data2) => {
-      if (data2) {
-        return res.status(422).send({
-          error: 'This email has been registered.',
-        });
-      }
-
-      Token.findOne({ username }).then((data3) => {
-        if (data3) {
-          return res.status(422).send({
-            error: 'This username has been used by someone else.',
-          });
-        }
-        Token.findOne({ email }).then((data4) => {
-          if (data4) {
-            return res.status(422).send({
-              error: 'This email has been registered.',
-            });
-          }
-
-          // Create token and save to database
-          const token = new Token({
-            username,
-            password,
-            email,
-            code: String(Math.trunc(Math.random() * 10 ** 6)).padStart(6, '0'),
-          });
-          token.save();
-
-          // Send email
-          try {
-            transporter.sendMail({
-              from: `csci3100cuthere@gmail.com`,
-              to: email,
-              subject: `Confirmation email for ${username}`,
-              html: `Hello, thank you for signing up to CU There!<br /></br >Your verification code is ${token.code}. This code will expire in 15 minutes.<br /><br />CU There team`,
-            });
-            return res.status(200).json({ msg: 'Email sent. ' });
-          } catch (err) {
-            console.log(err);
-          }
-        });
-      });
-    });
   });
+
+  clientEmail.then((data) => {
+    // Client exist
+    if (data) {
+      return res.status(422).send({
+        error: 'clientEmailError',
+      });
+    }
+  });
+
+  tokenUsername.then((data) => {
+    // Token exist
+    if (data) {
+      return res.status(422).send({
+        error: 'tokenUsernameError',
+      });
+    }
+  });
+
+  tokenEmail.then((data) => {
+    // Token exist
+    if (data) {
+      return res.status(422).send({
+        error: 'tokenEmailError',
+      });
+    }
+  });
+  // Create token and save to database
+  const token = new Token({
+    username,
+    password,
+    email,
+    code: String(Math.trunc(Math.random() * 10 ** 6)).padStart(6, '0'),
+  });
+  token.save();
+
+  // Send email
+  try {
+    transporter.sendMail({
+      from: `csci3100cuthere@gmail.com`,
+      to: email,
+      subject: `Confirmation email for ${username}`,
+      html: `Hello, thank you for signing up to CU There!<br /></br >Your verification code is ${token.code}. This code will expire in 15 minutes.<br /><br />CU There team`,
+    });
+    return res.status(200).json({ msg: 'Email sent. ' });
+  } catch (err) {
+    console.log(err);
+  }
 };

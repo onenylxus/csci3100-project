@@ -13,9 +13,9 @@ module.exports = function addInfo(req, res) {
   const { username, name, gender, major, college } = req.body;
 
   // Fetch client
-  const q = Client.where({ username });
+  const client = Client.where({ username });
 
-  q.then((data) => {
+  client.then((data) => {
     if (!data) {
       return res.status(422).send({
         error: 'Your verification code is invalid.',
@@ -23,14 +23,16 @@ module.exports = function addInfo(req, res) {
     }
   });
 
-  q.update({
-    $set: {
-      name,
-      gender,
-      major,
-      college,
-    },
-  }).exec();
+  client
+    .update({
+      $set: {
+        name,
+        gender,
+        major,
+        college,
+      },
+    })
+    .exec();
 
   return res.status(200).send({ msg: 'Client updated.' });
 };

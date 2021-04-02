@@ -16,8 +16,6 @@ module.exports = function login(req, res) {
   const client = Client.findOne({ username });
 
   client.then((data) => {
-    console.log(data);
-
     // Account not exist
     if (!data) {
       return res.status(422).send({
