@@ -21,20 +21,17 @@ module.exports = function register(req, res) {
   const tokenUsername = Token.findOne({ username });
   const tokenEmail = Token.findOne({ email });
 
-  console.log(clientUsername._id);
+  console.log(clientUsername._id.toString());
 
   let bool = false;
 
   // Existing client and email
   clientUsername.then((data) => {
-    console.log(data);
-
     // Client exist
     if (data) {
       bool = true;
     }
   });
-  console.log(bool);
   if (bool) {
     return res.status(422).send({
       error: 'clientUsernameError',
