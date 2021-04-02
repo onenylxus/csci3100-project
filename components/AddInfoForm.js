@@ -3,14 +3,15 @@ import React from 'react';
 import { Alert, Button, Text, TextInput, View } from 'react-native';
 import { Picker } from '@react-native-community/picker';
 import { RadioButton } from 'react-native-paper';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
+import AuthContext from './AuthContext';
 import Source from '../assets/source';
 import Style from '../assets/style';
 
-// Export Add info form
+// Export add info form
 export default function AddInfoForm() {
-  const navigation = useNavigation();
   const route = useRoute();
+  const { login } = React.useContext(AuthContext);
 
   const { username } = route.params;
   const [gender, setGender] = React.useState('');
@@ -42,7 +43,7 @@ export default function AddInfoForm() {
       .then((res) => {
         console.log(res);
         if (status === 200) {
-          navigation.navigate('Tabs', { username });
+          login({ username });
         }
       })
       .catch((err) => console.log(err));
@@ -92,6 +93,7 @@ export default function AddInfoForm() {
         <RadioButton.Item label="Male" value="M" />
         <RadioButton.Item label="Female" value="F" />
       </RadioButton.Group>
+
       {/* Major */}
       <Text style={Style.sectionText}>Major:</Text>
       <View style={Style.SectionStyle}>
@@ -101,6 +103,7 @@ export default function AddInfoForm() {
           onChangeText={(text) => setMajor(text)}
         />
       </View>
+
       {/* College */}
       <Text style={Style.sectionText}>College:</Text>
       <Picker
@@ -113,6 +116,7 @@ export default function AddInfoForm() {
         <Picker.Item label="United College" value="UC" />
         <Picker.Item label="Shaw College" value="SC" />
       </Picker>
+
       <Button title="Submit!" onPress={confirmAddInfo} />
     </View>
   );
