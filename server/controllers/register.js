@@ -11,27 +11,29 @@ const Client = mongoose.model('client');
 const Token = mongoose.model('token');
 
 // Exports
-module.exports = function register(req, res) {
+module.exports = async function register(req, res) {
   // Fetch request body
   const { username, password, email } = req.body;
 
   // Fetch client and token by username and email
-  const clientUsername = Client.findOne({ username });
-  const clientEmail = Client.findOne({ email });
-  const tokenUsername = Token.findOne({ username });
-  const tokenEmail = Token.findOne({ email });
+  const clientUsername = await Client.findOne({ username });
+  const clientEmail = await Client.findOne({ email });
+  const tokenUsername = await Token.findOne({ username });
+  const tokenEmail = await Token.findOne({ email });
 
   console.log(clientUsername._id.toString());
 
   let bool = false;
 
   // Existing client and email
-  clientUsername.then((data) => {
+  await clientUsername.then((data) => {
     // Client exist
     if (data) {
       bool = true;
     }
   });
+  console.log('bool: ');
+  console.log(bool);
   if (bool) {
     return res.status(422).send({
       error: 'clientUsernameError',
