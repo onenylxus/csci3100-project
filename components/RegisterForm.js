@@ -48,6 +48,7 @@ export default function RegisterForm() {
         email,
       }),
     })
+      .then((res) => res.json())
       .then((res) => {
         console.log(res);
         if (res.status === 200) {

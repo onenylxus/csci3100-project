@@ -18,16 +18,15 @@ module.exports = function login(req, res) {
   q.then((data) => {
     // Account not exist
     if (!data) {
-      return res.status(422).json({
-        error:
-          'This account does not exist, please try again or start register CU There.',
+      return res.status(422).send({
+        error: 'accountError',
       });
     }
 
     // Check password
     if (password !== data.password) {
-      return res.status(422).json({
-        error: 'The password is incorrect, please try again',
+      return res.status(422).send({
+        error: 'passwordError',
       });
     }
     return res.status(200).send({ msg: 'User is verified' });

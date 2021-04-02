@@ -17,27 +17,27 @@ module.exports = function register(req, res) {
   // Check username existence
   Client.findOne({ username }).then((data1) => {
     if (data1) {
-      return res.status(422).json({
+      return res.status(422).send({
         error: 'This username has been used by someone else.',
       });
     }
     // Check email existence
     Client.findOne({ email }).then((data2) => {
       if (data2) {
-        return res.status(422).json({
+        return res.status(422).send({
           error: 'This email has been registered.',
         });
       }
 
       Token.findOne({ username }).then((data3) => {
         if (data3) {
-          return res.status(422).json({
+          return res.status(422).send({
             error: 'This username has been used by someone else.',
           });
         }
         Token.findOne({ email }).then((data4) => {
           if (data4) {
-            return res.status(422).json({
+            return res.status(422).send({
               error: 'This email has been registered.',
             });
           }

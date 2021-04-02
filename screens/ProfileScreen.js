@@ -90,7 +90,7 @@ export default function ProfileScreen({ navigation }) {
                       margin: 8,
                       borderRadius: 16,
                     }}
-                    source={require('../assets/images/defaultprofile.png')}
+                    // source={require('../assets/images/defaultprofile.png')}
                     capInsets
                   />
                 </Row>

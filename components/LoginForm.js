@@ -38,10 +38,43 @@ export default function LoginForm() {
         password,
       }),
     })
+      .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         if (res.status === 200) {
+          console.log(res.msg);
           navigation.navigate('Tabs', { username });
+        } else if (res.status === 422) {
+          console.log(res.error);
+          switch (res.error) {
+            case 'accountError':
+              return Alert.alert(
+                'Account does not exist',
+                'We could not find an account with this username, please try again.',
+                [
+                  {
+                    text: 'OK',
+                    onPress: () => undefined,
+                    style: 'destructive',
+                  },
+                ]
+              );
+
+            case 'passwordError':
+              return Alert.alert(
+                'Wrong password',
+                'The password you provided is incorrect. Please try again.',
+                [
+                  {
+                    text: 'OK',
+                    onPress: () => undefined,
+                    style: 'destructive',
+                  },
+                ]
+              );
+
+            default:
+              return new Error();
+          }
         }
       })
       .catch((err) => console.log(err));

@@ -17,7 +17,7 @@ module.exports = function addInfo(req, res) {
 
   q.then((data) => {
     if (!data) {
-      return res.status(422).json({
+      return res.status(422).send({
         error: 'Your verification code is invalid.',
       });
     }
