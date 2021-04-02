@@ -57,7 +57,7 @@ module.exports = function register(req, res) {
               from: `csci3100cuthere@gmail.com`,
               to: email,
               subject: `Confirmation email for ${username}`,
-              html: `Hello,<br /></br >Your verification code is ${token.code}. This code will expire in 15 minutes.<br /><br />CU There team`,
+              html: `Hello, thank you for signing up to CU There!<br /></br >Your verification code is ${token.code}. This code will expire in 15 minutes.<br /><br />CU There team`,
             });
             return res.status(200).json({ msg: 'Email sent. ' });
           } catch (err) {

@@ -37,7 +37,6 @@ export default function RegisterForm() {
       `Register request sent with username ${username}, password ${password} and email ${email}`
     );
 
-    /* eslint-disable no-undef */
     await fetch(`https://${Source.heroku}/register`, {
       method: 'POST',
       headers: {
@@ -68,7 +67,6 @@ export default function RegisterForm() {
         }
       })
       .catch((err) => console.log(err));
-    /* eslint-enable no-undef */
   }
 
   async function confirmRegister() {

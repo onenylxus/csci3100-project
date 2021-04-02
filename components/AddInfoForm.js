@@ -4,6 +4,7 @@ import { Alert, Button, Text, TextInput, View } from 'react-native';
 import { Picker } from '@react-native-community/picker';
 import { RadioButton } from 'react-native-paper';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export Add info form
@@ -17,8 +18,7 @@ export default function AddInfoForm() {
   const [name, setName] = React.useState('');
   const [major, setMajor] = React.useState('');
 
-  async function confirmAddInfo() {
-    /* eslint-disable no-undef */
+  async function submitData() {
     await fetch(`https://${Source.heroku}/addInfo`, {
       method: 'POST',
       headers: {
@@ -31,29 +31,39 @@ export default function AddInfoForm() {
         name,
         major,
       }),
-    }).then((res) => {
-      console.log(res);
-      if (res.status === 200) {
-        navigation.navigate('Tabs', { username });
-      } else {
-        return Alert.alert(
-          'Some informations are missing',
-          'Some fields are missing, do you want to continue without these information? (You can edit these informations in the application later.',
-          [
-            {
-              text: 'Cancel',
-              onPress: () => undefined,
-              style: 'cancel',
+    })
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          navigation.navigate('Tabs', { username });
+        }
+      })
+      .catch((err) => console.log(err));
+  }
+
+  async function confirmAddInfo() {
+    if ([gender, college, name, major].every((data) => data.length > 0)) {
+      submitData();
+    } else {
+      return Alert.alert(
+        'Some informations are missing',
+        'Some fields are missing, do you want to continue without these information? (You can edit these informations in the application later.)',
+        [
+          {
+            text: 'Cancel',
+            onPress: () => undefined,
+            style: 'cancel',
+          },
+          {
+            text: 'Continue',
+            onPress: () => {
+              submitData();
             },
-            {
-              text: 'Continue',
-              onPress: () => navigation.navigate('Tabs', { username }),
-              style: 'destructive',
-            },
-          ]
-        );
-      }
-    });
+            style: 'destructive',
+          },
+        ]
+      );
+    }
   }
 
   return (

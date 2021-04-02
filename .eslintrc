@@ -19,5 +19,8 @@
     "react/jsx-filename-extension": 0,
     "react/prop-types": 0,
     "react/style-prop-object": 0
+  },
+  "env": {
+    "browser": true
   }
 }
