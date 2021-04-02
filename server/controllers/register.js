@@ -21,9 +21,7 @@ module.exports = function register(req, res) {
   const tokenUsername = Token.findOne({ username });
   const tokenEmail = Token.findOne({ email });
 
-  const testClientUsername = Client.aggregate([{ $match: { username } }]);
-  console.log('Aggregate result:');
-  console.log(testClientUsername[0]);
+  console.log(clientUsername._id);
 
   let bool = false;
 
