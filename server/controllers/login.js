@@ -13,13 +13,13 @@ module.exports = function login(req, res) {
   const { username, password } = req.body;
 
   // Fetch client
-  const q = Client.where({ username });
+  const client = Client.findOne({ username });
 
-  q.then((data) => {
+  client.then((data) => {
     console.log(data);
 
     // Account not exist
-    if (username !== data.username) {
+    if (!data) {
       return res.status(422).send({
         error: 'accountError',
       });
