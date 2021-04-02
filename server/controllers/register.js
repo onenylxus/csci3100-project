@@ -26,7 +26,7 @@ module.exports = async function register(req, res) {
   let bool = false;
 
   // Existing client and email
-  if (clientUsername !== null && clientUsername._id.toString()) {
+  if (clientUsername.hasOwnProperty('_id') && clientUsername._id.toString()) {
     return res.status(422).send({
       error: 'clientUsernameError',
     });
