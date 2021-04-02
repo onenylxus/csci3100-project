@@ -5,6 +5,7 @@
     "consistent-return": 0,
     "func-names": 0,
     "global-require": 0,
+    "import/no-dynamic-require": 0,
     "import/no-unresolved": 0,
     "no-bitwise": 0,
     "no-console": 0,
@@ -18,5 +19,8 @@
     "react/jsx-filename-extension": 0,
     "react/prop-types": 0,
     "react/style-prop-object": 0
+  },
+  "env": {
+    "browser": true
   }
 }

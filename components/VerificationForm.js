@@ -14,7 +14,6 @@ export default function VerificationForm() {
   const [code, setCode] = React.useState('');
 
   async function confirmToken() {
-    /* eslint-disable no-undef */
     await fetch(`https://${Source.heroku}/verify`, {
       method: 'POST',
       headers: {
@@ -44,7 +43,6 @@ export default function VerificationForm() {
         }
       })
       .catch((err) => console.log(err));
-    /* eslint-disable no-undef */
   }
 
   return (

@@ -3,9 +3,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 // Controller
+const path = './controllers/';
 const controller = {
-  register: require('./controllers/register'),
-  verify: require('./controllers/verify'),
+  addInfo: require(path + 'addInfo'),
+  register: require(path + 'register'),
+  verify: require(path + 'verify'),
 };
 
 // Variables
@@ -33,6 +35,9 @@ mongoose.connection.on('error', (err) => {
 app.get('/', (req, res) => {
   res.send('CU There');
 });
+
+// Add Info-form
+app.post('/addInfo', controller.addInfo);
 
 // Register
 app.post('/register', controller.register);
