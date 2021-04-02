@@ -42,6 +42,7 @@ module.exports = function register(req, res) {
             error: 'tokenUsernameError',
           });
         }
+
         tokenEmail.then((data4) => {
           if (data4) {
             return res.status(422).send({
