@@ -15,7 +15,9 @@ module.exports = function verify(req, res) {
   const { username, code } = req.body;
 
   // Fetch token
-  Token.findOne({ username }).then((data) => {
+  const token = Token.findOne({ username });
+
+  token.then((data) => {
     // Check token existence
     if (!data) {
       return res.status(422).send({
