@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const path = './controllers/';
 const controller = {
   addInfo: require(path + 'addInfo'),
+  createPost: require(path + 'createPost'),
   login: require(path + 'login'),
   register: require(path + 'register'),
   verify: require(path + 'verify'),
@@ -40,6 +41,9 @@ app.get('/', (req, res) => {
 // Add Info-form
 app.post('/addInfo', controller.addInfo);
 
+// Create post
+app.post('/createPost', controller.createPost);
+
 // Login
 app.post('/login', controller.login);
 
@@ -48,9 +52,6 @@ app.post('/register', controller.register);
 
 // Verification link
 app.post('/verify', controller.verify);
-
-// Create post
-app.post('/createPost', controller.createPost);
 
 // Other requests
 app.get('*', (req, res) => {
