@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { Text, View, Button } from 'react-native';
+import { View, Button } from 'react-native';
 import CreatePostForm from '../components/CreatePostForm';
 import Style from '../assets/style';
 
@@ -8,7 +8,6 @@ import Style from '../assets/style';
 export default function CreatePostScreen({ navigation }) {
   return (
     <View style={Style.container}>
-      <Text style={{ alignSelf: 'flex-start' }}>Create Post</Text>
       <CreatePostForm />
       <Button title="Post it!" onPress={() => navigation.navigate('Profile')} />
     </View>
