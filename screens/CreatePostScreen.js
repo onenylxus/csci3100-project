@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { View, ImageBackground, Dimensions } from 'react-native';
+import { View, Button } from 'react-native';
 import CreatePostForm from '../components/CreatePostForm';
 import Style from '../assets/style';
 
@@ -26,30 +26,9 @@ export default function CreatePostScreen() {
   }
 
   return (
-    <View style={{ flex: 1 }}>
-      <ImageBackground
-        resizeMode="cover"
-        source={require('../assets/images/webBG.png')}
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          alignContent: 'center',
-        }}
-      >
-        <View
-          style={{
-            width: loginFormWidth,
-            alignSelf: 'center',
-            height: '100%',
-            justifyContent: 'center',
-            marginBottom: windowWidth < 800 ? 0 : '10%',
-          }}
-        >
-          <View>
-            <CreatePostForm />
-          </View>
-        </View>
-      </ImageBackground>
+    <View style={Style.container}>
+      <CreatePostForm />
+      <Button title="Post it!" onPress={() => navigation.navigate('Profile')} />
     </View>
   );
 }

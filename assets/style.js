@@ -110,11 +110,8 @@ export default StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 16,
     alignItems: 'flex-start',
-    alignSelf: 'center',
     flexDirection: 'column',
-    maxWidth: '80%',
-    minWidth: '80%',
-    backgroundColor: '#ffffff',
+    width: '95%',
   },
 
   // Styles of Verification Page
@@ -140,30 +137,12 @@ export default StyleSheet.create({
     borderColor: '#000000',
     borderWidth: 1,
     backgroundColor: '#f8f8f8',
-    width: '85%',
-    minHeight: windowWidth < 800 ? 100 : '90%',
+    width: '95%',
+    height: 100,
+    marginVertical: 10,
     textAlign: 'left',
     textAlignVertical: 'top',
-    alignSelf: 'center',
     borderRadius: 10,
-    minWidth: '75%',
-    maxWidth: '75%',
-    padding: '2%',
-    marginVertical: 15,
-  },
-
-  createPostContainer: {
-    justifyContent: 'center',
-    alignContent: 'center',
-    minWidth: '100%',
-    maxWidth: '100%',
-  },
-
-  createPostInner: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignContent: 'center',
-    marginLeft: '13%',
   },
 
   postTitleBox: {
