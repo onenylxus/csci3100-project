@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const PostSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: true,
+    required: false,
   },
   timestamp: {
     type: Date,
@@ -21,15 +21,15 @@ const PostSchema = new mongoose.Schema({
   },
   numOfLike: {
     type: Number,
-    required: true,
+    required: false,
   },
   numOfDislike: {
     type: Number,
-    required: true,
+    required: false,
   },
   comments: {
     type: String,
-    required: true,
+    required: false,
   },
   tags: {
     type: String,

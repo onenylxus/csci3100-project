@@ -1,16 +1,15 @@
 // Import
 import React from 'react';
 import { TextInput, View, Button } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export Create Post Form
 export default function CreatePostForm() {
   const navigation = useNavigation();
-  const route = useRoute();
-
-  const { username } = route.params;
+  // const route = useRoute();
+  // const { username } = route.params;
   const [content, setContent] = React.useState('');
   const [title, setTitle] = React.useState('');
   const [tags, setTags] = React.useState('');
@@ -18,13 +17,12 @@ export default function CreatePostForm() {
   let status = 0;
 
   async function submitData() {
-    await fetch(`https://${Source.heroku}/`, {
+    await fetch(`https://${Source.heroku}/createPost`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username,
         content,
         title,
         tags,
@@ -38,7 +36,7 @@ export default function CreatePostForm() {
       .then((res) => {
         console.log(res);
         if (status === 200) {
-          navigation.navigate('Profile', { username });
+          navigation.navigate('Profile');
         }
       })
       .catch((err) => console.log(err));
@@ -46,7 +44,7 @@ export default function CreatePostForm() {
 
   return (
     <View style={Style.inputContainer}>
-      <textInput
+      <TextInput
         style={Style.TextInput}
         placeholder="Post title"
         onChangeText={(text) => setTitle(text)}
@@ -59,12 +57,12 @@ export default function CreatePostForm() {
         placeholder="What's on your mind?"
         onChangeText={(text) => setContent(text)}
       />
-      <textInput
+      <TextInput
         style={Style.TextInput}
         placeholder="Tags you want to add"
         onChangeText={(text) => setTags(text)}
       />
-      <Button title="Post!" onPress={submitData()} />
+      <Button title="Post!" onPress={submitData} />
     </View>
   );
 }
