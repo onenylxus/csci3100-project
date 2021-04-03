@@ -21,11 +21,11 @@ const PostSchema = new mongoose.Schema({
   },
   numOfLike: {
     type: Number,
-    required: false,
+    required: true,
   },
   numOfDislike: {
     type: Number,
-    required: false,
+    required: true,
   },
   comments: {
     type: String,

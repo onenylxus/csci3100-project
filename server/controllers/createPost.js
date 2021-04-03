@@ -18,6 +18,8 @@ module.exports = function createPost(req, res) {
     title,
     content,
     tags,
+    numOfLike: 0,
+    numOfDislike: 0,
   });
   post
     .save()
