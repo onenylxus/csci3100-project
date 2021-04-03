@@ -12,6 +12,17 @@ module.exports = function createPost(req, res) {
   // Fetch request body
   const { username, title, content, tags } = req.body;
 
+  if (title === '') {
+    return res.status(422).send({
+      error: 'missingTitleError',
+    });
+  }
+  if (content === '') {
+    return res.status(422).send({
+      error: 'missingContentError',
+    });
+  }
+
   // Create post and save to database
   const post = new Post({
     username,
