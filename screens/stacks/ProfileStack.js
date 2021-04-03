@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import ProfileScreen from '../ProfileScreen';
 import EditProfileScreen from '../EditProfileScreen';
 import SettingsScreen from '../SettingsScreen';
+import Header from '../../components/Header';
 
 // Stack
 const Stack = createStackNavigator();
@@ -38,8 +39,16 @@ export default function ProfileStack() {
           ),
         }}
       />
-      <Stack.Screen name="EditProfile" component={EditProfileScreen} />
-      <Stack.Screen name="Settings" component={SettingsScreen} />
+      <Stack.Screen
+        name="EditProfile"
+        component={EditProfileScreen}
+        options={Header}
+      />
+      <Stack.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={Header}
+      />
     </Stack.Navigator>
   );
 }

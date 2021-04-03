@@ -10,13 +10,22 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Row, Col, Grid } from 'react-native-easy-grid';
+import { useNavigation } from '@react-navigation/native';
+import AuthContext from '../components/AuthContext';
 import PostBox from '../components/PostBox';
 import Style from '../assets/style';
 
 // Export profile screen
 
-export default function ProfileScreen({ navigation }) {
+export default function ProfileScreen() {
   const windowWidth = Dimensions.get('window').width;
+  const navigation = useNavigation();
+  const { getUser } = React.useContext(AuthContext);
+
+  const [username, setUsername] = React.useState('');
+
+  // Get username
+  getUser(setUsername);
 
   function styleByDevice(widthOfDevice, component) {
     if (widthOfDevice < 1100) {
@@ -108,7 +117,7 @@ export default function ProfileScreen({ navigation }) {
                 </Row>
               </Col>
               <Text style={styleByDevice(windowWidth, 'userInfo')}>
-                Username{'\n'}
+                Username: {username} {'\n'}
                 Major:{'\n'}
                 College:{'\n'}
               </Text>
