@@ -63,7 +63,9 @@ export default StyleSheet.create({
   inputContainer: {
     justifyContent: 'center',
     marginBottom: 16,
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+    width: '95%',
   },
 
   createPostBox: {
@@ -72,10 +74,10 @@ export default StyleSheet.create({
     backgroundColor: '#f8f8f8',
     width: '95%',
     height: 100,
-    margin: 16,
+    marginVertical: 10,
     textAlign: 'left',
     textAlignVertical: 'top',
-    borderRadius: 2,
+    borderRadius: 10,
   },
 
   profileContainerPC: {

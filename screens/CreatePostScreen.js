@@ -8,7 +8,6 @@ import Style from '../assets/style';
 export default function CreatePostScreen() {
   return (
     <View style={Style.container}>
-      <Text style={{ alignSelf: 'flex-start' }}>Create Post</Text>
       <CreatePostForm />
     </View>
   );
