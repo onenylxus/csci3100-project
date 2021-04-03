@@ -9,14 +9,17 @@ import Style from '../assets/style';
 // Export Create Post Form
 export default function CreatePostForm() {
   const navigation = useNavigation();
-  const auth = React.useContext(AuthContext);
+  const { getUser } = React.useContext(AuthContext);
 
+  const [username, setUsername] = React.useState('');
   const [content, setContent] = React.useState('');
   const [title, setTitle] = React.useState('');
   const [tags, setTags] = React.useState('');
 
+  // Get username
+  getUser(setUsername);
+
   let status = 0;
-  console.log(auth);
 
   async function submitData() {
     await fetch(`https://${Source.heroku}/createPost`, {
@@ -78,7 +81,7 @@ export default function CreatePostForm() {
 
   return (
     <View style={Style.inputContainer}>
-      <Text>Hello</Text>
+      <Text>Hello {username}</Text>
       <TextInput
         style={Style.TextInput}
         placeholder="Post title"

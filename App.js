@@ -11,6 +11,7 @@ import {
   faPlus,
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import AuthContext from './components/AuthContext';
 import ChatroomStack from './screens/stacks/ChatroomStack';
 import CreatePostStack from './screens/stacks/CreatePostStack';
@@ -28,38 +29,28 @@ const Tab = createBottomTabNavigator();
 
 // Export application
 export default function App() {
-  // User state
-  const [state, dispatch] = React.useReducer(
-    (prev, user) => {
-      switch (user) {
-        case 'login':
-          return {
-            isGuest: false,
-            username: user.username,
-          };
-        case 'logout':
-          return {
-            isGuest: true,
-            username: null,
-          };
-        default:
-          return new Error();
-      }
-    },
-    {
-      isGuest: true,
-      username: null,
-    }
-  );
+  // Clear
+  AsyncStorage.clear();
+
+  // Login state
+  const [isLogin, setIsLogin] = React.useState(false);
 
   // Authentication method
   const authMethod = React.useMemo(
     () => ({
       login: async (data) => {
-        dispatch({ type: 'login', username: data.username });
+        await AsyncStorage.setItem('@username', data.username);
+        setIsLogin(true);
       },
       logout: async () => {
-        dispatch({ type: 'logout' });
+        await AsyncStorage.setItem('@username', '');
+        setIsLogin(false);
+      },
+      getUser: async (setter) => {
+        const user = await AsyncStorage.getItem('@username');
+        if (user !== null) {
+          setter(user);
+        }
       },
     }),
     []
@@ -72,8 +63,8 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <AuthContext.Provider value={{ ...authMethod, username: state.username }}>
-        {state.username !== null ? (
+      <AuthContext.Provider value={authMethod}>
+        {isLogin ? (
           <Tab.Navigator
             initialRouteName="Feed"
             screenOptions={({ route }) => ({
