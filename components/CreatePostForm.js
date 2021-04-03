@@ -1,18 +1,22 @@
 // Import
 import React from 'react';
-import { Alert, Button, TextInput, View } from 'react-native';
+import { Alert, Button, Text, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import AuthContext from './AuthContext';
 import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export Create Post Form
 export default function CreatePostForm() {
   const navigation = useNavigation();
+  const auth = React.useContext(AuthContext);
+
   const [content, setContent] = React.useState('');
   const [title, setTitle] = React.useState('');
   const [tags, setTags] = React.useState('');
 
   let status = 0;
+  console.log(auth);
 
   async function submitData() {
     await fetch(`https://${Source.heroku}/createPost`, {
@@ -74,6 +78,7 @@ export default function CreatePostForm() {
 
   return (
     <View style={Style.inputContainer}>
+      <Text>Hello</Text>
       <TextInput
         style={Style.TextInput}
         placeholder="Post title"

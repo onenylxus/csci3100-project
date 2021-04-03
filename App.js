@@ -72,7 +72,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <AuthContext.Provider value={authMethod}>
+      <AuthContext.Provider value={{ ...authMethod, username: state.username }}>
         {state.username !== null ? (
           <Tab.Navigator
             initialRouteName="Feed"

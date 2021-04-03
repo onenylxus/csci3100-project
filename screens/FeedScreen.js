@@ -1,7 +1,6 @@
 // Import
 import React from 'react';
 import { View, ScrollView } from 'react-native';
-// import Style from '../assets/style';
 import SearchBar from '../components/SearchBar';
 import PostBox from '../components/PostBox';
 
