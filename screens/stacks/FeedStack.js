@@ -2,6 +2,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import FeedScreen from '../FeedScreen';
+import Header from '../../components/Header';
 
 // Stack
 const Stack = createStackNavigator();
@@ -10,7 +11,7 @@ const Stack = createStackNavigator();
 export default function FeedStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Feed" component={FeedScreen} />
+      <Stack.Screen name="Feed" component={FeedScreen} options={Header} />
     </Stack.Navigator>
   );
 }

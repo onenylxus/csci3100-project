@@ -22,15 +22,17 @@ export default function ProfileStack() {
         name="Profile"
         component={ProfileScreen}
         options={{
+          headerTitle: 'CU There',
           headerStyle: {
             backgroundColor: '#69C6F0',
           },
+          headerTintColor: '#ffffff',
           headerRight: () => (
             <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
               <FontAwesomeIcon
                 icon={faCog}
-                color="#000000"
-                style={{ width: 32, height: 32, margin: 8, borderRadius: 16 }}
+                color="#ffffff"
+                style={{ width: 32, height: 32, margin: 20, borderRadius: 20 }}
               />
             </TouchableOpacity>
           ),

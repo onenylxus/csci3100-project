@@ -2,6 +2,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import CreatePostScreen from '../CreatePostScreen';
+import Header from '../../components/Header';
 
 // Import stack
 const Stack = createStackNavigator();
@@ -10,7 +11,11 @@ const Stack = createStackNavigator();
 export default function CreatePostStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="CreatePost" component={CreatePostScreen} />
+      <Stack.Screen
+        name="CreatePost"
+        component={CreatePostScreen}
+        options={Header}
+      />
     </Stack.Navigator>
   );
 }

@@ -89,7 +89,7 @@ export default function App() {
               scrollEnabled: false,
             }}
           >
-            <Tab.Screen name="Feed" component={FeedStack} option={Header} />
+            <Tab.Screen name="Feed" component={FeedStack} options={Header} />
             <Tab.Screen name="CreatePost" component={CreatePostStack} />
             <Tab.Screen name="Chatroom" component={ChatroomStack} />
             <Tab.Screen name="Profile" component={ProfileStack} />
@@ -99,7 +99,7 @@ export default function App() {
             <Stack.Screen
               name="ForgotPassword"
               component={ForgotPasswordStack}
-              option={NoHeader}
+              options={NoHeader}
             />
             <Stack.Screen
               name="Login"
@@ -109,12 +109,12 @@ export default function App() {
             <Stack.Screen
               name="Register"
               component={RegisterStack}
-              options={Header}
+              options={NoHeader}
             />
             <Stack.Screen
               name="GuestFeed"
               component={GuestFeedStack}
-              options={Header}
+              options={NoHeader}
             />
           </Stack.Navigator>
         )}

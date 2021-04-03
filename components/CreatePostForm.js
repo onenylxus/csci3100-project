@@ -82,10 +82,10 @@ export default function CreatePostForm() {
 
   return (
     <View style={Style.inputContainer}>
-      <Text>Hello {username}</Text>
+      <Text>Hello {username}!</Text>
       <TextInput
-        style={Style.TextInput}
-        placeholder="Post title"
+        style={Style.SectionStyle}
+        placeholder="  Post title"
         onChangeText={(text) => setTitle(text)}
       />
       <TextInput
@@ -93,12 +93,12 @@ export default function CreatePostForm() {
         multiline
         scrollEnabled
         enablesReturnKeyAutomatically
-        placeholder="What's on your mind?"
+        placeholder="  What's on your mind?"
         onChangeText={(text) => setContent(text)}
       />
       <TextInput
-        style={Style.TextInput}
-        placeholder="Tags you want to add"
+        style={Style.SectionStyle}
+        placeholder="  Tags you want to add"
         onChangeText={(text) => setTags(text)}
       />
       <Button title="Post!" onPress={submitData} />
