@@ -15,13 +15,13 @@ import {
   faEyeSlash,
   faEye,
 } from '@fortawesome/free-solid-svg-icons';
-import { useNavigation } from '@react-navigation/native';
+import AuthContext from './AuthContext';
 import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export login form
 export default function LoginForm() {
-  const navigation = useNavigation();
+  const { login } = React.useContext(AuthContext);
 
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -47,7 +47,7 @@ export default function LoginForm() {
       .then((res) => res.json())
       .then((res) => {
         if (status === 200) {
-          navigation.navigate('Tabs', { username });
+          login({ username });
         } else if (status === 422) {
           switch (res.error) {
             case 'accountError':

@@ -1,12 +1,12 @@
 // Import
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, View, Dimensions } from 'react-native';
 import { Picker } from '@react-native-community/picker';
 
 // Export College Picker
 
 export default function CollegePicker() {
-  const [selectedCollege, setSelectedCollege] = useState();
+  const [college, setCollege] = React.useState();
   const windowWidth = Dimensions.get('window').width;
 
   function styleByDevice(widthOfDevice, component) {
@@ -47,35 +47,26 @@ export default function CollegePicker() {
           width: styleByDevice(windowWidth, 'width'),
         }}
       >
-        <Text>College: {selectedCollege}</Text>
+        <Text>College: {college}</Text>
         <View>
           <Picker
             style={{
               width: styleByDevice(windowWidth, 'pickerWidth'),
               alignSelf: 'center',
             }}
-            selectedValue={selectedCollege}
-            onValueChange={(itemValue) => setSelectedCollege(itemValue)}
+            selectedValue={college}
+            onValueChange={(itemValue) => setCollege(itemValue)}
           >
-            <Picker.Item label="Select an option" value="Select an option" />
-            <Picker.Item label="Chung Chi College" value="Chung Chi College" />
-            <Picker.Item label="New Asia College" value="New Asia College" />
-            <Picker.Item label="United College" value="United College" />
-            <Picker.Item label="Shaw College" value="Shaw College" />
-            <Picker.Item
-              label="Morningside College"
-              value="Morningside College"
-            />
-            <Picker.Item label="S.H. Ho College" value="S.H. Ho College" />
-            <Picker.Item label="CW Chu College" value="CW Chu College" />
-            <Picker.Item
-              label="Wu Yee Sun College"
-              value="Wu Yee Sun College"
-            />
-            <Picker.Item
-              label="Lee Wo Sing College"
-              value="Lee Wo Sing College"
-            />
+            <Picker.Item label="Select an option" value="" />
+            <Picker.Item label="Chung Chi College" value="CC" />
+            <Picker.Item label="New Asia College" value="NA" />
+            <Picker.Item label="United College" value="UC" />
+            <Picker.Item label="Shaw College" value="SC" />
+            <Picker.Item label="Morningside College" value="MC" />
+            <Picker.Item label="S.H. Ho College" value="SH" />
+            <Picker.Item label="CW Chu College" value="WC" />
+            <Picker.Item label="Wu Yee Sun College" value="YS" />
+            <Picker.Item label="Lee Wo Sing College" value="WS" />
           </Picker>
         </View>
       </View>

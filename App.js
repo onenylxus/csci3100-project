@@ -1,37 +1,133 @@
 // Import
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import ForgotPasswordStack from './screens/navigators/ForgotPasswordStack';
+import {
+  faComment,
+  faHome,
+  faPlus,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
+import AuthContext from './components/AuthContext';
+import ChatroomStack from './screens/stacks/ChatroomStack';
+import CreatePostStack from './screens/stacks/CreatePostStack';
+import FeedStack from './screens/stacks/FeedStack';
+import ForgotPasswordStack from './screens/stacks/ForgotPasswordStack';
+import GuestFeedStack from './screens/stacks/GuestFeedStack';
 import Header from './components/Header';
-import HomeTab from './screens/navigators/HomeTab';
 import LoginScreen from './screens/LoginScreen';
-import RegisterStack from './screens/navigators/RegisterStack';
-import VerificationScreen from './screens/VerificationScreen';
-import EditProfileScreen from './screens/EditProfileScreen';
-import AddInfoScreen from './screens/AddInfoScreen';
+import ProfileStack from './screens/stacks/ProfileStack';
+import RegisterStack from './screens/stacks/RegisterStack';
 
-// Stack
+// Stack and tab
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 // Export application
 export default function App() {
+  // User state
+  const [state, dispatch] = React.useReducer(
+    (prev, user) => {
+      switch (user) {
+        case 'login':
+          return {
+            isGuest: false,
+            username: user.username,
+          };
+        case 'logout':
+          return {
+            isGuest: true,
+            username: null,
+          };
+        default:
+          return new Error();
+      }
+    },
+    {
+      isGuest: true,
+      username: null,
+    }
+  );
+
+  // Authentication method
+  const authMethod = React.useMemo(
+    () => ({
+      login: async (data) => {
+        dispatch({ type: 'login', username: data.username });
+      },
+      logout: async () => {
+        dispatch({ type: 'logout' });
+      },
+    }),
+    []
+  );
+
+  // No header option
   function NoHeader() {
     return { headerShown: false };
   }
-  // prettier-ignore
+
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="ForgotPassword" component={ForgotPasswordStack} options={NoHeader} />
-        <Stack.Screen name="Tabs" component={HomeTab} options={Header} />
-        <Stack.Screen name="Verification" component={VerificationScreen} options={NoHeader} />
-        <Stack.Screen name="Login" component={LoginScreen} options={Header} />
-        <Stack.Screen name="Register" component={RegisterStack} options={Header} />
-        <Stack.Screen name="EditProfile" component={EditProfileScreen} options={Header} />
-        <Stack.Screen name="AddInfo" component={AddInfoScreen} options={NoHeader} />
-      </Stack.Navigator>
+      <AuthContext.Provider value={{ ...authMethod, username: state.username }}>
+        {state.username !== null ? (
+          <Tab.Navigator
+            initialRouteName="Feed"
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ color }) => {
+                switch (route.name) {
+                  case 'Chatroom':
+                    return <FontAwesomeIcon icon={faComment} color={color} />;
+                  case 'CreatePost':
+                    return <FontAwesomeIcon icon={faPlus} color={color} />;
+                  case 'Feed':
+                    return <FontAwesomeIcon icon={faHome} color={color} />;
+                  case 'Profile':
+                    return <FontAwesomeIcon icon={faUser} color={color} />;
+                  default:
+                    return new Error();
+                }
+              },
+            })}
+            tabBarOptions={{
+              activeTintColor: 'tomato',
+              inactiveTintColor: 'gray',
+              scrollEnabled: false,
+            }}
+          >
+            <Tab.Screen name="Feed" component={FeedStack} />
+            <Tab.Screen name="CreatePost" component={CreatePostStack} />
+            <Tab.Screen name="Chatroom" component={ChatroomStack} />
+            <Tab.Screen name="Profile" component={ProfileStack} />
+          </Tab.Navigator>
+        ) : (
+          <Stack.Navigator initialRouteName="Login">
+            <Stack.Screen
+              name="ForgotPassword"
+              component={ForgotPasswordStack}
+              option={NoHeader}
+            />
+            <Stack.Screen
+              name="Login"
+              component={LoginScreen}
+              option={Header}
+            />
+            <Stack.Screen
+              name="Register"
+              component={RegisterStack}
+              options={Header}
+            />
+            <Stack.Screen
+              name="GuestFeed"
+              component={GuestFeedStack}
+              options={Header}
+            />
+          </Stack.Navigator>
+        )}
+      </AuthContext.Provider>
       <StatusBar style="auto" />
     </NavigationContainer>
   );
