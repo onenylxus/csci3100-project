@@ -16,6 +16,7 @@ import ChatroomStack from './screens/stacks/ChatroomStack';
 import CreatePostStack from './screens/stacks/CreatePostStack';
 import FeedStack from './screens/stacks/FeedStack';
 import ForgotPasswordStack from './screens/stacks/ForgotPasswordStack';
+import GuestFeedStack from './screens/stacks/GuestFeedStack';
 import Header from './components/Header';
 import LoginScreen from './screens/LoginScreen';
 import ProfileStack from './screens/stacks/ProfileStack';
@@ -117,6 +118,11 @@ export default function App() {
             <Stack.Screen
               name="Register"
               component={RegisterStack}
+              options={Header}
+            />
+            <Stack.Screen
+              name="GuestFeed"
+              component={GuestFeedStack}
               options={Header}
             />
           </Stack.Navigator>
