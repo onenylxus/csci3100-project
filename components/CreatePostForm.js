@@ -1,6 +1,9 @@
 // Import
 import React from 'react';
-import { TextInput, View, Text } from 'react-native';
+import { Alert, Button, Text, TextInput, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import AuthContext from './AuthContext';
+import Source from '../assets/source';
 import Style from '../assets/style';
 
 const windowWidth = Dimensions.get('window').width;
@@ -93,15 +96,26 @@ export default function CreatePostForm() {
 
   return (
     <View style={Style.inputContainer}>
-      <Text>Create Post</Text>
+      <Text>Hello</Text>
+      <TextInput
+        style={Style.TextInput}
+        placeholder="Post title"
+        onChangeText={(text) => setTitle(text)}
+      />
       <TextInput
         style={Style.createPostBox}
         multiline
         scrollEnabled
         enablesReturnKeyAutomatically
         placeholder="What's on your mind?"
-        // onChangeText={(text) => setPost(text)}
+        onChangeText={(text) => setContent(text)}
       />
+      <TextInput
+        style={Style.TextInput}
+        placeholder="Tags you want to add"
+        onChangeText={(text) => setTags(text)}
+      />
+      <Button title="Post!" onPress={submitData} />
     </View>
   );
 }
