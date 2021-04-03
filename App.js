@@ -30,7 +30,7 @@ const Tab = createBottomTabNavigator();
 // Export application
 export default function App() {
   // Clear
-  AsyncStorage.clear();
+  // AsyncStorage.clear();
 
   // Login state
   const [isLogin, setIsLogin] = React.useState(false);
@@ -89,7 +89,7 @@ export default function App() {
               scrollEnabled: false,
             }}
           >
-            <Tab.Screen name="Feed" component={FeedStack} />
+            <Tab.Screen name="Feed" component={FeedStack} option={Header} />
             <Tab.Screen name="CreatePost" component={CreatePostStack} />
             <Tab.Screen name="Chatroom" component={ChatroomStack} />
             <Tab.Screen name="Profile" component={ProfileStack} />
@@ -104,7 +104,7 @@ export default function App() {
             <Stack.Screen
               name="Login"
               component={LoginScreen}
-              option={Header}
+              options={Header}
             />
             <Stack.Screen
               name="Register"

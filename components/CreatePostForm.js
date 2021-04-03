@@ -28,6 +28,7 @@ export default function CreatePostForm() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        username,
         content,
         title,
         tags,

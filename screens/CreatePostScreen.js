@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import CreatePostForm from '../components/CreatePostForm';
 import Style from '../assets/style';
 
