@@ -10,10 +10,10 @@ const Client = mongoose.model('client');
 // Exports
 module.exports = function addInfo(req, res) {
   // Fetch request body
-  const { username, name, gender, major, college } = req.body;
+  const { email, name, gender, major, college } = req.body;
 
   // Fetch client
-  const client = Client.where({ username });
+  const client = Client.where({ email });
 
   client.then((data) => {
     if (!data) {
@@ -34,5 +34,7 @@ module.exports = function addInfo(req, res) {
     })
     .exec();
 
-  return res.status(200).send({ msg: 'Client updated.' });
+  client.then((data) =>
+    res.status(200).send({ msg: 'Client updated.', username: data.username })
+  );
 };

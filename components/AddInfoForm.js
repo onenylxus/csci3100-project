@@ -13,7 +13,7 @@ export default function AddInfoForm() {
   const route = useRoute();
   const { login } = React.useContext(AuthContext);
 
-  const { username } = route.params;
+  const { email } = route.params;
   const [gender, setGender] = React.useState('');
   const [college, setCollege] = React.useState('');
   const [name, setName] = React.useState('');
@@ -28,7 +28,7 @@ export default function AddInfoForm() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username,
+        email,
         gender,
         college,
         name,
@@ -43,7 +43,7 @@ export default function AddInfoForm() {
       .then((res) => {
         console.log(res);
         if (status === 200) {
-          login({ username });
+          login({ username: res.username });
         }
       })
       .catch((err) => console.log(err));
@@ -64,7 +64,7 @@ export default function AddInfoForm() {
           },
           {
             text: 'Continue',
-            onPress: submitData,
+            onPress: () => submitData(),
             style: 'destructive',
           },
         ]

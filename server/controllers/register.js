@@ -28,6 +28,7 @@ module.exports = function register(req, res) {
         error: 'clientUsernameError',
       });
     }
+
     // Check email existence
     clientEmail.then((data2) => {
       if (data2) {
@@ -56,6 +57,7 @@ module.exports = function register(req, res) {
             password,
             email,
             code: String(Math.trunc(Math.random() * 10 ** 6)).padStart(6, '0'),
+            type: 'register',
           });
           token.save();
 

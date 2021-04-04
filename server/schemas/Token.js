@@ -5,11 +5,11 @@ const mongoose = require('mongoose');
 const TokenSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: true,
+    required: false,
   },
   password: {
     type: String,
-    required: true,
+    required: false,
   },
   email: {
     type: String,
@@ -23,6 +23,11 @@ const TokenSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
     expires: 900,
+  },
+  type: {
+    type: String,
+    enum: ['register', 'forgotPassword'],
+    required: true,
   },
 });
 
