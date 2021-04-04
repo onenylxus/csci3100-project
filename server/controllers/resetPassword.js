@@ -15,19 +15,20 @@ module.exports = function resetPassword(req, res) {
   // Fetch client by email
   const client = Client.findOne({ email });
 
-  if (password === client.password) {
-    return res.status(422).send({
-      error: 'duplicatePasswordError',
-    });
-  }
-  // Update password
-  client
-    .update({
-      $set: {
-        password,
-      },
-    })
-    .exec();
+  client.then((data) => {
+    if (password === data.password) {
+      return res.status(422).send({
+        error: 'duplicatePasswordError',
+      });
+    }
+    data
+      .update({
+        $set: {
+          password,
+        },
+      })
+      .exec();
 
-  client.then(() => res.status(200).send({ msg: 'Password Updated.' }));
+    res.status(200).send({ msg: 'Password Updated.' });
+  });
 };
