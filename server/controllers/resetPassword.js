@@ -29,6 +29,6 @@ module.exports = function resetPassword(req, res) {
       })
       .exec();
 
-    res.status(200).send({ msg: 'Password Updated.' });
+    return res.status(200).send({ msg: 'Password Updated.' });
   });
 };
