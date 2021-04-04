@@ -29,9 +29,6 @@ const Tab = createBottomTabNavigator();
 
 // Export application
 export default function App() {
-  // Clear
-  // AsyncStorage.clear();
-
   // Login state
   const [isLogin, setIsLogin] = React.useState(false);
 
@@ -55,6 +52,18 @@ export default function App() {
     }),
     []
   );
+
+  // Initial storage setup
+  AsyncStorage.getAllKeys().then((keys) => {
+    if (!keys.includes('@username')) {
+      AsyncStorage.setItem('@username', '');
+    }
+  });
+
+  // Login automation
+  AsyncStorage.getItem('@username').then((user) => {
+    setIsLogin(user !== null);
+  });
 
   // No header option
   function NoHeader() {
