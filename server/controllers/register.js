@@ -28,6 +28,7 @@ module.exports = function register(req, res) {
         error: 'clientUsernameError',
       });
     }
+
     // Check email existence
     clientEmail.then((data2) => {
       if (data2) {

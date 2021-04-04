@@ -48,6 +48,19 @@ export default function ForgotPasswordForm() {
                 ]
               );
 
+            case 'tokenEmailError':
+              return Alert.alert(
+                'Error',
+                'Somebody is using the same email to request a change in password.',
+                [
+                  {
+                    text: 'OK',
+                    onPress: () => undefined,
+                    style: 'destructive',
+                  },
+                ]
+              );
+
             default:
               return new Error();
           }
