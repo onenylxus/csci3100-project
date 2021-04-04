@@ -1,6 +1,13 @@
 // Import
 import React from 'react';
-import { Button, Text, TextInput, View, TouchableOpacity } from 'react-native';
+import {
+  Alert,
+  Button,
+  Text,
+  TextInput,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { faLock, faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -17,6 +24,8 @@ export default function ResetPasswordForm() {
   const [visibility, setVisibility] = React.useState(true);
   const { email } = route.params;
 
+  let status = 0;
+
   async function submitData() {
     await fetch(`https://${Source.heroku}/resetPassword`, {
       method: 'POST',
@@ -28,10 +37,40 @@ export default function ResetPasswordForm() {
         password,
       }),
     })
+      .then((res) => {
+        status = res.status;
+        return res;
+      })
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        navigation.navigate('Login');
+        if (status === 200) {
+          navigation.navigate('Login');
+        } else if (status === 422) {
+          switch (res.error) {
+            // Duplicate password
+            case 'duplicatePasswordError':
+              return Alert.alert(
+                'Password duplicated',
+                'Your new password seems to be your old password, do you still want to change your password?',
+                [
+                  {
+                    text: 'No',
+                    onPress: () => navigation.navigate('Login'),
+                    style: 'cancel',
+                  },
+                  {
+                    text: 'Yes',
+                    onPress: () => undefined,
+                    style: 'cancel',
+                  },
+                ]
+              );
+
+            default:
+              return new Error();
+          }
+        }
       })
       .catch((err) => console.log(err));
   }

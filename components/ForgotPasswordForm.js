@@ -43,7 +43,7 @@ export default function ForgotPasswordForm() {
                   {
                     text: 'OK',
                     onPress: () => undefined,
-                    style: 'destructive',
+                    style: 'cancel',
                   },
                 ]
               );
@@ -56,7 +56,7 @@ export default function ForgotPasswordForm() {
                   {
                     text: 'OK',
                     onPress: () => undefined,
-                    style: 'destructive',
+                    style: 'cancel',
                   },
                 ]
               );

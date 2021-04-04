@@ -15,6 +15,11 @@ module.exports = function resetPassword(req, res) {
   // Fetch client by email
   const client = Client.findOne({ email });
 
+  if (password === client.password) {
+    return res.status(422).send({
+      error: 'duplicatePasswordError',
+    });
+  }
   // Update password
   client
     .update({

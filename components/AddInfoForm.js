@@ -65,7 +65,7 @@ export default function AddInfoForm() {
           {
             text: 'Continue',
             onPress: () => submitData(),
-            style: 'destructive',
+            style: 'cancel',
           },
         ]
       );
