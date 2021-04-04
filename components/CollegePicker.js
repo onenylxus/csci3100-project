@@ -45,7 +45,7 @@ export default function CollegePicker({ callback, value }) {
           width: styleByDevice(windowWidth, 'width'),
         }}
       >
-        <Text>College: {value}</Text>
+        <Text>College: </Text>
         <View>
           <Picker
             style={{

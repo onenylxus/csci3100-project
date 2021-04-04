@@ -45,7 +45,7 @@ export default function MajorPicker({ callback, value }) {
           width: styleByDevice(windowWidth, 'width'),
         }}
       >
-        <Text>Major: {value}</Text>
+        <Text>Major:</Text>
         <View>
           <Picker
             style={{

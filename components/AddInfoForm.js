@@ -98,10 +98,10 @@ export default function AddInfoForm() {
       </RadioButton.Group>
 
       {/* Major */}
-      <MajorPicker callback={setMajor} />
+      <MajorPicker callback={setMajor} value={major} />
 
       {/* College */}
-      <CollegePicker callback={setCollege} />
+      <CollegePicker callback={setCollege} value={college} />
 
       <Button title="Submit!" onPress={confirmAddInfo} />
     </View>
