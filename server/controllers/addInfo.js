@@ -13,7 +13,7 @@ module.exports = function addInfo(req, res) {
   const { email, name, gender, major, college } = req.body;
 
   // Fetch client
-  const client = Client.where({ email });
+  const client = Client.findOne({ email });
 
   client.then((data) => {
     if (!data) {
