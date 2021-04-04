@@ -31,14 +31,14 @@ export default function ForgotPasswordForm() {
       .then((res) => {
         console.log(res);
         if (status === 200) {
-          navigation.navigate('Verification');
+          navigation.navigate('Verification', { email });
         } else if (status === 422) {
           switch (res.error) {
             // Empty title
             case 'wrongEmailError':
               return Alert.alert(
                 'Email does not exist',
-                'Please enter a correct registered email.',
+                'Please enter a registered email.',
                 [
                   {
                     text: 'OK',

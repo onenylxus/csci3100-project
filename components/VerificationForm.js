@@ -64,11 +64,13 @@ export default function VerificationForm() {
   }
 
   return (
-    <View style={Style.inputContainer}>
-      <TextInput
-        style={Style.textInput}
-        onChangeText={(text) => setCode(text)}
-      />
+    <View>
+      <View style={Style.inputContainer}>
+        <TextInput
+          style={Style.textInput}
+          onChangeText={(text) => setCode(text)}
+        />
+      </View>
       <Button title="Confirm" onPress={confirmToken} />
     </View>
   );

@@ -46,6 +46,9 @@ module.exports = function verify(req, res) {
         return res.status(200).send({ type: data.type });
 
       case 'forgotPassword':
+        // Remove token
+        data.remove();
+
         // Return
         return res.status(200).send({ type: data.type });
 
