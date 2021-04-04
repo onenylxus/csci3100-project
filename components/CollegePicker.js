@@ -3,10 +3,8 @@ import React from 'react';
 import { Text, View, Dimensions } from 'react-native';
 import { Picker } from '@react-native-community/picker';
 
-// Export College Picker
-
-export default function CollegePicker() {
-  const [college, setCollege] = React.useState();
+// Export college picker
+export default function CollegePicker({ callback, value }) {
   const windowWidth = Dimensions.get('window').width;
 
   function styleByDevice(widthOfDevice, component) {
@@ -47,15 +45,15 @@ export default function CollegePicker() {
           width: styleByDevice(windowWidth, 'width'),
         }}
       >
-        <Text>College: {college}</Text>
+        <Text>College: {value}</Text>
         <View>
           <Picker
             style={{
               width: styleByDevice(windowWidth, 'pickerWidth'),
               alignSelf: 'center',
             }}
-            selectedValue={college}
-            onValueChange={(itemValue) => setCollege(itemValue)}
+            selectedValue={value}
+            onValueChange={(itemValue) => callback(itemValue)}
           >
             <Picker.Item label="Select an option" value="" />
             <Picker.Item label="Chung Chi College" value="CC" />

@@ -21,20 +21,21 @@ module.exports = function addInfo(req, res) {
         error: 'Your verification code is invalid.',
       });
     }
+
+    data
+      .update({
+        $set: {
+          name,
+          gender,
+          major,
+          college,
+        },
+      })
+      .exec();
+
+    console.log(data.username);
+    return res
+      .status(200)
+      .send({ msg: 'Client updated.', username: data.username });
   });
-
-  client
-    .update({
-      $set: {
-        name,
-        gender,
-        major,
-        college,
-      },
-    })
-    .exec();
-
-  client.then((data) =>
-    res.status(200).send({ msg: 'Client updated.', username: data.username })
-  );
 };

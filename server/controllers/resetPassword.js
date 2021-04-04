@@ -21,6 +21,7 @@ module.exports = function resetPassword(req, res) {
         error: 'duplicatePasswordError',
       });
     }
+
     data
       .update({
         $set: {
