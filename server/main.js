@@ -3,13 +3,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 // Controller
-const path = './controllers/';
 const controller = {
-  addInfo: require(path + 'addInfo'),
-  createPost: require(path + 'createPost'),
-  login: require(path + 'login'),
-  register: require(path + 'register'),
-  verify: require(path + 'verify'),
+  addInfo: require('./controllers/addInfo'),
+  createPost: require('./controllers/createPost'),
+  forgotPassword: require('./controllers/forgotPassword'),
+  login: require('./controllers/login'),
+  register: require('./controllers/register'),
+  resetPassword: require('./controllers/resetPassword'),
+  verify: require('./controllers/verify'),
 };
 
 // Variables
@@ -44,11 +45,17 @@ app.post('/addInfo', controller.addInfo);
 // Create post
 app.post('/createPost', controller.createPost);
 
+// Forgot password
+app.post('/forgotPassword', controller.forgotPassword);
+
 // Login
 app.post('/login', controller.login);
 
 // Register
 app.post('/register', controller.register);
+
+// Reset password
+app.post('/resetPassword', controller.resetPassword);
 
 // Verification link
 app.post('/verify', controller.verify);

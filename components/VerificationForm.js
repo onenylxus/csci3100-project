@@ -10,7 +10,7 @@ export default function VerificationForm() {
   const navigation = useNavigation();
   const route = useRoute();
 
-  const { username } = route.params;
+  const { email } = route.params;
   const [code, setCode] = React.useState('');
 
   let status = 0;
@@ -22,7 +22,7 @@ export default function VerificationForm() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username,
+        email,
         code,
       }),
     })
@@ -34,7 +34,18 @@ export default function VerificationForm() {
       .then((res) => {
         console.log(res);
         if (status === 200) {
-          navigation.navigate('AddInfo', { username });
+          switch (res.type) {
+            case 'register':
+              navigation.navigate('AddInfo', { email });
+              break;
+
+            case 'forgotPassword':
+              navigation.navigate('ResetPassword', { email });
+              break;
+
+            default:
+              return new Error();
+          }
         } else {
           return Alert.alert(
             'Error',
@@ -53,11 +64,13 @@ export default function VerificationForm() {
   }
 
   return (
-    <View style={Style.inputContainer}>
-      <TextInput
-        style={Style.textInput}
-        onChangeText={(text) => setCode(text)}
-      />
+    <View>
+      <View style={Style.inputContainer}>
+        <TextInput
+          style={Style.textInput}
+          onChangeText={(text) => setCode(text)}
+        />
+      </View>
       <Button title="Confirm" onPress={confirmToken} />
     </View>
   );

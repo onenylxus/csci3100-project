@@ -10,10 +10,10 @@ const Client = mongoose.model('client');
 // Exports
 module.exports = function addInfo(req, res) {
   // Fetch request body
-  const { username, name, gender, major, college } = req.body;
+  const { email, name, gender, major, college } = req.body;
 
   // Fetch client
-  const client = Client.where({ username });
+  const client = Client.findOne({ email });
 
   client.then((data) => {
     if (!data) {
@@ -21,18 +21,21 @@ module.exports = function addInfo(req, res) {
         error: 'Your verification code is invalid.',
       });
     }
+
+    data
+      .update({
+        $set: {
+          name,
+          gender,
+          major,
+          college,
+        },
+      })
+      .exec();
+
+    console.log(data.username);
+    return res
+      .status(200)
+      .send({ msg: 'Client updated.', username: data.username });
   });
-
-  client
-    .update({
-      $set: {
-        name,
-        gender,
-        major,
-        college,
-      },
-    })
-    .exec();
-
-  return res.status(200).send({ msg: 'Client updated.' });
 };

@@ -12,10 +12,10 @@ const Token = mongoose.model('token');
 // Export
 module.exports = function verify(req, res) {
   // Fetch request body
-  const { username, code } = req.body;
+  const { email, code } = req.body;
 
   // Fetch token
-  const token = Token.findOne({ username });
+  const token = Token.findOne({ email });
 
   token.then((data) => {
     // Check token existence
@@ -28,19 +28,32 @@ module.exports = function verify(req, res) {
       return res.status(422).send({});
     }
 
-    // Create client
-    const client = new Client({
-      username: data.username,
-      password: data.password,
-      email: data.email,
-      isPublic: true,
-    });
-    client.save();
+    switch (data.type) {
+      case 'register':
+        // Create client
+        const client = new Client({
+          username: data.username,
+          password: data.password,
+          email: data.email,
+          isPublic: true,
+        });
+        client.save();
 
-    // Remove token
-    data.remove();
+        // Remove token
+        data.remove();
 
-    // Return
-    return res.status(200).send({ msg: 'Client created.' });
+        // Return
+        return res.status(200).send({ type: data.type });
+
+      case 'forgotPassword':
+        // Remove token
+        data.remove();
+
+        // Return
+        return res.status(200).send({ type: data.type });
+
+      default:
+        return res.status(422).send({});
+    }
   });
 };

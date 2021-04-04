@@ -3,10 +3,8 @@ import React from 'react';
 import { Text, View, Dimensions } from 'react-native';
 import { Picker } from '@react-native-community/picker';
 
-// Export Major Picker
-
-export default function MajorPicker() {
-  const [major, setMajor] = React.useState();
+// Export major picker
+export default function MajorPicker({ callback, value }) {
   const windowWidth = Dimensions.get('window').width;
 
   function styleByDevice(widthOfDevice, component) {
@@ -47,15 +45,15 @@ export default function MajorPicker() {
           width: styleByDevice(windowWidth, 'width'),
         }}
       >
-        <Text>Major: {major}</Text>
+        <Text>Major:</Text>
         <View>
           <Picker
             style={{
               width: styleByDevice(windowWidth, 'pickerWidth'),
               alignSelf: 'center',
             }}
-            selectedValue={major}
-            onValueChange={(itemValue) => setMajor(itemValue)}
+            selectedValue={value}
+            onValueChange={(itemValue) => callback(itemValue)}
           >
             <Picker.Item label="Select an option" value="" />
             <Picker.Item label="Anthropology" value="ANTHN" />
