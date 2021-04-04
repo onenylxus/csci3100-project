@@ -56,7 +56,7 @@ export default function RegisterForm() {
       .then((res) => res.json())
       .then((res) => {
         if (status === 200) {
-          navigation.navigate('Verification', { username });
+          navigation.navigate('Verification', { email });
         } else if (status === 422) {
           switch (res.error) {
             // Username error

@@ -56,6 +56,7 @@ module.exports = function register(req, res) {
             password,
             email,
             code: String(Math.trunc(Math.random() * 10 ** 6)).padStart(6, '0'),
+            type: 'register',
           });
           token.save();
 
