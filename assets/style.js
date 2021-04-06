@@ -217,7 +217,7 @@ export default StyleSheet.create({
     borderColor: '#000',
     width: '95%',
     height: 40,
-    borderRadius: 5,
+    borderRadius: 20,
     margin: 10,
     alignSelf: 'center',
   },
