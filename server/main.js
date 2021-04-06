@@ -6,9 +6,9 @@ const mongoose = require('mongoose');
 const controller = {
   addInfo: require('./controllers/addInfo'),
   createPost: require('./controllers/createPost'),
+  fetchPost: require('./controllers/fetchPost'),
   forgotPassword: require('./controllers/forgotPassword'),
   login: require('./controllers/login'),
-  fetchPost: require('./controllers/fetchPost'),
   register: require('./controllers/register'),
   resetPassword: require('./controllers/resetPassword'),
   verify: require('./controllers/verify'),
@@ -46,7 +46,7 @@ app.post('/addInfo', controller.addInfo);
 // Create post
 app.post('/createPost', controller.createPost);
 
-// Post box
+// Fetch post
 app.post('/fetchPost', controller.fetchPost);
 
 // Forgot password
