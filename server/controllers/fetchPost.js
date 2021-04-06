@@ -19,7 +19,7 @@ module.exports = function fetchPost(req, res) {
         });
       }
       console.log(data.username);
-      console.log(data.Date);
+      console.log(data.timestamp);
       console.log(data.content);
       return res.status(200).send({ msg: 'Post fetched.' });
     });
