@@ -16,9 +16,12 @@ import Style from '../assets/style';
 
 // Export Post Box
 export default function PostBox() {
+  const [content, setContent] = React.useState('');
   const [like, setLike] = React.useState(false);
   const [dislike, setDislike] = React.useState(false);
   const [showComment, setShowComment] = React.useState(false);
+
+  const status = React.useRef(0);
 
   function fetchData() {
     fetch(`https://${Source.heroku}/fetchPost`, {
@@ -26,8 +29,19 @@ export default function PostBox() {
       headers: {
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify({}),
     })
-      .then((res) => console.log(res))
+      .then((res) => {
+        status.current = res.status;
+        return res;
+      })
+      .then((res) => res.json())
+      .then((res) => {
+        if (status.current === 200) {
+          setContent(res.content);
+          console.log(content);
+        }
+      })
       .catch((err) => console.log(err));
   }
 
