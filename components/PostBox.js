@@ -10,8 +10,8 @@ import {
   faThumbsDown,
   faCommentAlt,
 } from '@fortawesome/free-solid-svg-icons';
-
 import CommentBox from './CommentBox';
+import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export Post Box
@@ -19,6 +19,19 @@ export default function PostBox() {
   const [like, setLike] = React.useState(false);
   const [dislike, setDislike] = React.useState(false);
   const [showComment, setShowComment] = React.useState(false);
+
+  function fetchData() {
+    fetch(`https://${Source.heroku}/postBox`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
+
+  React.useEffect(fetchData);
 
   return (
     <View style={Style.profilePost}>

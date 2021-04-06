@@ -8,6 +8,7 @@ const controller = {
   createPost: require('./controllers/createPost'),
   forgotPassword: require('./controllers/forgotPassword'),
   login: require('./controllers/login'),
+  fetchPost: require('./controllers/fetchPost'),
   register: require('./controllers/register'),
   resetPassword: require('./controllers/resetPassword'),
   verify: require('./controllers/verify'),
@@ -44,6 +45,9 @@ app.post('/addInfo', controller.addInfo);
 
 // Create post
 app.post('/createPost', controller.createPost);
+
+// Post box
+app.post('/fetchPost', controller.fetchPost);
 
 // Forgot password
 app.post('/forgotPassword', controller.forgotPassword);

@@ -15,12 +15,6 @@ export default function FeedScreen() {
         <View>
           <PostBox />
         </View>
-        <View>
-          <PostBox />
-        </View>
-        <View>
-          <PostBox />
-        </View>
       </ScrollView>
     </View>
   );
