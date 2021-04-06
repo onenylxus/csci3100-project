@@ -11,7 +11,7 @@ export default function ForgotPasswordForm() {
 
   const [email, setEmail] = React.useState('');
 
-  let status = 0;
+  const status = React.useRef(0);
 
   async function submitData() {
     await fetch(`https://${Source.heroku}/forgotPassword`, {
@@ -24,15 +24,15 @@ export default function ForgotPasswordForm() {
       }),
     })
       .then((res) => {
-        status = res.status;
+        status.current = res.status;
         return res;
       })
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        if (status === 200) {
+        if (status.current === 200) {
           navigation.navigate('Verification', { email });
-        } else if (status === 422) {
+        } else if (status.current === 422) {
           switch (res.error) {
             // Empty title
             case 'wrongEmailError':

@@ -32,7 +32,7 @@ export default function RegisterForm() {
   const [emailState, setEmailState] = React.useState(2);
   const [visibility, setVisibility] = React.useState(true);
 
-  let status = 0;
+  const status = React.useRef(0);
 
   async function submitData() {
     console.log(
@@ -50,14 +50,14 @@ export default function RegisterForm() {
       }),
     })
       .then((res) => {
-        status = res.status;
+        status.current = res.status;
         return res;
       })
       .then((res) => res.json())
       .then((res) => {
-        if (status === 200) {
+        if (status.current === 200) {
           navigation.navigate('Verification', { email });
-        } else if (status === 422) {
+        } else if (status.current === 422) {
           switch (res.error) {
             // Username error
             case 'clientUsernameError':

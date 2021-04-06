@@ -16,10 +16,11 @@ export default function CreatePostForm() {
   const [title, setTitle] = React.useState('');
   const [tags, setTags] = React.useState('');
 
-  // Get username
-  getUser(setUsername);
+  const status = React.useRef(0);
 
-  let status = 0;
+  function fetchData() {
+    getUser(setUsername);
+  }
 
   async function submitData() {
     await fetch(`https://${Source.heroku}/createPost`, {
@@ -35,15 +36,15 @@ export default function CreatePostForm() {
       }),
     })
       .then((res) => {
-        status = res.status;
+        status.current = res.status;
         return res;
       })
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        if (status === 200) {
+        if (status.current === 200) {
           navigation.navigate('Profile');
-        } else if (status === 422) {
+        } else if (status.current === 422) {
           switch (res.error) {
             // Empty title
             case 'missingTitleError':
@@ -79,6 +80,8 @@ export default function CreatePostForm() {
       })
       .catch((err) => console.log(err));
   }
+
+  React.useEffect(fetchData);
 
   return (
     <View style={Style.inputContainer}>

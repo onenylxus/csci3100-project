@@ -8,18 +8,16 @@ require('../schemas/Client');
 const Client = mongoose.model('client');
 
 // Exports
-module.exports = function addInfo(req, res) {
+module.exports = function editProject(req, res) {
   // Fetch request body
-  const { email, name, gender, major, college } = req.body;
+  const { username, name, gender, major, college, bio } = req.body;
 
   // Fetch client
-  const client = Client.findOne({ email });
+  const client = Client.findOne({ username });
 
   client.then((data) => {
     if (!data) {
-      return res.status(422).send({
-        error: 'Your verification code is invalid.',
-      });
+      return res.status(422).send({});
     }
 
     data
@@ -29,12 +27,11 @@ module.exports = function addInfo(req, res) {
           gender,
           major,
           college,
+          bio,
         },
       })
       .exec();
 
-    return res
-      .status(200)
-      .send({ msg: 'Client updated.', username: data.username });
+    return res.status(200).send({ msg: 'Client updated.' });
   });
 };
