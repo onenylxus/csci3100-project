@@ -10,8 +10,9 @@ const Post = mongoose.model('post');
 // Exports
 module.exports = function fetchPost(req, res) {
   Post.find()
-    .populate('posts')
-    .exec((data) => {
+    .sort({ timestamp: -1 })
+    .limit(1)
+    .then((data) => {
       if (!data) {
         return res.status(422).send({
           error: 'no post in database.',

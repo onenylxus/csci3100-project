@@ -21,7 +21,7 @@ export default function PostBox() {
   const [showComment, setShowComment] = React.useState(false);
 
   function fetchData() {
-    fetch(`https://${Source.heroku}/postBox`, {
+    fetch(`https://${Source.heroku}/fetchPost`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
