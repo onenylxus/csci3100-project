@@ -21,7 +21,7 @@ export default function EditProfileForm() {
   const [major, setMajor] = React.useState('');
   const [bio, setBio] = React.useState('');
 
-  let status = 0;
+  const status = React.useRef(0);
 
   const windowWidth = Dimensions.get('window').width;
 
@@ -59,34 +59,37 @@ export default function EditProfileForm() {
     }
   }
 
-  async function fetchData() {
-    await getUser(setUsername);
-    await fetch(`https://${Source.heroku}/fetchData`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username,
-      }),
-    })
-      .then((res) => {
-        status = res.status;
-        return res;
+  function fetchData() {
+    (async () => {
+      await getUser(setUsername);
+      await console.log(username);
+      await fetch(`https://${Source.heroku}/fetchData`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username,
+        }),
       })
-      .then((res) => res.json())
-      .then((res) => {
-        if (status === 200) {
-          setGender(res.gender);
-          setCollege(res.college);
-          setName(res.name);
-          setMajor(res.major);
-          setBio(res.bio);
-        } else if (status === 422) {
-          console.log(res.error);
-        }
-      })
-      .catch((err) => console.log(err));
+        .then((res) => {
+          status.current = res.status;
+          return res;
+        })
+        .then((res) => res.json())
+        .then((res) => {
+          if (status.current === 200) {
+            setGender(res.gender);
+            setCollege(res.college);
+            setName(res.name);
+            setMajor(res.major);
+            setBio(res.bio);
+          } else if (status.current === 422) {
+            console.log(res.error);
+          }
+        })
+        .catch((err) => console.log(err));
+    })();
   }
 
   async function submitData() {
@@ -105,20 +108,20 @@ export default function EditProfileForm() {
       }),
     })
       .then((res) => {
-        status = res.status;
+        status.current = res.status;
         return res;
       })
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        if (status === 200) {
+        if (status.current === 200) {
           navigation.navigate('Profile');
         }
       })
       .catch((err) => console.log(err));
   }
 
-  fetchData();
+  React.useEffect(fetchData);
 
   return (
     <View>
@@ -131,6 +134,7 @@ export default function EditProfileForm() {
         <TextInput
           style={Style.textInput}
           placeholder="Name"
+          defaultValue={name}
           onChangeText={(text) => setName(text)}
         />
       </View>
@@ -139,6 +143,7 @@ export default function EditProfileForm() {
       <Text style={Style.sectionText}>Gender:</Text>
       <RadioButton.Group
         onValueChange={(newValue) => setGender(newValue)}
+        defaultValue={gender}
         value={gender}
       >
         <RadioButton.Item label="Male" value="M" />
@@ -166,6 +171,7 @@ export default function EditProfileForm() {
           alignSelf: 'center',
         }}
         onChangeText={(text) => setBio(text)}
+        defaultValue={bio}
         multiline
         enablesReturnKeyAutomatically
       />

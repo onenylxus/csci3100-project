@@ -13,7 +13,7 @@ export default function VerificationForm() {
   const { email } = route.params;
   const [code, setCode] = React.useState('');
 
-  let status = 0;
+  const status = React.useRef(0);
 
   async function confirmToken() {
     await fetch(`https://${Source.heroku}/verify`, {
@@ -27,13 +27,13 @@ export default function VerificationForm() {
       }),
     })
       .then((res) => {
-        status = res.status;
+        status.current = res.status;
         return res;
       })
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        if (status === 200) {
+        if (status.current === 200) {
           switch (res.type) {
             case 'register':
               navigation.navigate('AddInfo', { email });

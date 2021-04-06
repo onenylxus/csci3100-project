@@ -20,8 +20,8 @@ export default function AddInfoForm() {
   const [name, setName] = React.useState('');
   const [major, setMajor] = React.useState('');
 
-  let status = 0;
-  let username = '';
+  const status = React.useRef(0);
+  const username = React.useRef('');
 
   async function submitData() {
     await fetch(`https://${Source.heroku}/addInfo`, {
@@ -38,15 +38,15 @@ export default function AddInfoForm() {
       }),
     })
       .then((res) => {
-        status = res.status;
+        status.current = res.status;
         return res;
       })
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        if (status === 200) {
-          username = res.username;
-          login({ username });
+        if (status.current === 200) {
+          username.current = res.username;
+          login({ username: username.current });
         }
       })
       .catch((err) => console.log(err));
