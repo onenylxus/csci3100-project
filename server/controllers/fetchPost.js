@@ -17,9 +17,8 @@ module.exports = function fetchPost(req, res) {
         error: 'no post in database.',
       });
     }
-    console.log(data.username);
-    console.log(data.timestamp);
-    console.log(data.content);
+
+    console.log(data[0].username);
     return res.status(200).send({ msg: 'Post fetched.' });
   });
 };
