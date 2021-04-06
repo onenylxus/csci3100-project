@@ -9,7 +9,7 @@ const Post = mongoose.model('post');
 
 // Exports
 module.exports = function fetchPost(req, res) {
-  Post.find()
+  Post.find({})
     .sort({ timestamp: -1 })
     .limit(1)
     .then((data) => {
