@@ -13,7 +13,8 @@ module.exports = function fetchPost(req, res) {
 
   const post = Post.find({})
     .sort({ timestamp: -1 })
-    .slice(25 * page, 25 * (page + 1));
+    .skip(25 * page)
+    .limit(25);
 
   post.then((data) => {
     if (!data) {
