@@ -14,6 +14,7 @@ export default function ChatboxPhoneScreen() {
 
   return (
     <View style={{ flexDirection: 'column', marginHorizontal: 10 }}>
+      {/* Header of user */}
       <View
         style={{
           flexDirection: 'row',
@@ -51,7 +52,7 @@ export default function ChatboxPhoneScreen() {
         </Grid>
       </View>
       <ScrollView
-        style={{ height: '80%' }}
+        style={{ height: '82%' }}
         showsVerticalScrollIndicator={false}
         scrollToEnd
       >
