@@ -1,20 +1,11 @@
 // Import
 import React from 'react';
-import {
-  View,
-  Button,
-  Text,
-  Dimensions,
-  TextInput,
-  ScrollView,
-} from 'react-native';
-import CollegePicker from '../components/CollegePicker';
-import MajorPicker from '../components/MajorPicker';
+import { View, Text, Dimensions, ScrollView } from 'react-native';
+import EditProfileForm from '../components/EditProfileForm';
 import Style from '../assets/style';
 
-// Export EditProfile screen
-
-export default function EditProfileScreen({ navigation }) {
+// Export edit profile screen
+export default function EditProfileScreen() {
   const windowWidth = Dimensions.get('window').width;
 
   function styleByDevice(widthOfDevice, component) {
@@ -59,87 +50,7 @@ export default function EditProfileScreen({ navigation }) {
         <Text style={{ fontSize: 28, alignSelf: 'center', marginVertical: 20 }}>
           Edit Your Profile
         </Text>
-        <View
-          style={{
-            marginVertical: 40,
-            flexDirection: 'column',
-            width: styleByDevice(windowWidth, 'width'),
-          }}
-        >
-          <Text>Profile Picture: </Text>
-        </View>
-        <View
-          style={{
-            marginVertical: 40,
-            flexDirection: 'column',
-            width: styleByDevice(windowWidth, 'width'),
-          }}
-        >
-          <Text>Real Name: </Text>
-          <TextInput
-            style={{
-              borderColor: '#000000',
-              borderWidth: 1,
-              backgroundColor: '#f8f8f8',
-              width: styleByDevice(windowWidth, 'pickerWidth'),
-              alignSelf: 'center',
-            }}
-          />
-        </View>
-        <View
-          style={{
-            flexDirection: 'column',
-            width: styleByDevice(windowWidth, 'width'),
-          }}
-        >
-          <CollegePicker />
-        </View>
-        <View
-          style={{
-            flexDirection: 'column',
-            width: styleByDevice(windowWidth, 'width'),
-          }}
-        >
-          <MajorPicker />
-        </View>
-        <View
-          style={{
-            marginVertical: 40,
-            flexDirection: 'column',
-            width: styleByDevice(windowWidth, 'width'),
-          }}
-        >
-          <Text>Bio: </Text>
-          <TextInput
-            style={{
-              borderColor: '#000000',
-              borderWidth: 1,
-              backgroundColor: '#f8f8f8',
-              height: 100,
-              margin: 16,
-              textAlign: 'left',
-              textAlignVertical: 'top',
-              width: styleByDevice(windowWidth, 'pickerWidth'),
-              alignSelf: 'center',
-            }}
-            multiline
-            enablesReturnKeyAutomatically
-          />
-        </View>
-        <View style={Style.submitAndCancelButton}>
-          <View style={{ margin: 20 }}>
-            <Button
-              title="Submit"
-              onPress={() => navigation.navigate('Profile')}
-            />
-          </View>
-          <View style={{ margin: 20 }}>
-            <Button
-              title="Cancel"
-              onPress={() => navigation.navigate('Profile')}
-            />
-          </View>
-        </View>
+        <EditProfileForm />
       </ScrollView>
     </View>
   );
