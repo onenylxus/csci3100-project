@@ -11,41 +11,13 @@ import {
   faCommentAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import CommentBox from './CommentBox';
-import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export Post Box
-export default function PostBox() {
-  const [content, setContent] = React.useState('');
+export default function PostBox({ post }) {
   const [like, setLike] = React.useState(false);
   const [dislike, setDislike] = React.useState(false);
   const [showComment, setShowComment] = React.useState(false);
-
-  const status = React.useRef(0);
-
-  function fetchData() {
-    fetch(`https://${Source.heroku}/fetchPost`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({}),
-    })
-      .then((res) => {
-        status.current = res.status;
-        return res;
-      })
-      .then((res) => res.json())
-      .then((res) => {
-        if (status.current === 200) {
-          setContent(res.content);
-          console.log(content);
-        }
-      })
-      .catch((err) => console.log(err));
-  }
-
-  React.useEffect(fetchData);
 
   return (
     <View style={Style.profilePost}>
@@ -62,8 +34,8 @@ export default function PostBox() {
               source={require('../assets/images/defaultprofile.png')}
             />
             <View style={{ flexDirection: 'column', marginTop: 15 }}>
-              <Text>Username</Text>
-              <Text>Date</Text>
+              <Text>Username: {post.username}</Text>
+              <Text>Date: {post.timestamp}</Text>
             </View>
           </Col>
           <Col>
@@ -75,7 +47,9 @@ export default function PostBox() {
           </Col>
         </Grid>
       </View>
-      <Text style={{ margin: 15, fontSize: 22 }}>Post content</Text>
+      <Text style={{ margin: 15, fontSize: 22 }}>
+        Post content: {post.content}
+      </Text>
       <View style={Style.postBar}>
         <TouchableOpacity
           style={{ flexDirection: 'row' }}

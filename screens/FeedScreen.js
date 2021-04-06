@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
 import SearchBar from '../components/SearchBar';
-import PostBox from '../components/PostBox';
+import PostContainer from '../components/PostContainer';
 
 // Export feed screen
 export default function FeedScreen() {
@@ -13,7 +13,7 @@ export default function FeedScreen() {
       </View>
       <ScrollView>
         <View>
-          <PostBox />
+          <PostContainer />
         </View>
       </ScrollView>
     </View>

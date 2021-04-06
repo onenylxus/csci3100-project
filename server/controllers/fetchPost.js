@@ -9,7 +9,11 @@ const Post = mongoose.model('post');
 
 // Exports
 module.exports = function fetchPost(req, res) {
-  const post = Post.find({}).sort({ timestamp: -1 }).limit(1);
+  const { page } = req.body;
+
+  const post = Post.find({})
+    .sort({ timestamp: -1 })
+    .slice(25 * page, 25 * (page + 1));
 
   post.then((data) => {
     if (!data) {
@@ -18,7 +22,6 @@ module.exports = function fetchPost(req, res) {
       });
     }
 
-    console.log(data[0].username);
-    return res.status(200).send({ msg: 'Post fetched.' });
+    return res.status(200).send({ msg: 'Post fetched.', posts: data });
   });
 };
