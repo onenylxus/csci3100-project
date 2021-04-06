@@ -12,7 +12,7 @@ import {
 import { Row, Col, Grid } from 'react-native-easy-grid';
 import { useNavigation } from '@react-navigation/native';
 import AuthContext from '../components/AuthContext';
-import PostBox from '../components/PostBox';
+// import PostBox from '../components/PostBox';
 import Style from '../assets/style';
 
 // Export profile screen
@@ -123,15 +123,6 @@ export default function ProfileScreen() {
               </Text>
             </Row>
           </View>
-          <Row style={{ alignContent: 'center', justifyContent: 'center' }}>
-            <PostBox />
-          </Row>
-          <Row style={{ alignContent: 'center', justifyContent: 'center' }}>
-            <PostBox />
-          </Row>
-          <Row style={{ alignContent: 'center', justifyContent: 'center' }}>
-            <PostBox />
-          </Row>
         </Grid>
       </View>
     </ScrollView>

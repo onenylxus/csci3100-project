@@ -19,6 +19,8 @@ export default function PostBox({ post }) {
   const [dislike, setDislike] = React.useState(false);
   const [showComment, setShowComment] = React.useState(false);
 
+  const username = React.useRef(post.username);
+
   return (
     <View style={Style.profilePost}>
       <View>
@@ -34,7 +36,7 @@ export default function PostBox({ post }) {
               source={require('../assets/images/defaultprofile.png')}
             />
             <View style={{ flexDirection: 'column', marginTop: 15 }}>
-              <Text>Username: {post.username}</Text>
+              <Text>Username: {username.current}</Text>
               <Text>Date: {post.timestamp}</Text>
             </View>
           </Col>

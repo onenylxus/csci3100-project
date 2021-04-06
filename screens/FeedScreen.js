@@ -8,13 +8,9 @@ import PostContainer from '../components/PostContainer';
 export default function FeedScreen() {
   return (
     <View style={{ marginBottom: 50 }}>
-      <View>
-        <SearchBar />
-      </View>
+      <SearchBar />
       <ScrollView>
-        <View>
-          <PostContainer />
-        </View>
+        <PostContainer />
       </ScrollView>
     </View>
   );
