@@ -56,7 +56,7 @@ describe('Assets', () => {
 
   // JS files
   describe('contains JS files', () => {
-    const dir = fs.readdirSync('assets').filter(file => file.endsWith('.js'));
+    const dir = fs.readdirSync('assets').filter((file) => file.endsWith('.js'));
 
     it('source.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['source.js']));

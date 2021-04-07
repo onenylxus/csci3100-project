@@ -60,6 +60,7 @@
     "update-cli": "npm update -g expo-cli",
     "prestart": "yarn",
     "start": "expo start",
+    "snap": "jest -u --coverage=false",
     "test": "jest --verbose",
     "android": "expo start --android",
     "ios": "expo start --ios",
