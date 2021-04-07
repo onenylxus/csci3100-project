@@ -11,7 +11,7 @@ const Post = mongoose.model('post');
 module.exports = function like(req, res) {
   const { _id, username } = req.body;
 
-  const post = Post.find({ _id });
+  const post = Post.findOne({ _id });
 
   post.then((data) => {
     if (!data) {
