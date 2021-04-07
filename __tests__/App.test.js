@@ -11,7 +11,7 @@ jest.mock('@fortawesome/react-native-fontawesome', () => ({
 }));
 
 // Run jest tests
-describe('Main application', () => {
+describe('App', () => {
   it('compiles successfully', () => {
     const tree = renderer.create(<App />).toJSON();
     expect(tree).toMatchSnapshot();

@@ -49,6 +49,7 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "4.2.0",
     "husky": "=4",
+    "jest": "^26.6.3",
     "jest-expo": "^40.0.2",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
@@ -58,8 +59,7 @@
     "update-cli": "npm update -g expo-cli",
     "prestart": "yarn",
     "start": "expo start",
-    "poststart": "jest --watch --coverage=false",
-    "test": "jest",
+    "test": "jest --verbose",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
@@ -70,7 +70,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && yarn test -u"
     }
   },
   "jest": {
