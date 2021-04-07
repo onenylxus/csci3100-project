@@ -65,9 +65,9 @@ export default function VerificationForm() {
 
   return (
     <View>
-      <View style={Style.inputContainer}>
+      <View style={Style.codeInputBox}>
         <TextInput
-          style={Style.textInput}
+          style={{ width: '100%', fontSize: 22 }}
           onChangeText={(text) => setCode(text)}
         />
       </View>

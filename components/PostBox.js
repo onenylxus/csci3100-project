@@ -36,7 +36,7 @@ export default function PostBox() {
             />
             <View style={{ flexDirection: 'column', marginTop: 15 }}>
               <Text>Username</Text>
-              <Text>Date</Text>
+              <Text>Date and Time</Text>
             </View>
           </Col>
           <Col>

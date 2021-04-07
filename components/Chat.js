@@ -11,6 +11,7 @@ export default function Chat() {
       date: '31th March, 2021',
       messageContent: ['Nice to meet you!', 'Nice to meet you!'],
       sender: ['me', 'others'],
+      timestamp: ['12:30', '12:32'],
     },
     {
       date: '1st April, 2021',
@@ -21,6 +22,7 @@ export default function Chat() {
         'I am studying Statistics',
       ],
       sender: ['me', 'me', 'others', 'others'],
+      timestamp: ['14:01', '14:44', '14:44', '14:45'],
     },
     {
       date: 'Yesterday',
@@ -29,11 +31,13 @@ export default function Chat() {
         'HAHA',
       ],
       sender: ['me', 'others'],
+      timestamp: ['12:30', '12:32'],
     },
     {
       date: 'Today',
       messageContent: ['Hi', 'hi'],
       sender: ['others', 'me'],
+      timestamp: ['12:30', '12:32'],
     },
   ];
 
@@ -79,14 +83,14 @@ export default function Chat() {
       index2++
     ) {
       message.push(
-        // output message text
+        // output message text and timestamp
         <View>
           <View
             style={{
               alignSelf: messagePosition(index1, index2, 'messagePos'),
-              padding: 10,
+              padding: 8,
               backgroundColor: messagePosition(index1, index2, 'messageColor'),
-              margin: 5,
+              margin: 3,
               maxWidth: '80%',
               borderRadius: 15,
             }}
@@ -95,6 +99,15 @@ export default function Chat() {
               style={{ color: messagePosition(index1, index2, 'textColor') }}
             >
               {DATA[index1].messageContent[index2]}
+            </Text>
+            <Text
+              style={{
+                color: messagePosition(index1, index2, 'textColor'),
+                alignSelf: messagePosition(index1, index2, 'messagePos'),
+                fontSize: 11,
+              }}
+            >
+              {DATA[index1].timestamp[index2]}
             </Text>
           </View>
         </View>

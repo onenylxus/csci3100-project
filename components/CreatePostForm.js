@@ -85,6 +85,7 @@ export default function CreatePostForm() {
 
   return (
     <View style={Style.inputContainer}>
+      <Text>Create Your Own Post! </Text>
       <Text>Hello {username}!</Text>
       <TextInput
         style={Style.SectionStyle}

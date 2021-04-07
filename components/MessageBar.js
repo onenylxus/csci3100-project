@@ -18,9 +18,11 @@ export default function MessageBar() {
       />
       <TextInput
         placeholder="Write Message"
-        style={{ width: '78%' }}
+        style={{ width: '78%', alignSelf: 'center' }}
         value={message}
         onChangeText={(value) => setMessage(value)}
+        enablesReturnKeyAutomatically
+        multiline
       />
       <TouchableOpacity style={Style.sendMessageButtom}>
         <Text style={{ color: 'blue' }}>Send</Text>
