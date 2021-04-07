@@ -28,11 +28,14 @@ describe('Assets', () => {
   describe('contains images', () => {
     const dir = fs.readdirSync('assets/images');
 
+    it('background.png', () => {
+      expect(dir).toEqual(expect.arrayContaining(['background.png']));
+    });
     it('profile.png', () => {
       expect(dir).toEqual(expect.arrayContaining(['profile.png']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(1);
+      expect(dir.length).toEqual(2);
     });
   });
 

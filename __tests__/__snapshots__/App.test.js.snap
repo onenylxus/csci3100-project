@@ -372,15 +372,16 @@ exports[`App compiles successfully 1`] = `
                           <View
                             style={
                               Object {
+                                "alignSelf": "center",
                                 "backgroundColor": "#fff",
                                 "borderColor": "#000",
                                 "borderRadius": 5,
-                                "borderWidth": 0.5,
+                                "borderWidth": 1,
                                 "flexDirection": "row",
                                 "height": 40,
-                                "margin": 10,
-                                "paddingHorizontal": 8,
-                                "width": 225,
+                                "marginVertical": "5%",
+                                "paddingHorizontal": "3%",
+                                "width": "85%",
                               }
                             }
                           >
@@ -444,15 +445,16 @@ exports[`App compiles successfully 1`] = `
                           <View
                             style={
                               Object {
+                                "alignSelf": "center",
                                 "backgroundColor": "#fff",
                                 "borderColor": "#000",
                                 "borderRadius": 5,
-                                "borderWidth": 0.5,
+                                "borderWidth": 1,
                                 "flexDirection": "row",
                                 "height": 40,
-                                "margin": 10,
-                                "paddingHorizontal": 8,
-                                "width": 225,
+                                "marginVertical": "5%",
+                                "paddingHorizontal": "3%",
+                                "width": "85%",
                               }
                             }
                           >

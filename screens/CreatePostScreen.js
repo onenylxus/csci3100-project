@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { View } from 'react-native';
+import { View, ImageBackground } from 'react-native';
 import CreatePostForm from '../components/CreatePostForm';
 import Style from '../assets/style';
 
@@ -8,7 +8,15 @@ import Style from '../assets/style';
 export default function CreatePostScreen() {
   return (
     <View style={Style.container}>
-      <CreatePostForm />
+      <ImageBackground
+        resizeMode="stretch"
+        source={require('../assets/images/background.png')}
+        style={{ flex: 1, justifyContent: 'center', alignContent: 'center' }}
+      >
+        <View>
+          <CreatePostForm />
+        </View>
+      </ImageBackground>
     </View>
   );
 }

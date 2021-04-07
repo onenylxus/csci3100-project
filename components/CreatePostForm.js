@@ -86,9 +86,24 @@ export default function CreatePostForm() {
   React.useEffect(fetchData);
 
   return (
-    <View style={Style.inputContainer}>
-      <View style={{ flexDirection: 'row' }}>
-        <Text>Do you want this post to be anonymous?</Text>
+    <View
+      style={{
+        justifyContent: 'center',
+        alignContent: 'center',
+        minWidth: '96%',
+      }}
+    >
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'flex-start',
+          alignContent: 'center',
+          marginLeft: '9%',
+        }}
+      >
+        <Text style={{ alignSelf: 'center', marginRight: 10 }}>
+          Post Anonymously?
+        </Text>
         <Switch onValueChange={toggleSwitch} value={isEnabled} />
       </View>
       <TextInput

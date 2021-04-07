@@ -44,13 +44,14 @@ export default StyleSheet.create({
   SectionStyle: {
     flexDirection: 'row',
     backgroundColor: '#fff',
-    borderWidth: 0.5,
+    borderWidth: 1,
     borderColor: '#000',
-    width: 225,
+    width: '85%',
     height: 40,
     borderRadius: 5,
-    paddingHorizontal: 8,
-    margin: 10,
+    paddingHorizontal: '3%',
+    marginVertical: '5%',
+    alignSelf: 'center',
   },
 
   validTextInput: {
@@ -82,11 +83,12 @@ export default StyleSheet.create({
     borderColor: '#000000',
     borderWidth: 1,
     backgroundColor: '#f8f8f8',
-    width: '95%',
+    width: '85%',
     height: 100,
-    marginVertical: 10,
+    marginVertical: '3%',
     textAlign: 'left',
     textAlignVertical: 'top',
+    alignSelf: 'center',
     borderRadius: 10,
   },
 
