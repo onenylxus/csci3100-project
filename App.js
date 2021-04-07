@@ -13,15 +13,15 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AuthContext from './components/AuthContext';
-import ChatroomStack from './screens/stacks/ChatroomStack';
-import CreatePostStack from './screens/stacks/CreatePostStack';
-import FeedStack from './screens/stacks/FeedStack';
-import ForgotPasswordStack from './screens/stacks/ForgotPasswordStack';
-import GuestFeedStack from './screens/stacks/GuestFeedStack';
+import ChatroomStack from './screens/navigators/ChatroomStack';
+import CreatePostStack from './screens/navigators/CreatePostStack';
+import FeedDrawer from './screens/navigators/FeedDrawer';
+import ForgotPasswordStack from './screens/navigators/ForgotPasswordStack';
+import GuestFeedStack from './screens/navigators/GuestFeedStack';
 import Header from './components/Header';
 import LoginScreen from './screens/LoginScreen';
-import ProfileStack from './screens/stacks/ProfileStack';
-import RegisterStack from './screens/stacks/RegisterStack';
+import ProfileStack from './screens/navigators/ProfileStack';
+import RegisterStack from './screens/navigators/RegisterStack';
 
 // Stack and tab
 const Stack = createStackNavigator();
@@ -98,7 +98,7 @@ export default function App() {
               scrollEnabled: false,
             }}
           >
-            <Tab.Screen name="Feed" component={FeedStack} options={Header} />
+            <Tab.Screen name="Feed" component={FeedDrawer} />
             <Tab.Screen name="CreatePost" component={CreatePostStack} />
             <Tab.Screen name="Chatroom" component={ChatroomStack} />
             <Tab.Screen name="Profile" component={ProfileStack} />
