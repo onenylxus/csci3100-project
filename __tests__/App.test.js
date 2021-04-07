@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react-native';
 
 // Import target component
 import App from '../App';
@@ -12,8 +12,13 @@ jest.mock('@fortawesome/react-native-fontawesome', () => ({
 
 // Run jest tests
 describe('App', () => {
+  let element;
+
+  beforeEach(() => {
+    element = render(<App />);
+  })
+
   it('compiles successfully', () => {
-    const tree = renderer.create(<App />).toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(element.toJSON()).toMatchSnapshot();
   });
 });
