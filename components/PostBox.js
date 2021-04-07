@@ -40,7 +40,7 @@ export default function PostBox({ post }) {
                 marginTop: 4,
                 borderRadius: 28,
               }}
-              source={require('../assets/images/defaultProfile.png')}
+              source={require('../assets/images/profile.png')}
             />
             <View style={{ flexDirection: 'column' }}>
               <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
