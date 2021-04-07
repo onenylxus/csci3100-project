@@ -16,6 +16,7 @@ export default function LikeAndDislike({ post }) {
   const postId = React.useRef(post._id);
 
   const status = React.useRef(0);
+  const likeCount = React.useRef(0);
 
   getUser(setUsername);
 
@@ -39,7 +40,7 @@ export default function LikeAndDislike({ post }) {
       .then((res) => {
         console.log(res);
         if (status.current === 200) {
-          console.log('like');
+          likeCount.current = res.like.length();
         }
       })
       .catch((err) => console.log(err));
@@ -50,7 +51,6 @@ export default function LikeAndDislike({ post }) {
       <TouchableOpacity
         style={{ flexDirection: 'row' }}
         onPress={() => {
-          console.log(postId.current);
           setLike(true);
           Like();
         }}
@@ -59,7 +59,9 @@ export default function LikeAndDislike({ post }) {
           icon={faThumbsUp}
           style={{ color: like ? '#83CCFF' : 'lightgrey', margin: 5 }}
         />
-        <Text style={{ alignSelf: 'center', marginRight: 15 }}>0</Text>
+        <Text style={{ alignSelf: 'center', marginRight: 15 }}>
+          {likeCount.current}
+        </Text>
       </TouchableOpacity>
       {/*
       <TouchableOpacity

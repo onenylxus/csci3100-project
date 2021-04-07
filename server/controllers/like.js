@@ -28,6 +28,7 @@ module.exports = function like(req, res) {
 
     return res.status(200).send({
       msg: 'data updated',
+      like: data.peopleLike,
     });
   });
 };
