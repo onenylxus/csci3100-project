@@ -37,7 +37,7 @@ export default function ChatboxPhoneScreen() {
                 margin: 8,
                 borderRadius: 28,
               }}
-              source={require('../assets/images/defaultProfile.png')}
+              source={require('../assets/images/profile.png')}
             />
             <Text style={{ alignSelf: 'center', fontSize: 20 }}>Username</Text>
           </Col>

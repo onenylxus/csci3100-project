@@ -25,8 +25,8 @@ describe('Assets', () => {
   describe('contains images', () => {
     const dir = fs.readdirSync('assets/images');
 
-    it('defaultProfile.png', () => {
-      expect(dir).toEqual(expect.arrayContaining(['defaultProfile.png']));
+    it('profile.png', () => {
+      expect(dir).toEqual(expect.arrayContaining(['profile.png']));
     });
   });
 
