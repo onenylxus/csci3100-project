@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const controller = {
   addInfo: require('./controllers/addInfo'),
   createPost: require('./controllers/createPost'),
+  fetchPost: require('./controllers/fetchPost'),
   editProfile: require('./controllers/editProfile'),
   fetchData: require('./controllers/fetchData'),
   forgotPassword: require('./controllers/forgotPassword'),
@@ -46,6 +47,9 @@ app.post('/addInfo', controller.addInfo);
 
 // Create post
 app.post('/createPost', controller.createPost);
+
+// Fetch post
+app.post('/fetchPost', controller.fetchPost);
 
 // Edit profile
 app.post('/editProfile', controller.editProfile);

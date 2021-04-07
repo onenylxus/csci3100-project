@@ -32,7 +32,6 @@ export default function VerificationForm() {
       })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         if (status.current === 200) {
           switch (res.type) {
             case 'register':
