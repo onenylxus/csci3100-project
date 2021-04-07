@@ -20,15 +20,15 @@ const PostSchema = new mongoose.Schema({
     default: true,
   },
   peopleLike: {
-    type: [{ body: String }],
+    type: [String],
     required: true,
   },
   peopleDislike: {
-    type: [{ body: String }],
+    type: [String],
     required: true,
   },
   comments: {
-    type: [{ body: String, date: Date }],
+    type: [String],
     required: false,
   },
   tags: {

@@ -22,7 +22,7 @@ module.exports = function like(req, res) {
 
     data
       .update({
-        $push: { peopleLike: username.toString() },
+        $push: { peopleLike: username },
       })
       .exec();
 
