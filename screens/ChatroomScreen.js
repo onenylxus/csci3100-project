@@ -1,23 +1,15 @@
 // Import
 import React from 'react';
-import {
-  View,
-  Text,
-  ScrollView,
-  TouchableOpacity,
-  Dimensions,
-  Image,
-} from 'react-native';
+import { View, Text, ScrollView, Dimensions } from 'react-native';
 import { Grid, Col } from 'react-native-easy-grid';
-import { useNavigation } from '@react-navigation/native';
 import Style from '../assets/style';
 import SearchBar from '../components/SearchBar';
 import MessageBar from '../components/MessageBar';
+import ChatroomMenu from '../components/ChatroomMenu';
 
 // Export chatroom screen
 export default function ChatroomScreen() {
   const windowWidth = Dimensions.get('window').width;
-  const navigation = useNavigation();
 
   if (windowWidth >= 1100) {
     // Large Screen
@@ -28,19 +20,9 @@ export default function ChatroomScreen() {
             <SearchBar />
           </View>
           <ScrollView>
-            <TouchableOpacity style={Style.chatBox}>
-              <Image
-                style={{
-                  width: 64,
-                  height: 64,
-                  margin: 8,
-                  borderRadius: 28,
-                  alignSelf: 'center',
-                }}
-                source={require('../assets/images/defaultProfile.png')}
-              />
-              <Text style={{ alignSelf: 'center' }}>hi</Text>
-            </TouchableOpacity>
+            <ChatroomMenu />
+            <ChatroomMenu />
+            <ChatroomMenu />
           </ScrollView>
         </Col>
         <Col size={2} style={Style.chatRoomRight}>
@@ -59,43 +41,10 @@ export default function ChatroomScreen() {
       <View>
         <SearchBar />
       </View>
-      <ScrollView>
-        <View style={Style.chatRoomContainerPhone}>
-          <TouchableOpacity
-            style={Style.chatBox}
-            onPress={() => navigation.navigate('ChatboxPhone')}
-          >
-            <Image
-              style={{
-                width: 64,
-                height: 64,
-                margin: 8,
-                borderRadius: 28,
-                alignSelf: 'center',
-              }}
-              source={require('../assets/images/defaultProfile.png')}
-            />
-            <Text style={{ alignSelf: 'center' }}>hi</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={Style.chatRoomContainerPhone}>
-          <TouchableOpacity
-            style={Style.chatBox}
-            onPress={() => navigation.navigate('ChatboxPhone')}
-          >
-            <Image
-              style={{
-                width: 64,
-                height: 64,
-                margin: 8,
-                borderRadius: 28,
-                alignSelf: 'center',
-              }}
-              source={require('../assets/images/defaultProfile.png')}
-            />
-            <Text style={{ alignSelf: 'center' }}>hi</Text>
-          </TouchableOpacity>
-        </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <ChatroomMenu />
+        <ChatroomMenu />
+        <ChatroomMenu />
       </ScrollView>
     </View>
   );

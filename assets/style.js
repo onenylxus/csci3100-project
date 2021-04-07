@@ -21,6 +21,15 @@ export default StyleSheet.create({
     marginBottom: 20,
   },
 
+  codeInputBox: {
+    borderWidth: 0.5,
+    borderColor: '#000',
+    width: 100,
+    height: 40,
+    borderRadius: 5,
+    margin: 10,
+  },
+
   postBox: {
     width: '75%',
     margin: 4,
@@ -212,6 +221,20 @@ export default StyleSheet.create({
     borderRadius: 10,
   },
 
+  chatMenuIcon: {
+    width: 64,
+    height: 64,
+    margin: 8,
+    borderRadius: 28,
+    alignSelf: 'center',
+  },
+
+  chatMenuInfo: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    marginLeft: 5,
+  },
+
   chatDate: {
     alignSelf: 'center',
     textAlign: 'center',
@@ -227,7 +250,7 @@ export default StyleSheet.create({
     borderWidth: 0.5,
     borderColor: '#000',
     width: '95%',
-    height: 40,
+    // height: 40,
     borderRadius: 20,
     margin: 10,
     alignSelf: 'center',
