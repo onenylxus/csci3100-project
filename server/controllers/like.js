@@ -19,12 +19,8 @@ module.exports = function like(req, res) {
         error: 'post not found',
       });
     }
-
-    data
-      .update({
-        $push: { peopleLike: username },
-      })
-      .exec();
+    console.log(post);
+    data.update(data.peopleLike.push(username)).exec();
 
     return res.status(200).send({
       msg: 'data updated',

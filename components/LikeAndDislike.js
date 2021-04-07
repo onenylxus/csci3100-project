@@ -27,7 +27,7 @@ export default function LikeAndDislike({ post }) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        postId,
+        _id: postId.current,
         username,
       }),
     })
@@ -50,6 +50,7 @@ export default function LikeAndDislike({ post }) {
       <TouchableOpacity
         style={{ flexDirection: 'row' }}
         onPress={() => {
+          console.log(postId.current);
           setLike(true);
           Like();
         }}
