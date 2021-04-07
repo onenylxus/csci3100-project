@@ -21,6 +21,7 @@ export default function EditProfileForm() {
   const [major, setMajor] = React.useState('');
   const [bio, setBio] = React.useState('');
 
+  const fetched = React.useRef(false);
   const status = React.useRef(0);
 
   const windowWidth = Dimensions.get('window').width;
@@ -61,33 +62,36 @@ export default function EditProfileForm() {
 
   function fetchData() {
     (async () => {
-      await getUser(setUsername);
-      await fetch(`https://${Source.heroku}/fetchData`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username,
-        }),
-      })
-        .then((res) => {
-          status.current = res.status;
-          return res;
+      if (!fetched.current) {
+        await getUser(setUsername);
+        await fetch(`https://${Source.heroku}/fetchData`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username,
+          }),
         })
-        .then((res) => res.json())
-        .then((res) => {
-          if (status.current === 200) {
-            setGender(res.gender);
-            setCollege(res.college);
-            setName(res.name);
-            setMajor(res.major);
-            setBio(res.bio);
-          } else if (status.current === 422) {
-            console.log(res.error);
-          }
-        })
-        .catch((err) => console.log(err));
+          .then((res) => {
+            status.current = res.status;
+            return res;
+          })
+          .then((res) => res.json())
+          .then((res) => {
+            if (status.current === 200) {
+              setGender(res.gender);
+              setCollege(res.college);
+              setName(res.name);
+              setMajor(res.major);
+              setBio(res.bio);
+              fetched.current = true;
+            } else if (status.current === 422) {
+              console.log(res.error);
+            }
+          })
+          .catch((err) => console.log(err));
+      }
     })();
   }
 
