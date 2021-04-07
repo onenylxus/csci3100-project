@@ -11,6 +11,7 @@ const controller = {
   fetchData: require('./controllers/fetchData'),
   forgotPassword: require('./controllers/forgotPassword'),
   login: require('./controllers/login'),
+  like: require('./controllers/like'),
   register: require('./controllers/register'),
   resetPassword: require('./controllers/resetPassword'),
   verify: require('./controllers/verify'),
@@ -50,6 +51,9 @@ app.post('/createPost', controller.createPost);
 
 // Fetch post
 app.post('/fetchPost', controller.fetchPost);
+
+// Like post
+app.post('/like', controller.like);
 
 // Edit profile
 app.post('/editProfile', controller.editProfile);
