@@ -18,10 +18,9 @@ export default function LikeAndDislike({ post }) {
   const status = React.useRef(0);
   const likeCount = React.useRef(0);
 
-  getUser(setUsername);
-
   // Fetch Like
   async function Like() {
+    await getUser(setUsername);
     await fetch(`https://${Source.heroku}/like`, {
       method: 'POST',
       headers: {
@@ -40,11 +39,14 @@ export default function LikeAndDislike({ post }) {
       .then((res) => {
         console.log(res);
         if (status.current === 200) {
-          likeCount.current = res.like.length();
+          likeCount.current = res.like.length;
+          console.log(likeCount.current);
         }
       })
       .catch((err) => console.log(err));
   }
+
+  React.useEffect(Like);
 
   return (
     <View>
