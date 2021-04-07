@@ -118,7 +118,7 @@ export default function LoginForm() {
           />
           <TextInput
             placeholder="Username"
-            style={{ width: 200 }}
+            style={{ width: 190 }}
             onChangeText={(text) => setUsername(text)}
           />
         </View>
@@ -134,7 +134,7 @@ export default function LoginForm() {
           />
           <TextInput
             placeholder="Password"
-            style={{ width: 175 }}
+            style={{ width: 165 }}
             onChangeText={(text) => setPassword(text)}
             secureTextEntry={visibility}
             clearTextOnFocus={false}

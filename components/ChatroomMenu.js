@@ -27,7 +27,7 @@ export default function Chat() {
           <Col style={{ alignSelf: 'center' }} size={1}>
             <Image
               style={Style.chatMenuIcon}
-              source={require('../assets/images/defaultprofile.png')}
+              source={require('../assets/images/defaultProfile.png')}
             />
           </Col>
           <Col style={{ alignSelf: 'center' }} size={2}>
