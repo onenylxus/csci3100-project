@@ -21,5 +21,9 @@ npm-debug.*
 # Eslint files
 /.eslintcache
 
+# Jest files
+/coverage
+/__tests__/__snapshots__
+
 # Error files
 /yarn-error.log
