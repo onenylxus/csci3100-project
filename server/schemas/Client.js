@@ -33,6 +33,10 @@ const ClientSchema = new mongoose.Schema({
     enum: ['NA', 'CC', 'SC', 'UC', 'WS', 'YS', 'SH', 'WC', 'MC'],
     required: false,
   },
+  bio: {
+    type: String,
+    required: false,
+  },
   profilePicture: {
     data: Buffer,
     contentType: String,

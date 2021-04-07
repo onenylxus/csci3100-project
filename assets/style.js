@@ -180,6 +180,7 @@ export default StyleSheet.create({
     backgroundColor: '#ffffff',
   },
 
+  // Styles for ChatroomScreen
   chatRoomLeft: {
     borderWidth: 1,
     borderRightWidth: 0.5,
@@ -210,14 +211,23 @@ export default StyleSheet.create({
     borderRadius: 10,
   },
 
+  chatDate: {
+    alignSelf: 'center',
+    textAlign: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#D2D2D2',
+    borderRadius: 15,
+    marginVertical: 5,
+  },
+
   messageBar: {
     flexDirection: 'row',
     backgroundColor: '#fff',
     borderWidth: 0.5,
     borderColor: '#000',
-    width: 610,
+    width: '95%',
     height: 40,
-    borderRadius: 5,
+    borderRadius: 20,
     margin: 10,
     alignSelf: 'center',
   },

@@ -9,6 +9,7 @@ import {
   Image,
 } from 'react-native';
 import { Grid, Col } from 'react-native-easy-grid';
+import { useNavigation } from '@react-navigation/native';
 import Style from '../assets/style';
 import SearchBar from '../components/SearchBar';
 import MessageBar from '../components/MessageBar';
@@ -16,6 +17,7 @@ import MessageBar from '../components/MessageBar';
 // Export chatroom screen
 export default function ChatroomScreen() {
   const windowWidth = Dimensions.get('window').width;
+  const navigation = useNavigation();
 
   if (windowWidth >= 1100) {
     // Large Screen
@@ -59,7 +61,10 @@ export default function ChatroomScreen() {
       </View>
       <ScrollView>
         <View style={Style.chatRoomContainerPhone}>
-          <TouchableOpacity style={Style.chatBox}>
+          <TouchableOpacity
+            style={Style.chatBox}
+            onPress={() => navigation.navigate('ChatboxPhone')}
+          >
             <Image
               style={{
                 width: 64,
@@ -74,7 +79,10 @@ export default function ChatroomScreen() {
           </TouchableOpacity>
         </View>
         <View style={Style.chatRoomContainerPhone}>
-          <TouchableOpacity style={Style.chatBox}>
+          <TouchableOpacity
+            style={Style.chatBox}
+            onPress={() => navigation.navigate('ChatboxPhone')}
+          >
             <Image
               style={{
                 width: 64,

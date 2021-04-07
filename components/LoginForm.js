@@ -27,7 +27,7 @@ export default function LoginForm() {
   const [password, setPassword] = React.useState('');
   const [visibility, setVisibility] = React.useState(true);
 
-  let status = 0;
+  const status = React.useRef(0);
 
   async function submitData() {
     await fetch(`https://${Source.heroku}/login`, {
@@ -41,14 +41,14 @@ export default function LoginForm() {
       }),
     })
       .then((res) => {
-        status = res.status;
+        status.current = res.status;
         return res;
       })
       .then((res) => res.json())
       .then((res) => {
-        if (status === 200) {
+        if (status.current === 200) {
           login({ username });
-        } else if (status === 422) {
+        } else if (status.current === 422) {
           switch (res.error) {
             case 'accountError':
               return Alert.alert(

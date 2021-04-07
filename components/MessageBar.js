@@ -14,11 +14,11 @@ export default function MessageBar() {
       <FontAwesomeIcon
         icon={faPen}
         size={15}
-        style={{ marginHorizontal: 5, marginVertical: 12 }}
+        style={{ marginHorizontal: 6, marginVertical: 12 }}
       />
       <TextInput
         placeholder="Write Message"
-        style={{ width: 530 }}
+        style={{ width: '78%' }}
         value={message}
         onChangeText={(value) => setMessage(value)}
       />

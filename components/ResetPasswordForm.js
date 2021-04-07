@@ -24,7 +24,7 @@ export default function ResetPasswordForm() {
   const [visibility, setVisibility] = React.useState(true);
   const { email } = route.params;
 
-  let status = 0;
+  const status = React.useRef(0);
 
   async function submitData() {
     await fetch(`https://${Source.heroku}/resetPassword`, {
@@ -38,15 +38,15 @@ export default function ResetPasswordForm() {
       }),
     })
       .then((res) => {
-        status = res.status;
+        status.current = res.status;
         return res;
       })
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        if (status === 200) {
+        if (status.current === 200) {
           navigation.navigate('Login');
-        } else if (status === 422) {
+        } else if (status.current === 422) {
           switch (res.error) {
             // Duplicate password
             case 'duplicatePasswordError':
