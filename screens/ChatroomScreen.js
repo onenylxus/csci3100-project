@@ -37,7 +37,7 @@ export default function ChatroomScreen() {
                   borderRadius: 28,
                   alignSelf: 'center',
                 }}
-                source={require('../assets/images/defaultprofile.png')}
+                source={require('../assets/images/defaultProfile.png')}
               />
               <Text style={{ alignSelf: 'center' }}>hi</Text>
             </TouchableOpacity>
@@ -73,7 +73,7 @@ export default function ChatroomScreen() {
                 borderRadius: 28,
                 alignSelf: 'center',
               }}
-              source={require('../assets/images/defaultprofile.png')}
+              source={require('../assets/images/defaultProfile.png')}
             />
             <Text style={{ alignSelf: 'center' }}>hi</Text>
           </TouchableOpacity>
@@ -91,7 +91,7 @@ export default function ChatroomScreen() {
                 borderRadius: 28,
                 alignSelf: 'center',
               }}
-              source={require('../assets/images/defaultprofile.png')}
+              source={require('../assets/images/defaultProfile.png')}
             />
             <Text style={{ alignSelf: 'center' }}>hi</Text>
           </TouchableOpacity>

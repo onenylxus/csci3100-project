@@ -20,6 +20,12 @@ export default function PostBox({ post }) {
   const [showComment, setShowComment] = React.useState(false);
 
   const username = React.useRef(post.username);
+  const date = React.useRef(new Date(post.timestamp));
+  const dateString = React.useRef(
+    `${date.current.getHours()}:${date.current.getMinutes()}  ${date.current.getDate()}/${date.current.getMonth()}/${date.current.getFullYear()}`
+  );
+  const numOfLike = React.useRef(post.numOfLike);
+  const numOfDislike = React.useRef(post.numOfDislike);
 
   return (
     <View style={Style.profilePost}>
@@ -28,16 +34,19 @@ export default function PostBox({ post }) {
           <Col style={{ flexDirection: 'row', marginTop: 15 }}>
             <Image
               style={{
-                width: 64,
-                height: 64,
+                width: 32,
+                height: 32,
                 marginHorizontal: 8,
+                marginTop: 4,
                 borderRadius: 28,
               }}
-              source={require('../assets/images/defaultprofile.png')}
+              source={require('../assets/images/defaultProfile.png')}
             />
-            <View style={{ flexDirection: 'column', marginTop: 15 }}>
-              <Text>Username: {username.current}</Text>
-              <Text>Date: {post.timestamp}</Text>
+            <View style={{ flexDirection: 'column' }}>
+              <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
+                {username.current}
+              </Text>
+              <Text style={{ fontSize: 12 }}>{dateString.current}</Text>
             </View>
           </Col>
           <Col>
@@ -49,9 +58,17 @@ export default function PostBox({ post }) {
           </Col>
         </Grid>
       </View>
-      <Text style={{ margin: 15, fontSize: 22 }}>
-        Post content: {post.content}
+      <Text
+        style={{
+          marginHorizontal: 15,
+          marginVertical: 10,
+          fontSize: 20,
+          fontWeight: 'bold',
+        }}
+      >
+        {post.title}
       </Text>
+      <Text style={{ marginHorizontal: 15, fontSize: 16 }}>{post.content}</Text>
       <View style={Style.postBar}>
         <TouchableOpacity
           style={{ flexDirection: 'row' }}
@@ -64,7 +81,9 @@ export default function PostBox({ post }) {
             icon={faThumbsUp}
             style={{ color: like ? '#83CCFF' : 'lightgrey', margin: 5 }}
           />
-          <Text style={{ alignSelf: 'center', marginRight: 15 }}>4</Text>
+          <Text style={{ alignSelf: 'center', marginRight: 15 }}>
+            {numOfLike.current}
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{ flexDirection: 'row' }}
@@ -77,7 +96,9 @@ export default function PostBox({ post }) {
             icon={faThumbsDown}
             style={{ color: dislike ? '#FB7676' : 'lightgrey', margin: 5 }}
           />
-          <Text style={{ alignSelf: 'center', marginRight: 15 }}>4</Text>
+          <Text style={{ alignSelf: 'center', marginRight: 15 }}>
+            {numOfDislike.current}
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{ flexDirection: 'row' }}

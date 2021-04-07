@@ -19,7 +19,7 @@ export default function CommentBox() {
             margin: 10,
             borderRadius: 28,
           }}
-          source={require('../assets/images/defaultprofile.png')}
+          source={require('../assets/images/defaultProfile.png')}
         />
         <View style={{ flexDirection: 'column', marginTop: 15 }}>
           <Text>Username</Text>

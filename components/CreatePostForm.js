@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { Alert, Button, Text, TextInput, View } from 'react-native';
+import { Alert, Button, Switch, Text, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AuthContext from './AuthContext';
 import Source from '../assets/source';
@@ -15,8 +15,10 @@ export default function CreatePostForm() {
   const [content, setContent] = React.useState('');
   const [title, setTitle] = React.useState('');
   const [tags, setTags] = React.useState('');
+  const [isEnabled, setIsEnabled] = React.useState(false);
 
   const status = React.useRef(0);
+  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   function fetchData() {
     getUser(setUsername);
@@ -29,7 +31,7 @@ export default function CreatePostForm() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username,
+        username: isEnabled ? 'Anonymous' : username,
         content,
         title,
         tags,
@@ -85,10 +87,13 @@ export default function CreatePostForm() {
 
   return (
     <View style={Style.inputContainer}>
-      <Text>Hello {username}!</Text>
+      <View style={{ flexDirection: 'row' }}>
+        <Text>Do you want this post to be anonymous?</Text>
+        <Switch onValueChange={toggleSwitch} value={isEnabled} />
+      </View>
       <TextInput
         style={Style.SectionStyle}
-        placeholder="  Post title"
+        placeholder="Post title"
         onChangeText={(text) => setTitle(text)}
       />
       <TextInput
@@ -96,12 +101,12 @@ export default function CreatePostForm() {
         multiline
         scrollEnabled
         enablesReturnKeyAutomatically
-        placeholder="  What's on your mind?"
+        placeholder="What's on your mind?"
         onChangeText={(text) => setContent(text)}
       />
       <TextInput
         style={Style.SectionStyle}
-        placeholder="  Tags you want to add"
+        placeholder="Tags you want to add"
         onChangeText={(text) => setTags(text)}
       />
       <Button title="Post!" onPress={submitData} />

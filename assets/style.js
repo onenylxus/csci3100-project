@@ -40,6 +40,7 @@ export default StyleSheet.create({
     width: 225,
     height: 40,
     borderRadius: 5,
+    paddingHorizontal: 8,
     margin: 10,
   },
 

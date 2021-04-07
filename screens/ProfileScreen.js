@@ -100,7 +100,7 @@ export default function ProfileScreen() {
                       margin: 8,
                       borderRadius: 32,
                     }}
-                    source={require('../assets/images/defaultprofile.png')}
+                    source={require('../assets/images/defaultProfile.png')}
                   />
                 </Row>
                 <Row size={0.5} style={styleByDevice(windowWidth, 'button')}>
