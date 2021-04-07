@@ -24,7 +24,7 @@ const PostSchema = new mongoose.Schema({
     required: true,
   },
   peopleDislike: {
-    type: Number,
+    type: [{ body: String }],
     required: true,
   },
   comments: {
