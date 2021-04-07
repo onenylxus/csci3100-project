@@ -19,10 +19,10 @@ module.exports = function like(req, res) {
         error: 'post not found',
       });
     }
-    console.log(username);
+
     data
       .update({
-        $push: { peopleLike: username },
+        $push: { peopleLike: username.toString() },
       })
       .exec();
 
