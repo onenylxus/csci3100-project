@@ -10,15 +10,16 @@ import {
   faThumbsDown,
   faCommentAlt,
 } from '@fortawesome/free-solid-svg-icons';
-
 import CommentBox from './CommentBox';
 import Style from '../assets/style';
 
 // Export Post Box
-export default function PostBox() {
+export default function PostBox({ post }) {
   const [like, setLike] = React.useState(false);
   const [dislike, setDislike] = React.useState(false);
   const [showComment, setShowComment] = React.useState(false);
+
+  const username = React.useRef(post.username);
 
   return (
     <View style={Style.profilePost}>
@@ -35,8 +36,8 @@ export default function PostBox() {
               source={require('../assets/images/defaultprofile.png')}
             />
             <View style={{ flexDirection: 'column', marginTop: 15 }}>
-              <Text>Username</Text>
-              <Text>Date</Text>
+              <Text>Username: {username.current}</Text>
+              <Text>Date: {post.timestamp}</Text>
             </View>
           </Col>
           <Col>
@@ -48,7 +49,9 @@ export default function PostBox() {
           </Col>
         </Grid>
       </View>
-      <Text style={{ margin: 15, fontSize: 22 }}>Post content</Text>
+      <Text style={{ margin: 15, fontSize: 22 }}>
+        Post content: {post.content}
+      </Text>
       <View style={Style.postBar}>
         <TouchableOpacity
           style={{ flexDirection: 'row' }}
