@@ -62,7 +62,6 @@ export default function EditProfileForm() {
   function fetchData() {
     (async () => {
       await getUser(setUsername);
-      await console.log(username);
       await fetch(`https://${Source.heroku}/fetchData`, {
         method: 'POST',
         headers: {
