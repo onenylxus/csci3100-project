@@ -10,7 +10,7 @@ const Post = mongoose.model('post');
 // Exports
 module.exports = function fetchLikeAndDislike(req, res) {
   // Fetch request body
-  const { _id } = req.postId;
+  const { _id } = req.body;
 
   // Fetch client
   const post = Post.findOne({ _id });

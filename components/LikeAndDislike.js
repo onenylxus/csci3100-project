@@ -33,6 +33,7 @@ export default function LikeAndDislike({ post }) {
           }),
         })
           .then((res) => {
+            console.log(postId.current);
             status.current = res.status;
             return res;
           })
