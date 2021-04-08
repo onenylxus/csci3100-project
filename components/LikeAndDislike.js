@@ -29,7 +29,7 @@ export default function LikeAndDislike({ post }) {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            postId,
+            _id: postId.current,
           }),
         })
           .then((res) => {

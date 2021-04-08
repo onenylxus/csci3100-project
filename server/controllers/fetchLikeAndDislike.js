@@ -10,15 +10,13 @@ const Post = mongoose.model('post');
 // Exports
 module.exports = function fetchLikeAndDislike(req, res) {
   // Fetch request body
-  const { postId } = req.postId;
+  const { _id } = req.postId;
 
   // Fetch client
-  const post = Post.findOne({ postId });
-  console.log(postId);
+  const post = Post.findOne({ _id });
 
   post.then((data) => {
     if (!data) {
-      console.log(data);
       return res.status(422).send({});
     }
 
