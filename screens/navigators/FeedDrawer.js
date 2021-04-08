@@ -7,6 +7,7 @@ import {
 } from '@react-navigation/drawer';
 import { useWindowDimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import AcademicsScreen from '../TagsScreen/AcademicsScreen';
 import ChatroomScreen from '../ChatroomScreen';
 import ProfileScreen from '../ProfileScreen';
 import FeedStack from './FeedStack';
@@ -23,11 +24,23 @@ export default function FeedDrawer() {
     return (
       <DrawerContentScrollView>
         <DrawerItem
-          label="Profile"
-          onPress={() => navigation.navigate('Profile')}
+          label="Academics"
+          onPress={() => navigation.navigate('Academics')}
         />
         <DrawerItem
-          label="Chatroom"
+          label="Relationships"
+          onPress={() => navigation.navigate('Chatroom')}
+        />
+        <DrawerItem
+          label="News"
+          onPress={() => navigation.navigate('Chatroom')}
+        />
+        <DrawerItem
+          label="CU-related"
+          onPress={() => navigation.navigate('Chatroom')}
+        />
+        <DrawerItem
+          label="Entertainment"
           onPress={() => navigation.navigate('Chatroom')}
         />
       </DrawerContentScrollView>
@@ -40,6 +53,7 @@ export default function FeedDrawer() {
       initialRouteName="Feed"
       drawerType={dimensions.width >= 768 ? 'permanent' : 'front'}
     >
+      <Drawer.Screen name="Academics" component={AcademicsScreen} />
       <Drawer.Screen name="Feed" component={FeedStack} />
       <Drawer.Screen name="Profile" component={ProfileScreen} />
       <Drawer.Screen name="Chatroom" component={ChatroomScreen} />
