@@ -118,8 +118,10 @@ export default function LoginForm() {
           />
           <TextInput
             placeholder="Username"
+            value={username}
             style={{ width: 190 }}
             onChangeText={(text) => setUsername(text)}
+            testID="username"
           />
         </View>
       </View>
@@ -134,13 +136,18 @@ export default function LoginForm() {
           />
           <TextInput
             placeholder="Password"
+            value={password}
             style={{ width: 165 }}
             onChangeText={(text) => setPassword(text)}
             secureTextEntry={visibility}
             clearTextOnFocus={false}
             enablesReturnKeyAutomatically
+            testID="password"
           />
-          <TouchableOpacity onPress={() => setVisibility(!visibility)}>
+          <TouchableOpacity
+            onPress={() => setVisibility(!visibility)}
+            testID="eye"
+          >
             <FontAwesomeIcon
               icon={visibility ? faEyeSlash : faEye}
               size={15}
@@ -149,7 +156,7 @@ export default function LoginForm() {
           </TouchableOpacity>
         </View>
       </View>
-      <Button title="Login" onPress={confirmLogin} />
+      <Button title="Login" onPress={confirmLogin} testID="login" />
     </View>
   );
 }

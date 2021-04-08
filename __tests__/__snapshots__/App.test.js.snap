@@ -417,7 +417,9 @@ exports[`App matches snapshot 1`] = `
                                   "width": 190,
                                 }
                               }
+                              testID="username"
                               underlineColorAndroid="transparent"
+                              value=""
                             />
                           </View>
                         </View>
@@ -493,7 +495,9 @@ exports[`App matches snapshot 1`] = `
                                   "width": 165,
                                 }
                               }
+                              testID="password"
                               underlineColorAndroid="transparent"
+                              value=""
                             />
                             <View
                               accessible={true}
@@ -510,6 +514,7 @@ exports[`App matches snapshot 1`] = `
                                   "opacity": 1,
                                 }
                               }
+                              testID="eye"
                             >
                               <
                                 icon={
@@ -553,6 +558,7 @@ exports[`App matches snapshot 1`] = `
                               "opacity": 1,
                             }
                           }
+                          testID="login"
                         >
                           <View
                             style={
