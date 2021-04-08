@@ -18,7 +18,7 @@ describe('App', () => {
     element = render(<App />);
   })
 
-  it('compiles successfully', () => {
+  it('matches snapshot', () => {
     expect(element.toJSON()).toMatchSnapshot();
   });
 });

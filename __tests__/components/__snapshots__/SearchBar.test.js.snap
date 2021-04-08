@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchBar compiles successfully 1`] = `
+exports[`SearchBar matches snapshot 1`] = `
 <View
   style={
     Object {
@@ -48,6 +48,7 @@ exports[`SearchBar compiles successfully 1`] = `
         "width": "85%",
       }
     }
+    testID="input"
     underlineColorAndroid="transparent"
     value=""
   />
@@ -66,6 +67,7 @@ exports[`SearchBar compiles successfully 1`] = `
         "opacity": 1,
       }
     }
+    testID="search"
   >
     <
       icon={

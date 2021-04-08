@@ -4,7 +4,7 @@ import fs from 'fs';
 // Run jest tests
 describe('Screens', () => {
   // Navigators
-  describe('Navigators', () => {
+  describe('contains navigators', () => {
     const dir = fs.readdirSync('screens/navigators');
 
     it('ChatroomStack.js', () => {

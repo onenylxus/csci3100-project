@@ -21,8 +21,9 @@ export default function SearchBar() {
         style={{ width: '85%' }}
         value={searchWord}
         onChangeText={(value) => setsearchWord(value)}
+        testID="input"
       />
-      <TouchableOpacity onPress={() => setsearchWord('')}>
+      <TouchableOpacity onPress={() => setsearchWord('')} testID="search">
         <FontAwesomeIcon
           icon={faTimesCircle}
           size={15}

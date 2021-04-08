@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { render } from '@testing-library/react-native';
+import { fireEvent, render } from '@testing-library/react-native';
 
 // Import target component
 import SearchBar from '../../components/SearchBar';
@@ -18,7 +18,23 @@ describe('SearchBar', () => {
     element = render(<SearchBar />);
   });
 
-  it('compiles successfully', () => {
+  it('changes search word when type', () => {
+    const input = element.getByTestId('input');
+
+    fireEvent.changeText(input, 'CU There');
+    expect(input.props.value).toBe('CU There');
+  });
+
+  it('resets search word when search button is pressed', () => {
+    const input = element.getByTestId('input');
+    const search = element.getByTestId('search');
+
+    fireEvent.changeText(input, 'CU There');
+    fireEvent.press(search);
+    expect(input.props.value).toBe('');
+  });
+
+  it('matches snapshot', () => {
     expect(element.toJSON()).toMatchSnapshot();
   });
 });

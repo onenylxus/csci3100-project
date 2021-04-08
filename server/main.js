@@ -74,7 +74,7 @@ app.post('/verify', controller.verify);
 
 // Other requests
 app.get('*', (req, res) => {
-  res.status(404).json({ message: 'Not found' });
+  res.status(404).json({});
 });
 
 // Listen to port

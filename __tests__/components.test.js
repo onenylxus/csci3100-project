@@ -5,9 +5,7 @@ import fs from 'fs';
 describe('Components', () => {
   // JS files
   describe('contains JS files', () => {
-    const dir = fs
-      .readdirSync('components')
-      .filter((file) => file.endsWith('.js'));
+    const dir = fs.readdirSync('components').filter((file) => file.endsWith('.js'));
 
     it('AddInfoForm.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['AddInfoForm.js']));
