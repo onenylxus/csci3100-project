@@ -40,7 +40,7 @@ export default function LikeAndDislike({ post }) {
             if (status.current === 200) {
               if (res.like.includes(username)) {
                 setLikeState(true);
-              }
+              } else setLikeState(false);
               setNumOfLike(res.like.length);
               fetched.current = true;
             } else if (status.current === 422) {
@@ -53,6 +53,13 @@ export default function LikeAndDislike({ post }) {
   }
 
   async function Like() {
+    if (likeState === true) {
+      console.log('true to false');
+      setLikeState(false);
+    } else {
+      console.log('false to true');
+      setLikeState(true);
+    }
     await getUser(setUsername);
     await fetch(`https://${Source.heroku}/like`, {
       method: 'POST',
@@ -85,8 +92,7 @@ export default function LikeAndDislike({ post }) {
     <View>
       <TouchableOpacity
         style={{ flexDirection: 'row' }}
-        onPress={() => {
-          setLikeState(!likeState);
+        onPress={async () => {
           Like();
         }}
       >

@@ -20,7 +20,7 @@ module.exports = function like(req, res) {
       });
     }
     console.log(likeState);
-    if (likeState === false) {
+    if (likeState === true) {
       data
         .update({
           $push: { peopleLike: username },
