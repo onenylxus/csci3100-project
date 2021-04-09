@@ -7,7 +7,7 @@ import {
 } from '@react-navigation/drawer';
 import { useWindowDimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import AcademicsScreen from '../TagsScreen/AcademicsScreen';
+import ChannelsScreen from '../TagsScreen/ChannelScreen';
 import ChatroomScreen from '../ChatroomScreen';
 import ProfileScreen from '../ProfileScreen';
 import FeedStack from './FeedStack';
@@ -26,9 +26,7 @@ export default function FeedDrawer() {
       <DrawerContentScrollView>
         <DrawerItem
           label="Academics"
-          onPress={() =>
-            navigation.navigate('Academics', { tags: 'Academics' })
-          }
+          onPress={() => navigation.navigate('Channels', { tags: 'Academics' })}
         />
         <DrawerItem
           label="Relationships"
@@ -57,8 +55,8 @@ export default function FeedDrawer() {
       drawerType={dimensions.width >= 768 ? 'permanent' : 'front'}
     >
       <Drawer.Screen
-        name="Academics"
-        component={AcademicsScreen}
+        name="Channels"
+        component={ChannelsScreen}
         options={{ ...Header, headerShown: true }}
       />
       <Drawer.Screen name="Feed" component={FeedStack} />
