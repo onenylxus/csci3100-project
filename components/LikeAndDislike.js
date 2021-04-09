@@ -12,6 +12,7 @@ export default function LikeAndDislike({ post }) {
 
   const [username, setUsername] = React.useState('');
   const [like, setLike] = React.useState(false);
+  const [likeCount, setLikeCount] = React.useState(0);
 
   const postId = React.useRef(post._id);
   const fetched = React.useRef(false);
@@ -39,7 +40,7 @@ export default function LikeAndDislike({ post }) {
           .then((res) => res.json())
           .then((res) => {
             if (status.current === 200) {
-              numOfLike.current = res.like.length;
+              numOfLike.current = res.peopleLike.length;
               fetched.current = true;
             } else if (status.current === 422) {
               console.log(res.error);
@@ -70,13 +71,18 @@ export default function LikeAndDislike({ post }) {
       .then((res) => {
         console.log(res);
         if (status.current === 200) {
-          numOfLike.current = res.like.length;
+          numOfLike.current = res.peopleLike.length;
           console.log(numOfLike.current);
         }
       })
       .catch((err) => console.log(err));
   }
 
+  function displayLike() {
+    setLikeCount(numOfLike.current);
+  }
+
+  React.useEffect(displayLike, [numOfLike]);
   React.useEffect(fetchLikeAndDislike);
 
   return (
@@ -93,7 +99,7 @@ export default function LikeAndDislike({ post }) {
           style={{ color: like ? '#83CCFF' : 'lightgrey', margin: 5 }}
         />
         <Text style={{ alignSelf: 'center', marginRight: 15 }}>
-          {numOfLike.current}
+          {likeCount}
         </Text>
       </TouchableOpacity>
       {/*
