@@ -11,12 +11,12 @@ export default function LikeAndDislike({ post }) {
   const { getUser } = React.useContext(AuthContext);
 
   const [username, setUsername] = React.useState('');
-  const [like, setLike] = React.useState(false);
+  const [likeState, setLikeState] = React.useState(false);
+  const [numOfLike, setNumOfLike] = React.useState(0);
 
   const postId = React.useRef(post._id);
   const fetched = React.useRef(false);
   const status = React.useRef(0);
-  const numOfLike = React.useRef(0);
 
   // Fetch Like(
   function fetchLikeAndDislike() {
@@ -39,7 +39,10 @@ export default function LikeAndDislike({ post }) {
           .then((res) => res.json())
           .then((res) => {
             if (status.current === 200) {
-              numOfLike.current = res.like.length;
+              setNumOfLike(res.like.length);
+              if (res.like.includes(username)) {
+                setLikeState(true);
+              }
               fetched.current = true;
             } else if (status.current === 422) {
               console.log(res.error);
@@ -59,6 +62,7 @@ export default function LikeAndDislike({ post }) {
       },
       body: JSON.stringify({
         _id: postId.current,
+        likeState,
         username,
       }),
     })
@@ -69,9 +73,11 @@ export default function LikeAndDislike({ post }) {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        if (status.current === 200) {
-          numOfLike.current = res.like.length;
-          console.log(numOfLike.current);
+        if (status.current === 200 && !res.like.includes(username)) {
+          setNumOfLike(res.like.length);
+          setLikeState(true);
+        } else if (status.current === 200 && res.like.includes(username)) {
+          setLikeState(false);
         }
       })
       .catch((err) => console.log(err));
@@ -84,16 +90,16 @@ export default function LikeAndDislike({ post }) {
       <TouchableOpacity
         style={{ flexDirection: 'row' }}
         onPress={() => {
-          setLike(true);
+          setLikeState(!likeState);
           Like();
         }}
       >
         <FontAwesomeIcon
           icon={faThumbsUp}
-          style={{ color: like ? '#83CCFF' : 'lightgrey', margin: 5 }}
+          style={{ color: likeState ? '#83CCFF' : 'lightgrey', margin: 5 }}
         />
         <Text style={{ alignSelf: 'center', marginRight: 15 }}>
-          {numOfLike.current}
+          {numOfLike}
         </Text>
       </TouchableOpacity>
       {/*
