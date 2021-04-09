@@ -57,7 +57,7 @@ app.post('/fetchPost', controller.fetchPost);
 app.post('/fetchLikeAndDislike', controller.fetchLikeAndDislike);
 
 // Like post
-app.post('/like', controller.likee);
+app.post('/like', controller.like);
 
 // Edit profile
 app.post('/editProfile', controller.editProfile);
