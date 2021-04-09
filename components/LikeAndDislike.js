@@ -17,7 +17,6 @@ export default function LikeAndDislike({ post }) {
   const postId = React.useRef(post._id);
   const fetched = React.useRef(false);
   const status = React.useRef(0);
-
   // Fetch Like(
   function fetchLikeAndDislike() {
     (async () => {
@@ -39,10 +38,10 @@ export default function LikeAndDislike({ post }) {
           .then((res) => res.json())
           .then((res) => {
             if (status.current === 200) {
-              setNumOfLike(res.like.length);
               if (res.like.includes(username)) {
                 setLikeState(true);
               }
+              setNumOfLike(res.like.length);
               fetched.current = true;
             } else if (status.current === 422) {
               console.log(res.error);
@@ -73,11 +72,8 @@ export default function LikeAndDislike({ post }) {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        if (status.current === 200 && !res.like.includes(username)) {
+        if (status.current === 200) {
           setNumOfLike(res.like.length);
-          setLikeState(true);
-        } else if (status.current === 200 && res.like.includes(username)) {
-          setLikeState(false);
         }
       })
       .catch((err) => console.log(err));
