@@ -11,6 +11,7 @@ import AcademicsScreen from '../TagsScreen/AcademicsScreen';
 import ChatroomScreen from '../ChatroomScreen';
 import ProfileScreen from '../ProfileScreen';
 import FeedStack from './FeedStack';
+import Header from '../../components/Header';
 
 // Drawer
 const Drawer = createDrawerNavigator();
@@ -25,7 +26,9 @@ export default function FeedDrawer() {
       <DrawerContentScrollView>
         <DrawerItem
           label="Academics"
-          onPress={() => navigation.navigate('Academics')}
+          onPress={() =>
+            navigation.navigate('Academics', { tags: 'Academics' })
+          }
         />
         <DrawerItem
           label="Relationships"
@@ -53,7 +56,11 @@ export default function FeedDrawer() {
       initialRouteName="Feed"
       drawerType={dimensions.width >= 768 ? 'permanent' : 'front'}
     >
-      <Drawer.Screen name="Academics" component={AcademicsScreen} />
+      <Drawer.Screen
+        name="Academics"
+        component={AcademicsScreen}
+        options={{ ...Header, headerShown: true }}
+      />
       <Drawer.Screen name="Feed" component={FeedStack} />
       <Drawer.Screen name="Profile" component={ProfileScreen} />
       <Drawer.Screen name="Chatroom" component={ChatroomScreen} />

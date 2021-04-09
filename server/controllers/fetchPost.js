@@ -9,9 +9,9 @@ const Post = mongoose.model('post');
 
 // Exports
 module.exports = function fetchPost(req, res) {
-  const { page } = req.body;
+  const { page, tags } = req.body;
 
-  const post = Post.find({})
+  const post = Post.find({ tags })
     .sort({ timestamp: -1 })
     .skip(25 * page)
     .limit(25);

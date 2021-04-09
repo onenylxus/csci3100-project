@@ -5,7 +5,7 @@ import PostBox from './PostBox';
 import Source from '../assets/source';
 
 // Export post container
-export default function PostContainer() {
+export default function PostContainer({ tags }) {
   // const [page, setPage] = React.useState(0);
   const [state, setState] = React.useState(false);
 
@@ -24,6 +24,7 @@ export default function PostContainer() {
           },
           body: JSON.stringify({
             page,
+            tags,
           }),
         })
           .then((res) => {
@@ -46,7 +47,7 @@ export default function PostContainer() {
     return list.current.map((post) => <PostBox key={post._id} post={post} />);
   }
 
-  React.useEffect(fetchPost, [page, state]);
+  React.useEffect(fetchPost, [page, state, tags]);
 
   return <View>{generate()}</View>;
 }
