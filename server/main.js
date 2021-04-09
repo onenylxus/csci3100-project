@@ -12,7 +12,7 @@ const controller = {
   fetchData: require('./controllers/fetchData'),
   forgotPassword: require('./controllers/forgotPassword'),
   login: require('./controllers/login'),
-  likeAndDislike: require('./controllers/likeAndDislike'),
+  like: require('./controllers/like'),
   register: require('./controllers/register'),
   resetPassword: require('./controllers/resetPassword'),
   verify: require('./controllers/verify'),
@@ -57,7 +57,7 @@ app.post('/fetchPost', controller.fetchPost);
 app.post('/fetchLikeAndDislike', controller.fetchLikeAndDislike);
 
 // Like post
-app.post('/likeAndDislike', controller.likeAndDislike);
+app.post('/like', controller.likee);
 
 // Edit profile
 app.post('/editProfile', controller.editProfile);
