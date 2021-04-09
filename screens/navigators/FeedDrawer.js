@@ -8,8 +8,6 @@ import {
 import { useWindowDimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import ChannelsScreen from '../TagsScreen/ChannelScreen';
-import ChatroomScreen from '../ChatroomScreen';
-import ProfileScreen from '../ProfileScreen';
 import FeedStack from './FeedStack';
 import Header from '../../components/Header';
 
@@ -30,19 +28,25 @@ export default function FeedDrawer() {
         />
         <DrawerItem
           label="Relationships"
-          onPress={() => navigation.navigate('Chatroom')}
+          onPress={() =>
+            navigation.navigate('Channels', { tags: 'Relationships' })
+          }
         />
         <DrawerItem
           label="News"
-          onPress={() => navigation.navigate('Chatroom')}
+          onPress={() => navigation.navigate('Channels', { tags: 'News' })}
         />
         <DrawerItem
           label="CU-related"
-          onPress={() => navigation.navigate('Chatroom')}
+          onPress={
+            (() => navigation.navigate('Channels'), { tags: 'CU-related' })
+          }
         />
         <DrawerItem
           label="Entertainment"
-          onPress={() => navigation.navigate('Chatroom')}
+          onPress={() =>
+            navigation.navigate('Channels', { tags: 'Entertainment' })
+          }
         />
       </DrawerContentScrollView>
     );
@@ -60,8 +64,6 @@ export default function FeedDrawer() {
         options={{ ...Header, headerShown: true }}
       />
       <Drawer.Screen name="Feed" component={FeedStack} />
-      <Drawer.Screen name="Profile" component={ProfileScreen} />
-      <Drawer.Screen name="Chatroom" component={ChatroomScreen} />
     </Drawer.Navigator>
   );
 }
