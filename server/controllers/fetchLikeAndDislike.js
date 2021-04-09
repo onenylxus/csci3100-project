@@ -22,7 +22,7 @@ module.exports = function fetchLikeAndDislike(req, res) {
 
     return res.status(200).send({
       msg: 'Like and dislike fetched',
-      peopleLike: data.peopleLike,
+      like: data.peopleLike,
     });
   });
 };
