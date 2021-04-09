@@ -62,7 +62,7 @@ export default function PostBox({ post }) {
       </Text>
       <Text style={{ marginHorizontal: 15, fontSize: 16 }}>{post.content}</Text>
       <View>
-        <LikeAndDislike post={post} />
+        <LikeAndDislike key={post._id} post={post} />
       </View>
       <View>
         <TouchableOpacity
