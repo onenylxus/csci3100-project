@@ -19,6 +19,7 @@ module.exports = function like(req, res) {
         error: 'post not found',
       });
     }
+    console.log(likeState);
     if (likeState === true) {
       data
         .update({
@@ -27,9 +28,11 @@ module.exports = function like(req, res) {
         .exec();
     } else {
       data.peopleLike.splice(data.peopleLike.indexOf(username), 1);
-      data.update({
-        peopleLike: data.peopleLike,
-      });
+      data
+        .update({
+          $set: { peopleLike: data.peopleLike },
+        })
+        .exec();
     }
 
     return res.status(200).send({
