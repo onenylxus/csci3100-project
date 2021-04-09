@@ -10,7 +10,7 @@ export default function FeedScreen() {
     <View style={{ marginBottom: 50 }}>
       <SearchBar />
       <ScrollView>
-        <PostContainer />
+        <PostContainer tags="" />
       </ScrollView>
     </View>
   );

@@ -8,13 +8,19 @@ require('../schemas/Post');
 const Post = mongoose.model('post');
 
 // Exports
-module.exports = function fetchPost(req, res) {
+module.exports = async function fetchPost(req, res) {
   const { page, tags } = req.body;
-
-  const post = Post.find({ tags })
-    .sort({ timestamp: -1 })
-    .skip(25 * page)
-    .limit(25);
+  let post = null;
+  if (tags === '') {
+    post = await Post.find({})
+      .sort({ timestamp: -1 })
+      .skip(25 * page)
+      .limit(25);
+  } else
+    post = await Post.find({ tags })
+      .sort({ timestamp: -1 })
+      .skip(25 * page)
+      .limit(25);
 
   post.then((data) => {
     if (!data) {
