@@ -79,7 +79,7 @@ export default function LikeAndDislike({ post }) {
       .catch((err) => console.log(err));
   }
 
-  React.useEffect(fetchLikeAndDislike);
+  React.useEffect(fetchLikeAndDislike, [getUser, likeState, username]);
 
   return (
     <View>
