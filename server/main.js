@@ -7,10 +7,12 @@ const controller = {
   addInfo: require('./controllers/addInfo'),
   createPost: require('./controllers/createPost'),
   fetchPost: require('./controllers/fetchPost'),
+  fetchLikeAndDislike: require('./controllers/fetchLikeAndDislike'),
   editProfile: require('./controllers/editProfile'),
   fetchData: require('./controllers/fetchData'),
   forgotPassword: require('./controllers/forgotPassword'),
   login: require('./controllers/login'),
+  like: require('./controllers/like'),
   register: require('./controllers/register'),
   resetPassword: require('./controllers/resetPassword'),
   verify: require('./controllers/verify'),
@@ -50,6 +52,12 @@ app.post('/createPost', controller.createPost);
 
 // Fetch post
 app.post('/fetchPost', controller.fetchPost);
+
+// Fetch like and dislike
+app.post('/fetchLikeAndDislike', controller.fetchLikeAndDislike);
+
+// Like post
+app.post('/like', controller.like);
 
 // Edit profile
 app.post('/editProfile', controller.editProfile);

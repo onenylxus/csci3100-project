@@ -19,16 +19,16 @@ const PostSchema = new mongoose.Schema({
     type: String,
     default: true,
   },
-  numOfLike: {
-    type: Number,
+  peopleLike: {
+    type: [String],
     required: true,
   },
-  numOfDislike: {
-    type: Number,
+  peopleDislike: {
+    type: [String],
     required: true,
   },
   comments: {
-    type: String,
+    type: [String],
     required: false,
   },
   tags: {
