@@ -8,8 +8,8 @@ require('../schemas/Post');
 const Post = mongoose.model('post');
 
 // Exports
-module.exports = function likeAndDislike(req, res) {
-  const { _id, state, likeType, username } = req.body;
+module.exports = function like(req, res) {
+  const { _id, likeState, username } = req.body;
 
   const post = Post.findOne({ _id });
 
@@ -19,32 +19,18 @@ module.exports = function likeAndDislike(req, res) {
         error: 'post not found',
       });
     }
-    console.log('state: ' + state);
-    console.log('likeType' + likeType);
-    if (state === 1) {
+    console.log(likeState);
+    if (likeState === false) {
       data
         .update({
           $push: { peopleLike: username },
         })
         .exec();
-    } else if (state === -1) {
-      data
-        .update({
-          $push: { peopleDislike: username },
-        })
-        .exec();
-    } else if (state === 0 && likeType === 'like') {
+    } else {
       data.peopleLike.splice(data.peopleLike.indexOf(username), 1);
       data
         .update({
           $set: { peopleLike: data.peopleLike },
-        })
-        .exec();
-    } else if (state === 0 && likeType === 'dislike') {
-      data.peopleDislike.splice(data.peopleDisLike.indexOf(username), 1);
-      data
-        .update({
-          $set: { peopleDisLike: data.peopleDisLike },
         })
         .exec();
     }
@@ -52,7 +38,6 @@ module.exports = function likeAndDislike(req, res) {
     return res.status(200).send({
       msg: 'data updated',
       like: data.peopleLike,
-      dislike: data.peopleDislike,
     });
   });
 };
