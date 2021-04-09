@@ -3,7 +3,7 @@ import React from 'react';
 import { render } from '@testing-library/react-native';
 
 // Import target component
-import Chat from '../../components/chat';
+import Chat from '../../components/Chat';
 
 // Run jest tests
 describe('Chat', () => {
