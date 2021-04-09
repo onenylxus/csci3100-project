@@ -3,7 +3,15 @@ import React from 'react';
 import { render } from '@testing-library/react-native';
 
 // Import target component
+import AuthContext from '../../components/AuthContext';
 import PostBox from '../../components/PostBox';
+
+// Mock authentication method
+const AuthMethodMock = {
+  login: jest.fn(),
+  logout: jest.fn(),
+  getUser: jest.fn(),
+};
 
 // Mock FontAwesome icons
 jest.mock('@fortawesome/react-native-fontawesome', () => ({
@@ -24,7 +32,11 @@ describe('PostBox', () => {
     };
 
     // Render
-    element = render(<PostBox post={postMock} />);
+    element = render(
+      <AuthContext.Provider value={AuthMethodMock}>
+        <PostBox post={postMock} />
+      </AuthContext.Provider>
+    );
   });
 
   it('matches snapshot', () => {

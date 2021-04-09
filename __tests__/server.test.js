@@ -19,11 +19,17 @@ describe('Server', () => {
     it('fetchData.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['fetchData.js']));
     });
+    it('fetchLikeAndDislike.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['fetchLikeAndDislike.js']));
+    });
     it('fetchPost.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['fetchPost.js']));
     });
     it('forgotPassword.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['forgotPassword.js']));
+    });
+    it('like.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['like.js']));
     });
     it('login.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['login.js']));
@@ -38,7 +44,7 @@ describe('Server', () => {
       expect(dir).toEqual(expect.arrayContaining(['verify.js']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(10);
+      expect(dir.length).toEqual(12);
     });
   });
 
