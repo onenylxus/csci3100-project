@@ -15,6 +15,7 @@ describe('SearchBar', () => {
   let element;
 
   beforeEach(() => {
+    // Render
     element = render(<SearchBar />);
   });
 

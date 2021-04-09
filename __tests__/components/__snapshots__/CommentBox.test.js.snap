@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommentBox matches snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "white",
+      "borderColor": "#F0F0F0",
+      "borderRadius": 10,
+      "borderWidth": 1,
+      "flexDirection": "column",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Image
+      source={1}
+      style={
+        Object {
+          "borderRadius": 28,
+          "height": 48,
+          "margin": 10,
+          "width": 48,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "flexDirection": "column",
+          "marginTop": 15,
+        }
+      }
+    >
+      <Text>
+        Username
+      </Text>
+      <Text>
+        Comment content
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "alignSelf": "center",
+        "backgroundColor": "#fff",
+        "borderColor": "#000",
+        "borderRadius": 15,
+        "borderWidth": 0.5,
+        "flexDirection": "row",
+        "height": 40,
+        "margin": 10,
+        "width": 300,
+      }
+    }
+  >
+    <
+      icon={
+        Object {
+          "icon": Array [
+            512,
+            512,
+            Array [],
+            "f304",
+            "M290.74 93.24l128.02 128.02-277.99 277.99-114.14 12.6C11.35 513.54-1.56 500.62.14 485.34l12.7-114.22 277.9-277.88zm207.2-19.06l-60.11-60.11c-18.75-18.75-49.16-18.75-67.91 0l-56.55 56.55 128.02 128.02 56.55-56.55c18.75-18.76 18.75-49.16 0-67.91z",
+          ],
+          "iconName": "pen",
+          "prefix": "fas",
+        }
+      }
+      size={15}
+      style={
+        Object {
+          "marginHorizontal": 5,
+          "marginVertical": 12,
+        }
+      }
+    />
+    <TextInput
+      allowFontScaling={true}
+      onChangeText={[Function]}
+      placeholder="Write Comment"
+      rejectResponderTermination={true}
+      style={
+        Object {
+          "outline": "none",
+          "width": 230,
+        }
+      }
+      underlineColorAndroid="transparent"
+      value=""
+    />
+    <View
+      accessible={true}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignContent": "center",
+          "justifyContent": "center",
+          "marginHorizontal": 5,
+          "opacity": 1,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "blue",
+          }
+        }
+      >
+        Send
+      </Text>
+    </View>
+  </View>
+</View>
+`;

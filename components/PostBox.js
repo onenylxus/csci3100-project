@@ -2,7 +2,6 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, Image } from 'react-native';
 import { Col, Grid } from 'react-native-easy-grid';
-// import { List } from 'react-native-paper';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {
   faEllipsisH,

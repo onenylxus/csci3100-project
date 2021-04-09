@@ -1,7 +1,6 @@
 // Import
 import React from 'react';
 import { View } from 'react-native';
-// import { List } from 'react-native-paper';
 import PostBox from './PostBox';
 import Source from '../assets/source';
 

@@ -30,28 +30,30 @@ describe('LoginForm', () => {
   let element;
 
   beforeEach(() => {
+    // Mock fetch function
     require('jest-fetch-mock').enableMocks();
-    fetchMock.mockIf(`https://${Source.heroku}/login`, (req) => {      
+    fetchMock.mockIf(`https://${Source.heroku}/login`, (req) => {
       const { username, password } = req.body;
 
       if (username === 'testac' && password === 'testpw') {
         return {
           status: 200,
-          body: JSON.stringify({ msg: 'User is verified' })
+          body: JSON.stringify({ msg: 'User is verified' }),
         };
       } else if (username !== 'testac') {
         return {
           status: 422,
-          body: JSON.stringify({ error: 'accountError' })
-        }
+          body: JSON.stringify({ error: 'accountError' }),
+        };
       } else {
         return {
           status: 422,
-          body: JSON.stringify({ error: 'passwordError' })
-        }
+          body: JSON.stringify({ error: 'passwordError' }),
+        };
       }
     });
 
+    // Render
     element = render(
       <NavigationContainer>
         <AuthContext.Provider value={AuthMethodMock}>

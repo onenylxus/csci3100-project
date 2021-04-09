@@ -1,11 +1,11 @@
 // Import
 import React from 'react';
-import { NavigationContainer, useRoute } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { render } from '@testing-library/react-native';
 
 // Import target component
-import AddInfoForm from '../../components/AddInfoForm';
 import AuthContext from '../../components/AuthContext';
+import EditProfileForm from '../../components/EditProfileForm';
 
 // Mock authentication method
 const AuthMethodMock = {
@@ -23,18 +23,15 @@ jest.mock('@fortawesome/react-native-fontawesome', () => ({
 jest.mock('@react-navigation/core');
 
 // Run jest tests
-describe('AddInfoForm', () => {
+describe('EditProfileForm', () => {
   let element;
 
   beforeEach(() => {
-    // Mock route
-    useRoute.mockReturnValue({ email: '0000000000@link.cuhk.edu.hk' });
-
     // Render
     element = render(
       <NavigationContainer>
         <AuthContext.Provider value={AuthMethodMock}>
-          <AddInfoForm />
+          <EditProfileForm />
         </AuthContext.Provider>
       </NavigationContainer>
     );

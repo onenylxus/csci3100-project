@@ -4,15 +4,7 @@ import { NavigationContainer, useRoute } from '@react-navigation/native';
 import { render } from '@testing-library/react-native';
 
 // Import target component
-import AddInfoForm from '../../components/AddInfoForm';
-import AuthContext from '../../components/AuthContext';
-
-// Mock authentication method
-const AuthMethodMock = {
-  login: jest.fn(),
-  logout: jest.fn(),
-  getUser: jest.fn(),
-};
+import ForgotPasswordForm from '../../components/ForgotPasswordForm';
 
 // Mock FontAwesome icons
 jest.mock('@fortawesome/react-native-fontawesome', () => ({
@@ -23,7 +15,7 @@ jest.mock('@fortawesome/react-native-fontawesome', () => ({
 jest.mock('@react-navigation/core');
 
 // Run jest tests
-describe('AddInfoForm', () => {
+describe('ResetPasswordForm', () => {
   let element;
 
   beforeEach(() => {
@@ -33,9 +25,7 @@ describe('AddInfoForm', () => {
     // Render
     element = render(
       <NavigationContainer>
-        <AuthContext.Provider value={AuthMethodMock}>
-          <AddInfoForm />
-        </AuthContext.Provider>
+        <ForgotPasswordForm />
       </NavigationContainer>
     );
   });

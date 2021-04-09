@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CollegePicker matches snapshot 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "flexDirection": "column",
+        "marginVertical": 40,
+        "width": "100%",
+      }
+    }
+  >
+    <Text>
+      College: 
+    </Text>
+    <View>
+      <View
+        style={
+          Object {
+            "alignSelf": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <RNCPicker
+          items={
+            Array [
+              Object {
+                "label": "Choose a college",
+                "textColor": undefined,
+                "value": "",
+              },
+              Object {
+                "label": "Chung Chi College",
+                "textColor": undefined,
+                "value": "CC",
+              },
+              Object {
+                "label": "New Asia College",
+                "textColor": undefined,
+                "value": "NA",
+              },
+              Object {
+                "label": "United College",
+                "textColor": undefined,
+                "value": "UC",
+              },
+              Object {
+                "label": "Shaw College",
+                "textColor": undefined,
+                "value": "SC",
+              },
+              Object {
+                "label": "Morningside College",
+                "textColor": undefined,
+                "value": "MC",
+              },
+              Object {
+                "label": "S.H. Ho College",
+                "textColor": undefined,
+                "value": "SH",
+              },
+              Object {
+                "label": "CW Chu College",
+                "textColor": undefined,
+                "value": "WC",
+              },
+              Object {
+                "label": "Wu Yee Sun College",
+                "textColor": undefined,
+                "value": "YS",
+              },
+              Object {
+                "label": "Lee Wo Sing College",
+                "textColor": undefined,
+                "value": "WS",
+              },
+            ]
+          }
+          onChange={[Function]}
+          selectedIndex={0}
+          style={
+            Array [
+              Object {
+                "height": 216,
+              },
+              undefined,
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;

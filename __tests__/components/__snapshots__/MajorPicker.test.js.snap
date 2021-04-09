@@ -1,0 +1,411 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MajorPicker matches snapshot 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "flexDirection": "column",
+        "marginVertical": 40,
+        "width": "100%",
+      }
+    }
+  >
+    <Text>
+      Major:
+    </Text>
+    <View>
+      <View
+        style={
+          Object {
+            "alignSelf": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <RNCPicker
+          items={
+            Array [
+              Object {
+                "label": "Choose a major",
+                "textColor": undefined,
+                "value": "",
+              },
+              Object {
+                "label": "Anthropology",
+                "textColor": undefined,
+                "value": "ANTHN",
+              },
+              Object {
+                "label": "Architectural Studies",
+                "textColor": undefined,
+                "value": "ARCHN",
+              },
+              Object {
+                "label": "Artificial Intelligence: Systems and Technologies",
+                "textColor": undefined,
+                "value": "AISTN",
+              },
+              Object {
+                "label": "Bimodal Bilingual Studies",
+                "textColor": undefined,
+                "value": "BMBLN",
+              },
+              Object {
+                "label": "Biochemistry",
+                "textColor": undefined,
+                "value": "BCHEN",
+              },
+              Object {
+                "label": "Biology",
+                "textColor": undefined,
+                "value": "BIOLN",
+              },
+              Object {
+                "label": "Biomedical Engineering",
+                "textColor": undefined,
+                "value": "BMEGN",
+              },
+              Object {
+                "label": "Biomedical Sciences",
+                "textColor": undefined,
+                "value": "BMSCN",
+              },
+              Object {
+                "label": "Cell and Molecular Biology",
+                "textColor": undefined,
+                "value": "CMBIN",
+              },
+              Object {
+                "label": "Chemistry",
+                "textColor": undefined,
+                "value": "CHEMN",
+              },
+              Object {
+                "label": "Chinese Medicine",
+                "textColor": undefined,
+                "value": "BCMEN",
+              },
+              Object {
+                "label": "Chinese Language and Literature",
+                "textColor": undefined,
+                "value": "CHLLN",
+              },
+              Object {
+                "label": "Chinese Studies",
+                "textColor": undefined,
+                "value": "CHESB",
+              },
+              Object {
+                "label": "Community Health Practice",
+                "textColor": undefined,
+                "value": "CHPRN",
+              },
+              Object {
+                "label": "Computer Engineering",
+                "textColor": undefined,
+                "value": "CENGN",
+              },
+              Object {
+                "label": "Computer Science",
+                "textColor": undefined,
+                "value": "CSCIN",
+              },
+              Object {
+                "label": "Cultural Management",
+                "textColor": undefined,
+                "value": "CUMTN",
+              },
+              Object {
+                "label": "Cultural Studies",
+                "textColor": undefined,
+                "value": "CULSN",
+              },
+              Object {
+                "label": "Data Science and Policy Studies",
+                "textColor": undefined,
+                "value": "DSPSN",
+              },
+              Object {
+                "label": "Early Childhood Education",
+                "textColor": undefined,
+                "value": "CHEDN",
+              },
+              Object {
+                "label": "Earth System Science",
+                "textColor": undefined,
+                "value": "ESSCN",
+              },
+              Object {
+                "label": "Economics",
+                "textColor": undefined,
+                "value": "ECONN",
+              },
+              Object {
+                "label": "Electronic Engineering",
+                "textColor": undefined,
+                "value": "ELEGN",
+              },
+              Object {
+                "label": "Energy and Environmental Engineering",
+                "textColor": undefined,
+                "value": "EEENN",
+              },
+              Object {
+                "label": "English",
+                "textColor": undefined,
+                "value": "ENGEN",
+              },
+              Object {
+                "label": "Environmental Science",
+                "textColor": undefined,
+                "value": "ENSCN",
+              },
+              Object {
+                "label": "Exercise Science and Health Education",
+                "textColor": undefined,
+                "value": "ESHEN",
+              },
+              Object {
+                "label": "Financial Technology",
+                "textColor": undefined,
+                "value": "FTECN",
+              },
+              Object {
+                "label": "Fine Arts",
+                "textColor": undefined,
+                "value": "FAASN",
+              },
+              Object {
+                "label": "Food and Nutritional Sciences",
+                "textColor": undefined,
+                "value": "FNSCN",
+              },
+              Object {
+                "label": "Gender Studies",
+                "textColor": undefined,
+                "value": "GDRSN",
+              },
+              Object {
+                "label": "Geography and Resource Management",
+                "textColor": undefined,
+                "value": "GRMDN",
+              },
+              Object {
+                "label": "Gerontology",
+                "textColor": undefined,
+                "value": "BSCGN",
+              },
+              Object {
+                "label": "Global Communication",
+                "textColor": undefined,
+                "value": "GCOMN",
+              },
+              Object {
+                "label": "Global Studies",
+                "textColor": undefined,
+                "value": "GLBSN",
+              },
+              Object {
+                "label": "Government and Public Administration",
+                "textColor": undefined,
+                "value": "GPADN",
+              },
+              Object {
+                "label": "History",
+                "textColor": undefined,
+                "value": "HISTN",
+              },
+              Object {
+                "label": "Hospitality and Real Estate",
+                "textColor": undefined,
+                "value": "HTMGB",
+              },
+              Object {
+                "label": "Information Engineering",
+                "textColor": undefined,
+                "value": "IERGN",
+              },
+              Object {
+                "label": "Insurance, Financial and Actuarial Analysis",
+                "textColor": undefined,
+                "value": "IFAAB",
+              },
+              Object {
+                "label": "Integrated BBA",
+                "textColor": undefined,
+                "value": "IBBAB",
+              },
+              Object {
+                "label": "Japanese Studies",
+                "textColor": undefined,
+                "value": "JASPN",
+              },
+              Object {
+                "label": "Journalism and Communication",
+                "textColor": undefined,
+                "value": "COMMN",
+              },
+              Object {
+                "label": "Law",
+                "textColor": undefined,
+                "value": "LAWSN",
+              },
+              Object {
+                "label": "Liberal Studies",
+                "textColor": undefined,
+                "value": "LSEDN",
+              },
+              Object {
+                "label": "Linguistics",
+                "textColor": undefined,
+                "value": "LINGN",
+              },
+              Object {
+                "label": "Mathematics",
+                "textColor": undefined,
+                "value": "MATHN",
+              },
+              Object {
+                "label": "Mathematics and Information Engineering",
+                "textColor": undefined,
+                "value": "MIEGN",
+              },
+              Object {
+                "label": "Mathematics and Mathematics Education",
+                "textColor": undefined,
+                "value": "BMEDN",
+              },
+              Object {
+                "label": "Mechanical and Automation Engineering",
+                "textColor": undefined,
+                "value": "MAEGN",
+              },
+              Object {
+                "label": "Medicine",
+                "textColor": undefined,
+                "value": "MEDUN",
+              },
+              Object {
+                "label": "Molecular Biotechnology",
+                "textColor": undefined,
+                "value": "MBTEN",
+              },
+              Object {
+                "label": "Music",
+                "textColor": undefined,
+                "value": "MUSCN",
+              },
+              Object {
+                "label": "Natural Science",
+                "textColor": undefined,
+                "value": "NSCIN",
+              },
+              Object {
+                "label": "Nursing",
+                "textColor": undefined,
+                "value": "NURSN",
+              },
+              Object {
+                "label": "Pharmacy",
+                "textColor": undefined,
+                "value": "PHARN",
+              },
+              Object {
+                "label": "Philosophy",
+                "textColor": undefined,
+                "value": "PHILN",
+              },
+              Object {
+                "label": "Physical Education, Exercise Science and Health",
+                "textColor": undefined,
+                "value": "PESHN",
+              },
+              Object {
+                "label": "Physics",
+                "textColor": undefined,
+                "value": "PHYSN",
+              },
+              Object {
+                "label": "Professional Accountancy",
+                "textColor": undefined,
+                "value": "PACCN",
+              },
+              Object {
+                "label": "Psychology",
+                "textColor": undefined,
+                "value": "PHYCN",
+              },
+              Object {
+                "label": "Public Health",
+                "textColor": undefined,
+                "value": "PHPCN",
+              },
+              Object {
+                "label": "Quantitative Finance",
+                "textColor": undefined,
+                "value": "QFINN",
+              },
+              Object {
+                "label": "Religious Studies",
+                "textColor": undefined,
+                "value": "RELSN",
+              },
+              Object {
+                "label": "Risk Management Science",
+                "textColor": undefined,
+                "value": "RMSCN",
+              },
+              Object {
+                "label": "Social Work",
+                "textColor": undefined,
+                "value": "SOWKN",
+              },
+              Object {
+                "label": "Sociology",
+                "textColor": undefined,
+                "value": "SOCIN",
+              },
+              Object {
+                "label": "Statistics",
+                "textColor": undefined,
+                "value": "STATN",
+              },
+              Object {
+                "label": "Systems Engineering and Engineering Management",
+                "textColor": undefined,
+                "value": "SEEMN",
+              },
+              Object {
+                "label": "Theology",
+                "textColor": undefined,
+                "value": "THEON",
+              },
+              Object {
+                "label": "Translation",
+                "textColor": undefined,
+                "value": "TRANN",
+              },
+              Object {
+                "label": "Urban Studies",
+                "textColor": undefined,
+                "value": "URSPN",
+              },
+            ]
+          }
+          onChange={[Function]}
+          selectedIndex={0}
+          style={
+            Array [
+              Object {
+                "height": 216,
+              },
+              undefined,
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;

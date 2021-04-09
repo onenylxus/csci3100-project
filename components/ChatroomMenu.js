@@ -5,8 +5,8 @@ import { Grid, Col } from 'react-native-easy-grid';
 import { useNavigation } from '@react-navigation/native';
 import Style from '../assets/style';
 
-// export individual chatBox in chatroom Menu
-export default function Chat() {
+// export individual chatbox in chatroom menu
+export default function ChatroomMenu() {
   const navigation = useNavigation();
   const windowWidth = Dimensions.get('window').width;
 
