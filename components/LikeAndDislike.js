@@ -53,13 +53,6 @@ export default function LikeAndDislike({ post }) {
   }
 
   async function Like() {
-    if (likeState === true) {
-      console.log('true to false');
-      setLikeState(false);
-    } else {
-      console.log('false to true');
-      setLikeState(true);
-    }
     await getUser(setUsername);
     await fetch(`https://${Source.heroku}/like`, {
       method: 'POST',
@@ -92,7 +85,8 @@ export default function LikeAndDislike({ post }) {
     <View>
       <TouchableOpacity
         style={{ flexDirection: 'row' }}
-        onPress={async () => {
+        onPress={() => {
+          setLikeState(!likeState);
           Like();
         }}
       >
