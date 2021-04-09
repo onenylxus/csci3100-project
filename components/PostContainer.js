@@ -50,7 +50,4 @@ export default function PostContainer() {
   React.useEffect(fetchPost, [page, state]);
 
   return <View>{generate()}</View>;
-
-  // [1, 2, 3].map(v => v * 2) // [2, 4, 6]
-  // [data1, data2, data3].map(data => <PostBox id={data} />)
 }
