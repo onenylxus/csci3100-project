@@ -2,6 +2,7 @@
 import React from 'react';
 import { Alert, Button, Switch, Text, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Picker } from '@react-native-community/picker';
 import AuthContext from './AuthContext';
 import Source from '../assets/source';
 import Style from '../assets/style';
@@ -119,11 +120,14 @@ export default function CreatePostForm() {
         placeholder="What's on your mind?"
         onChangeText={(text) => setContent(text)}
       />
-      <TextInput
-        style={Style.SectionStyle}
-        placeholder="Tags you want to add"
-        onChangeText={(text) => setTags(text)}
-      />
+      <Picker selectedValue={tags} onValueChange={(text) => setTags(text)}>
+        <Picker.Item label="Choose a channel!" value="" />
+        <Picker.Item label="Academics" value="Academics" />
+        <Picker.Item label="Relationships" value="Relationships" />
+        <Picker.Item label="News" value="News" />
+        <Picker.Item label="CU-related" value="CU-related" />
+        <Picker.Item label="Entertainment" value="Entertainment" />
+      </Picker>
       <Button title="Post!" onPress={submitData} />
     </View>
   );
