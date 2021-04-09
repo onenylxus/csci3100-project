@@ -8,10 +8,10 @@ require('../schemas/Post');
 const Post = mongoose.model('post');
 
 // Exports
-module.exports = async function fetchPost(req, res) {
+module.exports = function fetchPost(req, res) {
   const { page, tags } = req.body;
 
-  const post = await Post.find({ tags })
+  const post = Post.find({ tags })
     .sort({ timestamp: -1 })
     .skip(25 * page)
     .limit(25);
