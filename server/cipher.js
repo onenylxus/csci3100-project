@@ -2,11 +2,11 @@
 const crypto = require('crypto');
 
 // Variables
-const algorithm = 'aes-256-ccm';
+const algorithm = 'aes-256-cbc';
 
 // Encrypt function
 function encrypt(text) {
-  const iv = crypto.randomBytes(32);
+  const iv = crypto.randomBytes(8).toString('hex').slice(0, 16);
   const cipher = crypto.createCipheriv(algorithm, process.env.CIPHER_KEY, iv);
   let hex = cipher.update(text, 'utf8', 'hex');
   hex += cipher.final('hex');
