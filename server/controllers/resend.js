@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const sender = require('../sender');
 
 // Schemas
-require('../schemas/token');
+require('../schemas/Token');
 
 // Models
 const Token = mongoose.model('token');
