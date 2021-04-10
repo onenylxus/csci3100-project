@@ -6,15 +6,14 @@ describe('Screens', () => {
   // Navigators
   describe('contains navigators', () => {
     const dir = fs.readdirSync('screens/navigators');
-
+    it('ChannelStack.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['ChannelStack.js']));
+    });
     it('ChatroomStack.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['ChatroomStack.js']));
     });
     it('CreatePostStack.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['CreatePostStack.js']));
-    });
-    it('FeedDrawer.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['FeedDrawer.js']));
     });
     it('FeedStack.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['FeedStack.js']));
@@ -42,6 +41,12 @@ describe('Screens', () => {
 
     it('AddInfoScreen.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['AddInfoScreen.js']));
+    });
+    it('ChannelFeedScreen.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['ChannelFeedScreen.js']));
+    });
+    it('ChannelScreen.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['ChannelScreen.js']));
     });
     it('ChatboxPhoneScreen.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['ChatboxPhoneScreen.js']));
@@ -83,7 +88,7 @@ describe('Screens', () => {
       expect(dir).toEqual(expect.arrayContaining(['VerificationScreen.js']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(14);
+      expect(dir.length).toEqual(16);
     });
   });
 });

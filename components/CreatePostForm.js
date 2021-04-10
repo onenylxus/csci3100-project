@@ -125,7 +125,7 @@ export default function CreatePostForm() {
         <Picker.Item label="Academics" value="Academics" />
         <Picker.Item label="Relationships" value="Relationships" />
         <Picker.Item label="News" value="News" />
-        <Picker.Item label="CU-related" value="CU-related" />
+        <Picker.Item label="CU-Related" value="CU-Related" />
         <Picker.Item label="Entertainment" value="Entertainment" />
       </Picker>
       <Button title="Post!" onPress={submitData} />

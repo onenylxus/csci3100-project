@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import {
+  faBars,
   faComment,
   faHome,
   faPlus,
@@ -14,8 +15,9 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AuthContext from './components/AuthContext';
 import ChatroomStack from './screens/navigators/ChatroomStack';
+import ChannelStack from './screens/navigators/ChannelStack';
 import CreatePostStack from './screens/navigators/CreatePostStack';
-import FeedDrawer from './screens/navigators/FeedDrawer';
+import FeedStack from './screens/navigators/FeedStack';
 import ForgotPasswordStack from './screens/navigators/ForgotPasswordStack';
 import GuestFeedStack from './screens/navigators/GuestFeedStack';
 import Header from './components/Header';
@@ -79,6 +81,8 @@ export default function App() {
             screenOptions={({ route }) => ({
               tabBarIcon: ({ color }) => {
                 switch (route.name) {
+                  case 'Channel':
+                    return <FontAwesomeIcon icon={faBars} color={color} />;
                   case 'Chatroom':
                     return <FontAwesomeIcon icon={faComment} color={color} />;
                   case 'CreatePost':
@@ -98,7 +102,8 @@ export default function App() {
               scrollEnabled: false,
             }}
           >
-            <Tab.Screen name="Feed" component={FeedDrawer} />
+            <Tab.Screen name="Feed" component={FeedStack} />
+            <Tab.Screen name="Channel" component={ChannelStack} />
             <Tab.Screen name="CreatePost" component={CreatePostStack} />
             <Tab.Screen name="Chatroom" component={ChatroomStack} />
             <Tab.Screen name="Profile" component={ProfileStack} />
