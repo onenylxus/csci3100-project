@@ -17,7 +17,7 @@ module.exports = function resetPassword(req, res) {
   const client = Client.findOne({ email });
 
   client.then((data) => {
-    if (password === cipher.decrypt(...data.password)) {
+    if (password === cipher.decrypt(data.password.hex, data.password.iv)) {
       return res.status(422).send({
         error: 'duplicatePasswordError',
       });
