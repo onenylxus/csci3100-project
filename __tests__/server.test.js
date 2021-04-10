@@ -79,6 +79,9 @@ describe('Server', () => {
   describe('contains JS files', () => {
     const dir = fs.readdirSync('server').filter((file) => file.endsWith('.js'));
 
+    it('cipher.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['cipher.js']));
+    });
     it('main.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['main.js']));
     });
@@ -86,7 +89,7 @@ describe('Server', () => {
       expect(dir).toEqual(expect.arrayContaining(['transporter.js']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(2);
+      expect(dir.length).toEqual(3);
     });
   });
 });

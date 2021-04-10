@@ -8,7 +8,7 @@ const ClientSchema = new mongoose.Schema({
     required: true,
   },
   password: {
-    type: String,
+    type: { hex: String, iv: String },
     required: true,
   },
   email: {
@@ -21,7 +21,6 @@ const ClientSchema = new mongoose.Schema({
   },
   gender: {
     type: String,
-    enum: ['M', 'F'],
     required: false,
   },
   major: {
@@ -30,7 +29,6 @@ const ClientSchema = new mongoose.Schema({
   },
   college: {
     type: String,
-    enum: ['NA', 'CC', 'SC', 'UC', 'WS', 'YS', 'SH', 'WC', 'MC'],
     required: false,
   },
   bio: {

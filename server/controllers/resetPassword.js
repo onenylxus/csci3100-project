@@ -1,5 +1,6 @@
 // Require
 const mongoose = require('mongoose');
+const cipher = require('../cipher');
 
 // Schemas
 require('../schemas/Client');
@@ -16,7 +17,7 @@ module.exports = function resetPassword(req, res) {
   const client = Client.findOne({ email });
 
   client.then((data) => {
-    if (password === data.password) {
+    if (password === cipher.decrypt(...data.password)) {
       return res.status(422).send({
         error: 'duplicatePasswordError',
       });
@@ -25,7 +26,7 @@ module.exports = function resetPassword(req, res) {
     data
       .update({
         $set: {
-          password,
+          password: cipher.encrypt(password),
         },
       })
       .exec();

@@ -1,5 +1,6 @@
 // Require
 const mongoose = require('mongoose');
+const cipher = require('../cipher');
 const transporter = require('../transporter');
 
 // Schemas
@@ -54,7 +55,7 @@ module.exports = function register(req, res) {
           // Create token and save to database
           const token = new Token({
             username,
-            password,
+            password: cipher.encrypt(password),
             email,
             code: String(Math.trunc(Math.random() * 10 ** 6)).padStart(6, '0'),
             type: 'register',
