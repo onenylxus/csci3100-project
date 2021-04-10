@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { Alert, Button, TextInput, View } from 'react-native';
+import { Alert, Button, Text, TextInput, View } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Source from '../assets/source';
 import Style from '../assets/style';
@@ -14,6 +14,54 @@ export default function VerificationForm() {
   const [code, setCode] = React.useState('');
 
   const status = React.useRef(0);
+
+  async function resend() {
+    await fetch(`https://${Source.heroku}/resend`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    })
+      .then((res) => {
+        status.current = res.status;
+        return res;
+      })
+      .then((res) => res.json())
+      .then((res) => {
+        if (status.current === 200) {
+          return Alert.alert(
+            'Email resent',
+            'Another email has been sent to your email account.',
+            [
+              {
+                text: 'OK',
+                onPress: () => undefined,
+                style: 'destructive',
+              },
+            ]
+          );
+        }
+        if (status.current === 422) {
+          if (res.error === 'expiredError') {
+            return Alert.alert(
+              'Error',
+              'Your verification token has expired. Please restart the process.',
+              [
+                {
+                  text: 'OK',
+                  onPress: navigation.popToTop(),
+                  style: 'destructive',
+                },
+              ]
+            );
+          }
+        }
+      })
+      .catch((err) => console.log(err));
+  }
 
   async function confirmToken() {
     await fetch(`https://${Source.heroku}/verify`, {
@@ -70,6 +118,12 @@ export default function VerificationForm() {
           onChangeText={(text) => setCode(text)}
         />
       </View>
+      <Text
+        style={{ ...Style.hyperlink, alignItems: 'flex-end', margin: 8 }}
+        onPress={resend}
+      >
+        Resend email
+      </Text>
       <Button title="Confirm" onPress={confirmToken} />
     </View>
   );

@@ -1,11 +1,14 @@
 // Import
 import React from 'react';
 import { Text, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import LoginForm from '../components/LoginForm';
 import Style from '../assets/style';
 
 // Export login screen
-export default function LoginScreen({ navigation }) {
+export default function LoginScreen() {
+  const navigation = useNavigation();
+
   return (
     <View style={Style.container}>
       <Text style={Style.loginTitle}>CU There</Text>
