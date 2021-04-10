@@ -27,6 +27,9 @@ module.exports = function resend(req, res) {
     // Send email
     try {
       sender(data);
+      return res.status(200).send({
+        msg: 'Email resent',
+      });
     } catch (err) {
       console.log(err);
     }

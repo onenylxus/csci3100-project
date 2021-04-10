@@ -52,7 +52,7 @@ export default function VerificationForm() {
               [
                 {
                   text: 'OK',
-                  onPress: navigation.popToTop(),
+                  onPress: () => navigation.navigate('Login'),
                   style: 'destructive',
                 },
               ]
