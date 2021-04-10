@@ -82,7 +82,7 @@ export default function PostBox({ post }) {
           />
         </TouchableOpacity>
       </View>
-      {showComment ? <CommentBox /> : null}
+      {showComment ? <CommentBox post={post} /> : null}
     </View>
   );
 }

@@ -13,11 +13,17 @@ describe('Server', () => {
     it('addInfo.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['addInfo.js']));
     });
+    it('createComment.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['createComment.js']));
+    });
     it('createPost.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['createPost.js']));
     });
     it('editProfile.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['editProfile.js']));
+    });
+    it('fetchComment.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['fetchComment.js']));
     });
     it('fetchData.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['fetchData.js']));
@@ -50,7 +56,7 @@ describe('Server', () => {
       expect(dir).toEqual(expect.arrayContaining(['verify.js']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(14);
+      expect(dir.length).toEqual(16);
     });
   });
 

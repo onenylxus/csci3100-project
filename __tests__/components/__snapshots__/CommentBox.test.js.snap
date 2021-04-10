@@ -42,7 +42,7 @@ exports[`CommentBox matches snapshot 1`] = `
         Username
       </Text>
       <Text>
-        Comment content
+        
       </Text>
     </View>
   </View>
@@ -99,7 +99,7 @@ exports[`CommentBox matches snapshot 1`] = `
     />
     <View
       accessible={true}
-      focusable={false}
+      focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}

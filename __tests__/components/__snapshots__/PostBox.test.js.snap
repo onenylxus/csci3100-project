@@ -137,7 +137,9 @@ exports[`PostBox matches snapshot 1`] = `
         "marginVertical": 10,
       }
     }
-  />
+  >
+    
+  </Text>
   <Text
     style={
       Object {
@@ -145,7 +147,9 @@ exports[`PostBox matches snapshot 1`] = `
         "marginHorizontal": 15,
       }
     }
-  />
+  >
+    
+  </Text>
   <View>
     <View>
       <View
