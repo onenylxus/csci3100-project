@@ -1,7 +1,7 @@
 // Require
 const mongoose = require('mongoose');
 const cipher = require('../cipher');
-const transporter = require('../transporter');
+const sender = require('../sender');
 
 // Schemas
 require('../schemas/Client');
@@ -64,12 +64,7 @@ module.exports = function register(req, res) {
 
           // Send email
           try {
-            transporter.sendMail({
-              from: `csci3100cuthere@gmail.com`,
-              to: email,
-              subject: `Confirmation email for ${username}`,
-              html: `Hello, thank you for signing up to CU There!<br /></br >Your verification code is ${token.code}. This code will expire in 15 minutes.<br /><br />CU There team`,
-            });
+            sender(data4);
             return res.status(200).send({ msg: 'Email sent. ' });
           } catch (err) {
             console.log(err);

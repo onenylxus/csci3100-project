@@ -88,11 +88,14 @@ describe('Server', () => {
     it('main.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['main.js']));
     });
+    it('sender.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['sender.js']));
+    });
     it('transporter.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['transporter.js']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(3);
+      expect(dir.length).toEqual(4);
     });
   });
 });
