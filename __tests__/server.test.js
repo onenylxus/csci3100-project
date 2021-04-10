@@ -7,6 +7,9 @@ describe('Server', () => {
   describe('contains controllers', () => {
     const dir = fs.readdirSync('server/controllers');
 
+    it('abort.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['abort.js']));
+    });
     it('addInfo.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['addInfo.js']));
     });
@@ -47,7 +50,7 @@ describe('Server', () => {
       expect(dir).toEqual(expect.arrayContaining(['verify.js']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(13);
+      expect(dir.length).toEqual(14);
     });
   });
 

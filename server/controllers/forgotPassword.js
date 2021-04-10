@@ -41,7 +41,7 @@ module.exports = function forgotPassword(req, res) {
 
       // Send email
       try {
-        sender(data2);
+        sender(token);
         return res.status(200).send({ msg: 'Email sent.' });
       } catch (err) {
         console.log(err);

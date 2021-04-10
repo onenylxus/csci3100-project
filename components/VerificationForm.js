@@ -15,6 +15,53 @@ export default function VerificationForm() {
 
   const status = React.useRef(0);
 
+  async function confirmToken() {
+    await fetch(`https://${Source.heroku}/verify`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        code,
+      }),
+    })
+      .then((res) => {
+        status.current = res.status;
+        return res;
+      })
+      .then((res) => res.json())
+      .then((res) => {
+        if (status.current === 200) {
+          switch (res.type) {
+            case 'register':
+              navigation.navigate('AddInfo', { email });
+              break;
+
+            case 'forgotPassword':
+              navigation.navigate('ResetPassword', { email });
+              break;
+
+            default:
+              return new Error();
+          }
+        } else {
+          return Alert.alert(
+            'Error',
+            'Your verification code is invalid, please try again.',
+            [
+              {
+                text: 'Retry',
+                onPress: () => undefined,
+                style: 'destructive',
+              },
+            ]
+          );
+        }
+      })
+      .catch((err) => console.log(err));
+  }
+
   async function resend() {
     await fetch(`https://${Source.heroku}/resend`, {
       method: 'POST',
@@ -63,52 +110,47 @@ export default function VerificationForm() {
       .catch((err) => console.log(err));
   }
 
-  async function confirmToken() {
-    await fetch(`https://${Source.heroku}/verify`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        code,
-      }),
-    })
-      .then((res) => {
-        status.current = res.status;
-        return res;
-      })
-      .then((res) => res.json())
-      .then((res) => {
-        if (status.current === 200) {
-          switch (res.type) {
-            case 'register':
-              navigation.navigate('AddInfo', { email });
-              break;
+  React.useEffect(() => {
+    const back = navigation.addListener('beforeRemove', (e) => {
+      e.preventDefault();
+      back();
 
-            case 'forgotPassword':
-              navigation.navigate('ResetPassword', { email });
-              break;
-
-            default:
-              return new Error();
-          }
-        } else {
-          return Alert.alert(
-            'Error',
-            'Your verification code is invalid, please try again.',
-            [
-              {
-                text: 'Retry',
-                onPress: () => undefined,
-                style: 'destructive',
-              },
-            ]
-          );
-        }
-      })
-      .catch((err) => console.log(err));
-  }
+      Alert.alert(
+        'Abort confirmation',
+        'If you leave this screen, you have to start over your current request. Are you sure you want to do this?',
+        [
+          {
+            text: 'No',
+            style: 'cancel',
+            onPress: () => undefined,
+          },
+          {
+            text: 'Yes',
+            style: 'destructive',
+            onPress: async () => {
+              await fetch(`https://${Source.heroku}/abort`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  email,
+                }),
+              })
+                .then((res) => {
+                  status.current = res.status;
+                  return res;
+                })
+                .then((res) => res.json())
+                .then(() => {
+                  navigation.navigate('Login');
+                });
+            },
+          },
+        ]
+      );
+    });
+  }, [email, navigation]);
 
   return (
     <View>

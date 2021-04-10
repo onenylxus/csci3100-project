@@ -64,7 +64,7 @@ module.exports = function register(req, res) {
 
           // Send email
           try {
-            sender(data4);
+            sender(token);
             return res.status(200).send({ msg: 'Email sent. ' });
           } catch (err) {
             console.log(err);
