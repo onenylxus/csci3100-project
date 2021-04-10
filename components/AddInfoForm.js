@@ -2,7 +2,7 @@
 import React from 'react';
 import { Alert, Button, Text, TextInput, View } from 'react-native';
 import { RadioButton } from 'react-native-paper';
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import AuthContext from './AuthContext';
 import CollegePicker from './CollegePicker';
 import MajorPicker from './MajorPicker';
@@ -11,6 +11,7 @@ import Style from '../assets/style';
 
 // Export add info form
 export default function AddInfoForm() {
+  const navigation = useNavigation();
   const route = useRoute();
   const { login } = React.useContext(AuthContext);
 
@@ -23,7 +24,7 @@ export default function AddInfoForm() {
   const status = React.useRef(0);
   const username = React.useRef('');
 
-  async function submitData() {
+  const submitData = React.useCallback(async () => {
     await fetch(`https://${Source.heroku}/addInfo`, {
       method: 'POST',
       headers: {
@@ -50,7 +51,7 @@ export default function AddInfoForm() {
         }
       })
       .catch((err) => console.log(err));
-  }
+  }, [college, email, gender, login, major, name]);
 
   async function confirmAddInfo() {
     if ([gender, college, name, major].every((data) => data.length > 0)) {
@@ -58,7 +59,7 @@ export default function AddInfoForm() {
     } else {
       return Alert.alert(
         'Some information are missing',
-        'Some fields are missing, do you want to continue without these information? (You can edit these informations in the application later.)',
+        'Some fields are missing, do you want to continue without these information? (You can edit these information in the application later.)',
         [
           {
             text: 'Cancel',
@@ -67,13 +68,37 @@ export default function AddInfoForm() {
           },
           {
             text: 'Continue',
-            onPress: () => submitData(),
+            onPress: submitData,
             style: 'cancel',
           },
         ]
       );
     }
   }
+
+  React.useEffect(() => {
+    const back = navigation.addListener('beforeRemove', (e) => {
+      e.preventDefault();
+      back();
+
+      Alert.alert(
+        'Continue',
+        'Do you want to continue? (You can edit these information in the application later.)',
+        [
+          {
+            text: 'Cancel',
+            onPress: () => undefined,
+            style: 'cancel',
+          },
+          {
+            text: 'Continue',
+            onPress: submitData,
+            style: 'cancel',
+          },
+        ]
+      );
+    });
+  }, [navigation, submitData]);
 
   return (
     <View>

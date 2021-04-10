@@ -85,6 +85,49 @@ export default function ResetPasswordForm() {
   function styleByState(state) {
     return state === 2 ? Style.textInput : state ? validStyle : invalidStyle;
   }
+
+  React.useEffect(() => {
+    const back = navigation.addListener('beforeRemove', (e) => {
+      e.preventDefault();
+      back();
+
+      Alert.alert(
+        'Abort confirmation',
+        'If you leave this screen, you have to start over your current request. Are you sure you want to do this?',
+        [
+          {
+            text: 'No',
+            style: 'cancel',
+            onPress: () => undefined,
+          },
+          {
+            text: 'Yes',
+            style: 'destructive',
+            onPress: async () => {
+              await fetch(`https://${Source.heroku}/abort`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  email,
+                }),
+              })
+                .then((res) => {
+                  status.current = res.status;
+                  return res;
+                })
+                .then((res) => res.json())
+                .then(() => {
+                  navigation.navigate('Login');
+                });
+            },
+          },
+        ]
+      );
+    });
+  }, [email, navigation]);
+
   return (
     <View>
       <Text>Please enter your new password: </Text>
