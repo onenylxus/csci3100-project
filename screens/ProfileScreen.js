@@ -12,7 +12,6 @@ import {
 import { Row, Col, Grid } from 'react-native-easy-grid';
 import { useNavigation } from '@react-navigation/native';
 import AuthContext from '../components/AuthContext';
-import PostContainer from '../components/PostContainer';
 import Style from '../assets/style';
 
 // Export profile screen
@@ -123,9 +122,7 @@ export default function ProfileScreen() {
               </Text>
             </Row>
           </View>
-          <Row>
-            <PostContainer />
-          </Row>
+          <Row />
         </Grid>
       </View>
     </ScrollView>
