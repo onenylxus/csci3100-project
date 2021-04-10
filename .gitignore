@@ -4,6 +4,7 @@
 
 # Expo folders
 /.expo
+/bin
 /web-build
 
 # Expo file types
