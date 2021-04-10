@@ -4,7 +4,7 @@ import { Text, View, TouchableOpacity, Image } from 'react-native';
 import { Col, Grid } from 'react-native-easy-grid';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEllipsisH, faCommentAlt } from '@fortawesome/free-solid-svg-icons';
-import CommentBox from './CommentBox';
+import CommentContainer from './CommentContainer';
 import LikeAndDislike from './LikeAndDislike';
 import Style from '../assets/style';
 
@@ -82,7 +82,9 @@ export default function PostBox({ post }) {
           />
         </TouchableOpacity>
       </View>
-      {showComment ? <CommentBox post={post} /> : null}
+      {showComment ? (
+        <CommentContainer post={post} state={showComment} />
+      ) : null}
     </View>
   );
 }

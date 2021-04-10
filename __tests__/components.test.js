@@ -25,6 +25,12 @@ describe('Components', () => {
     it('CommentBox.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['CommentBox.js']));
     });
+    it('CommentContainer.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['CommentContainer.js']));
+    });
+    it('CreateCommentForm.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['CreateCommentForm.js']));
+    });
     it('CreatePostForm.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['CreatePostForm.js']));
     });
@@ -65,7 +71,7 @@ describe('Components', () => {
       expect(dir).toEqual(expect.arrayContaining(['VerificationForm.js']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(19);
+      expect(dir.length).toEqual(21);
     });
   })
 });

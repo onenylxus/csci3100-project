@@ -17,7 +17,8 @@ export default function LikeAndDislike({ post }) {
   const postId = React.useRef(post._id);
   const fetched = React.useRef(false);
   const status = React.useRef(0);
-  // Fetch Like(
+
+  // Fetch Like
   function fetchLikeAndDislike() {
     (async () => {
       if (!fetched.current) {

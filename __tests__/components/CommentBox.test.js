@@ -33,10 +33,18 @@ describe('CommentBox', () => {
       peopleDislike: [],
     };
 
+    // Mock Comment
+    const commentMock = {
+      postId: postMock._id,
+      timestamp: new Date(2021, 4, 1),
+      content: '',
+      username: 'testac',
+    }
+
     // Render
     element = render(
       <AuthContext.Provider value={AuthMethodMock}>
-        <CommentBox post={postMock} />
+        <CommentBox comment={commentMock} />
       </AuthContext.Provider>
     );
   });
