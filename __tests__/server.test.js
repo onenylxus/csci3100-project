@@ -7,6 +7,9 @@ describe('Server', () => {
   describe('contains controllers', () => {
     const dir = fs.readdirSync('server/controllers');
 
+    it('abort.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['abort.js']));
+    });
     it('addInfo.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['addInfo.js']));
     });
@@ -37,6 +40,9 @@ describe('Server', () => {
     it('register.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['register.js']));
     });
+    it('resend.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['resend.js']));
+    });
     it('resetPassword.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['resetPassword.js']));
     });
@@ -44,7 +50,7 @@ describe('Server', () => {
       expect(dir).toEqual(expect.arrayContaining(['verify.js']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(12);
+      expect(dir.length).toEqual(14);
     });
   });
 
@@ -79,14 +85,20 @@ describe('Server', () => {
   describe('contains JS files', () => {
     const dir = fs.readdirSync('server').filter((file) => file.endsWith('.js'));
 
+    it('cipher.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['cipher.js']));
+    });
     it('main.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['main.js']));
+    });
+    it('sender.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['sender.js']));
     });
     it('transporter.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['transporter.js']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(2);
+      expect(dir.length).toEqual(4);
     });
   });
 });

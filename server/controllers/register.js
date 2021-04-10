@@ -1,6 +1,7 @@
 // Require
 const mongoose = require('mongoose');
-const transporter = require('../transporter');
+const cipher = require('../cipher');
+const sender = require('../sender');
 
 // Schemas
 require('../schemas/Client');
@@ -54,7 +55,7 @@ module.exports = function register(req, res) {
           // Create token and save to database
           const token = new Token({
             username,
-            password,
+            password: cipher.encrypt(password),
             email,
             code: String(Math.trunc(Math.random() * 10 ** 6)).padStart(6, '0'),
             type: 'register',
@@ -63,12 +64,7 @@ module.exports = function register(req, res) {
 
           // Send email
           try {
-            transporter.sendMail({
-              from: `csci3100cuthere@gmail.com`,
-              to: email,
-              subject: `Confirmation email for ${username}`,
-              html: `Hello, thank you for signing up to CU There!<br /></br >Your verification code is ${token.code}. This code will expire in 15 minutes.<br /><br />CU There team`,
-            });
+            sender(token);
             return res.status(200).send({ msg: 'Email sent. ' });
           } catch (err) {
             console.log(err);

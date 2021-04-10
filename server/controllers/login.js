@@ -1,5 +1,6 @@
 // Require
 const mongoose = require('mongoose');
+const cipher = require('../cipher');
 
 // Schemas
 require('../schemas/Client');
@@ -24,7 +25,7 @@ module.exports = function login(req, res) {
     }
 
     // Check password
-    if (password !== data.password) {
+    if (password !== cipher.decrypt(data.password.hex, data.password.iv)) {
       return res.status(422).send({
         error: 'passwordError',
       });

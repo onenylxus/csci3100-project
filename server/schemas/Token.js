@@ -8,7 +8,7 @@ const TokenSchema = new mongoose.Schema({
     required: false,
   },
   password: {
-    type: String,
+    type: { hex: String, iv: String },
     required: false,
   },
   email: {

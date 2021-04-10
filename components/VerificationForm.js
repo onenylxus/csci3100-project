@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { Alert, Button, TextInput, View } from 'react-native';
+import { Alert, Button, Text, TextInput, View } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Source from '../assets/source';
 import Style from '../assets/style';
@@ -62,6 +62,96 @@ export default function VerificationForm() {
       .catch((err) => console.log(err));
   }
 
+  async function resend() {
+    await fetch(`https://${Source.heroku}/resend`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    })
+      .then((res) => {
+        status.current = res.status;
+        return res;
+      })
+      .then((res) => res.json())
+      .then((res) => {
+        if (status.current === 200) {
+          return Alert.alert(
+            'Email resent',
+            'Another email has been sent to your email account.',
+            [
+              {
+                text: 'OK',
+                onPress: () => undefined,
+                style: 'destructive',
+              },
+            ]
+          );
+        }
+        if (status.current === 422) {
+          if (res.error === 'expiredError') {
+            return Alert.alert(
+              'Error',
+              'Your verification token has expired. Please restart the process.',
+              [
+                {
+                  text: 'OK',
+                  onPress: () => navigation.navigate('Login'),
+                  style: 'destructive',
+                },
+              ]
+            );
+          }
+        }
+      })
+      .catch((err) => console.log(err));
+  }
+
+  React.useEffect(() => {
+    const back = navigation.addListener('beforeRemove', (e) => {
+      e.preventDefault();
+      back();
+
+      Alert.alert(
+        'Abort confirmation',
+        'If you leave this screen, you have to start over your current request. Are you sure you want to do this?',
+        [
+          {
+            text: 'No',
+            style: 'cancel',
+            onPress: () => undefined,
+          },
+          {
+            text: 'Yes',
+            style: 'destructive',
+            onPress: async () => {
+              await fetch(`https://${Source.heroku}/abort`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  email,
+                }),
+              })
+                .then((res) => {
+                  status.current = res.status;
+                  return res;
+                })
+                .then((res) => res.json())
+                .then(() => {
+                  navigation.navigate('Login');
+                });
+            },
+          },
+        ]
+      );
+    });
+  }, [email, navigation]);
+
   return (
     <View>
       <View style={Style.codeInputBox}>
@@ -70,6 +160,12 @@ export default function VerificationForm() {
           onChangeText={(text) => setCode(text)}
         />
       </View>
+      <Text
+        style={{ ...Style.hyperlink, alignItems: 'flex-end', margin: 8 }}
+        onPress={resend}
+      >
+        Resend email
+      </Text>
       <Button title="Confirm" onPress={confirmToken} />
     </View>
   );
