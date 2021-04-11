@@ -19,6 +19,7 @@ export default StyleSheet.create({
   loginTitle: {
     fontSize: 20,
     marginBottom: 20,
+    fontFamily: 'Sarina',
   },
 
   codeInputBox: {
@@ -39,6 +40,7 @@ export default StyleSheet.create({
   sectionText: {
     alignSelf: 'flex-start',
     marginLeft: '10%',
+    fontFamily: 'ConcertOne',
   },
 
   SectionStyle: {

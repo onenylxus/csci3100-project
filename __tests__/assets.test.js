@@ -39,6 +39,24 @@ describe('Assets', () => {
     });
   });
 
+  // Fonts
+  describe('contains fonts', () => {
+    const dir = fs.readdirSync('assets/fonts');
+
+    it('Baloo2-Medium.ttf', () => {
+      expect(dir).toEqual(expect.arrayContaining(['Baloo2-Medium.ttf']));
+    });
+    it('ConcertOne-Regular.ttf', () => {
+      expect(dir).toEqual(expect.arrayContaining(['ConcertOne-Regular.ttf']));
+    });
+    it('Sarina-Regular.ttf', () => {
+      expect(dir).toEqual(expect.arrayContaining(['Sarina-Regular.ttf']));
+    });
+    it('no other files', () => {
+      expect(dir.length).toEqual(3);
+    });
+  });
+
   // JSON files
   describe('contains JSON files', () => {
     const dir = fs.readdirSync('assets/json');

@@ -15,6 +15,7 @@ import {
   faEyeSlash,
   faEye,
 } from '@fortawesome/free-solid-svg-icons';
+// import Font from 'expo-font';
 import AuthContext from './AuthContext';
 import Source from '../assets/source';
 import Style from '../assets/style';
@@ -104,6 +105,17 @@ export default function LoginForm() {
       );
     }
   }
+
+  // Use fonts
+  /* function loadFonts() {
+    (async () => {
+      await Font.loadAsync({
+        ConcertOne: require('../assets/fonts/ConcertOne-Regular.ttf'),
+      });
+    })();
+  }
+
+  React.useEffect(loadFonts); */
 
   return (
     <View>
