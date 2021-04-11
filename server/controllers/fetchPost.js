@@ -28,7 +28,6 @@ module.exports = function fetchPost(req, res) {
       });
     } else if (tags === 'Trending') {
       const post = Post.find({})
-        .sort({ peopleLike: -1 })
         .skip(25 * page)
         .limit(25);
 
