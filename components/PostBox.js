@@ -3,7 +3,12 @@ import React from 'react';
 import { Alert, Text, View, TouchableOpacity, Image } from 'react-native';
 import { Col, Grid } from 'react-native-easy-grid';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faEllipsisH, faCommentAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCommentAlt,
+  faEdit,
+  faExclamation,
+  faTrashAlt,
+} from '@fortawesome/free-solid-svg-icons';
 import CommentContainer from './CommentContainer';
 import LikeAndDislike from './LikeAndDislike';
 import Source from '../assets/source';
@@ -14,7 +19,7 @@ export default function PostBox({ post }) {
   const [showComment, setShowComment] = React.useState(false);
 
   const status = React.useRef(0);
-  const username = React.useRef(post.username);
+  const postUsername = React.useRef(post.username);
   const date = React.useRef(new Date(post.timestamp));
   const monthString = React.useRef(date.current.getMonth() + 1);
   const dateString = React.useRef(
@@ -108,18 +113,27 @@ export default function PostBox({ post }) {
             />
             <View style={{ flexDirection: 'column' }}>
               <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                {username.current}
+                {postUsername.current}
               </Text>
               <Text style={{ fontSize: 12 }}>{dateString.current}</Text>
             </View>
           </Col>
           <Col>
-            <View style={{ justifyContent: 'flex-end' }}>
-              <TouchableOpacity
-                style={{ alignSelf: 'flex-end', margin: 15 }}
-                onPress={askDelete}
-              >
-                <FontAwesomeIcon icon={faEllipsisH} />
+            <View
+              style={{
+                flexDirection: 'row',
+                alignSelf: 'flex-end',
+                margin: 10,
+              }}
+            >
+              <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
+                <FontAwesomeIcon icon={faTrashAlt} />
+              </TouchableOpacity>
+              <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
+                <FontAwesomeIcon icon={faEdit} />
+              </TouchableOpacity>
+              <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
+                <FontAwesomeIcon icon={faExclamation} />
               </TouchableOpacity>
             </View>
           </Col>
