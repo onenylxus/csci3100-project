@@ -121,47 +121,6 @@ exports[`App matches snapshot 1`] = `
                 CU There
               </Text>
             </View>
-            <View
-              pointerEvents="box-none"
-              style={
-                Object {
-                  "alignItems": "flex-end",
-                  "bottom": 0,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            >
-              <View
-                accessible={true}
-                focusable={true}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-              >
-                <Image
-                  capInsets={true}
-                  source={1}
-                  style={
-                    Object {
-                      "borderRadius": 16,
-                      "height": 32,
-                      "margin": 8,
-                      "width": 32,
-                    }
-                  }
-                />
-              </View>
-            </View>
           </View>
         </View>
       </View>
