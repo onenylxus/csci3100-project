@@ -19,6 +19,9 @@ describe('Server', () => {
     it('createPost.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['createPost.js']));
     });
+    it('deletePost.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['deletePost.js']));
+    });
     it('editProfile.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['editProfile.js']));
     });
@@ -56,7 +59,7 @@ describe('Server', () => {
       expect(dir).toEqual(expect.arrayContaining(['verify.js']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(16);
+      expect(dir.length).toEqual(17);
     });
   });
 
