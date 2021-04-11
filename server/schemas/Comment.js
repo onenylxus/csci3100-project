@@ -3,11 +3,23 @@ const mongoose = require('mongoose');
 
 // Comment schema
 const CommentSchema = new mongoose.Schema({
-  post: String,
-  username: String,
-  numOfLike: Number,
-  numOfDislike: Number,
-  timestamp: { type: Date, required: true, default: Date.now },
+  postId: {
+    type: String,
+    required: true,
+  },
+  username: {
+    type: String,
+    required: true,
+  },
+  content: {
+    type: String,
+    required: true,
+  },
+  timestamp: {
+    type: Date,
+    required: true,
+    default: Date.now,
+  },
 });
 
 // Modeling

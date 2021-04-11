@@ -71,7 +71,7 @@ exports[`PostBox matches snapshot 1`] = `
               }
             }
           >
-            0:0  1/4/2021
+            00:00  01/05/2021
           </Text>
         </View>
       </View>
@@ -137,7 +137,9 @@ exports[`PostBox matches snapshot 1`] = `
         "marginVertical": 10,
       }
     }
-  />
+  >
+    
+  </Text>
   <Text
     style={
       Object {
@@ -145,7 +147,9 @@ exports[`PostBox matches snapshot 1`] = `
         "marginHorizontal": 15,
       }
     }
-  />
+  >
+    
+  </Text>
   <View>
     <View>
       <View

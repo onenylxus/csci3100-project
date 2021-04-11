@@ -4,7 +4,7 @@ import { Text, View, TouchableOpacity, Image } from 'react-native';
 import { Col, Grid } from 'react-native-easy-grid';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEllipsisH, faCommentAlt } from '@fortawesome/free-solid-svg-icons';
-import CommentBox from './CommentBox';
+import CommentContainer from './CommentContainer';
 import LikeAndDislike from './LikeAndDislike';
 import Style from '../assets/style';
 
@@ -14,8 +14,17 @@ export default function PostBox({ post }) {
 
   const username = React.useRef(post.username);
   const date = React.useRef(new Date(post.timestamp));
+  const monthString = React.useRef(date.current.getMonth() + 1);
   const dateString = React.useRef(
-    `${date.current.getHours()}:${date.current.getMinutes()}  ${date.current.getDate()}/${date.current.getMonth()}/${date.current.getFullYear()}`
+    date.current.getHours().toString().padStart(2, '0') +
+      ':' +
+      date.current.getMinutes().toString().padStart(2, '0') +
+      '  ' +
+      date.current.getDate().toString().padStart(2, '0') +
+      '/' +
+      monthString.current.toString().padStart(2, '0') +
+      '/' +
+      date.current.getFullYear().toString()
   );
 
   return (
@@ -82,7 +91,9 @@ export default function PostBox({ post }) {
           />
         </TouchableOpacity>
       </View>
-      {showComment ? <CommentBox /> : null}
+      {showComment ? (
+        <CommentContainer post={post} state={showComment} />
+      ) : null}
     </View>
   );
 }

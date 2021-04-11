@@ -27,8 +27,10 @@ describe('PostBox', () => {
     const postMock = {
       username: 'testac',
       timestamp: new Date(2021, 4, 1),
-      numOfLike: 0,
-      numOfDislike: 0,
+      title: '',
+      content: '',
+      peopleLike: [],
+      peopleDislike: [],
     };
 
     // Render
