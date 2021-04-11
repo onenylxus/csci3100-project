@@ -12,7 +12,7 @@ module.exports = function fetchComment(req, res) {
   // Fetch request body
   const { _id } = req.body;
 
-  const comment = Comment.find({ postId: _id }).sort({ timestamp: -1 });
+  const comment = Comment.find({ postId: _id }).sort({ timestamp: 1 });
 
   comment.then((data) => {
     if (!data) {

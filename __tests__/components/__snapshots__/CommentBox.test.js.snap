@@ -42,6 +42,9 @@ exports[`CommentBox matches snapshot 1`] = `
         testac
       </Text>
       <Text>
+        0:0  1/4/2021
+      </Text>
+      <Text>
         
       </Text>
     </View>
