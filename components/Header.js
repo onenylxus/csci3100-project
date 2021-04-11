@@ -1,6 +1,6 @@
 // Import
-import React from 'react';
-import { Image, Pressable } from 'react-native';
+// import React from 'react';
+// import { Image, Pressable } from 'react-native';
 
 // Export
 export default function Header() {
@@ -11,14 +11,6 @@ export default function Header() {
     },
     headerTintColor: '#ffffff',
     headerLeft: null,
-    headerRight: () => (
-      <Pressable onPress={() => undefined}>
-        <Image
-          style={{ width: 32, height: 32, margin: 8, borderRadius: 16 }}
-          source={require('../assets/icons/icon.png')}
-          capInsets
-        />
-      </Pressable>
-    ),
+    headerRight: null,
   };
 }

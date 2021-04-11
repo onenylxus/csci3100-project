@@ -2,6 +2,8 @@
 import React from 'react';
 import { Alert, Button, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Source from '../assets/source';
 import Style from '../assets/style';
 
@@ -71,11 +73,20 @@ export default function ForgotPasswordForm() {
 
   return (
     <View>
-      <TextInput
-        style={Style.textInput}
-        placeholder="CUHK link Email"
-        onChangeText={(text) => setEmail(text)}
-      />
+      <View style={Style.inputContainer}>
+        <View style={Style.SectionStyle}>
+          <FontAwesomeIcon
+            icon={faEnvelope}
+            size={15}
+            style={{ marginHorizontal: 5, marginVertical: 12 }}
+          />
+          <TextInput
+            style={{ width: 200 }}
+            placeholder="CUHK link Email"
+            onChangeText={(text) => setEmail(text)}
+          />
+        </View>
+      </View>
       <Button
         title="Submit"
         color="gray"
