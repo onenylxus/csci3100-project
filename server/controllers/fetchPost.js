@@ -27,7 +27,10 @@ module.exports = function fetchPost(req, res) {
         return res.status(200).send({ msg: 'Post fetched.', posts: data });
       });
     } else if (tags === 'Trending') {
-      const post = Post.find({}).sort({ peopleLike: -1 }).limit(5).pretty();
+      const post = Post.find({})
+        .sort({ peopleLike: -1 })
+        .skip(25 * page)
+        .limit(25);
 
       post.then((data) => {
         if (!data) {
