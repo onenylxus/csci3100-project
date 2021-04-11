@@ -135,7 +135,7 @@ export default function PostBox({ post, showButton }) {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={{ margin: 8 }}
-                  onPress={navigation.navigate('EditPost', { post })}
+                  onPress={() => navigation.navigate('EditPost', { post })}
                 >
                   <FontAwesomeIcon icon={faEdit} />
                 </TouchableOpacity>

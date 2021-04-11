@@ -10,9 +10,9 @@ import TagsPicker from './TagsPicker';
 export default function EditPostForm({ post }) {
   const navigation = useNavigation();
 
-  const [newContent, setNewContent] = React.useState('');
-  const [newTags, setNewTags] = React.useState('');
-  const [newTitle, setNewTitle] = React.useState('');
+  const [newContent, setNewContent] = React.useState(post.content);
+  const [newTags, setNewTags] = React.useState(post.tags);
+  const [newTitle, setNewTitle] = React.useState(post.title);
 
   const status = React.useRef(0);
 
@@ -36,7 +36,7 @@ export default function EditPostForm({ post }) {
       .then((res) => res.json())
       .then((res) => {
         if (status.current === 200) {
-          navigation.navigate('profile');
+          navigation.navigate('Profile');
         } else if (status.current === 422) {
           switch (res.error) {
             // Title error
