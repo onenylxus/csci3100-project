@@ -1,6 +1,8 @@
 // Import
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import Style from '../assets/style';
 
 // Export Comment Box
@@ -33,6 +35,9 @@ export default function CommentBox({ comment }) {
         />
         <View style={{ flexDirection: 'column', marginTop: 15 }}>
           <Text>{comment.username}</Text>
+          <TouchableOpacity style={{ alignSelf: 'flex-end', margin: 15 }}>
+            <FontAwesomeIcon icon={faEllipsisH} />
+          </TouchableOpacity>
           <Text>{dateString.current}</Text>
           <Text>{comment.content}</Text>
         </View>

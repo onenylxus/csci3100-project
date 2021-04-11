@@ -34,6 +34,9 @@ describe('Components', () => {
     it('CreatePostForm.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['CreatePostForm.js']));
     });
+    it('EditPostForm.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['EditPostForm.js']));
+    });
     it('EditProfileForm.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['EditProfileForm.js']));
     });
@@ -67,11 +70,14 @@ describe('Components', () => {
     it('SearchBar.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['SearchBar.js']));
     });
+    it('TagsPicker.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['TagsPicker.js']));
+    });
     it('VerificationForm.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['VerificationForm.js']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(21);
+      expect(dir.length).toEqual(23);
     });
   })
 });

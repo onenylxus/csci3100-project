@@ -49,8 +49,11 @@ describe('Assets', () => {
     it('majorList.json', () => {
       expect(dir).toEqual(expect.arrayContaining(['majorList.json']));
     });
+    it('tagsList.json', () => {
+      expect(dir).toEqual(expect.arrayContaining(['tagsList.json']));
+    });
     it('no other files', () => {
-      expect(dir.length).toEqual(2);
+      expect(dir.length).toEqual(3);
     });
   });
 

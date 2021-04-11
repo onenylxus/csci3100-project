@@ -41,6 +41,40 @@ exports[`CommentBox matches snapshot 1`] = `
       <Text>
         testac
       </Text>
+      <View
+        accessible={true}
+        focusable={false}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignSelf": "flex-end",
+            "margin": 15,
+            "opacity": 1,
+          }
+        }
+      >
+        <
+          icon={
+            Object {
+              "icon": Array [
+                512,
+                512,
+                Array [],
+                "f141",
+                "M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z",
+              ],
+              "iconName": "ellipsis-h",
+              "prefix": "fas",
+            }
+          }
+        />
+      </View>
       <Text>
         00:00  01/05/2021
       </Text>

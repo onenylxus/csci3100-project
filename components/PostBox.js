@@ -1,18 +1,28 @@
 // Import
 import React from 'react';
-import { Text, View, TouchableOpacity, Image } from 'react-native';
+import { Alert, Text, View, TouchableOpacity, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { Col, Grid } from 'react-native-easy-grid';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faEllipsisH, faCommentAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCommentAlt,
+  faEdit,
+  faExclamation,
+  faTrashAlt,
+} from '@fortawesome/free-solid-svg-icons';
 import CommentContainer from './CommentContainer';
 import LikeAndDislike from './LikeAndDislike';
+import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export Post Box
-export default function PostBox({ post }) {
+export default function PostBox({ post, showButton }) {
+  const navigation = useNavigation();
+
   const [showComment, setShowComment] = React.useState(false);
 
-  const username = React.useRef(post.username);
+  const status = React.useRef(0);
+  const postUsername = React.useRef(post.username);
   const date = React.useRef(new Date(post.timestamp));
   const monthString = React.useRef(date.current.getMonth() + 1);
   const dateString = React.useRef(
@@ -26,6 +36,68 @@ export default function PostBox({ post }) {
       '/' +
       date.current.getFullYear().toString()
   );
+
+  async function deletePost() {
+    await fetch(`https://${Source.heroku}/deletePost`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        _id: post._id,
+      }),
+    })
+      .then((res) => {
+        status.current = res.status;
+        return res;
+      })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        if (status.current === 200) {
+          return Alert.alert('Post deleted', 'Your post has been deleted', [
+            {
+              text: 'OK',
+              onPress: () => undefined,
+              style: 'cancel',
+            },
+          ]);
+        }
+        if (status.current === 422) {
+          return Alert.alert(
+            'Post not found',
+            'The post you want to delete does not exist.',
+            [
+              {
+                text: 'OK',
+                onPress: () => undefined,
+                style: 'cancel',
+              },
+            ]
+          );
+        }
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function askDelete() {
+    return Alert.alert(
+      'Delete this post?',
+      'Are you sure you would like to delete this post? This action is irreversible.',
+      [
+        {
+          text: 'No',
+          onPress: () => undefined,
+          style: 'cancel',
+        },
+        {
+          text: 'Yes',
+          onPress: () => deletePost(),
+          style: 'destructive',
+        },
+      ]
+    );
+  }
 
   return (
     <View style={Style.profilePost}>
@@ -44,17 +116,46 @@ export default function PostBox({ post }) {
             />
             <View style={{ flexDirection: 'column' }}>
               <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                {username.current}
+                {postUsername.current}
               </Text>
               <Text style={{ fontSize: 12 }}>{dateString.current}</Text>
             </View>
           </Col>
           <Col>
-            <View style={{ justifyContent: 'flex-end' }}>
-              <TouchableOpacity style={{ alignSelf: 'flex-end', margin: 15 }}>
-                <FontAwesomeIcon icon={faEllipsisH} />
-              </TouchableOpacity>
-            </View>
+            {showButton ? (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignSelf: 'flex-end',
+                  margin: 10,
+                }}
+              >
+                <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
+                  <FontAwesomeIcon icon={faTrashAlt} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={{ margin: 8 }}
+                  onPress={() => navigation.navigate('EditPost', { post })}
+                >
+                  <FontAwesomeIcon icon={faEdit} />
+                </TouchableOpacity>
+                <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
+                  <FontAwesomeIcon icon={faExclamation} />
+                </TouchableOpacity>
+              </View>
+            ) : (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignSelf: 'flex-end',
+                  margin: 10,
+                }}
+              >
+                <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
+                  <FontAwesomeIcon icon={faExclamation} />
+                </TouchableOpacity>
+              </View>
+            )}
           </Col>
         </Grid>
       </View>

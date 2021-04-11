@@ -4,25 +4,30 @@ import { NavigationContainer } from '@react-navigation/native';
 import { render } from '@testing-library/react-native';
 
 // Import target component
-import RegisterForm from '../../components/RegisterForm';
-
-// Mock FontAwesome icons
-jest.mock('@fortawesome/react-native-fontawesome', () => ({
-  FontAwesomeIcon: '',
-}));
+import EditPostForm from '../../components/EditPostForm';
 
 // Mock navigation
 jest.mock('@react-navigation/core');
 
 // Run jest tests
-describe('RegisterForm', () => {
+describe('EditPostForm', () => {
   let element;
-
+  
   beforeEach(() => {
+    // Mock post
+    const postMock = {
+      username: 'testac',
+      timestamp: new Date(2021, 4, 1),
+      title: '',
+      content: '',
+      peopleLike: [],
+      peopleDislike: [],
+    }
+    
     // Render
     element = render(
       <NavigationContainer>
-        <RegisterForm />
+        <EditPostForm post={postMock}/>
       </NavigationContainer>
     );
   });

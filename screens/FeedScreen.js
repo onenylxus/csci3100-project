@@ -10,6 +10,7 @@ export default function FeedScreen() {
   const [refreshing, setRefreshing] = React.useState(true);
   const [list, setList] = React.useState([]);
 
+  const showButton = React.useRef(false);
   const page = React.useRef(0);
   const status = React.useRef(0);
 
@@ -22,6 +23,7 @@ export default function FeedScreen() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
+            username: '',
             page,
             tags: '',
           }),
@@ -45,7 +47,9 @@ export default function FeedScreen() {
   }
 
   function generate() {
-    return list.map((post) => <PostBox key={post._id} post={post} />);
+    return list.map((post) => (
+      <PostBox key={post._id} post={post} showButton={showButton.current} />
+    ));
   }
 
   const onRefresh = React.useCallback(async () => {
