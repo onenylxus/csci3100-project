@@ -1,6 +1,7 @@
 // Import
 import React from 'react';
 import { Alert, Text, View, TouchableOpacity, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { Col, Grid } from 'react-native-easy-grid';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {
@@ -16,6 +17,8 @@ import Style from '../assets/style';
 
 // Export Post Box
 export default function PostBox({ post, showButton }) {
+  const navigation = useNavigation();
+
   const [showComment, setShowComment] = React.useState(false);
 
   const status = React.useRef(0);
@@ -130,7 +133,10 @@ export default function PostBox({ post, showButton }) {
                 <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
                   <FontAwesomeIcon icon={faTrashAlt} />
                 </TouchableOpacity>
-                <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
+                <TouchableOpacity
+                  style={{ margin: 8 }}
+                  onPress={navigation.navigate('EditPost', { post })}
+                >
                   <FontAwesomeIcon icon={faEdit} />
                 </TouchableOpacity>
                 <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>

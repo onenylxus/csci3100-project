@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import ProfileScreen from '../ProfileScreen';
+import EditPostScreen from '../EditPostScreen';
 import EditProfileScreen from '../EditProfileScreen';
 import SettingsScreen from '../SettingsScreen';
 import Header from '../../components/Header';
@@ -47,6 +48,11 @@ export default function ProfileStack() {
       <Stack.Screen
         name="Settings"
         component={SettingsScreen}
+        options={Header}
+      />
+      <Stack.Screen
+        name="EditPost"
+        component={EditPostScreen}
         options={Header}
       />
     </Stack.Navigator>

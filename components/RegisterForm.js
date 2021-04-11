@@ -69,7 +69,7 @@ export default function RegisterForm() {
                   {
                     text: 'Retry',
                     onPress: () => undefined,
-                    style: 'destructive',
+                    style: 'cancel',
                   },
                 ]
               );

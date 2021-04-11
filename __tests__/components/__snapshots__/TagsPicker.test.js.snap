@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagsPicker matches snapshot 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "flexDirection": "column",
+        "marginVertical": 40,
+        "width": "100%",
+      }
+    }
+  >
+    <Text>
+      Tag: 
+    </Text>
+    <View>
+      <View
+        style={
+          Object {
+            "alignSelf": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <RNCPicker
+          items={
+            Array [
+              Object {
+                "label": "Choose a tag",
+                "textColor": undefined,
+                "value": "",
+              },
+              Object {
+                "label": "Academics",
+                "textColor": undefined,
+                "value": "Academics",
+              },
+              Object {
+                "label": "Relationships",
+                "textColor": undefined,
+                "value": "Relationships",
+              },
+              Object {
+                "label": "News",
+                "textColor": undefined,
+                "value": "News",
+              },
+              Object {
+                "label": "CU-Related",
+                "textColor": undefined,
+                "value": "CU-Related",
+              },
+              Object {
+                "label": "Entertainment",
+                "textColor": undefined,
+                "value": "Entertainment",
+              },
+            ]
+          }
+          onChange={[Function]}
+          selectedIndex={0}
+          style={
+            Array [
+              Object {
+                "height": 216,
+              },
+              undefined,
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
