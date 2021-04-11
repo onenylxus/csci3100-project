@@ -5,6 +5,7 @@ import {
   Button,
   Dimensions,
   View,
+  RefreshControl,
   ScrollView,
   Image,
   TouchableOpacity,
@@ -12,16 +13,23 @@ import {
 import { Row, Col, Grid } from 'react-native-easy-grid';
 import { useNavigation } from '@react-navigation/native';
 import AuthContext from '../components/AuthContext';
+import PostBox from '../components/PostBox';
 import Style from '../assets/style';
+import Source from '../assets/source';
 
 // Export profile screen
-
 export default function ProfileScreen() {
   const windowWidth = Dimensions.get('window').width;
   const navigation = useNavigation();
   const { getUser } = React.useContext(AuthContext);
 
   const [username, setUsername] = React.useState('');
+  const [refreshing, setRefreshing] = React.useState(true);
+  const [list, setList] = React.useState([]);
+
+  const page = React.useRef(0);
+  const status = React.useRef(0);
+  const showButton = React.useRef(true);
 
   // Get username
   getUser(setUsername);
@@ -84,8 +92,57 @@ export default function ProfileScreen() {
     }
   }
 
+  function fetchPost() {
+    (async () => {
+      if (refreshing) {
+        await fetch(`https://${Source.heroku}/fetchPost`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username,
+            page,
+            tags: '',
+          }),
+        })
+          .then((res) => {
+            status.current = res.status;
+            return res;
+          })
+          .then((res) => res.json())
+          .then((res) => {
+            if (status.current === 200) {
+              setList(res.posts);
+              setRefreshing(false);
+            } else if (status.current === 422) {
+              console.log(res.error);
+            }
+          })
+          .catch((err) => console.log(err));
+      }
+    })();
+  }
+
+  function generate() {
+    return list.map((post) => (
+      <PostBox key={post._id} post={post} showButton={showButton.current} />
+    ));
+  }
+
+  const onRefresh = React.useCallback(async () => {
+    setRefreshing(true);
+    setTimeout(() => setRefreshing(false), 30000);
+  }, []);
+
+  React.useEffect(fetchPost, [refreshing, username]);
+
   return (
-    <ScrollView>
+    <ScrollView
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+    >
       <View style={{ flex: 1 }}>
         <Grid style={styleByDevice(windowWidth, 'container')}>
           <View style={styleByDevice(windowWidth, 'infoLayer')}>
@@ -125,6 +182,7 @@ export default function ProfileScreen() {
           <Row />
         </Grid>
       </View>
+      <View>{generate()}</View>
     </ScrollView>
   );
 }

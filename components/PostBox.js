@@ -15,7 +15,7 @@ import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export Post Box
-export default function PostBox({ post }) {
+export default function PostBox({ post, showButton }) {
   const [showComment, setShowComment] = React.useState(false);
 
   const status = React.useRef(0);
@@ -119,23 +119,37 @@ export default function PostBox({ post }) {
             </View>
           </Col>
           <Col>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignSelf: 'flex-end',
-                margin: 10,
-              }}
-            >
-              <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
-                <FontAwesomeIcon icon={faTrashAlt} />
-              </TouchableOpacity>
-              <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
-                <FontAwesomeIcon icon={faEdit} />
-              </TouchableOpacity>
-              <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
-                <FontAwesomeIcon icon={faExclamation} />
-              </TouchableOpacity>
-            </View>
+            {showButton ? (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignSelf: 'flex-end',
+                  margin: 10,
+                }}
+              >
+                <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
+                  <FontAwesomeIcon icon={faTrashAlt} />
+                </TouchableOpacity>
+                <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
+                  <FontAwesomeIcon icon={faEdit} />
+                </TouchableOpacity>
+                <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
+                  <FontAwesomeIcon icon={faExclamation} />
+                </TouchableOpacity>
+              </View>
+            ) : (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignSelf: 'flex-end',
+                  margin: 10,
+                }}
+              >
+                <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
+                  <FontAwesomeIcon icon={faExclamation} />
+                </TouchableOpacity>
+              </View>
+            )}
           </Col>
         </Grid>
       </View>

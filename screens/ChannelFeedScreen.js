@@ -26,6 +26,7 @@ export default function ChannelFeedScreen() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
+            username: '',
             page,
             tags: tags.title,
           }),
