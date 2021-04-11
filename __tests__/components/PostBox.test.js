@@ -14,7 +14,7 @@ const AuthMethodMock = {
   getUser: jest.fn(),
 };
 
-// Mock navigation
+// Mock navigation route
 jest.mock('@react-navigation/core');
 
 // Mock FontAwesome icons

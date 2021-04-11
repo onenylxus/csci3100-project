@@ -6,7 +6,7 @@ import { render } from '@testing-library/react-native';
 // Import target component
 import ChatroomMenu from '../../components/ChatroomMenu';
 
-// Mock navigation
+// Mock navigation route
 jest.mock('@react-navigation/core');
 
 // Run jest tests

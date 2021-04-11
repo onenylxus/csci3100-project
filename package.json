@@ -90,8 +90,7 @@
       "!**/node_modules/**",
       "!**/babel.config.js",
       "!**/jest.setup.js",
-      "!**/assets/**",
-      "!**/server/**"
+      "!**/assets/**"
     ]
   },
   "lint-staged": {

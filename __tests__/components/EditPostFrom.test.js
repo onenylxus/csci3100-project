@@ -6,7 +6,7 @@ import { render } from '@testing-library/react-native';
 // Import target component
 import EditPostForm from '../../components/EditPostForm';
 
-// Mock navigation
+// Mock navigation route
 jest.mock('@react-navigation/core');
 
 // Run jest tests

@@ -19,7 +19,7 @@ jest.mock('@fortawesome/react-native-fontawesome', () => ({
   FontAwesomeIcon: '',
 }));
 
-// Mock navigation
+// Mock navigation route
 jest.mock('@react-navigation/core');
 
 // Run jest tests
