@@ -1,7 +1,3 @@
-// Import
-// import React from 'react';
-// import { Image, Pressable } from 'react-native';
-
 // Export
 export default function Header() {
   return {

@@ -2,7 +2,6 @@
 import React from 'react';
 import { Alert, Button, Text, TextInput, View } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export register form
@@ -16,7 +15,7 @@ export default function VerificationForm() {
   const status = React.useRef(0);
 
   async function confirmToken() {
-    await fetch(`https://${Source.heroku}/verify`, {
+    await fetch('https://cu-there-server.herokuapp.com/verify', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -63,7 +62,7 @@ export default function VerificationForm() {
   }
 
   async function resend() {
-    await fetch(`https://${Source.heroku}/resend`, {
+    await fetch('https://cu-there-server.herokuapp.com/resend', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -128,7 +127,7 @@ export default function VerificationForm() {
             text: 'Yes',
             style: 'destructive',
             onPress: async () => {
-              await fetch(`https://${Source.heroku}/abort`, {
+              await fetch('https://cu-there-server.herokuapp.com/abort', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',

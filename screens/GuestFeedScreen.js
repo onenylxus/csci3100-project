@@ -3,7 +3,6 @@ import React from 'react';
 import { RefreshControl, ScrollView, View } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import PostBox from '../components/PostBox';
-import Source from '../assets/source';
 
 // Export guest feed screen
 export default function GuestFeedScreen() {
@@ -16,7 +15,7 @@ export default function GuestFeedScreen() {
   function fetchPost() {
     (async () => {
       if (refreshing) {
-        await fetch(`https://${Source.heroku}/fetchPost`, {
+        await fetch('https://cu-there-server.herokuapp.com/fetchPost', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

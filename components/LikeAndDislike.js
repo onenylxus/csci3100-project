@@ -4,7 +4,6 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import AuthContext from './AuthContext';
-import Source from '../assets/source';
 
 // Export
 export default function LikeAndDislike({ post }) {
@@ -23,15 +22,18 @@ export default function LikeAndDislike({ post }) {
     (async () => {
       if (!fetched.current) {
         await getUser(setUsername);
-        await fetch(`https://${Source.heroku}/fetchLikeAndDislike`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            _id: postId.current,
-          }),
-        })
+        await fetch(
+          'https://cu-there-server.herokuapp.com/fetchLikeAndDislike',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              _id: postId.current,
+            }),
+          }
+        )
           .then((res) => {
             status.current = res.status;
             return res;
@@ -55,7 +57,7 @@ export default function LikeAndDislike({ post }) {
 
   async function Like() {
     await getUser(setUsername);
-    await fetch(`https://${Source.heroku}/like`, {
+    await fetch('https://cu-there-server.herokuapp.com/like', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

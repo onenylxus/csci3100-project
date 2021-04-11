@@ -61,14 +61,11 @@ describe('Assets', () => {
   describe('contains JS files', () => {
     const dir = fs.readdirSync('assets').filter((file) => file.endsWith('.js'));
 
-    it('source.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['source.js']));
-    });
     it('style.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['style.js']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(2);
+      expect(dir.length).toEqual(1);
     });
   });
 });

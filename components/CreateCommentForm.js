@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import AuthContext from './AuthContext';
 import Style from '../assets/style';
-import Source from '../assets/source';
 
 // Export Comment Box
 export default function CreateCommentForm({ post }) {
@@ -22,7 +21,7 @@ export default function CreateCommentForm({ post }) {
     console.log('username: ' + username);
     console.log('comment: ' + comment);
     console.log('postId: ' + postId.current);
-    await fetch(`https://${Source.heroku}/createComment`, {
+    await fetch('https://cu-there-server.herokuapp.com/createComment', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

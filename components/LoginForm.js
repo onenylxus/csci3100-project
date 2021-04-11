@@ -16,7 +16,6 @@ import {
   faEye,
 } from '@fortawesome/free-solid-svg-icons';
 import AuthContext from './AuthContext';
-import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export login form
@@ -30,7 +29,7 @@ export default function LoginForm() {
   const status = React.useRef(0);
 
   async function submitData() {
-    await fetch(`https://${Source.heroku}/login`, {
+    await fetch('https://cu-there-server.herokuapp.com/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

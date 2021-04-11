@@ -3,7 +3,6 @@ import React from 'react';
 import { RefreshControl, ScrollView, View } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import PostBox from '../components/PostBox';
-import Source from '../assets/source';
 
 // Export feed screen
 export default function FeedScreen() {
@@ -17,7 +16,7 @@ export default function FeedScreen() {
   function fetchPost() {
     (async () => {
       if (refreshing) {
-        await fetch(`https://${Source.heroku}/fetchPost`, {
+        await fetch('https://cu-there-server.herokuapp.com/fetchPost', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
