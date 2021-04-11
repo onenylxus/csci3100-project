@@ -11,11 +11,23 @@ const Post = mongoose.model('post');
 module.exports = function fetchPost(req, res) {
   const { page, tags, username } = req.body;
   if (username === '') {
-    if (tags === '') {
+    if (tags === 'Newest') {
       const post = Post.find({})
         .sort({ timestamp: -1 })
         .skip(25 * page)
         .limit(25);
+
+      post.then((data) => {
+        if (!data) {
+          return res.status(422).send({
+            error: 'no post in database.',
+          });
+        }
+
+        return res.status(200).send({ msg: 'Post fetched.', posts: data });
+      });
+    } else if (tags === 'Trending') {
+      const post = Post.find({}).sort({ peopleLike: -1 }).limit(5).pretty();
 
       post.then((data) => {
         if (!data) {
