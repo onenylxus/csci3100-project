@@ -19,6 +19,9 @@ export default function CreateCommentForm({ post }) {
 
   async function submitData() {
     await getUser(setUsername);
+    console.log('username: ' + username);
+    console.log('comment: ' + comment);
+    console.log('postId: ' + postId.current);
     await fetch(`https://${Source.heroku}/createComment`, {
       method: 'POST',
       headers: {

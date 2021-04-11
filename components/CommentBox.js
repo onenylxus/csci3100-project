@@ -5,6 +5,11 @@ import Style from '../assets/style';
 
 // Export Comment Box
 export default function CommentBox({ comment }) {
+  const date = React.useRef(new Date(comment.timestamp));
+  const dateString = React.useRef(
+    `${date.current.getHours()}:${date.current.getMinutes()}  ${date.current.getDate()}/${date.current.getMonth()}/${date.current.getFullYear()}`
+  );
+
   return (
     <View style={Style.commentBox}>
       <View style={{ flexDirection: 'row' }}>
@@ -19,6 +24,7 @@ export default function CommentBox({ comment }) {
         />
         <View style={{ flexDirection: 'column', marginTop: 15 }}>
           <Text>{comment.username}</Text>
+          <Text>{dateString.current}</Text>
           <Text>{comment.content}</Text>
         </View>
       </View>

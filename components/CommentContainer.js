@@ -20,7 +20,7 @@ export default function CommentContainer({ post, state }) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          postId,
+          _id: postId.current,
         }),
       })
         .then((res) => {
@@ -29,7 +29,6 @@ export default function CommentContainer({ post, state }) {
         })
         .then((res) => res.json())
         .then((res) => {
-          console.log(res.comment);
           if (status.current === 200) {
             setList(res.comment);
           } else if (status.current === 422) {
