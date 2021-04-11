@@ -14,8 +14,17 @@ export default function PostBox({ post }) {
 
   const username = React.useRef(post.username);
   const date = React.useRef(new Date(post.timestamp));
+  const monthString = React.useRef(date.current.getMonth() + 1);
   const dateString = React.useRef(
-    `${date.current.getHours()}:${date.current.getMinutes()}  ${date.current.getDate()}/${date.current.getMonth()}/${date.current.getFullYear()}`
+    date.current.getHours().toString().padStart(2, '0') +
+      ':' +
+      date.current.getMinutes().toString().padStart(2, '0') +
+      '  ' +
+      date.current.getDate().toString().padStart(2, '0') +
+      '/' +
+      monthString.current.toString().padStart(2, '0') +
+      '/' +
+      date.current.getFullYear().toString()
   );
 
   return (
