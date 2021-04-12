@@ -51,7 +51,7 @@ exports[`App matches snapshot 1`] = `
           <View
             style={
               Object {
-                "backgroundColor": "#69C6F0",
+                "backgroundColor": "#69c6f0",
                 "borderBottomColor": "rgb(216, 216, 216)",
                 "flex": 1,
                 "shadowColor": "rgb(216, 216, 216)",
@@ -118,7 +118,7 @@ exports[`App matches snapshot 1`] = `
                   }
                 }
               >
-                CU There
+                Login
               </Text>
             </View>
           </View>

@@ -1,9 +1,9 @@
 // Export
-export default function Header() {
+export default function BackableHeader(title = 'CU There') {
   return {
-    headerTitle: 'CU There',
+    headerTitle: title,
     headerStyle: {
-      backgroundColor: '#69C6F0',
+      backgroundColor: '#69c6f0',
     },
     headerTintColor: '#ffffff',
     headerLeft: null,

@@ -20,7 +20,7 @@ import CreatePostStack from './screens/navigators/CreatePostStack';
 import FeedStack from './screens/navigators/FeedStack';
 import ForgotPasswordStack from './screens/navigators/ForgotPasswordStack';
 import GuestFeedStack from './screens/navigators/GuestFeedStack';
-import Header from './components/Header';
+import Header from './assets/headers/Header';
 import LoginScreen from './screens/LoginScreen';
 import ProfileStack from './screens/navigators/ProfileStack';
 import RegisterStack from './screens/navigators/RegisterStack';
@@ -97,8 +97,8 @@ export default function App() {
               },
             })}
             tabBarOptions={{
-              activeTintColor: 'tomato',
-              inactiveTintColor: 'gray',
+              activeTintColor: '#69c6f0',
+              inactiveTintColor: '#cccccc',
               scrollEnabled: false,
             }}
           >
@@ -118,7 +118,7 @@ export default function App() {
             <Stack.Screen
               name="Login"
               component={LoginScreen}
-              options={Header}
+              options={() => Header('Login')}
             />
             <Stack.Screen
               name="Register"

@@ -3,12 +3,12 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import ChannelFeedScreen from '../ChannelFeedScreen';
 import ChannelScreen from '../ChannelScreen';
-import Header from '../../components/Header';
+import Header from '../../assets/headers/Header';
 
 // Stack
 const Stack = createStackNavigator();
 
-// Export Channel stack
+// Export channel stack
 export default function ChannelStack() {
   return (
     <Stack.Navigator>
