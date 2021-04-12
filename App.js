@@ -7,20 +7,20 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import {
   faBars,
-  faComment,
+  faCrown,
   faHome,
   faPlus,
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AuthContext from './components/AuthContext';
-import ChatroomStack from './screens/navigators/ChatroomStack';
 import ChannelStack from './screens/navigators/ChannelStack';
 import CreatePostStack from './screens/navigators/CreatePostStack';
 import FeedStack from './screens/navigators/FeedStack';
 import ForgotPasswordStack from './screens/navigators/ForgotPasswordStack';
 import GuestFeedStack from './screens/navigators/GuestFeedStack';
 import Header from './components/Header';
+import LeaderboardStack from './screens/navigators/LeaderboardStack';
 import LoginScreen from './screens/LoginScreen';
 import ProfileStack from './screens/navigators/ProfileStack';
 import RegisterStack from './screens/navigators/RegisterStack';
@@ -83,8 +83,8 @@ export default function App() {
                 switch (route.name) {
                   case 'Channel':
                     return <FontAwesomeIcon icon={faBars} color={color} />;
-                  case 'Chatroom':
-                    return <FontAwesomeIcon icon={faComment} color={color} />;
+                  case 'Leaderboard':
+                    return <FontAwesomeIcon icon={faCrown} color={color} />;
                   case 'CreatePost':
                     return <FontAwesomeIcon icon={faPlus} color={color} />;
                   case 'Feed':
@@ -105,7 +105,7 @@ export default function App() {
             <Tab.Screen name="Feed" component={FeedStack} />
             <Tab.Screen name="Channel" component={ChannelStack} />
             <Tab.Screen name="CreatePost" component={CreatePostStack} />
-            <Tab.Screen name="Chatroom" component={ChatroomStack} />
+            <Tab.Screen name="Leaderboard" component={LeaderboardStack} />
             <Tab.Screen name="Profile" component={ProfileStack} />
           </Tab.Navigator>
         ) : (

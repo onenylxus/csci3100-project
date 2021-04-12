@@ -70,17 +70,11 @@ describe('Server', () => {
   describe('contains schemas', () => {
     const dir = fs.readdirSync('server/schemas');
 
-    it('Chatroom.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['Chatroom.js']));
-    });
     it('Client.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['Client.js']));
     });
     it('Comment.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['Comment.js']));
-    });
-    it('Message.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['Message.js']));
     });
     it('Post.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['Post.js']));
@@ -89,7 +83,7 @@ describe('Server', () => {
       expect(dir).toEqual(expect.arrayContaining(['Token.js']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(6);
+      expect(dir.length).toEqual(4);
     });
   });
 

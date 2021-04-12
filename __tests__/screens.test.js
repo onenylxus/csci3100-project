@@ -9,9 +9,6 @@ describe('Screens', () => {
     it('ChannelStack.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['ChannelStack.js']));
     });
-    it('ChatroomStack.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['ChatroomStack.js']));
-    });
     it('CreatePostStack.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['CreatePostStack.js']));
     });
@@ -23,6 +20,9 @@ describe('Screens', () => {
     });
     it('GuestFeedStack.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['GuestFeedStack.js']));
+    });
+    it('LeaderboardStack.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['LeaderboardStack.js']));
     });
     it('ProfileStack.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['ProfileStack.js']));
@@ -48,12 +48,6 @@ describe('Screens', () => {
     it('ChannelScreen.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['ChannelScreen.js']));
     });
-    it('ChatboxPhoneScreen.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['ChatboxPhoneScreen.js']));
-    });
-    it('ChatroomScreen.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['ChatroomScreen.js']));
-    });
     it('CreatePostScreen.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['CreatePostScreen.js']));
     });
@@ -71,6 +65,9 @@ describe('Screens', () => {
     });
     it('GuestFeedScreen.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['GuestFeedScreen.js']));
+    });
+    it('LeaderboardScreen.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['LeaderboardScreen.js']));
     });
     it('LoginScreen.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['LoginScreen.js']));
@@ -91,7 +88,7 @@ describe('Screens', () => {
       expect(dir).toEqual(expect.arrayContaining(['VerificationScreen.js']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(17);
+      expect(dir.length).toEqual(16);
     });
   });
 });

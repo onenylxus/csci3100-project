@@ -13,12 +13,6 @@ describe('Components', () => {
     it('AuthContext.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['AuthContext.js']));
     });
-    it('Chat.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['Chat.js']));
-    });
-    it('ChatroomMenu.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['ChatroomMenu.js']));
-    });
     it('CollegePicker.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['CollegePicker.js']));
     });
@@ -44,6 +38,9 @@ describe('Components', () => {
       expect(dir).toEqual(expect.arrayContaining(['ForgotPasswordForm.js']));
     });
     it('Header.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['Header.js']));
+    });
+    it('LeaderboardBox.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['Header.js']));
     });
     it('LikeAndDislike.js', () => {
@@ -77,7 +74,7 @@ describe('Components', () => {
       expect(dir).toEqual(expect.arrayContaining(['VerificationForm.js']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(23);
+      expect(dir.length).toEqual(22);
     });
   })
 });

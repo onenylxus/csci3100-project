@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommentBox matches snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#f8f8f8",
+      "margin": 4,
+      "width": "75%",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "flexDirection": "row",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "flexDirection": "row",
+            "marginVertical": 20,
+          }
+        }
+      >
+        <Text>
+          #1
+        </Text>
+        <Image
+          source={1}
+          style={
+            Object {
+              "borderRadius": 28,
+              "height": 32,
+              "marginHorizontal": 8,
+              "marginTop": 4,
+              "width": 32,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "flexDirection": "column",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 14,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            username
+          </Text>
+          <Text>
+            content
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
