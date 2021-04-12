@@ -16,7 +16,7 @@ export default function RegisterStack() {
       <Stack.Screen
         name="AddInfo"
         component={AddInfoScreen}
-        options={() => Header('Register')}
+        options={() => Header('AddInfo')}
       />
       <Stack.Screen
         name="Register"
