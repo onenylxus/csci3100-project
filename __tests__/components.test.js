@@ -28,6 +28,9 @@ describe('Components', () => {
     it('CreatePostForm.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['CreatePostForm.js']));
     });
+    it('CreateReportForm.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['CreateReportForm.js']));
+    });
     it('EditPostForm.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['EditPostForm.js']));
     });
@@ -71,7 +74,7 @@ describe('Components', () => {
       expect(dir).toEqual(expect.arrayContaining(['VerificationForm.js']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(21);
+      expect(dir.length).toEqual(22);
     });
   })
 });

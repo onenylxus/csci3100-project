@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { render } from '@testing-library/react-native';
+import { act, render } from '@testing-library/react-native';
 
 // Import target component
 import App from '../App';

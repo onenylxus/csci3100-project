@@ -2,7 +2,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import CreatePostScreen from '../CreatePostScreen';
-import Header from '../../assets/headers/Header';
+import BackableHeader from '../../assets/headers/BackableHeader';
 
 // Import stack
 const Stack = createStackNavigator();
@@ -14,7 +14,7 @@ export default function CreatePostStack() {
       <Stack.Screen
         name="CreatePost"
         component={CreatePostScreen}
-        options={() => Header('CreatePost')}
+        options={() => BackableHeader('CreatePost')}
       />
     </Stack.Navigator>
   );

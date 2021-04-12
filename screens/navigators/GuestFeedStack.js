@@ -2,7 +2,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import GuestFeedScreen from '../GuestFeedScreen';
-import Header from '../../assets/headers/Header';
+import BackableHeader from '../../assets/headers/BackableHeader';
 
 // Stack
 const Stack = createStackNavigator();
@@ -14,7 +14,7 @@ export default function GuestFeedStack() {
       <Stack.Screen
         name="GuestFeed"
         component={GuestFeedScreen}
-        options={() => Header('GuestFeed')}
+        options={() => BackableHeader('Feed')}
       />
     </Stack.Navigator>
   );

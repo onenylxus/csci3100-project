@@ -6,6 +6,7 @@ export default function Header(title = 'CU There') {
       backgroundColor: '#69c6f0',
     },
     headerTintColor: '#ffffff',
+    headerLeft: null,
     headerRight: null,
   };
 }

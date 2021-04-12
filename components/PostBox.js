@@ -101,6 +101,25 @@ export default function PostBox({ post, showButton }) {
     );
   }
 
+  function askReport() {
+    return Alert.alert(
+      'Report this post?',
+      'Are you sure you would like to report this post?',
+      [
+        {
+          text: 'No',
+          onPress: () => undefined,
+          style: 'cancel',
+        },
+        {
+          text: 'Yes',
+          onPress: () => navigation.navigate('CreateReport', { post }),
+          style: 'destructive',
+        },
+      ]
+    );
+  }
+
   return (
     <View style={Style.profilePost}>
       <View>
@@ -129,7 +148,7 @@ export default function PostBox({ post, showButton }) {
                 >
                   <FontAwesomeIcon icon={faEdit} />
                 </TouchableOpacity>
-                <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
+                <TouchableOpacity style={{ margin: 8 }} onPress={askReport}>
                   <FontAwesomeIcon icon={faExclamation} />
                 </TouchableOpacity>
               </View>
