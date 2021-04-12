@@ -13,35 +13,41 @@ export default function LeaderboardScreen() {
   const windowWidth = Dimensions.get('window').width;
   const status = React.useRef(0);
 
-  async function fetchUsername() {
-    await fetch(`https://${Source.heroku}/fetchUsername`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({}),
-    })
-      .then((res) => {
-        status.current = res.status;
-        return res;
+  function fetchUsername() {
+    (async () => {
+      await fetch(`https://${Source.heroku}/fetchUsername`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}),
       })
-      .then((res) => res.json())
-      .then((res) => {
-        if (status.current === 200) {
-          setList(res);
-        } else if (status.current === 422) {
-          console.log(res.error);
-        }
-      })
-      .catch((err) => console.log(err));
+        .then((res) => {
+          status.current = res.status;
+          return res;
+        })
+        .then((res) => res.json())
+        .then((res) => {
+          if (status.current === 200) {
+            console.log(res);
+            console.log(res.username);
+            console.log(res.popularity);
+            setList(res);
+          } else if (status.current === 422) {
+            console.log(res.error);
+          }
+        })
+        .catch((err) => console.log(err));
+    })();
   }
 
   function generate() {
-    fetchUsername();
     return list.map((data) => (
       <LeaderboardBox username={data.username} popularity={data.popularity} />
     ));
   }
+
+  React.useEffect(fetchUsername);
 
   if (windowWidth >= 1100) {
     // Large Screen
@@ -49,7 +55,7 @@ export default function LeaderboardScreen() {
       <Grid style={Style.profileContainerPC}>
         <Col size={1} style={Style.LeaderboardLeft}>
           <ScrollView>
-            <View>{generate}</View>
+            <View>{generate()}</View>
           </ScrollView>
         </Col>
         <Col size={2} style={Style.LeaderboardRight}>
