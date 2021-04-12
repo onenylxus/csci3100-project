@@ -16,6 +16,8 @@ module.exports = function fetchUsername(req, res) {
         error: 'no client in database.',
       });
     }
+    console.log('data.username: ' + data.username);
+    console.log('data.popularity: ' + data.popularity);
     return res.status(200).send({
       msg: 'username fetched',
       username: data.username,
