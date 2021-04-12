@@ -47,14 +47,14 @@ module.exports = function fetchPost(req, res) {
         .skip(25 * page)
         .limit(25);
 
-      post.then((data) => {
-        if (!data) {
+      post.then((data1) => {
+        if (!data1) {
           return res.status(422).send({
             error: 'no post in database.',
           });
         }
 
-        return res.status(200).send({ msg: 'Post fetched.', posts: data });
+        return res.status(200).send({ msg: 'Post fetched.', posts: data1 });
       });
     }
   } else {
@@ -63,14 +63,14 @@ module.exports = function fetchPost(req, res) {
       .skip(25 * page)
       .limit(25);
 
-    post.then((data) => {
-      if (!data) {
+    post.then((data2) => {
+      if (!data2) {
         return res.status(422).send({
           error: 'no post in database.',
         });
       }
 
-      return res.status(200).send({ msg: 'Post fetched.', posts: data });
+      return res.status(200).send({ msg: 'Post fetched.', posts: data2 });
     });
   }
 };

@@ -66,17 +66,15 @@ export default function FeedScreen() {
       <View>
         <Button
           title="Newest"
-          value="Newest"
-          onPress={(value) => {
-            setTags(value);
+          onPress={() => {
+            setTags('Newest');
             onRefresh();
           }}
         />
         <Button
           title="Trending"
-          value="Trending"
-          onPress={(value) => {
-            setTags(value);
+          onPress={() => {
+            setTags('Trending');
             onRefresh();
           }}
         />
