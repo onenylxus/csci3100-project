@@ -2,12 +2,23 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+// import Font from 'expo-font';
 import LoginForm from '../components/LoginForm';
 import Style from '../assets/style';
 
 // Export login screen
 export default function LoginScreen() {
   const navigation = useNavigation();
+
+  /* function loadFonts() {
+    (async () => {
+      await Font.loadAsync({
+        Sarina: require('../assets/fonts/Sarina-Regular.ttf'),
+      });
+    })();
+  }
+
+  React.useEffect(loadFonts); */
 
   return (
     <View style={Style.container}>

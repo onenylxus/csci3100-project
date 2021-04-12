@@ -13,6 +13,8 @@ import {
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
 import AuthContext from './components/AuthContext';
 import ChannelStack from './screens/navigators/ChannelStack';
 import CreatePostStack from './screens/navigators/CreatePostStack';
@@ -70,6 +72,16 @@ export default function App() {
   // No header option
   function NoHeader() {
     return { headerShown: false };
+  }
+
+  const [fontsLoaded] = useFonts({
+    Sarina: require('./assets/fonts/Sarina-Regular.ttf'),
+    Baloo: require('./assets/fonts/Baloo2-Medium.ttf'),
+    ConcertOne: require('./assets/fonts/ConcertOne-Regular.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
   }
 
   return (
