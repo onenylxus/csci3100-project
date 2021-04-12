@@ -1,119 +1,14 @@
 // Import
-import fs from 'fs';
+import count from './count';
 
 // Run jest tests
 describe('Server', () => {
   // Controllers
-  describe('contains controllers', () => {
-    const dir = fs.readdirSync('server/controllers');
-
-    it('abort.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['abort.js']));
-    });
-    it('addInfo.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['addInfo.js']));
-    });
-    it('createComment.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['createComment.js']));
-    });
-    it('createPost.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['createPost.js']));
-    });
-    it('createReport.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['createReport.js']));
-    });
-    it('deletePost.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['deletePost.js']));
-    });
-    it('editPost.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['editPost.js']));
-    });
-    it('editProfile.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['editProfile.js']));
-    });
-    it('fetchComment.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['fetchComment.js']));
-    });
-    it('fetchData.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['fetchData.js']));
-    });
-    it('fetchLikeAndDislike.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['fetchLikeAndDislike.js']));
-    });
-    it('fetchPost.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['fetchPost.js']));
-    });
-    it('fetchUsername.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['fetchUsername.js']));
-    });
-    it('forgotPassword.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['forgotPassword.js']));
-    });
-    it('like.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['like.js']));
-    });
-    it('login.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['login.js']));
-    });
-    it('register.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['register.js']));
-    });
-    it('resend.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['resend.js']));
-    });
-    it('resetPassword.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['resetPassword.js']));
-    });
-    it('verify.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['verify.js']));
-    });
-    it('no other files', () => {
-      expect(dir.length).toEqual(20);
-    });
-  });
+  describe('contains controllers', count('server/controllers'));
 
   // Schemas
-  describe('contains schemas', () => {
-    const dir = fs.readdirSync('server/schemas');
-
-    it('Client.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['Client.js']));
-    });
-    it('Comment.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['Comment.js']));
-    });
-    it('Post.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['Post.js']));
-    });
-    it('Report.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['Report.js']));
-    });
-    it('Token.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['Token.js']));
-    });
-    it('no other files', () => {
-      expect(dir.length).toEqual(5);
-    });
-  });
+  describe('contains schemas', count('server/schemas'));
 
   // JS files
-  describe('contains JS files', () => {
-    const dir = fs.readdirSync('server').filter((file) => file.endsWith('.js'));
-
-    it('cipher.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['cipher.js']));
-    });
-    it('main.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['main.js']));
-    });
-    it('sender.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['sender.js']));
-    });
-    it('transporter.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['transporter.js']));
-    });
-    it('no other files', () => {
-      expect(dir.length).toEqual(4);
-    });
-  });
+  describe('contains JS files', count('server', '.js'));
 });

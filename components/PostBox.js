@@ -11,7 +11,7 @@ import {
   faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import CommentContainer from './CommentContainer';
-import LikeAndDislike from './LikeAndDislike';
+import LikeContainer from './LikeContainer';
 import Style from '../assets/style';
 
 // Export Post Box
@@ -19,9 +19,9 @@ export default function PostBox({ post, showButton }) {
   const navigation = useNavigation();
 
   const [showComment, setShowComment] = React.useState(false);
+  const [postUsername, setPostUsername] = React.useState(post.username);
 
   const status = React.useRef(0);
-  const postUsername = React.useRef(post.username);
   const date = React.useRef(new Date(post.timestamp));
   const monthString = React.useRef(date.current.getMonth() + 1);
   const dateString = React.useRef(
@@ -125,20 +125,33 @@ export default function PostBox({ post, showButton }) {
       <View>
         <Grid>
           <Col style={{ flexDirection: 'row', marginTop: 15 }}>
-            <Image
-              style={{
-                width: 32,
-                height: 32,
-                marginHorizontal: 8,
-                marginTop: 4,
-                borderRadius: 28,
+            <TouchableOpacity
+              onPress={() => {
+                setPostUsername(post.username);
+                navigation.navigate('OtherProfile', { postUsername });
               }}
-              source={require('../assets/images/profile.png')}
-            />
+            >
+              <Image
+                style={{
+                  width: 32,
+                  height: 32,
+                  marginHorizontal: 8,
+                  marginTop: 4,
+                  borderRadius: 28,
+                }}
+                source={require('../assets/images/profile.png')}
+              />
+            </TouchableOpacity>
             <View style={{ flexDirection: 'column' }}>
-              <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                {postUsername.current}
-              </Text>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('OtherProfile', { postUsername })
+                }
+              >
+                <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
+                  {postUsername}
+                </Text>
+              </TouchableOpacity>
               <Text style={{ fontSize: 12 }}>{dateString.current}</Text>
             </View>
           </Col>
@@ -192,7 +205,7 @@ export default function PostBox({ post, showButton }) {
       </Text>
       <Text style={{ marginHorizontal: 15, fontSize: 16 }}>{post.content}</Text>
       <View>
-        <LikeAndDislike key={post._id} post={post} />
+        <LikeContainer key={post._id} post={post} />
       </View>
       <View>
         <TouchableOpacity

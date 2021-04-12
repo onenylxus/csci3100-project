@@ -3,6 +3,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import CreateReportScreen from '../CreateReportScreen';
 import FeedScreen from '../FeedScreen';
+import OtherProfileScreen from '../OtherProfileScreen';
 import Header from '../../assets/headers/Header';
 
 // Stack
@@ -21,6 +22,11 @@ export default function FeedStack() {
         name="CreateReport"
         component={CreateReportScreen}
         option={() => Header('CreateReport')}
+      />
+      <Stack.Screen
+        name="OtherProfile"
+        component={OtherProfileScreen}
+        option={() => Header('Profile')}
       />
     </Stack.Navigator>
   );

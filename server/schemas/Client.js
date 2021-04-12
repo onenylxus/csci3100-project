@@ -52,6 +52,14 @@ const ClientSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  follower: {
+    type: [String],
+    required: true,
+  },
+  following: {
+    type: [String],
+    required: true,
+  },
 });
 
 // Modeling
