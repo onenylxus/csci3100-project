@@ -40,7 +40,11 @@ export default function LeaderboardScreen() {
 
   function generate() {
     return list.map((data) => (
-      <LeaderboardBox username={data.username} popularity={data.popularity} />
+      <LeaderboardBox
+        username={data.username}
+        popularity={data.popularity}
+        rank={list.indexOf(data) + 1}
+      />
     ));
   }
 

@@ -5,13 +5,13 @@ import { Col, Grid } from 'react-native-easy-grid';
 import Style from '../assets/style';
 
 // Export Leaderboard box
-export default function LeaderboardBox({ username, popularity }) {
+export default function LeaderboardBox({ username, popularity, rank }) {
   return (
     <View style={Style.postBox}>
       <View style={{ flexDirection: 'row' }}>
         <Grid>
           <Col style={{ flexDirection: 'row', marginVertical: 20 }}>
-            <Text>#1</Text>
+            <Text>#{rank}</Text>
             <Image
               style={{
                 width: 32,
