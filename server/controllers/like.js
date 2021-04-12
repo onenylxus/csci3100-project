@@ -3,9 +3,11 @@ const mongoose = require('mongoose');
 
 // Schemas
 require('../schemas/Post');
+require('../schemas/Client');
 
 // Models
 const Post = mongoose.model('post');
+const Client = mongoose.model('client');
 
 // Exports
 module.exports = function like(req, res) {
@@ -27,6 +29,14 @@ module.exports = function like(req, res) {
           $inc: { popularity: 1 },
         })
         .exec();
+      const client = Client.findOne({ username });
+      client.then((data1) => {
+        data1
+          .update({
+            $inc: { popularity: 1 },
+          })
+          .exec();
+      });
     } else {
       data.peopleLike.splice(data.peopleLike.indexOf(username), 1);
       data
@@ -35,6 +45,14 @@ module.exports = function like(req, res) {
           $inc: { popularity: -1 },
         })
         .exec();
+      const client = Client.findOne({ username });
+      client.then((data2) => {
+        data2
+          .update({
+            $inc: { popularity: -1 },
+          })
+          .exec();
+      });
     }
 
     return res.status(200).send({
