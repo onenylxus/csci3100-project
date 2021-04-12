@@ -9,7 +9,7 @@ const Client = mongoose.model('client');
 
 // Exports
 module.exports = function fetchUsername(req, res) {
-  const client = Client.find({}).sort({ popularity: -1 });
+  const client = Client.find({}).sort({ popularity: -1 }).limit(10);
   client.then((data) => {
     if (!data) {
       return res.status(422).send({

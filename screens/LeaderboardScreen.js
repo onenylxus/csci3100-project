@@ -29,8 +29,7 @@ export default function LeaderboardScreen() {
         .then((res) => res.json())
         .then((res) => {
           if (status.current === 200) {
-            console.log(res.data[1]);
-            setList(res);
+            setList(res.data);
           } else if (status.current === 422) {
             console.log(res.error);
           }
