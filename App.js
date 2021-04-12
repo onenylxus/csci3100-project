@@ -13,8 +13,8 @@ import {
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
+import { loadAsync } from 'expo-font';
+// import AppLoading from 'expo-app-loading';
 import AuthContext from './components/AuthContext';
 import ChannelStack from './screens/navigators/ChannelStack';
 import CreatePostStack from './screens/navigators/CreatePostStack';
@@ -22,6 +22,7 @@ import FeedStack from './screens/navigators/FeedStack';
 import ForgotPasswordStack from './screens/navigators/ForgotPasswordStack';
 import GuestFeedStack from './screens/navigators/GuestFeedStack';
 import Header from './assets/headers/Header';
+import Headerless from './assets/headers/Headerless';
 import LeaderboardStack from './screens/navigators/LeaderboardStack';
 import LoginScreen from './screens/LoginScreen';
 import ProfileStack from './screens/navigators/ProfileStack';
@@ -57,42 +58,38 @@ export default function App({ testState }) {
     []
   );
 
-  // Initial storage setup
-  AsyncStorage.getAllKeys().then((keys) => {
-    if (!keys.includes('@username')) {
-      AsyncStorage.setItem('@username', '');
-    }
-  });
+  // Load fonts
+  const loadFonts = React.useCallback(async () => {
+    await loadAsync({
+      Sarina: require('./assets/fonts/Sarina-Regular.ttf'),
+      Baloo: require('./assets/fonts/Baloo2-Medium.ttf'),
+      ConcertOne: require('./assets/fonts/ConcertOne-Regular.ttf'),
+      Muthiara: require('./assets/fonts/MuthiaraDemoVersion.otf'),
+      Roboto: require('./assets/fonts/RobotoSlab-Regular.ttf'),
+      Montserrat: require('./assets/fonts/Montserrat-Regular.ttf'),
+    });
+  }, []);
 
-  // Login automation
-  AsyncStorage.getItem('@username').then((user) => {
-    setIsLogin(user !== null);
-  });
-
-  // Override login state
   React.useEffect(() => {
+    // Initial storage setup
+    AsyncStorage.getAllKeys().then((keys) => {
+      if (!keys.includes('@username')) {
+        AsyncStorage.setItem('@username', '');
+      }
+    });
+
+    // Login automation
     if (testState !== undefined) {
       setIsLogin(testState);
+    } else {
+      AsyncStorage.getItem('@username').then((user) => {
+        setIsLogin(user !== null);
+      });
     }
-  }, [testState]);
 
-  // No header option
-  function NoHeader() {
-    return { headerShown: false };
-  }
-
-  const [fontsLoaded] = useFonts({
-    Sarina: require('./assets/fonts/Sarina-Regular.ttf'),
-    Baloo: require('./assets/fonts/Baloo2-Medium.ttf'),
-    ConcertOne: require('./assets/fonts/ConcertOne-Regular.ttf'),
-    Muthiara: require('./assets/fonts/MuthiaraDemoVersion.otf'),
-    Roboto: require('./assets/fonts/RobotoSlab-Regular.ttf'),
-    Montserrat: require('./assets/fonts/Montserrat-Regular.ttf'),
-  });
-
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
+    // Load fonts
+    loadFonts();
+  }, [testState, loadFonts]);
 
   return (
     <NavigationContainer>
@@ -135,7 +132,7 @@ export default function App({ testState }) {
             <Stack.Screen
               name="ForgotPassword"
               component={ForgotPasswordStack}
-              options={NoHeader}
+              options={Headerless}
             />
             <Stack.Screen
               name="Login"
@@ -145,12 +142,12 @@ export default function App({ testState }) {
             <Stack.Screen
               name="Register"
               component={RegisterStack}
-              options={NoHeader}
+              options={Headerless}
             />
             <Stack.Screen
               name="GuestFeed"
               component={GuestFeedStack}
-              options={NoHeader}
+              options={Headerless}
             />
           </Stack.Navigator>
         )}

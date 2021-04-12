@@ -15,7 +15,7 @@ export default function FeedStack() {
       <Stack.Screen
         name="Feed"
         component={FeedScreen}
-        options={() => Header('Login')}
+        options={() => Header('Feed')}
       />
       <Stack.Screen
         name="CreateReport"

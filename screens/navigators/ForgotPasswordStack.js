@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import ForgotPasswordScreen from '../ForgotPasswordScreen';
 import ResetPasswordScreen from '../ResetPasswordScreen';
 import VerificationScreen from '../VerificationScreen';
+import BackableHeader from '../../assets/headers/BackableHeader';
 import Header from '../../assets/headers/Header';
 
 // Stack
@@ -16,17 +17,17 @@ export default function ForgotPasswordStack() {
       <Stack.Screen
         name="ForgotPassword"
         component={ForgotPasswordScreen}
-        options={() => Header('Login')}
+        options={() => BackableHeader('ForgotPassword')}
       />
       <Stack.Screen
         name="Verification"
         component={VerificationScreen}
-        options={() => Header('Login')}
+        options={() => Header('Verification')}
       />
       <Stack.Screen
         name="ResetPassword"
         component={ResetPasswordScreen}
-        options={() => Header('Login')}
+        options={() => Header('ResetPassword')}
       />
     </Stack.Navigator>
   );

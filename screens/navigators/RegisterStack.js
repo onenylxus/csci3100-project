@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import AddInfoScreen from '../AddInfoScreen';
 import RegisterScreen from '../RegisterScreen';
 import VerificationScreen from '../VerificationScreen';
+import BackableHeader from '../../assets/headers/BackableHeader';
 import Header from '../../assets/headers/Header';
 
 // Stack
@@ -16,17 +17,17 @@ export default function RegisterStack() {
       <Stack.Screen
         name="AddInfo"
         component={AddInfoScreen}
-        options={() => Header('Login')}
+        options={() => BackableHeader('AddInfo')}
       />
       <Stack.Screen
         name="Register"
         component={RegisterScreen}
-        options={() => Header('Login')}
+        options={() => BackableHeader('Register')}
       />
       <Stack.Screen
         name="Verification"
         component={VerificationScreen}
-        options={() => Header('Login')}
+        options={() => Header('Verification')}
       />
     </Stack.Navigator>
   );
