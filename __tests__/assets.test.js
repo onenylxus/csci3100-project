@@ -30,6 +30,27 @@ describe('Assets', () => {
     });
   });
 
+  // Headers
+  describe('contains headers', () => {
+    const dir = fs.readdirSync('assets/headers');
+
+    it('BackableHeader.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['BackableHeader.js']));
+    });
+    it('CogHeader.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['CogHeader.js']));
+    });
+    it('Header.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['Header.js']));
+    });
+    it('Headerless.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['Headerless.js']));
+    });
+    it('no other files', () => {
+      expect(dir.length).toEqual(4);
+    });
+  });
+
   // Icons
   describe('contains icons', () => {
     const dir = fs.readdirSync('assets/icons');
