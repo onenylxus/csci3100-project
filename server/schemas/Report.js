@@ -18,4 +18,4 @@ const ReportSchema = new mongoose.Schema({
 });
 
 // Modeling
-mongoose.model('post', ReportSchema);
+mongoose.model('report', ReportSchema);
