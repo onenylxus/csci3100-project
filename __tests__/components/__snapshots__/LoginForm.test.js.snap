@@ -18,7 +18,7 @@ exports[`LoginForm matches snapshot 1`] = `
         Object {
           "alignSelf": "flex-start",
           "fontFamily": "Roboto",
-          "marginLeft": "10%",
+          "marginLeft": "2%",
         }
       }
     >
@@ -94,7 +94,7 @@ exports[`LoginForm matches snapshot 1`] = `
         Object {
           "alignSelf": "flex-start",
           "fontFamily": "Roboto",
-          "marginLeft": "10%",
+          "marginLeft": "2%",
         }
       }
     >

@@ -14,7 +14,9 @@ export default function AddInfoScreen() {
           showsVerticalScrollIndicator={false}
           scrollToEnd
         >
-          <Text style={Style.loginTitle}>Please tell us more about you!</Text>
+          <Text style={{ ...Style.loginTitle, fontSize: 25, marginTop: '5%' }}>
+            Tell us more about you!
+          </Text>
           <AddInfoForm />
         </ScrollView>
       </View>

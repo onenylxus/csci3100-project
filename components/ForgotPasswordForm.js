@@ -80,7 +80,7 @@ export default function ForgotPasswordForm() {
             style={{ marginHorizontal: 5, marginVertical: 12 }}
           />
           <TextInput
-            style={{ width: 200 }}
+            style={{ width: '90%' }}
             placeholder="CUHK link Email"
             onChangeText={(text) => setEmail(text)}
           />

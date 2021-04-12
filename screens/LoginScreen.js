@@ -10,16 +10,6 @@ import Style from '../assets/style';
 export default function LoginScreen() {
   const navigation = useNavigation();
 
-  /* function loadFonts() {
-    (async () => {
-      await Font.loadAsync({
-        Sarina: require('../assets/fonts/Sarina-Regular.ttf'),
-      });
-    })();
-  }
-
-  React.useEffect(loadFonts); */
-
   return (
     <View style={Style.container}>
       <Text style={Style.loginTitle}>CU There</Text>

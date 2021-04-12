@@ -107,13 +107,7 @@ export default function PostBox({ post, showButton }) {
         <Grid>
           <Col style={{ flexDirection: 'row', marginTop: 15 }}>
             <Image
-              style={{
-                width: 32,
-                height: 32,
-                marginHorizontal: 8,
-                marginTop: 4,
-                borderRadius: 28,
-              }}
+              style={Style.userIcon}
               source={require('../assets/images/profile.png')}
             />
             <View style={{ flexDirection: 'column' }}>
@@ -125,13 +119,7 @@ export default function PostBox({ post, showButton }) {
           </Col>
           <Col>
             {showButton ? (
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignSelf: 'flex-end',
-                  margin: 10,
-                }}
-              >
+              <View style={Style.trashIcon}>
                 <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
                   <FontAwesomeIcon icon={faTrashAlt} />
                 </TouchableOpacity>
@@ -146,13 +134,7 @@ export default function PostBox({ post, showButton }) {
                 </TouchableOpacity>
               </View>
             ) : (
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignSelf: 'flex-end',
-                  margin: 10,
-                }}
-              >
+              <View style={Style.trashIcon}>
                 <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
                   <FontAwesomeIcon icon={faExclamation} />
                 </TouchableOpacity>
@@ -161,16 +143,7 @@ export default function PostBox({ post, showButton }) {
           </Col>
         </Grid>
       </View>
-      <Text
-        style={{
-          marginHorizontal: 15,
-          marginVertical: 10,
-          fontSize: 20,
-          fontWeight: 'bold',
-        }}
-      >
-        {post.title}
-      </Text>
+      <Text style={Style.postTitle}>{post.title}</Text>
       <Text style={{ marginHorizontal: 15, fontSize: 16 }}>{post.content}</Text>
       <View>
         <LikeAndDislike key={post._id} post={post} />
@@ -184,6 +157,7 @@ export default function PostBox({ post, showButton }) {
             style={{
               alignSelf: 'center',
               margin: 5,
+              marginLeft: '3%',
             }}
           >
             Comment

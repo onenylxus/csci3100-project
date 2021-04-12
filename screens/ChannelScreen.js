@@ -1,34 +1,46 @@
 // Import
 import React from 'react';
-import { FlatList, TouchableOpacity, Text, View } from 'react-native';
+import { TouchableOpacity, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import {
+  faBook,
+  faHeart,
+  faSchool,
+  faNewspaper,
+  faGamepad,
+} from '@fortawesome/free-solid-svg-icons';
 
 // Export Channels screen
 export default function ChannelsScreen() {
   const navigation = useNavigation();
 
   const categories = [
-    { title: 'Academics' },
-    { title: 'Relationships' },
-    { title: 'CU-Related' },
-    { title: 'News' },
-    { title: 'Entertainment' },
+    { title: 'Academics', icon: faBook },
+    { title: 'Relationships', icon: faHeart },
+    { title: 'CU-Related', icon: faSchool },
+    { title: 'News', icon: faNewspaper },
+    { title: 'Entertainment', icon: faGamepad },
   ];
 
-  const Item = ({ title }) => (
-    <View>
+  // const channelCategories = []; { tags: { title } }
+
+  const Item = categories.map((data) => (
+    <View style={{ paddingHorizontal: 10 }}>
       <TouchableOpacity
-        onPress={() => navigation.navigate('ChannelFeed', { tags: { title } })}
+        onPress={() => navigation.navigate('ChannelFeed', { tags: data })}
       >
-        <Text style={{ fontSize: 32, padding: 20 }}>{title}</Text>
+        <View style={{ flexDirection: 'row', alignContent: 'center' }}>
+          <FontAwesomeIcon
+            icon={data.icon}
+            size={23}
+            style={{ margin: 5, alignSelf: 'center' }}
+          />
+          <Text style={{ fontSize: 32, padding: 20 }}>{data.title}</Text>
+        </View>
       </TouchableOpacity>
     </View>
-  );
-  const renderItem = ({ item }) => <Item title={item.title} />;
+  ));
 
-  return (
-    <View>
-      <FlatList data={categories} renderItem={renderItem} />
-    </View>
-  );
+  return <View>{Item}</View>;
 }

@@ -129,7 +129,9 @@ export default function ResetPasswordForm() {
 
   return (
     <View>
-      <Text>Please enter your new password: </Text>
+      <Text style={{ ...Style.sectionText, marginLeft: '2%' }}>
+        Please enter your new password:{' '}
+      </Text>
       <View style={{ ...Style.SectionStyle, ...styleByState(passwordState) }}>
         <FontAwesomeIcon
           icon={faLock}

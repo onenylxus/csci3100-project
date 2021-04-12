@@ -47,7 +47,9 @@ export default function CollegePicker({ callback, value }) {
           width: styleByDevice(windowWidth, 'width'),
         }}
       >
-        <Text style={Style.sectionText}>College: </Text>
+        <Text style={{ ...Style.sectionText, marginLeft: '12%' }}>
+          College:{' '}
+        </Text>
         <View>
           <Picker
             style={{

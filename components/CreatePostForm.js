@@ -86,22 +86,8 @@ export default function CreatePostForm() {
   React.useEffect(fetchData);
 
   return (
-    <View
-      style={{
-        justifyContent: 'center',
-        alignContent: 'center',
-        minWidth: '96%',
-        maxWidth: '96%',
-      }}
-    >
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'flex-start',
-          alignContent: 'center',
-          marginLeft: '9%',
-        }}
-      >
+    <View style={Style.createPostContainer}>
+      <View style={Style.createPostInner}>
         <Text style={{ alignSelf: 'center', marginRight: 10 }}>
           Post Anonymously?
         </Text>

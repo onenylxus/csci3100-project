@@ -95,7 +95,11 @@ export default function LikeAndDislike({ post }) {
       >
         <FontAwesomeIcon
           icon={faThumbsUp}
-          style={{ color: likeState ? '#83CCFF' : 'lightgrey', margin: 5 }}
+          style={{
+            color: likeState ? '#83CCFF' : 'lightgrey',
+            margin: '2%',
+            marginLeft: '3%',
+          }}
         />
         <Text style={{ alignSelf: 'center', marginRight: 15 }}>
           {numOfLike}

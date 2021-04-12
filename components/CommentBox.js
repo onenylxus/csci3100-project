@@ -26,13 +26,7 @@ export default function CommentBox({ comment }) {
         <Grid>
           <Col style={{ flexDirection: 'row', marginTop: 5 }}>
             <Image
-              style={{
-                width: 32,
-                height: 32,
-                marginHorizontal: 8,
-                marginTop: 4,
-                borderRadius: 28,
-              }}
+              style={Style.userIcon}
               source={require('../assets/images/profile.png')}
             />
             <View style={{ flexDirection: 'column' }}>

@@ -47,9 +47,7 @@ export default function EditProfileScreen() {
       <ScrollView
         showsVerticalScrollIndicator={styleByDevice(windowWidth, 'scrollBar')}
       >
-        <Text style={{ fontSize: 28, alignSelf: 'center', marginVertical: 20 }}>
-          Edit Your Profile
-        </Text>
+        <Text style={Style.editProfileHeading}>Edit Your Profile</Text>
         <EditProfileForm />
       </ScrollView>
     </View>

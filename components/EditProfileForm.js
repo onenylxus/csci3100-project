@@ -162,15 +162,8 @@ export default function EditProfileForm() {
       <Text style={Style.sectionText}>Bio:</Text>
       <TextInput
         style={{
-          borderColor: '#000000',
-          borderWidth: 1,
-          backgroundColor: '#f8f8f8',
-          height: 100,
-          margin: 16,
-          textAlign: 'left',
-          textAlignVertical: 'top',
+          ...Style.editBio,
           width: styleByDevice(windowWidth, 'pickerWidth'),
-          alignSelf: 'center',
         }}
         onChangeText={(text) => setBio(text)}
         defaultValue={bio}

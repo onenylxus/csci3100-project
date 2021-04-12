@@ -142,7 +142,9 @@ export default function RegisterForm() {
     <View>
       {/* Username */}
       <View style={Style.inputContainer}>
-        <Text style={Style.sectionText}>Username:</Text>
+        <Text style={{ ...Style.sectionText, marginLeft: '2%' }}>
+          Username:
+        </Text>
         <View style={{ ...Style.SectionStyle, ...styleByState(usernameState) }}>
           <FontAwesomeIcon
             icon={faUser}
@@ -164,7 +166,9 @@ export default function RegisterForm() {
 
       {/* Password */}
       <View style={Style.inputContainer}>
-        <Text style={Style.sectionText}>Password:</Text>
+        <Text style={{ ...Style.sectionText, marginLeft: '2%' }}>
+          Password:
+        </Text>
         <View style={{ ...Style.SectionStyle, ...styleByState(passwordState) }}>
           <FontAwesomeIcon
             icon={faLock}
@@ -196,7 +200,9 @@ export default function RegisterForm() {
 
       {/* Email */}
       <View style={Style.inputContainer}>
-        <Text style={Style.sectionText}>CUHK link email:</Text>
+        <Text style={{ ...Style.sectionText, marginLeft: '2%' }}>
+          CUHK link email:
+        </Text>
         <View style={{ ...Style.SectionStyle, ...styleByState(emailState) }}>
           <FontAwesomeIcon
             icon={faEnvelope}
