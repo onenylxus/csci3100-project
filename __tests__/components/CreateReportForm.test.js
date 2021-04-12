@@ -1,5 +1,6 @@
 // Import
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import { render } from '@testing-library/react-native';
 
 // Import target component
@@ -13,6 +14,9 @@ const AuthMethodMock = {
   getUser: jest.fn(),
 };
 
+// Mock navigation route
+jest.mock('@react-navigation/core');
+
 // Run jest tests
 describe('CreateReportForm', () => {
   let element;
@@ -20,9 +24,11 @@ describe('CreateReportForm', () => {
   beforeEach(() => {
     // Render
     element = render(
+      <NavigationContainer>
         <AuthContext.Provider value={AuthMethodMock}>
           <CreateReportForm />
         </AuthContext.Provider>
+      </NavigationContainer>
     );
   });
 

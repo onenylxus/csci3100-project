@@ -113,7 +113,7 @@ export default function PostBox({ post, showButton }) {
         },
         {
           text: 'Yes',
-          onPress: () => navigation.navigate('createReport', { post }),
+          onPress: () => navigation.navigate('CreateReport', { post }),
           style: 'destructive',
         },
       ]
@@ -172,7 +172,7 @@ export default function PostBox({ post, showButton }) {
                   margin: 10,
                 }}
               >
-                <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
+                <TouchableOpacity style={{ margin: 8 }} onPress={askReport}>
                   <FontAwesomeIcon icon={faExclamation} />
                 </TouchableOpacity>
               </View>

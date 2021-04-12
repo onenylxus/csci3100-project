@@ -40,6 +40,7 @@ export default function LeaderboardScreen() {
   function generate() {
     return list.map((data) => (
       <LeaderboardBox
+        key={data.username}
         username={data.username}
         popularity={data.popularity}
         rank={list.indexOf(data) + 1}
@@ -60,7 +61,7 @@ export default function LeaderboardScreen() {
         </Col>
         <Col size={2} style={Style.LeaderboardRight}>
           <ScrollView>
-            <Text style={{ fontSize: 40 }}>Your Messages</Text>
+            <Text style={{ fontSize: 40 }}>The leaderboard</Text>
           </ScrollView>
         </Col>
       </Grid>
@@ -70,7 +71,7 @@ export default function LeaderboardScreen() {
   // Small Screen
   return (
     <View style={{ marginBottom: 50 }}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView>
         <View>{generate()}</View>
       </ScrollView>
     </View>

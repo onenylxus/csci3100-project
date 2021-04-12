@@ -1,11 +1,13 @@
 // Import
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { Alert, Button, Text, TextInput, View } from 'react-native';
 import AuthContext from './AuthContext';
 
 // Export create report form
 export default function CreateReportForm({ post }) {
   const { getUser } = React.useContext(AuthContext);
+  const navigation = useNavigation();
 
   const [username, setUsername] = React.useState('');
   const [content, setContent] = React.useState('');
@@ -41,7 +43,7 @@ export default function CreateReportForm({ post }) {
             [
               {
                 text: 'OK',
-                onPress: () => undefined,
+                onPress: () => navigation.navigate('Feed'),
                 style: 'cancel',
               },
             ]
