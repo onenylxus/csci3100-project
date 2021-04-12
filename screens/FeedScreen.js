@@ -15,8 +15,6 @@ export default function FeedScreen() {
   const page = React.useRef(0);
   const status = React.useRef(0);
 
-  // const toggleSwitch = () => setTrendEnabled((previousState) => !previousState);
-
   function fetchPost() {
     (async () => {
       if (refreshing) {

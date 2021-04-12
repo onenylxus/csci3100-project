@@ -24,6 +24,7 @@ module.exports = function like(req, res) {
       data
         .update({
           $push: { peopleLike: username },
+          $inc: { popularity: 1 },
         })
         .exec();
     } else {
@@ -31,6 +32,7 @@ module.exports = function like(req, res) {
       data
         .update({
           $set: { peopleLike: data.peopleLike },
+          $inc: { popularity: -1 },
         })
         .exec();
     }

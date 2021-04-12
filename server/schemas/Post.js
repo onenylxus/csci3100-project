@@ -27,6 +27,10 @@ const PostSchema = new mongoose.Schema({
     type: [String],
     required: true,
   },
+  popularity: {
+    type: Number,
+    required: true,
+  },
   tags: {
     type: String,
     required: false,
