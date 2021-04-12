@@ -51,6 +51,9 @@ describe('Screens', () => {
     it('CreatePostScreen.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['CreatePostScreen.js']));
     });
+    it('CreateReportScreen.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['CreateReportScreen.js']));
+    });
     it('EditPostScreen.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['EditPostScreen.js']));
     });
@@ -88,7 +91,7 @@ describe('Screens', () => {
       expect(dir).toEqual(expect.arrayContaining(['VerificationScreen.js']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(16);
+      expect(dir.length).toEqual(17);
     });
   });
 });
