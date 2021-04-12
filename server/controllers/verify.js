@@ -36,6 +36,7 @@ module.exports = function verify(req, res) {
           password: data.password,
           email: data.email,
           isPublic: true,
+          popularity: 0,
         });
         client.save();
 

@@ -10,7 +10,6 @@ export default function FeedScreen() {
   const [refreshing, setRefreshing] = React.useState(true);
   const [list, setList] = React.useState([]);
   const [tags, setTags] = React.useState('Trending');
-
   const showButton = React.useRef(false);
   const page = React.useRef(0);
   const status = React.useRef(0);

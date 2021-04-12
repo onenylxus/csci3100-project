@@ -3,11 +3,45 @@ import React from 'react';
 import { View, Text, ScrollView, Dimensions } from 'react-native';
 import { Grid, Col } from 'react-native-easy-grid';
 import LeaderboardBox from '../components/LeaderboardBox';
+import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export Leaderboard screen
 export default function LeaderboardScreen() {
+  const [list, setList] = React.useState([]);
+
   const windowWidth = Dimensions.get('window').width;
+  const status = React.useRef(0);
+
+  async function fetchUsername() {
+    await fetch(`https://${Source.heroku}/fetchUsername`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({}),
+    })
+      .then((res) => {
+        status.current = res.status;
+        return res;
+      })
+      .then((res) => res.json())
+      .then((res) => {
+        if (status.current === 200) {
+          setList(res);
+        } else if (status.current === 422) {
+          console.log(res.error);
+        }
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function generate() {
+    fetchUsername();
+    return list.map((data) => (
+      <LeaderboardBox username={data.username} popularity={data.popularity} />
+    ));
+  }
 
   if (windowWidth >= 1100) {
     // Large Screen
@@ -15,7 +49,7 @@ export default function LeaderboardScreen() {
       <Grid style={Style.profileContainerPC}>
         <Col size={1} style={Style.LeaderboardLeft}>
           <ScrollView>
-            <LeaderboardBox />
+            <View>{generate}</View>
           </ScrollView>
         </Col>
         <Col size={2} style={Style.LeaderboardRight}>
@@ -31,7 +65,7 @@ export default function LeaderboardScreen() {
   return (
     <View style={{ marginBottom: 50 }}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <LeaderboardBox />
+        <View>{generate()}</View>
       </ScrollView>
     </View>
   );

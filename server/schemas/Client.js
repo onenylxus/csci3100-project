@@ -48,6 +48,10 @@ const ClientSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  popularity: {
+    type: Number,
+    required: true,
+  },
 });
 
 // Modeling

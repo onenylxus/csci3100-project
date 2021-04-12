@@ -64,10 +64,12 @@ exports[`CommentBox matches snapshot 1`] = `
               }
             }
           >
-            username
+            Username: 
+            testac
           </Text>
           <Text>
-            content
+            Popularity: 
+            0
           </Text>
         </View>
       </View>

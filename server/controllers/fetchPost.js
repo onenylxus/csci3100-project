@@ -9,6 +9,7 @@ const Post = mongoose.model('post');
 
 // Exports
 module.exports = function fetchPost(req, res) {
+  // Fetch request body
   const { page, tags, username } = req.body;
   if (username === '') {
     if (tags === 'Newest') {

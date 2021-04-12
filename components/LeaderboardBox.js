@@ -5,7 +5,7 @@ import { Col, Grid } from 'react-native-easy-grid';
 import Style from '../assets/style';
 
 // Export Leaderboard box
-export default function LeaderboardBox() {
+export default function LeaderboardBox({ username, popularity }) {
   return (
     <View style={Style.postBox}>
       <View style={{ flexDirection: 'row' }}>
@@ -23,8 +23,10 @@ export default function LeaderboardBox() {
               source={require('../assets/images/profile.png')}
             />
             <View style={{ flexDirection: 'column' }}>
-              <Text style={{ fontSize: 14, fontWeight: 'bold' }}>username</Text>
-              <Text>content</Text>
+              <Text style={{ fontSize: 14, fontWeight: 'bold' }}>
+                Username: {username}
+              </Text>
+              <Text>Popularity: {popularity}</Text>
             </View>
           </Col>
         </Grid>

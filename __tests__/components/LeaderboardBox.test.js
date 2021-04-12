@@ -10,9 +10,12 @@ describe('CommentBox', () => {
   let element;
 
   beforeEach(() => {
+    // Mock username
+    const usernameMock = 'testac';
+    const popularityMock = 0;
 
     // Render
-    element = render(<LeaderboardBox />);
+    element = render(<LeaderboardBox username={usernameMock} popularity={popularityMock}/>);
   });
 
   it('matches snapshot', () => {
