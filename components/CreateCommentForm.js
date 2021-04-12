@@ -17,11 +17,10 @@ export default function CreateCommentForm({ post }) {
   const status = React.useRef(0);
   const postId = React.useRef(post._id);
 
+  // Get username
+  getUser(setUsername);
+
   async function submitData() {
-    await getUser(setUsername);
-    console.log('username: ' + username);
-    console.log('comment: ' + comment);
-    console.log('postId: ' + postId.current);
     await fetch(`https://${Source.heroku}/createComment`, {
       method: 'POST',
       headers: {
