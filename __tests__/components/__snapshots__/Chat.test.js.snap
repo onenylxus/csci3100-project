@@ -6,7 +6,7 @@ exports[`Chat matches snapshot 1`] = `
     style={
       Object {
         "alignSelf": "center",
-        "backgroundColor": "#D2D2D2",
+        "backgroundColor": "#d2d2d2",
         "borderRadius": 15,
         "justifyContent": "center",
         "marginVertical": 5,
@@ -99,7 +99,7 @@ exports[`Chat matches snapshot 1`] = `
     style={
       Object {
         "alignSelf": "center",
-        "backgroundColor": "#D2D2D2",
+        "backgroundColor": "#d2d2d2",
         "borderRadius": 15,
         "justifyContent": "center",
         "marginVertical": 5,
@@ -262,7 +262,7 @@ exports[`Chat matches snapshot 1`] = `
     style={
       Object {
         "alignSelf": "center",
-        "backgroundColor": "#D2D2D2",
+        "backgroundColor": "#d2d2d2",
         "borderRadius": 15,
         "justifyContent": "center",
         "marginVertical": 5,
@@ -355,7 +355,7 @@ exports[`Chat matches snapshot 1`] = `
     style={
       Object {
         "alignSelf": "center",
-        "backgroundColor": "#D2D2D2",
+        "backgroundColor": "#d2d2d2",
         "borderRadius": 15,
         "justifyContent": "center",
         "marginVertical": 5,

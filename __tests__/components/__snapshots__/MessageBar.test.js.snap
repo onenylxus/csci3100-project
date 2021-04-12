@@ -5,8 +5,8 @@ exports[`MessageBar matches snapshot 1`] = `
   style={
     Object {
       "alignSelf": "center",
-      "backgroundColor": "#fff",
-      "borderColor": "#000",
+      "backgroundColor": "#ffffff",
+      "borderColor": "#000000",
       "borderRadius": 20,
       "borderWidth": 0.5,
       "flexDirection": "row",
