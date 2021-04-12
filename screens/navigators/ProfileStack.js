@@ -9,7 +9,7 @@ import ProfileScreen from '../ProfileScreen';
 import EditPostScreen from '../EditPostScreen';
 import EditProfileScreen from '../EditProfileScreen';
 import SettingsScreen from '../SettingsScreen';
-import Header from '../../components/Header';
+import Header from '../../assets/headers/Header';
 
 // Stack
 const Stack = createStackNavigator();
@@ -26,7 +26,7 @@ export default function ProfileStack() {
         options={{
           headerTitle: 'CU There',
           headerStyle: {
-            backgroundColor: '#69C6F0',
+            backgroundColor: '#69c6f0',
           },
           headerTintColor: '#ffffff',
           headerRight: () => (

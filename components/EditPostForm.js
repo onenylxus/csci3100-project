@@ -2,7 +2,6 @@
 import React from 'react';
 import { Alert, Button, Text, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Source from '../assets/source';
 import Style from '../assets/style';
 import TagsPicker from './TagsPicker';
 
@@ -17,7 +16,7 @@ export default function EditPostForm({ post }) {
   const status = React.useRef(0);
 
   async function editPost() {
-    await fetch(`https://${Source.heroku}/editPost`, {
+    await fetch('https://cu-there-server.herokuapp.com/editPost', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

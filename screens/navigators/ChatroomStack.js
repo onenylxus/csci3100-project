@@ -3,7 +3,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import ChatroomScreen from '../ChatroomScreen';
 import ChatboxPhoneScreen from '../ChatboxPhoneScreen';
-import Header from '../../components/Header';
+import Header from '../../assets/headers/Header';
 
 // Stack
 const Stack = createStackNavigator();

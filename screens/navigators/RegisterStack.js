@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import AddInfoScreen from '../AddInfoScreen';
 import RegisterScreen from '../RegisterScreen';
 import VerificationScreen from '../VerificationScreen';
-import Header from '../../components/Header';
+import Header from '../../assets/headers/Header';
 
 // Stack
 const Stack = createStackNavigator();

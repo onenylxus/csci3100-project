@@ -12,7 +12,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import CommentContainer from './CommentContainer';
 import LikeAndDislike from './LikeAndDislike';
-import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export Post Box
@@ -26,19 +25,22 @@ export default function PostBox({ post, showButton }) {
   const date = React.useRef(new Date(post.timestamp));
   const monthString = React.useRef(date.current.getMonth() + 1);
   const dateString = React.useRef(
-    date.current.getHours().toString().padStart(2, '0') +
-      ':' +
-      date.current.getMinutes().toString().padStart(2, '0') +
-      '  ' +
-      date.current.getDate().toString().padStart(2, '0') +
-      '/' +
-      monthString.current.toString().padStart(2, '0') +
-      '/' +
-      date.current.getFullYear().toString()
+    `${date.current
+      .getHours()
+      .toString()
+      .padStart(2, '0')}:${date.current
+      .getMinutes()
+      .toString()
+      .padStart(2, '0')}  ${date.current
+      .getDate()
+      .toString()
+      .padStart(2, '0')}/${monthString.current
+      .toString()
+      .padStart(2, '0')}/${date.current.getFullYear().toString()}`
   );
 
   async function deletePost() {
-    await fetch(`https://${Source.heroku}/deletePost`, {
+    await fetch('https://cu-there-server.herokuapp.com/deletePost', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

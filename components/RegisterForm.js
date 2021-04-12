@@ -17,7 +17,6 @@ import {
   faEnvelope,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export register form
@@ -38,7 +37,7 @@ export default function RegisterForm() {
     console.log(
       `Register request sent with username ${username}, password ${password} and email ${email}`
     );
-    await fetch(`https://${Source.heroku}/register`, {
+    await fetch('https://cu-there-server.herokuapp.com/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

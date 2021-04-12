@@ -28,8 +28,8 @@ exports[`LoginForm matches snapshot 1`] = `
       style={
         Object {
           "alignSelf": "center",
-          "backgroundColor": "#fff",
-          "borderColor": "#000",
+          "backgroundColor": "#ffffff",
+          "borderColor": "#000000",
           "borderRadius": 5,
           "borderWidth": 1,
           "flexDirection": "row",
@@ -104,8 +104,8 @@ exports[`LoginForm matches snapshot 1`] = `
       style={
         Object {
           "alignSelf": "center",
-          "backgroundColor": "#fff",
-          "borderColor": "#000",
+          "backgroundColor": "#ffffff",
+          "borderColor": "#000000",
           "borderRadius": 5,
           "borderWidth": 1,
           "flexDirection": "row",

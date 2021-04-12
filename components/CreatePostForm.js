@@ -4,7 +4,6 @@ import { Alert, Button, Switch, Text, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Picker } from '@react-native-community/picker';
 import AuthContext from './AuthContext';
-import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export Create Post Form
@@ -26,7 +25,7 @@ export default function CreatePostForm() {
   }
 
   async function submitData() {
-    await fetch(`https://${Source.heroku}/createPost`, {
+    await fetch('https://cu-there-server.herokuapp.com/createPost', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

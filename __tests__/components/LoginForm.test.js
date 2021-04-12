@@ -3,11 +3,11 @@ import React from 'react';
 import { Alert } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { fireEvent, render, waitFor } from '@testing-library/react-native';
+import fetchMock from 'jest-fetch-mock';
 
 // Import target component
 import AuthContext from '../../components/AuthContext';
 import LoginForm from '../../components/LoginForm';
-import Source from '../../assets/source';
 
 // Mock authentication method
 const AuthMethodMock = {
@@ -31,8 +31,8 @@ describe('LoginForm', () => {
 
   beforeEach(() => {
     // Mock fetch function
-    require('jest-fetch-mock').enableMocks();
-    fetchMock.mockIf(`https://${Source.heroku}/login`, (req) => {
+    fetchMock.enableMocks();
+    fetchMock.mockIf('https://cu-there-server.herokuapp.com/login', (req) => {
       const { username, password } = req.body;
 
       if (username === 'testac' && password === 'testpw') {

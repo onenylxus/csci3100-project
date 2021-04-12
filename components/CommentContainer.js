@@ -3,7 +3,6 @@ import React from 'react';
 import { View, ScrollView } from 'react-native';
 import CreateCommentForm from './CreateCommentForm';
 import CommentBox from './CommentBox';
-import Source from '../assets/source';
 
 // Export
 export default function CommentContainer({ post, state }) {
@@ -14,7 +13,7 @@ export default function CommentContainer({ post, state }) {
 
   function fetchComment() {
     (async () => {
-      await fetch(`https://${Source.heroku}/fetchComment`, {
+      await fetch('https://cu-there-server.herokuapp.com/fetchComment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
