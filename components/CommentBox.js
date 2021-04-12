@@ -1,9 +1,7 @@
 // Import
 import React from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import { Col, Grid } from 'react-native-easy-grid';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import Style from '../assets/style';
 
 // Export Comment Box
@@ -43,19 +41,6 @@ export default function CommentBox({ comment }) {
               </Text>
               <Text style={{ fontSize: 10 }}>{dateString.current}</Text>
               <Text>{comment.content}</Text>
-            </View>
-          </Col>
-          <Col>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignSelf: 'flex-end',
-                margin: 10,
-              }}
-            >
-              <TouchableOpacity style={{ margin: 8 }} onPress={() => undefined}>
-                <FontAwesomeIcon icon={faTrashAlt} />
-              </TouchableOpacity>
             </View>
           </Col>
         </Grid>
