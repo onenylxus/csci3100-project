@@ -3,6 +3,33 @@ import fs from 'fs';
 
 // Run jest tests
 describe('Assets', () => {
+  // Fonts
+  describe('contains fonts', () => {
+    const dir = fs.readdirSync('assets/fonts');
+
+    it('Baloo2-Medium.ttf', () => {
+      expect(dir).toEqual(expect.arrayContaining(['Baloo2-Medium.ttf']));
+    });
+    it('ConcertOne-Regular.ttf', () => {
+      expect(dir).toEqual(expect.arrayContaining(['ConcertOne-Regular.ttf']));
+    });
+    it('Sarina-Regular.ttf', () => {
+      expect(dir).toEqual(expect.arrayContaining(['Sarina-Regular.ttf']));
+    });
+    it('RobotoSlab-Regular.ttf', () => {
+      expect(dir).toEqual(expect.arrayContaining(['RobotoSlab-Regular.ttf']));
+    });
+    it('MuthiaraDemoVersion.otf', () => {
+      expect(dir).toEqual(expect.arrayContaining(['MuthiaraDemoVersion.otf']));
+    });
+    it('Montserrat-Regular.ttf', () => {
+      expect(dir).toEqual(expect.arrayContaining(['Montserrat-Regular.ttf']));
+    });
+    it('no other files', () => {
+      expect(dir.length).toEqual(7);
+    });
+  });
+
   // Icons
   describe('contains icons', () => {
     const dir = fs.readdirSync('assets/icons');
@@ -20,7 +47,7 @@ describe('Assets', () => {
       expect(dir).toEqual(expect.arrayContaining(['splash.png']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(4);
+      expect(dir.length).toEqual(5);
     });
   });
 
@@ -33,24 +60,6 @@ describe('Assets', () => {
     });
     it('profile.png', () => {
       expect(dir).toEqual(expect.arrayContaining(['profile.png']));
-    });
-    it('no other files', () => {
-      expect(dir.length).toEqual(2);
-    });
-  });
-
-  // Fonts
-  describe('contains fonts', () => {
-    const dir = fs.readdirSync('assets/fonts');
-
-    it('Baloo2-Medium.ttf', () => {
-      expect(dir).toEqual(expect.arrayContaining(['Baloo2-Medium.ttf']));
-    });
-    it('ConcertOne-Regular.ttf', () => {
-      expect(dir).toEqual(expect.arrayContaining(['ConcertOne-Regular.ttf']));
-    });
-    it('Sarina-Regular.ttf', () => {
-      expect(dir).toEqual(expect.arrayContaining(['Sarina-Regular.ttf']));
     });
     it('no other files', () => {
       expect(dir.length).toEqual(3);

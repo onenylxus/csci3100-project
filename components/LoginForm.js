@@ -168,7 +168,12 @@ export default function LoginForm() {
           </TouchableOpacity>
         </View>
       </View>
-      <Button title="Login" onPress={confirmLogin} testID="login" />
+      <Button
+        title="Login"
+        onPress={confirmLogin}
+        style={{ fontFamily: 'Roboto' }}
+        testID="login"
+      />
     </View>
   );
 }

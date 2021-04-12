@@ -3,6 +3,7 @@ import React from 'react';
 import { Text, View, Dimensions } from 'react-native';
 import { Picker } from '@react-native-community/picker';
 import CollegeList from '../assets/json/collegeList.json';
+import Style from '../assets/style';
 
 // Export college picker
 export default function CollegePicker({ callback, value }) {
@@ -46,7 +47,7 @@ export default function CollegePicker({ callback, value }) {
           width: styleByDevice(windowWidth, 'width'),
         }}
       >
-        <Text>College: </Text>
+        <Text style={Style.sectionText}>College: </Text>
         <View>
           <Picker
             style={{

@@ -113,14 +113,18 @@ export default function AddInfoForm() {
       </View>
 
       {/* Gender */}
-      <Text style={Style.sectionText}>Gender:</Text>
-      <RadioButton.Group
-        onValueChange={(newValue) => setGender(newValue)}
-        value={gender}
-      >
-        <RadioButton.Item label="Male" value="M" />
-        <RadioButton.Item label="Female" value="F" />
-      </RadioButton.Group>
+      <View>
+        <Text style={Style.sectionText}>Gender:</Text>
+        <View style={{ margin: '5%' }}>
+          <RadioButton.Group
+            onValueChange={(newValue) => setGender(newValue)}
+            value={gender}
+          >
+            <RadioButton.Item label="Male" value="M" />
+            <RadioButton.Item label="Female" value="F" />
+          </RadioButton.Group>
+        </View>
+      </View>
 
       {/* Major */}
       <MajorPicker callback={setMajor} value={major} />

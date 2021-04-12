@@ -116,7 +116,7 @@ export default function VerificationForm() {
       back();
 
       Alert.alert(
-        'Abort confirmation',
+        'About confirmation',
         'If you leave this screen, you have to start over your current request. Are you sure you want to do this?',
         [
           {
@@ -153,15 +153,25 @@ export default function VerificationForm() {
   }, [email, navigation]);
 
   return (
-    <View>
+    <View style={{ alignContent: 'center' }}>
       <View style={Style.codeInputBox}>
         <TextInput
-          style={{ width: '100%', fontSize: 22, alignContent: 'center' }}
+          style={{
+            width: '100%',
+            fontSize: 22,
+            alignContent: 'center',
+            marginLeft: '6%',
+            marginTop: '6%',
+          }}
           onChangeText={(text) => setCode(text)}
         />
       </View>
       <Text
-        style={{ ...Style.hyperlink, alignItems: 'flex-end', margin: 8 }}
+        style={{
+          ...Style.hyperlink,
+          marginHorizontal: '6%',
+          alignSelf: 'center',
+        }}
         onPress={resend}
       >
         Resend email

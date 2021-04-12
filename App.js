@@ -32,7 +32,7 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 // Export application
-export default function App() {
+export default function App({ testState }) {
   // Login state
   const [isLogin, setIsLogin] = React.useState(false);
 
@@ -69,6 +69,13 @@ export default function App() {
     setIsLogin(user !== null);
   });
 
+  // Override login state
+  React.useEffect(() => {
+    if (testState !== undefined) {
+      setIsLogin(testState);
+    }
+  }, [testState]);
+
   // No header option
   function NoHeader() {
     return { headerShown: false };
@@ -78,6 +85,9 @@ export default function App() {
     Sarina: require('./assets/fonts/Sarina-Regular.ttf'),
     Baloo: require('./assets/fonts/Baloo2-Medium.ttf'),
     ConcertOne: require('./assets/fonts/ConcertOne-Regular.ttf'),
+    Muthiara: require('./assets/fonts/MuthiaraDemoVersion.otf'),
+    Roboto: require('./assets/fonts/RobotoSlab-Regular.ttf'),
+    Montserrat: require('./assets/fonts/Montserrat-Regular.ttf'),
   });
 
   if (!fontsLoaded) {

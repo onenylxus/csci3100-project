@@ -8,14 +8,16 @@ import Style from '../assets/style';
 export default function AddInfoScreen() {
   return (
     <View style={Style.container}>
-      <ScrollView
-        style={{ height: '82%' }}
-        showsVerticalScrollIndicator={false}
-        scrollToEnd
-      >
-        <Text style={Style.loginTitle}>Please tell us more about you!</Text>
-        <AddInfoForm />
-      </ScrollView>
+      <View style={{ margin: '5%' }}>
+        <ScrollView
+          style={{ height: '82%' }}
+          showsVerticalScrollIndicator={false}
+          scrollToEnd
+        >
+          <Text style={Style.loginTitle}>Please tell us more about you!</Text>
+          <AddInfoForm />
+        </ScrollView>
+      </View>
     </View>
   );
 }

@@ -77,31 +77,35 @@ export default function EditPostForm({ post }) {
   }
 
   return (
-    <View
-      style={{
-        justifyContent: 'center',
-        alignContent: 'center',
-        minWidth: '96%',
-      }}
-    >
-      <Text>Edit your post below!</Text>
-      <TextInput
-        style={Style.SectionStyle}
-        placeholder="Post title"
-        defaultValue={post.title}
-        onChangeText={(text) => setNewTitle(text)}
-      />
-      <TextInput
-        style={Style.createPostBox}
-        multiline
-        scrollEnabled
-        enablesReturnKeyAutomatically
-        placeholder="What's on your mind?"
-        defaultValue={post.content}
-        onChangeText={(text) => setNewContent(text)}
-      />
+    <View style={Style.editPostContainer}>
+      <Text style={Style.editPostHeading}>Edit your post below!</Text>
+      <View style={Style.editPostSection}>
+        <View style={Style.editPostSectionText}>
+          <Text>Post Title: </Text>
+        </View>
+        <TextInput
+          style={Style.SectionStyle}
+          placeholder="Post title"
+          defaultValue={post.title}
+          onChangeText={(text) => setNewTitle(text)}
+        />
+      </View>
+      <View style={Style.editPostSection}>
+        <View style={Style.editPostSectionText}>
+          <Text style={{ alignSelf: 'center' }}>Post: </Text>
+        </View>
+        <TextInput
+          style={Style.createPostBox}
+          multiline
+          scrollEnabled
+          enablesReturnKeyAutomatically
+          placeholder="What's on your mind?"
+          defaultValue={post.content}
+          onChangeText={(text) => setNewContent(text)}
+        />
+      </View>
       <TagsPicker callback={setNewTags} value={newTags} />
-      <Button title="Post!" onPress={editPost} />
+      <Button title="Save" onPress={editPost} />
     </View>
   );
 }

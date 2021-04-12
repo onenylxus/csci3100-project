@@ -11,7 +11,15 @@ exports[`CollegePicker matches snapshot 1`] = `
       }
     }
   >
-    <Text>
+    <Text
+      style={
+        Object {
+          "alignSelf": "flex-start",
+          "fontFamily": "Roboto",
+          "marginLeft": "10%",
+        }
+      }
+    >
       College: 
     </Text>
     <View>

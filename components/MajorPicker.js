@@ -3,6 +3,7 @@ import React from 'react';
 import { Text, View, Dimensions } from 'react-native';
 import { Picker } from '@react-native-community/picker';
 import MajorList from '../assets/json/majorList.json';
+import Style from '../assets/style';
 
 // Export major picker
 export default function MajorPicker({ callback, value }) {
@@ -46,7 +47,7 @@ export default function MajorPicker({ callback, value }) {
           width: styleByDevice(windowWidth, 'width'),
         }}
       >
-        <Text>Major:</Text>
+        <Text style={Style.sectionText}>Major:</Text>
         <View>
           <Picker
             style={{

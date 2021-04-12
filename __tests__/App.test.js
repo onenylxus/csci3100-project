@@ -18,7 +18,13 @@ describe('App', () => {
     element = render(<App />);
   })
 
-  it('matches snapshot', () => {
+  it('matches snapshot on guest mode', () => {
+    element = render(<App testState={false} />);
+    expect(element.toJSON()).toMatchSnapshot();
+  });
+
+  it('matches snapshot on login mode', () => {
+    element = render(<App testState={true} />);
     expect(element.toJSON()).toMatchSnapshot();
   });
 });

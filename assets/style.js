@@ -14,21 +14,22 @@ export default StyleSheet.create({
   hyperlink: {
     color: '#0000ff',
     textDecorationLine: 'underline',
+    fontFamily: 'Roboto',
   },
 
   loginTitle: {
-    fontSize: 20,
+    fontSize: 30,
     marginBottom: 20,
-    fontFamily: 'Sarina',
+    fontFamily: 'Roboto',
   },
 
   codeInputBox: {
     borderWidth: 0.5,
     borderColor: '#000',
-    width: 100,
+    minWidth: '25%',
     height: 40,
     borderRadius: 5,
-    margin: 10,
+    margin: '5%',
   },
 
   postBox: {
@@ -40,7 +41,7 @@ export default StyleSheet.create({
   sectionText: {
     alignSelf: 'flex-start',
     marginLeft: '10%',
-    fontFamily: 'ConcertOne',
+    fontFamily: 'Roboto',
   },
 
   SectionStyle: {
@@ -94,21 +95,34 @@ export default StyleSheet.create({
     borderRadius: 10,
   },
 
+  // Styles of Edit Post Page
+  editPostContainer: {
+    justifyContent: 'center',
+    alignContent: 'center',
+    minWidth: '96%',
+    marginHorizontal: '5%',
+  },
+
+  editPostHeading: {
+    alignSelf: 'center',
+    fontSize: 22,
+  },
+
+  editPostSection: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+
+  editPostSectionText: {
+    alignSelf: 'center',
+    width: '20%',
+  },
+
+  // Styles of Profile Page for PC
   profileContainerPC: {
     width: 1000,
     alignSelf: 'center',
     paddingTop: 32,
-  },
-
-  profileContainerPhone: {
-    marginHorizontal: 5,
-    alignSelf: 'center',
-    paddingTop: 32,
-  },
-
-  profilePicturePhone: {
-    justifyContent: 'flex-start',
-    marginHorizontal: 20,
   },
 
   profilePicturePC: {
@@ -116,23 +130,10 @@ export default StyleSheet.create({
     marginHorizontal: 30,
   },
 
-  editProfileButtonPhone: {
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    marginHorizontal: 10,
-  },
-
   editProfileButtonPC: {
     justifyContent: 'flex-start',
     alignItems: 'center',
     marginHorizontal: 30,
-  },
-
-  userInfoPhone: {
-    fontSize: 16,
-    justifyContent: 'flex-start',
-    alignSelf: 'flex-start',
-    margin: 10,
   },
 
   userInfoPC: {
@@ -142,12 +143,37 @@ export default StyleSheet.create({
     margin: 10,
   },
 
-  infoLayerPhone: {
-    height: 120,
-  },
-
   infoLayerPC: {
     height: 170,
+  },
+
+  // Styles of Profile Page for Phone
+  profileContainerPhone: {
+    marginHorizontal: 5,
+    alignSelf: 'center',
+    paddingTop: 20,
+  },
+
+  profilePicturePhone: {
+    justifyContent: 'flex-start',
+    marginHorizontal: 20,
+  },
+
+  editProfileButtonPhone: {
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginHorizontal: 10,
+  },
+
+  userInfoPhone: {
+    fontSize: 16,
+    justifyContent: 'flex-start',
+    alignSelf: 'flex-start',
+    margin: 10,
+  },
+
+  infoLayerPhone: {
+    minHeight: '50%',
   },
 
   profilePost: {

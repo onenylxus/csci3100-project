@@ -92,6 +92,7 @@ export default function CreatePostForm() {
         justifyContent: 'center',
         alignContent: 'center',
         minWidth: '96%',
+        maxWidth: '96%',
       }}
     >
       <View

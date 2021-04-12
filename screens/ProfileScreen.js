@@ -3,14 +3,14 @@ import React from 'react';
 import {
   Text,
   Button,
-  Dimensions,
+  // Dimensions,
   View,
   RefreshControl,
   ScrollView,
   Image,
   TouchableOpacity,
 } from 'react-native';
-import { Row, Col, Grid } from 'react-native-easy-grid';
+import { Row, Grid } from 'react-native-easy-grid';
 import { useNavigation } from '@react-navigation/native';
 import AuthContext from '../components/AuthContext';
 import PostBox from '../components/PostBox';
@@ -19,7 +19,7 @@ import Source from '../assets/source';
 
 // Export profile screen
 export default function ProfileScreen() {
-  const windowWidth = Dimensions.get('window').width;
+  // const windowWidth = Dimensions.get('window').width;
   const navigation = useNavigation();
   const { getUser } = React.useContext(AuthContext);
 
@@ -34,7 +34,7 @@ export default function ProfileScreen() {
   // Get username
   getUser(setUsername);
 
-  function styleByDevice(widthOfDevice, component) {
+  /* function styleByDevice(widthOfDevice, component) {
     if (widthOfDevice < 1100) {
       // Style of Small Screen
       switch (component) {
@@ -90,7 +90,7 @@ export default function ProfileScreen() {
       default:
         break;
     }
-  }
+  } */
 
   function fetchPost() {
     (async () => {
@@ -144,39 +144,35 @@ export default function ProfileScreen() {
       }
     >
       <View style={{ flex: 1 }}>
-        <Grid style={styleByDevice(windowWidth, 'container')}>
-          <View style={styleByDevice(windowWidth, 'infoLayer')}>
-            <Row size={1}>
-              <Col size={styleByDevice(windowWidth, 'propicLayer')}>
-                <Row size={1} style={styleByDevice(windowWidth, 'propic')}>
-                  <Image
-                    style={{
-                      width: 64,
-                      height: 64,
-                      margin: 8,
-                      borderRadius: 32,
-                    }}
-                    source={require('../assets/images/profile.png')}
-                  />
-                </Row>
-                <Row size={0.5} style={styleByDevice(windowWidth, 'button')}>
-                  <Button
-                    title="Edit Profile"
-                    onPress={() => navigation.navigate('EditProfile')}
-                  />
-                  <TouchableOpacity style={{ marginHorizontal: 15 }}>
-                    <Text>4 Followers</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={{ marginHorizontal: 15 }}>
-                    <Text>4 Following</Text>
-                  </TouchableOpacity>
-                </Row>
-              </Col>
-              <Text style={styleByDevice(windowWidth, 'userInfo')}>
+        <Grid style={Style.profileContainerPhone}>
+          <View style={Style.infoLayerPhone}>
+            <Row size={1} style={Style.profilePicturePhone}>
+              <Image
+                style={{
+                  width: 64,
+                  height: 64,
+                  margin: 8,
+                  borderRadius: 32,
+                }}
+                source={require('../assets/images/profile.png')}
+              />
+              <Text style={Style.userInfoPhone}>
                 Username: {username} {'\n'}
                 Major:{'\n'}
                 College:{'\n'}
               </Text>
+            </Row>
+            <Row size={2} style={Style.editProfileButtonPhone}>
+              <Button
+                title="Edit Profile"
+                onPress={() => navigation.navigate('EditProfile')}
+              />
+              <TouchableOpacity style={{ marginHorizontal: 15 }}>
+                <Text>4 Followers</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={{ marginHorizontal: 15 }}>
+                <Text>4 Following</Text>
+              </TouchableOpacity>
             </Row>
           </View>
           <Row />
