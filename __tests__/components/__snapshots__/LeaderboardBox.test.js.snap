@@ -35,7 +35,7 @@ exports[`CommentBox matches snapshot 1`] = `
         }
       >
         <Text>
-          #1
+          #
         </Text>
         <Image
           source={1}
