@@ -15,12 +15,12 @@ export default function ChannelStack() {
       <Stack.Screen
         name="Channels"
         component={ChannelScreen}
-        options={Header}
+        options={() => Header('Login')}
       />
       <Stack.Screen
         name="ChannelFeed"
         component={ChannelFeedScreen}
-        options={Header}
+        options={() => Header('Login')}
       />
     </Stack.Navigator>
   );

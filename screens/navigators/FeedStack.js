@@ -11,7 +11,11 @@ const Stack = createStackNavigator();
 export default function FeedStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Feed" component={FeedScreen} options={Header} />
+      <Stack.Screen
+        name="Feed"
+        component={FeedScreen}
+        options={() => Header('Login')}
+      />
     </Stack.Navigator>
   );
 }

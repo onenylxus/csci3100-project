@@ -14,7 +14,7 @@ export default function GuestFeedStack() {
       <Stack.Screen
         name="GuestFeed"
         component={GuestFeedScreen}
-        options={Header}
+        options={() => Header('Login')}
       />
     </Stack.Navigator>
   );

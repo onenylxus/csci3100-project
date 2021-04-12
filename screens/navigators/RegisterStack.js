@@ -13,16 +13,20 @@ const Stack = createStackNavigator();
 export default function RegisterStack() {
   return (
     <Stack.Navigator initialRouteName="Register">
-      <Stack.Screen name="AddInfo" component={AddInfoScreen} options={Header} />
+      <Stack.Screen
+        name="AddInfo"
+        component={AddInfoScreen}
+        options={() => Header('Login')}
+      />
       <Stack.Screen
         name="Register"
         component={RegisterScreen}
-        options={Header}
+        options={() => Header('Login')}
       />
       <Stack.Screen
         name="Verification"
         component={VerificationScreen}
-        options={Header}
+        options={() => Header('Login')}
       />
     </Stack.Navigator>
   );

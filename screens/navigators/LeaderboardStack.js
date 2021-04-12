@@ -14,7 +14,7 @@ export default function LeaderboardStack() {
       <Stack.Screen
         name="Leaderboard"
         component={LeaderboardScreen}
-        options={Header}
+        options={() => Header('Login')}
       />
     </Stack.Navigator>
   );

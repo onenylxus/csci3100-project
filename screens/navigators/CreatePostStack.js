@@ -14,7 +14,7 @@ export default function CreatePostStack() {
       <Stack.Screen
         name="CreatePost"
         component={CreatePostScreen}
-        options={Header}
+        options={() => Header('Login')}
       />
     </Stack.Navigator>
   );
