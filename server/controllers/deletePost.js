@@ -6,7 +6,7 @@ require('../schemas/Post');
 require('../schemas/Comment');
 // Models
 const Post = mongoose.model('post');
-const Comment = mongoose.model('Comment');
+const Comment = mongoose.model('comment');
 
 // Exports
 module.exports = function deletePost(req, res) {
