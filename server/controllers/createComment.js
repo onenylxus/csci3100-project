@@ -3,9 +3,11 @@ const mongoose = require('mongoose');
 
 // Schemas
 require('../schemas/Comment');
+require('../schemas/Post');
 
 // Models
 const Comment = mongoose.model('comment');
+const Post = mongoose.model('post');
 
 // Exports
 module.exports = function createComment(req, res) {
@@ -24,8 +26,23 @@ module.exports = function createComment(req, res) {
     username,
     content,
   });
-  comment
-    .save()
-    .then(res.status(200).send({ msg: 'Comment created' }))
-    .catch((err) => console.log(err));
+  comment.save();
+
+  const post = Post.findOne({ _id });
+
+  post.then((data) => {
+    if (!data) {
+      return res.status(422).send({
+        error: 'post not found',
+      });
+    }
+    data
+      .update({
+        $inc: { popularity: 1 },
+      })
+      .exec();
+    return res
+      .status(200)
+      .send({ msg: 'Comment created with popularity updated' });
+  });
 };
