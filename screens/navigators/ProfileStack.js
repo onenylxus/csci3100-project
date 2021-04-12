@@ -43,17 +43,17 @@ export default function ProfileStack() {
       <Stack.Screen
         name="EditProfile"
         component={EditProfileScreen}
-        options={Header}
+        options={() => Header('EditProfile')}
       />
       <Stack.Screen
         name="Settings"
         component={SettingsScreen}
-        options={Header}
+        options={() => Header('Settings')}
       />
       <Stack.Screen
         name="EditPost"
         component={EditPostScreen}
-        options={Header}
+        options={() => Header('EditPost')}
       />
     </Stack.Navigator>
   );

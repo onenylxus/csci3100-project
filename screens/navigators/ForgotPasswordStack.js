@@ -16,17 +16,17 @@ export default function ForgotPasswordStack() {
       <Stack.Screen
         name="ForgotPassword"
         component={ForgotPasswordScreen}
-        options={Header}
+        options={() => Header('ForgotPassword')}
       />
       <Stack.Screen
         name="Verification"
         component={VerificationScreen}
-        options={Header}
+        options={() => Header('Verification')}
       />
       <Stack.Screen
         name="ResetPassword"
         component={ResetPasswordScreen}
-        options={Header}
+        options={() => Header('ResetPassword')}
       />
     </Stack.Navigator>
   );
