@@ -11,7 +11,6 @@ import {
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { faLock, faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export reset password form
@@ -27,7 +26,7 @@ export default function ResetPasswordForm() {
   const status = React.useRef(0);
 
   async function submitData() {
-    await fetch(`https://${Source.heroku}/resetPassword`, {
+    await fetch('https://cu-there-server.herokuapp.com/resetPassword', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -104,7 +103,7 @@ export default function ResetPasswordForm() {
             text: 'Yes',
             style: 'destructive',
             onPress: async () => {
-              await fetch(`https://${Source.heroku}/abort`, {
+              await fetch('https://cu-there-server.herokuapp.com/abort', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',

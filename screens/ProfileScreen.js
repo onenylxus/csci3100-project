@@ -15,7 +15,6 @@ import { useNavigation } from '@react-navigation/native';
 import AuthContext from '../components/AuthContext';
 import PostBox from '../components/PostBox';
 import Style from '../assets/style';
-import Source from '../assets/source';
 
 // Export profile screen
 export default function ProfileScreen() {
@@ -95,7 +94,7 @@ export default function ProfileScreen() {
   function fetchPost() {
     (async () => {
       if (refreshing) {
-        await fetch(`https://${Source.heroku}/fetchPost`, {
+        await fetch('https://cu-there-server.herokuapp.com/fetchPost', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

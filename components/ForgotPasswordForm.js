@@ -4,7 +4,6 @@ import { Alert, Button, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export forgot password form
@@ -16,7 +15,7 @@ export default function ForgotPasswordForm() {
   const status = React.useRef(0);
 
   async function submitData() {
-    await fetch(`https://${Source.heroku}/forgotPassword`, {
+    await fetch('https://cu-there-server.herokuapp.com/forgotPassword', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -6,7 +6,6 @@ import { useNavigation } from '@react-navigation/native';
 import AuthContext from './AuthContext';
 import CollegePicker from './CollegePicker';
 import MajorPicker from './MajorPicker';
-import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export edit profile form
@@ -64,7 +63,7 @@ export default function EditProfileForm() {
     (async () => {
       if (!fetched.current) {
         await getUser(setUsername);
-        await fetch(`https://${Source.heroku}/fetchData`, {
+        await fetch('https://cu-there-server.herokuapp.com/fetchData', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -96,7 +95,7 @@ export default function EditProfileForm() {
   }
 
   async function submitData() {
-    await fetch(`https://${Source.heroku}/editProfile`, {
+    await fetch('https://cu-there-server.herokuapp.com/editProfile', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

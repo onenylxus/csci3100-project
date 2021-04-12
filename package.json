@@ -92,7 +92,8 @@
       "!**/node_modules/**",
       "!**/babel.config.js",
       "!**/jest.setup.js",
-      "!**/assets/**"
+      "!**/assets/**",
+      "!**/server/**"
     ]
   },
   "lint-staged": {

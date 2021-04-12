@@ -43,9 +43,6 @@ describe('Components', () => {
     it('ForgotPasswordForm.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['ForgotPasswordForm.js']));
     });
-    it('Header.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['Header.js']));
-    });
     it('LikeAndDislike.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['LikeAndDislike.js']));
     });
@@ -77,7 +74,7 @@ describe('Components', () => {
       expect(dir).toEqual(expect.arrayContaining(['VerificationForm.js']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(23);
+      expect(dir.length).toEqual(22);
     });
   })
 });

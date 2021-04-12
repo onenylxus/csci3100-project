@@ -24,7 +24,7 @@ export default StyleSheet.create({
 
   codeInputBox: {
     borderWidth: 0.5,
-    borderColor: '#000',
+    borderColor: '#000000',
     width: 100,
     height: 40,
     borderRadius: 5,
@@ -45,9 +45,9 @@ export default StyleSheet.create({
 
   SectionStyle: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: '#ffffff',
     borderWidth: 1,
-    borderColor: '#000',
+    borderColor: '#000000',
     width: '85%',
     height: 40,
     borderRadius: 5,
@@ -158,7 +158,7 @@ export default StyleSheet.create({
     flexDirection: 'column',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#F0F0F0',
+    borderColor: '#f0f0f0',
     justifyContent: 'center',
     alignSelf: 'center',
   },
@@ -167,22 +167,22 @@ export default StyleSheet.create({
     flexDirection: 'row',
     margin: 5,
     borderTopWidth: 1,
-    borderColor: '#F0F0F0',
+    borderColor: '#f0f0f0',
   },
 
   commentBox: {
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#F0F0F0',
+    borderColor: '#f0f0f0',
     backgroundColor: 'white',
     flexDirection: 'column',
   },
 
   commentBar: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: '#ffffff',
     borderWidth: 0.5,
-    borderColor: '#000',
+    borderColor: '#000000',
     width: 300,
     height: 40,
     borderRadius: 15,
@@ -198,14 +198,14 @@ export default StyleSheet.create({
   chatRoomLeft: {
     borderWidth: 1,
     borderRightWidth: 0.5,
-    borderColor: '#DEDEDE',
+    borderColor: '#dedede',
     backgroundColor: 'white',
   },
 
   chatRoomRight: {
     borderWidth: 1,
     borderLeftWidth: 0.5,
-    borderColor: '#DEDEDE',
+    borderColor: '#dedede',
     backgroundColor: 'white',
   },
 
@@ -214,7 +214,7 @@ export default StyleSheet.create({
     height: 100,
     borderTopWidth: 1,
     borderBottomWidth: 1,
-    borderColor: '#F0F0F0',
+    borderColor: '#f0f0f0',
   },
 
   chatRoomContainerPhone: {
@@ -243,16 +243,16 @@ export default StyleSheet.create({
     alignSelf: 'center',
     textAlign: 'center',
     justifyContent: 'center',
-    backgroundColor: '#D2D2D2',
+    backgroundColor: '#d2d2d2',
     borderRadius: 15,
     marginVertical: 5,
   },
 
   messageBar: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: '#ffffff',
     borderWidth: 0.5,
-    borderColor: '#000',
+    borderColor: '#000000',
     width: '95%',
     // height: 40,
     borderRadius: 20,
@@ -274,9 +274,9 @@ export default StyleSheet.create({
 
   SearchBarStyle: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: '#ffffff',
     borderWidth: 0.5,
-    borderColor: '#000',
+    borderColor: '#000000',
     width: '95%',
     height: 40,
     borderRadius: 5,

@@ -3,6 +3,21 @@ import fs from 'fs';
 
 // Run jest tests
 describe('Assets', () => {
+  // Headers
+  describe('contains headers', () => {
+    const dir = fs.readdirSync('assets/headers');
+
+    it('BackableHeader.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['BackableHeader.js']));
+    });
+    it('Header.js', () => {
+      expect(dir).toEqual(expect.arrayContaining(['Header.js']));
+    });
+    it('no other files', () => {
+      expect(dir.length).toEqual(2);
+    });
+  });
+
   // Icons
   describe('contains icons', () => {
     const dir = fs.readdirSync('assets/icons');
@@ -79,14 +94,11 @@ describe('Assets', () => {
   describe('contains JS files', () => {
     const dir = fs.readdirSync('assets').filter((file) => file.endsWith('.js'));
 
-    it('source.js', () => {
-      expect(dir).toEqual(expect.arrayContaining(['source.js']));
-    });
     it('style.js', () => {
       expect(dir).toEqual(expect.arrayContaining(['style.js']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(2);
+      expect(dir.length).toEqual(1);
     });
   });
 });

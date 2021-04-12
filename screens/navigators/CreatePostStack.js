@@ -2,7 +2,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import CreatePostScreen from '../CreatePostScreen';
-import Header from '../../components/Header';
+import Header from '../../assets/headers/Header';
 
 // Import stack
 const Stack = createStackNavigator();

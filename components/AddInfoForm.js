@@ -6,7 +6,6 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import AuthContext from './AuthContext';
 import CollegePicker from './CollegePicker';
 import MajorPicker from './MajorPicker';
-import Source from '../assets/source';
 import Style from '../assets/style';
 
 // Export add info form
@@ -25,7 +24,7 @@ export default function AddInfoForm() {
   const username = React.useRef('');
 
   const submitData = React.useCallback(async () => {
-    await fetch(`https://${Source.heroku}/addInfo`, {
+    await fetch('https://cu-there-server.herokuapp.com/addInfo', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
