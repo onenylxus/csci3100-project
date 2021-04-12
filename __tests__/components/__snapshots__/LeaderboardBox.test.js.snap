@@ -4,11 +4,9 @@ exports[`CommentBox matches snapshot 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "white",
-      "borderColor": "#f0f0f0",
-      "borderRadius": 10,
-      "borderWidth": 1,
-      "flexDirection": "column",
+      "backgroundColor": "#f8f8f8",
+      "margin": 4,
+      "width": "75%",
     }
   }
 >
@@ -32,10 +30,13 @@ exports[`CommentBox matches snapshot 1`] = `
           Object {
             "flex": 1,
             "flexDirection": "row",
-            "marginTop": 5,
+            "marginVertical": 20,
           }
         }
       >
+        <Text>
+          #
+        </Text>
         <Image
           source={1}
           style={
@@ -63,19 +64,12 @@ exports[`CommentBox matches snapshot 1`] = `
               }
             }
           >
+            Username: 
             testac
           </Text>
-          <Text
-            style={
-              Object {
-                "fontSize": 10,
-              }
-            }
-          >
-            00:00  01/05/2021
-          </Text>
           <Text>
-            
+            Popularity: 
+            0
           </Text>
         </View>
       </View>

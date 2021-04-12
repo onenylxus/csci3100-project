@@ -1,8 +1,7 @@
 // Import
 import React from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { Image, Text, View } from 'react-native';
+import { Col, Grid } from 'react-native-easy-grid';
 import Style from '../assets/style';
 
 // Export Comment Box
@@ -24,23 +23,27 @@ export default function CommentBox({ comment }) {
   return (
     <View style={Style.commentBox}>
       <View style={{ flexDirection: 'row' }}>
-        <Image
-          style={{
-            width: 48,
-            height: 48,
-            margin: 10,
-            borderRadius: 28,
-          }}
-          source={require('../assets/images/profile.png')}
-        />
-        <View style={{ flexDirection: 'column', marginTop: 15 }}>
-          <Text>{comment.username}</Text>
-          <TouchableOpacity style={{ alignSelf: 'flex-end', margin: 15 }}>
-            <FontAwesomeIcon icon={faEllipsisH} />
-          </TouchableOpacity>
-          <Text>{dateString.current}</Text>
-          <Text>{comment.content}</Text>
-        </View>
+        <Grid>
+          <Col style={{ flexDirection: 'row', marginTop: 5 }}>
+            <Image
+              style={{
+                width: 32,
+                height: 32,
+                marginHorizontal: 8,
+                marginTop: 4,
+                borderRadius: 28,
+              }}
+              source={require('../assets/images/profile.png')}
+            />
+            <View style={{ flexDirection: 'column' }}>
+              <Text style={{ fontSize: 14, fontWeight: 'bold' }}>
+                {comment.username}
+              </Text>
+              <Text style={{ fontSize: 10 }}>{dateString.current}</Text>
+              <Text>{comment.content}</Text>
+            </View>
+          </Col>
+        </Grid>
       </View>
     </View>
   );

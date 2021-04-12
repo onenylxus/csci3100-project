@@ -16,12 +16,11 @@ export default function CreateCommentForm({ post }) {
   const status = React.useRef(0);
   const postId = React.useRef(post._id);
 
+  // Get username
+  getUser(setUsername);
+
   async function submitData() {
-    await getUser(setUsername);
-    console.log('username: ' + username);
-    console.log('comment: ' + comment);
-    console.log('postId: ' + postId.current);
-    await fetch('https://cu-there-server.herokuapp.com/createComment', {
+    await fetch(`https://cu-there-server.herokuapp.com/createComment`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -72,7 +71,7 @@ export default function CreateCommentForm({ post }) {
       />
       <TextInput
         placeholder="Write Comment"
-        style={{ outline: 'none', width: 230 }}
+        style={{ width: 230 }}
         value={comment}
         onChangeText={(value) => setComment(value)}
       />

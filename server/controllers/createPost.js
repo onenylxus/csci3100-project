@@ -31,6 +31,7 @@ module.exports = function createPost(req, res) {
     tags,
     peopleLike: [],
     peopleDislike: [],
+    popularity: 0,
   });
   post
     .save()

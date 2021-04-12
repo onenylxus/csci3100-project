@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { RefreshControl, ScrollView, View } from 'react-native';
+import { Button, RefreshControl, ScrollView, View } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import PostBox from '../components/PostBox';
 
@@ -8,7 +8,7 @@ import PostBox from '../components/PostBox';
 export default function FeedScreen() {
   const [refreshing, setRefreshing] = React.useState(true);
   const [list, setList] = React.useState([]);
-
+  const [tags, setTags] = React.useState('Trending');
   const showButton = React.useRef(false);
   const page = React.useRef(0);
   const status = React.useRef(0);
@@ -24,7 +24,7 @@ export default function FeedScreen() {
           body: JSON.stringify({
             username: '',
             page,
-            tags: '',
+            tags,
           }),
         })
           .then((res) => {
@@ -56,11 +56,28 @@ export default function FeedScreen() {
     setTimeout(() => setRefreshing(false), 30000);
   }, []);
 
-  React.useEffect(fetchPost, [refreshing]);
+  React.useEffect(fetchPost, [refreshing, tags]);
 
   return (
     <View style={{ marginBottom: 50 }}>
       <SearchBar />
+      <View>
+        <Button
+          title="Newest"
+          onPress={() => {
+            setTags('Newest');
+            onRefresh();
+          }}
+        />
+        <Button
+          title="Trending"
+          onPress={() => {
+            setTags('Trending');
+            onRefresh();
+          }}
+        />
+      </View>
+
       <ScrollView
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />

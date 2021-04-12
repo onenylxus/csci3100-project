@@ -220,15 +220,15 @@ export default StyleSheet.create({
     backgroundColor: '#ffffff',
   },
 
-  // Styles for ChatroomScreen
-  chatRoomLeft: {
+  // Styles for LeaderboardScreen
+  LeaderboardLeft: {
     borderWidth: 1,
     borderRightWidth: 0.5,
     borderColor: '#dedede',
     backgroundColor: 'white',
   },
 
-  chatRoomRight: {
+  LeaderboardRight: {
     borderWidth: 1,
     borderLeftWidth: 0.5,
     borderColor: '#dedede',
@@ -243,7 +243,7 @@ export default StyleSheet.create({
     borderColor: '#f0f0f0',
   },
 
-  chatRoomContainerPhone: {
+  LeaderboardContainerPhone: {
     width: '95%',
     alignSelf: 'center',
     marginTop: 5,

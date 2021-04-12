@@ -3,15 +3,19 @@ import React from 'react';
 import { render } from '@testing-library/react-native';
 
 // Import target component
-import Chat from '../../components/Chat';
+import LeaderboardBox from '../../components/LeaderboardBox';
 
 // Run jest tests
-describe('Chat', () => {
+describe('CommentBox', () => {
   let element;
 
   beforeEach(() => {
+    // Mock username
+    const usernameMock = 'testac';
+    const popularityMock = 0;
+
     // Render
-    element = render(<Chat />);
+    element = render(<LeaderboardBox username={usernameMock} popularity={popularityMock}/>);
   });
 
   it('matches snapshot', () => {

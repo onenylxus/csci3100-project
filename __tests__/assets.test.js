@@ -26,7 +26,7 @@ describe('Assets', () => {
       expect(dir).toEqual(expect.arrayContaining(['Montserrat-Regular.ttf']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(7);
+      expect(dir.length).toEqual(6);
     });
   });
 
@@ -47,7 +47,7 @@ describe('Assets', () => {
       expect(dir).toEqual(expect.arrayContaining(['splash.png']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(5);
+      expect(dir.length).toEqual(4);
     });
   });
 
@@ -62,7 +62,7 @@ describe('Assets', () => {
       expect(dir).toEqual(expect.arrayContaining(['profile.png']));
     });
     it('no other files', () => {
-      expect(dir.length).toEqual(3);
+      expect(dir.length).toEqual(2);
     });
   });
 
