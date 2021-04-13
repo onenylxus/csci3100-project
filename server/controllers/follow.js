@@ -40,6 +40,7 @@ module.exports = function follow(req, res) {
             $push: { following: otherClient.username },
           })
           .exec();
+
         return res.status(200).send({
           msg: 'followed',
           follower: data.follower,
@@ -47,29 +48,34 @@ module.exports = function follow(req, res) {
       });
     } else {
       data.follower.splice(data.follower.indexOf(self), 1);
+
       data
         .update({
           $set: { follower: data.follower },
           $inc: { popularity: -1 },
         })
         .exec();
+
       const selfClient = Client.findOne({ self });
+
       selfClient.then((data1) => {
         if (!data1) {
           return res.status(422).send({
             error: 'Client not found.',
           });
         }
+
         data1.following.splice(data1.following.indexOf(other), 1);
+
         data1
           .update({
             $set: { following: data1.following },
           })
           .exec();
-      });
-      return res.status(200).send({
-        msg: 'unfollowed',
-        follower: data.follower,
+        return res.status(200).send({
+          msg: 'unfollowed',
+          follower: data.follower,
+        });
       });
     }
   });

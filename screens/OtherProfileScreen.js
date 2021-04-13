@@ -115,6 +115,7 @@ export default function OtherProfileScreen() {
           .then((res) => res.json())
           .then((res) => {
             if (status.current === 200) {
+              console.log('res.follower: ' + res.follower);
               if (res.follower.includes(username)) {
                 setFollowState(true);
               }
@@ -177,11 +178,6 @@ export default function OtherProfileScreen() {
           .then((res) => {
             if (status.current === 200) {
               console.log('followState: ' + followState);
-              console.log('username: ' + username);
-              console.log('postUsername: ' + postUsername);
-              console.log(
-                'username !== postUsername: ' + username !== postUsername
-              );
               setList(res.posts);
               setRefreshing(false);
             } else if (status.current === 422) {
@@ -233,9 +229,11 @@ export default function OtherProfileScreen() {
                 College:{'\n'}
               </Text>
             </Row>
-            {username !== postUsername ? (
+            {followState ? (
+              <Button title="unfollow" onPress={() => follow()} />
+            ) : (
               <Button title="follow" onPress={() => follow()} />
-            ) : null}
+            )}
             <Row size={2} style={Style.editProfileButtonPhone}>
               <Button
                 title="Edit Profile"
