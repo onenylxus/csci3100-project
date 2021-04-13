@@ -10,6 +10,9 @@ import {
   faNewspaper,
   faGamepad,
 } from '@fortawesome/free-solid-svg-icons';
+import Header from '../assets/headers/Header';
+
+// Stack
 
 // Export Channels screen
 export default function ChannelsScreen() {
@@ -26,9 +29,12 @@ export default function ChannelsScreen() {
   // const channelCategories = []; { tags: { title } }
 
   const Item = categories.map((data) => (
-    <View style={{ paddingHorizontal: 10 }} key={data.index}>
+    <View style={{ paddingHorizontal: 10 }} key={data.title}>
       <TouchableOpacity
-        onPress={() => navigation.navigate('ChannelFeed', { tags: data })}
+        onPress={() => {
+          navigation.setOptions(() => Header(data));
+          navigation.navigate('ChannelFeed', { tags: data });
+        }}
       >
         <View style={{ flexDirection: 'row', alignContent: 'center' }}>
           <FontAwesomeIcon
