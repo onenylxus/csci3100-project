@@ -35,11 +35,8 @@ export default function LoginForm() {
   async function submitData() {
     await fetch('https://cu-there-server.herokuapp.com/login', {
       method: 'POST',
-      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST',
       },
       body: JSON.stringify({
         username,
@@ -50,12 +47,7 @@ export default function LoginForm() {
         status.current = res.status;
         return res;
       })
-      .then((response) => {
-        if (response.ok === true) {
-          return response.json();
-        }
-        return response;
-      })
+      .then((res) => res.json())
       .then((res) => {
         if (status.current === 200) {
           login({ username });

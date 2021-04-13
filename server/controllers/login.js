@@ -13,12 +13,6 @@ module.exports = function login(req, res) {
   // Fetch request body
   const { username, password } = req.body;
 
-  // Set response header
-  res.set({
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'POST',
-  });
-
   // Fetch client
   const client = Client.findOne({ username });
 
