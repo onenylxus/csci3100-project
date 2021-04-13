@@ -4,6 +4,13 @@ import { StyleSheet, Dimensions } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const loginFormWidth = Math.min(windowWidth, 400);
 
+function hideOutline(screenWidth) {
+  if (screenWidth < 800) {
+    return null;
+  }
+  return { outline: 'none' };
+}
+
 // Export stylesheet
 export default StyleSheet.create({
   container: {
@@ -49,7 +56,7 @@ export default StyleSheet.create({
     height: 40,
     borderRadius: 5,
     paddingHorizontal: '1%',
-    marginVertical: '5%',
+    marginVertical: '4%',
     alignSelf: 'center',
   },
 
@@ -110,8 +117,11 @@ export default StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 16,
     alignItems: 'flex-start',
+    alignSelf: 'center',
     flexDirection: 'column',
-    width: '95%',
+    maxWidth: '80%',
+    minWidth: '80%',
+    backgroundColor: '#ffffff',
   },
 
   // Styles of Verification Page
@@ -138,11 +148,29 @@ export default StyleSheet.create({
     borderWidth: 1,
     backgroundColor: '#f8f8f8',
     width: '95%',
-    height: 100,
-    marginVertical: 10,
+    minHeight: windowWidth < 800 ? 100 : '90%',
     textAlign: 'left',
     textAlignVertical: 'top',
+    alignSelf: 'center',
     borderRadius: 10,
+    minWidth: '75%',
+    maxWidth: '75%',
+    padding: '2%',
+    marginVertical: 15,
+  },
+
+  createPostContainer: {
+    justifyContent: 'center',
+    alignContent: 'center',
+    minWidth: '100%',
+    maxWidth: '100%',
+  },
+
+  createPostInner: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignContent: 'center',
+    marginLeft: '13%',
   },
 
   postTitleBox: {
@@ -180,6 +208,13 @@ export default StyleSheet.create({
   editPostSectionText: {
     alignSelf: 'center',
     width: '20%',
+  },
+
+  pickerTitle: {
+    alignSelf: 'flex-start',
+    marginLeft: '12%',
+    fontFamily: 'Roboto',
+    marginVertical: '3%',
   },
 
   // Styles of Profile Page for PC
@@ -245,6 +280,7 @@ export default StyleSheet.create({
     fontSize: 28,
     alignSelf: 'center',
     marginVertical: 20,
+    fontFamily: 'Roboto',
   },
 
   editBio: {
@@ -256,6 +292,20 @@ export default StyleSheet.create({
     textAlign: 'left',
     textAlignVertical: 'top',
     alignSelf: 'center',
+  },
+
+  combineStyle: {
+    borderColor: '#000000',
+    borderWidth: 1,
+    backgroundColor: '#f8f8f8',
+    height: 100,
+    margin: 16,
+    textAlign: 'left',
+    textAlignVertical: 'top',
+    alignSelf: 'center',
+    padding: '2%',
+    ...hideOutline(windowWidth),
+    width: windowWidth < 800 ? '80%' : '75%',
   },
 
   // Styles of Post
@@ -306,10 +356,10 @@ export default StyleSheet.create({
     backgroundColor: '#ffffff',
     borderWidth: 0.5,
     borderColor: '#000000',
-    width: 300,
+    width: '85%',
     height: 40,
     borderRadius: 15,
-    margin: 10,
+    margin: '4%',
     alignSelf: 'center',
   },
 
@@ -415,18 +465,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
     margin: 20,
     justifyContent: 'center',
-  },
-
-  SearchBarStyle: {
-    flexDirection: 'row',
-    backgroundColor: '#ffffff',
-    borderWidth: 0.5,
-    borderColor: '#000000',
-    width: '95%',
-    height: 40,
-    borderRadius: 5,
-    alignSelf: 'center',
-    marginTop: 10,
   },
 
   userIcon: {

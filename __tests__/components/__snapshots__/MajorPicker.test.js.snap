@@ -17,6 +17,7 @@ exports[`MajorPicker matches snapshot 1`] = `
           "alignSelf": "flex-start",
           "fontFamily": "Roboto",
           "marginLeft": "12%",
+          "marginVertical": "3%",
         }
       }
     >

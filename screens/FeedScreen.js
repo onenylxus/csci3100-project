@@ -7,7 +7,6 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
-import SearchBar from '../components/SearchBar';
 import PostContainer from '../components/PostContainer';
 
 // Export feed screen
@@ -70,7 +69,6 @@ export default function FeedScreen() {
 
   return (
     <View style={{ marginBottom: 50 }}>
-      <SearchBar />
       <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
         <TouchableOpacity
           onPress={() => {

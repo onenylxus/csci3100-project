@@ -13,10 +13,13 @@ exports[`LoginForm matches snapshot 1`] = `
     style={
       Object {
         "alignItems": "flex-start",
+        "alignSelf": "center",
+        "backgroundColor": "#ffffff",
         "flexDirection": "column",
         "justifyContent": "center",
         "marginBottom": 16,
-        "width": "95%",
+        "maxWidth": "80%",
+        "minWidth": "80%",
       }
     }
   >
@@ -41,7 +44,7 @@ exports[`LoginForm matches snapshot 1`] = `
           "borderWidth": 1,
           "flexDirection": "row",
           "height": 40,
-          "marginVertical": "5%",
+          "marginVertical": "4%",
           "maxWidth": "75%",
           "minWidth": "75%",
           "paddingHorizontal": "1%",
@@ -108,7 +111,7 @@ exports[`LoginForm matches snapshot 1`] = `
           "borderWidth": 1,
           "flexDirection": "row",
           "height": 40,
-          "marginVertical": "5%",
+          "marginVertical": "4%",
           "maxWidth": "75%",
           "minWidth": "75%",
           "paddingHorizontal": "1%",

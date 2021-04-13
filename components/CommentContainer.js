@@ -47,7 +47,7 @@ export default function CommentContainer({ post, state }) {
   }
 
   return (
-    <View style={{ marginBottom: 50 }}>
+    <View>
       <ScrollView>
         <View>{generate()}</View>
         <CreateCommentForm post={post} />

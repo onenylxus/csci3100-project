@@ -3,7 +3,6 @@ import React from 'react';
 import { RefreshControl, ScrollView, View } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import PostContainer from '../components/PostContainer';
-import SearchBar from '../components/SearchBar';
 
 // Export Channel Feed screen
 export default function ChannelFeedScreen() {
@@ -61,7 +60,6 @@ export default function ChannelFeedScreen() {
 
   return (
     <View style={{ marginBottom: 50 }}>
-      <SearchBar />
       <ScrollView
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />

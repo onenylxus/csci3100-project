@@ -30,7 +30,7 @@ export default function MajorPicker({ callback, value }) {
         return 550;
 
       case 'pickerWidth':
-        return 250;
+        return '75%';
 
       default:
         break;
@@ -47,7 +47,7 @@ export default function MajorPicker({ callback, value }) {
           width: styleByDevice(windowWidth, 'width'),
         }}
       >
-        <Text style={{ ...Style.sectionText, marginLeft: '12%' }}>Major:</Text>
+        <Text style={Style.pickerTitle}>Major:</Text>
         <View>
           <Picker
             style={{

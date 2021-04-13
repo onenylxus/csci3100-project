@@ -53,7 +53,6 @@
     "PostContainer.js",
     "RegisterForm.js",
     "ResetPasswordForm.js",
-    "SearchBar.js",
     "TagsPicker.js",
     "VerificationForm.js"
   ],

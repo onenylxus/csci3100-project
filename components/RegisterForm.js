@@ -253,8 +253,9 @@ export default function RegisterForm() {
             </Text>
           </View>
         </View>
-
-        <Button title="Register" onPress={confirmRegister} />
+        <View style={{ marginHorizontal: '30%' }}>
+          <Button title="Register" onPress={confirmRegister} />
+        </View>
       </View>
     );
   }
