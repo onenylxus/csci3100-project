@@ -3,6 +3,7 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Alert, Button, Text, TextInput, View } from 'react-native';
 import AuthContext from './AuthContext';
+import Style from '../assets/style';
 
 // Export create report form
 export default function CreateReportForm({ post }) {
@@ -85,12 +86,16 @@ export default function CreateReportForm({ post }) {
 
   return (
     <View>
-      <Text>Report an issue to us</Text>
+      <Text style={{ fontSize: 20, textAlign: 'center' }}>
+        Report an issue to us
+      </Text>
       <TextInput
+        multiline
         placeholder="Tell us what's wrong?"
         onChangeText={(text) => setContent(text)}
+        style={Style.createPostBox}
       />
-      <View style={{ margin: 20 }}>
+      <View style={{ maxWidth: '50%', alignSelf: 'center', marginTop: '2%' }}>
         <Button title="Submit" onPress={createReport} />
       </View>
     </View>

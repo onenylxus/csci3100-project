@@ -21,12 +21,12 @@ export default function FeedStack() {
       <Stack.Screen
         name="CreateReport"
         component={CreateReportScreen}
-        option={() => Header('Create a Report')}
+        options={() => Header('Create a Report')}
       />
       <Stack.Screen
         name="OtherProfile"
         component={OtherProfileScreen}
-        option={() => Header('Profile')}
+        options={() => Header('Profile')}
       />
     </Stack.Navigator>
   );

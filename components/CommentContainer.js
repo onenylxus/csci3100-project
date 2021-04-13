@@ -1,6 +1,7 @@
 // Import
 import React from 'react';
 import { View, ScrollView } from 'react-native';
+// eslint-disable-next-line import/extensions
 import CreateCommentForm from './CreateCommentForm';
 import Comment from './Comment';
 
@@ -42,7 +43,7 @@ export default function CommentContainer({ post, state }) {
 
   function generate() {
     return list.map((comment) => (
-      <Comment key={comment.postId} comment={comment} />
+      <Comment key={comment._id} comment={comment} />
     ));
   }
 
