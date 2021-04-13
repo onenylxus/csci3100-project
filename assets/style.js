@@ -342,7 +342,7 @@ export default StyleSheet.create({
     borderColor: '#f0f0f0',
   },
 
-  commentBox: {
+  Comment: {
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#f0f0f0',
@@ -389,7 +389,7 @@ export default StyleSheet.create({
     backgroundColor: 'white',
   },
 
-  LeaderboardBox: {
+  LeaderboardContainer: {
     width: '85%',
     margin: 4,
     backgroundColor: '#f8f8f8',

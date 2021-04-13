@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 // Schemas
 require('../schemas/Post');
 require('../schemas/Comment');
+
 // Models
 const Post = mongoose.model('post');
 const Comment = mongoose.model('comment');

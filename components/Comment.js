@@ -4,8 +4,8 @@ import { Image, Text, View } from 'react-native';
 import { Col, Grid } from 'react-native-easy-grid';
 import Style from '../assets/style';
 
-// Export Comment Box
-export default function CommentBox({ comment }) {
+// Export Comment
+export default function Comment({ comment }) {
   const date = React.useRef(new Date(comment.timestamp));
   const monthString = React.useRef(date.current.getMonth() + 1);
   const dateString = React.useRef(
@@ -21,7 +21,7 @@ export default function CommentBox({ comment }) {
   );
 
   return (
-    <View style={Style.commentBox}>
+    <View style={Style.Comment}>
       <View style={{ flexDirection: 'row' }}>
         <Grid>
           <Col style={{ flexDirection: 'row', marginTop: 5 }}>

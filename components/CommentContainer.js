@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
 import CreateCommentForm from './CreateCommentForm';
-import CommentBox from './CommentBox';
+import Comment from './Comment';
 
 // Export
 export default function CommentContainer({ post, state }) {
@@ -42,7 +42,7 @@ export default function CommentContainer({ post, state }) {
 
   function generate() {
     return list.map((comment) => (
-      <CommentBox key={comment.postId} comment={comment} />
+      <Comment key={comment.postId} comment={comment} />
     ));
   }
 

@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
 // import { Grid, Col } from 'react-native-easy-grid';
-import LeaderboardBox from '../components/LeaderboardBox';
+import LeaderboardContainer from '../components/LeaderboardContainer';
 import Style from '../assets/style';
 
 // Export Leaderboard screen
@@ -39,7 +39,7 @@ export default function LeaderboardScreen() {
 
   function generate() {
     return list.map((data) => (
-      <LeaderboardBox
+      <LeaderboardContainer
         key={data.username}
         username={data.username}
         popularity={data.popularity}

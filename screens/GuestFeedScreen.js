@@ -1,7 +1,7 @@
 // Import
 import React from 'react';
 import { RefreshControl, ScrollView, View } from 'react-native';
-import PostBox from '../components/PostBox';
+import PostContainer from '../components/PostContainer';
 
 // Export guest feed screen
 export default function GuestFeedScreen() {
@@ -43,7 +43,7 @@ export default function GuestFeedScreen() {
   }
 
   function generate() {
-    return list.map((post) => <PostBox key={post._id} post={post} />);
+    return list.map((post) => <PostContainer key={post._id} post={post} />);
   }
 
   const onRefresh = React.useCallback(async () => {
