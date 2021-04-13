@@ -49,7 +49,7 @@ It is recommended to scan the QR code using **Expo Go** app and run the applicat
 ## Progress
 *(until March 19, 2021)*
 
-Until now we have finished working on the basic structure of the application. The screens and navigators are mainly done with successful transitions. 
+Until now we have finished working on the basic structure of the application. The screens and stacks are mainly done with successful transitions. 
 
 We are currently working on the registration process and login process of the application. Now the application is connected with the database and account creation is possible. The email verification is also almost done.
 

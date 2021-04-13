@@ -1,7 +1,6 @@
 // Import
 import React from 'react';
 import { RefreshControl, ScrollView, View } from 'react-native';
-import SearchBar from '../components/SearchBar';
 import PostBox from '../components/PostBox';
 
 // Export guest feed screen
@@ -56,7 +55,6 @@ export default function GuestFeedScreen() {
 
   return (
     <View style={{ marginBottom: 50 }}>
-      <SearchBar />
       <ScrollView
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />

@@ -13,10 +13,13 @@ exports[`LoginForm matches snapshot 1`] = `
     style={
       Object {
         "alignItems": "flex-start",
+        "alignSelf": "center",
+        "backgroundColor": "#ffffff",
         "flexDirection": "column",
         "justifyContent": "center",
         "marginBottom": 16,
-        "width": "95%",
+        "maxWidth": "80%",
+        "minWidth": "80%",
       }
     }
   >

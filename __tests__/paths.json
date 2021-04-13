@@ -53,7 +53,6 @@
     "PostBox.js",
     "RegisterForm.js",
     "ResetPasswordForm.js",
-    "SearchBar.js",
     "TagsPicker.js",
     "VerificationForm.js"
   ],
@@ -77,7 +76,7 @@
     "SettingsScreen.js",
     "VerificationScreen.js"
   ],
-  "screens/navigators": [
+  "screens/stacks": [
     "ChannelStack.js",
     "CreatePostStack.js",
     "FeedStack.js",
