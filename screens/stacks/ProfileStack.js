@@ -6,6 +6,8 @@ import AboutUsScreen from '../AboutUsScreen';
 import ProfileScreen from '../ProfileScreen';
 import EditPostScreen from '../EditPostScreen';
 import EditProfileScreen from '../EditProfileScreen';
+import SeeFollowerScreen from '../SeeFollowerScreen';
+import SeeFollowingScreen from '../SeeFollowingScreen';
 import SettingsScreen from '../SettingsScreen';
 import BackableHeader from '../../assets/headers/BackableHeader';
 import CogHeader from '../../assets/headers/CogHeader';
@@ -37,12 +39,22 @@ export default function ProfileStack() {
       <Stack.Screen
         name="AboutUs"
         component={AboutUsScreen}
-        option={() => BackableHeader('AboutUs')}
+        options={() => BackableHeader('AboutUs')}
       />
       <Stack.Screen
         name="EditPost"
         component={EditPostScreen}
         options={() => BackableHeader('EditPost')}
+      />
+      <Stack.Screen
+        name="Follower"
+        component={SeeFollowerScreen}
+        options={() => BackableHeader('Follower')}
+      />
+      <Stack.Screen
+        name="Following"
+        component={SeeFollowingScreen}
+        options={() => BackableHeader('Following')}
       />
     </Stack.Navigator>
   );

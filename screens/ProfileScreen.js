@@ -216,10 +216,16 @@ export default function ProfileScreen() {
                   title="Edit Profile"
                   onPress={() => navigation.navigate('EditProfile')}
                 />
-                <TouchableOpacity style={{ marginHorizontal: 15 }}>
+                <TouchableOpacity
+                  style={{ marginHorizontal: 15 }}
+                  onPress={() => navigation.navigate('Follower', { username })}
+                >
                   <Text>{numOfFollower} Followers</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={{ marginHorizontal: 15 }}>
+                <TouchableOpacity
+                  style={{ marginHorizontal: 15 }}
+                  onPress={() => navigation.navigate('Following', { username })}
+                >
                   <Text>{numOfFollowing} Following</Text>
                 </TouchableOpacity>
               </Row>
