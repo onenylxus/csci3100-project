@@ -220,31 +220,40 @@ export default StyleSheet.create({
 
   // Styles of Profile Page for PC
   profileContainerPC: {
-    width: 700,
+    width: 600,
     alignSelf: 'center',
     paddingTop: 32,
+
+    justifyContent: 'center',
   },
 
   profilePicturePC: {
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     marginHorizontal: 30,
   },
 
   editProfileButtonPC: {
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 30,
   },
 
   userInfoPC: {
-    fontSize: 24,
+    fontSize: 20,
     justifyContent: 'flex-start',
-    alignSelf: 'flex-start',
+    alignSelf: 'center',
     margin: 10,
+    maxWidth: '75%',
   },
 
-  infoLayerPC: {
-    height: 170,
+  bioContainerPC: {
+    borderBottomWidth: 1,
+    paddingHorizontal: '4%',
+    paddingVertical: '1%',
+    maxWidth: '85%',
+    minWidth: '85%',
+    fontSize: 17,
+    marginBottom: 20,
   },
 
   // Styles of Profile Page for Phone
@@ -270,13 +279,14 @@ export default StyleSheet.create({
     justifyContent: 'flex-start',
     alignSelf: 'flex-start',
     margin: 10,
+    maxWidth: '75%',
   },
 
   infoLayerPhone: {
     minHeight: '50%',
   },
 
-  bioContainer: {
+  bioContainerPhone: {
     borderTopWidth: 1,
     paddingHorizontal: '4%',
     paddingVertical: '2%',
@@ -384,7 +394,7 @@ export default StyleSheet.create({
     flex: 1,
     paddingHorizontal: 32,
     backgroundColor: '#ffffff',
-    paddingVertical: '8%',
+    paddingVertical: '3%',
   },
 
   LeaderboardLeft: {
@@ -402,7 +412,7 @@ export default StyleSheet.create({
   },
 
   LeaderboardContainer: {
-    width: '85%',
+    width: windowWidth < 800 ? '85%' : 600,
     margin: 4,
     backgroundColor: '#f8f8f8',
     borderRadius: 15,

@@ -1,7 +1,6 @@
 // Import
 import React from 'react';
 import { View, ScrollView } from 'react-native';
-// import { Grid, Col } from 'react-native-easy-grid';
 import LeaderboardContainer from '../components/LeaderboardContainer';
 import Style from '../assets/style';
 
@@ -9,7 +8,6 @@ import Style from '../assets/style';
 export default function LeaderboardScreen() {
   const [list, setList] = React.useState([]);
 
-  // const windowWidth = Dimensions.get('window').width;
   const status = React.useRef(0);
 
   function fetchUsername() {
@@ -50,25 +48,6 @@ export default function LeaderboardScreen() {
 
   React.useEffect(fetchUsername);
 
-  /* if (windowWidth >= 1100) {
-    // Large Screen
-    return (
-      <Grid style={Style.profileContainerPC}>
-        <Col size={1} style={Style.LeaderboardLeft}>
-          <ScrollView>
-            <View>{generate()}</View>
-          </ScrollView>
-        </Col>
-        <Col size={2} style={Style.LeaderboardRight}>
-          <ScrollView>
-            <Text style={{ fontSize: 40 }}>The leaderboard</Text>
-          </ScrollView>
-        </Col>
-      </Grid>
-    );
-  } */
-
-  // Small Screen
   return (
     <View style={Style.leaderboardBackground}>
       <ScrollView showsVerticalScrollIndicator={false}>
