@@ -32,14 +32,7 @@ module.exports = function deleteAccount(req, res) {
       if (data1) {
         console.log('data1 before delete: ' + data1);
         console.log(data1.username);
-        data1
-          .update(
-            {
-              $set: { username: 'Deleted User' },
-            },
-            { multi: true }
-          )
-          .exec();
+        data1.updateMany({ username }, { username: 'Deleted User' }).exec();
       }
       console.log('data1 after delete: ' + data1);
     });
