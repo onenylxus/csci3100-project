@@ -10,18 +10,22 @@ import {
   faExclamation,
   faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
+import AuthContext from './AuthContext';
 import CommentContainer from './CommentContainer';
-import LikeAndDislike from './LikeAndDislike';
+import LikeContainer from './LikeContainer';
 import Style from '../assets/style';
 
 // Export Post Box
 export default function PostBox({ post, showButton }) {
   const navigation = useNavigation();
+  const { getUser } = React.useContext(AuthContext);
+
+  const [username, setUsername] = React.useState('');
 
   const [showComment, setShowComment] = React.useState(false);
+  const [postUsername, setPostUsername] = React.useState(post.username);
 
   const status = React.useRef(0);
-  const postUsername = React.useRef(post.username);
   const date = React.useRef(new Date(post.timestamp));
   const monthString = React.useRef(date.current.getMonth() + 1);
   const dateString = React.useRef(
@@ -38,6 +42,8 @@ export default function PostBox({ post, showButton }) {
       .toString()
       .padStart(2, '0')}/${date.current.getFullYear().toString()}`
   );
+
+  getUser(setUsername);
 
   async function deletePost() {
     await fetch('https://cu-there-server.herokuapp.com/deletePost', {
@@ -101,25 +107,64 @@ export default function PostBox({ post, showButton }) {
     );
   }
 
+  function askReport() {
+    return Alert.alert(
+      'Report this post?',
+      'Are you sure you would like to report this post?',
+      [
+        {
+          text: 'No',
+          onPress: () => undefined,
+          style: 'cancel',
+        },
+        {
+          text: 'Yes',
+          onPress: () => navigation.navigate('CreateReport', { post }),
+          style: 'destructive',
+        },
+      ]
+    );
+  }
+
+  function nav(other) {
+    if (username !== other) {
+      navigation.navigate('OtherProfile', { other });
+    } else navigation.navigate('Profile');
+  }
+
   return (
     <View style={Style.profilePost}>
       <View>
         <Grid>
           <Col style={{ flexDirection: 'row', marginTop: 15 }}>
-            <Image
-              style={{
-                width: 32,
-                height: 32,
-                marginHorizontal: 8,
-                marginTop: 4,
-                borderRadius: 28,
+            <TouchableOpacity
+              onPress={() => {
+                setPostUsername(post.username);
+                nav(postUsername);
               }}
-              source={require('../assets/images/profile.png')}
-            />
+            >
+              <Image
+                style={{
+                  width: 32,
+                  height: 32,
+                  marginHorizontal: 8,
+                  marginTop: 4,
+                  borderRadius: 28,
+                }}
+                source={require('../assets/images/profile.png')}
+              />
+            </TouchableOpacity>
             <View style={{ flexDirection: 'column' }}>
-              <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                {postUsername.current}
-              </Text>
+              <TouchableOpacity
+                onPress={() => {
+                  setPostUsername(post.username);
+                  nav(postUsername);
+                }}
+              >
+                <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
+                  {postUsername}
+                </Text>
+              </TouchableOpacity>
               <Text style={{ fontSize: 12 }}>{dateString.current}</Text>
             </View>
           </Col>
@@ -141,7 +186,7 @@ export default function PostBox({ post, showButton }) {
                 >
                   <FontAwesomeIcon icon={faEdit} />
                 </TouchableOpacity>
-                <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
+                <TouchableOpacity style={{ margin: 8 }} onPress={askReport}>
                   <FontAwesomeIcon icon={faExclamation} />
                 </TouchableOpacity>
               </View>
@@ -153,7 +198,7 @@ export default function PostBox({ post, showButton }) {
                   margin: 10,
                 }}
               >
-                <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
+                <TouchableOpacity style={{ margin: 8 }} onPress={askReport}>
                   <FontAwesomeIcon icon={faExclamation} />
                 </TouchableOpacity>
               </View>
@@ -173,7 +218,7 @@ export default function PostBox({ post, showButton }) {
       </Text>
       <Text style={{ marginHorizontal: 15, fontSize: 16 }}>{post.content}</Text>
       <View>
-        <LikeAndDislike key={post._id} post={post} />
+        <LikeContainer key={post._id} post={post} />
       </View>
       <View>
         <TouchableOpacity

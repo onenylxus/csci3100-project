@@ -8,7 +8,7 @@ require('../schemas/Post');
 const Post = mongoose.model('post');
 
 // Exports
-module.exports = function fetchLikeAndDislike(req, res) {
+module.exports = function fetchLike(req, res) {
   // Fetch request body
   const { _id } = req.body;
 
