@@ -9,6 +9,7 @@ require('../schemas/Comment');
 // Models
 const Client = mongoose.model('client');
 const Post = mongoose.model('post');
+const Comment = mongoose.model('comment');
 
 // Exports
 module.exports = function deleteAccount(req, res) {

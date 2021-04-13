@@ -105,7 +105,7 @@ export default function SettingsScreen() {
       </View>
       {/* Delete account */}
       <View style={{ paddingHorizontal: 10 }}>
-        <TouchableOpacity onPress={askDelete()}>
+        <TouchableOpacity onPress={() => askDelete()}>
           <View style={{ flexDirection: 'row', alignContent: 'center' }}>
             <FontAwesomeIcon
               icon={faUserSlash}
