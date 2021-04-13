@@ -9,7 +9,6 @@ require('../schemas/Comment');
 // Models
 const Client = mongoose.model('client');
 const Post = mongoose.model('post');
-const Comment = mongoose.model('comment');
 
 // Exports
 module.exports = function deleteAccount(req, res) {
@@ -17,6 +16,7 @@ module.exports = function deleteAccount(req, res) {
   const { username } = req.body;
 
   // Fetch client
+  /*
   const client = Client.findOne({ username });
   const comment = Comment.find({ username });
   const post = Post.find({ username });
@@ -49,4 +49,14 @@ module.exports = function deleteAccount(req, res) {
     });
     return res.status(200).send({ msg: 'Deleted post and comment' });
   });
+  */
+  Client.findOne({ username }).then((data) => {
+    console.log('data: ' + data);
+    if (!data) {
+      return res.status(422).send({ msg: 'Client not found' });
+    }
+    data.deleteOne({});
+  });
+
+  Post.updateMany({ username }, { username: 'Deleted user' });
 };
