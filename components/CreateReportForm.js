@@ -50,17 +50,34 @@ export default function CreateReportForm({ post }) {
           );
         }
         if (status.current === 422) {
-          return Alert.alert(
-            'Report content cannot be blank.',
-            'Please type something in the report so we know what happened.',
-            [
-              {
-                text: 'OK',
-                onPress: () => undefined,
-                style: 'cancel',
-              },
-            ]
-          );
+          switch (res.error) {
+            case 'missingContentError':
+              return Alert.alert(
+                'Report content cannot be blank.',
+                'Please type something in the report so we know what happened.',
+                [
+                  {
+                    text: 'OK',
+                    onPress: () => undefined,
+                    style: 'cancel',
+                  },
+                ]
+              );
+            case 'repeatedReportError':
+              return Alert.alert(
+                'Your report is in progress',
+                'We have already received your report, and we are working on it. Please do not send a report to the same post.',
+                [
+                  {
+                    text: 'OK',
+                    onPress: () => undefined,
+                    style: 'cancel',
+                  },
+                ]
+              );
+            default:
+              return new Error();
+          }
         }
       })
       .catch((err) => console.log(err));
