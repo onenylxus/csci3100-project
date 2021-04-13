@@ -50,7 +50,12 @@ export default function LoginForm() {
         status.current = res.status;
         return res;
       })
-      .then((res) => res.json())
+      .then((response) => {
+        if (response.ok === true) {
+          return response.json();
+        }
+        return response;
+      })
       .then((res) => {
         if (status.current === 200) {
           login({ username });
