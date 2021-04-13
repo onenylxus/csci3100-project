@@ -23,7 +23,6 @@ export default function OtherProfileScreen() {
   const route = useRoute();
 
   const { postUsername } = route.params;
-  console.log(postUsername);
   const { getUser } = React.useContext(AuthContext);
 
   const [username, setUsername] = React.useState('');
@@ -35,7 +34,7 @@ export default function OtherProfileScreen() {
   const page = React.useRef(0);
   const fetched = React.useRef(false);
   const status = React.useRef(0);
-  const showButton = React.useRef(true);
+  const showButton = React.useRef(false);
 
   // Get username
   getUser(setUsername);

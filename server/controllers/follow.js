@@ -20,6 +20,7 @@ module.exports = function follow(req, res) {
         error: 'Client not found.',
       });
     }
+    console.log(followState);
     if (followState === true) {
       data
         .update({

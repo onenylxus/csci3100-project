@@ -21,7 +21,6 @@ module.exports = function like(req, res) {
         error: 'post not found',
       });
     }
-    console.log(likeState);
     if (likeState === false) {
       data
         .update({
