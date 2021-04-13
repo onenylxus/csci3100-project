@@ -232,9 +232,29 @@ export default function OtherProfileScreen() {
               </Text>
             </Row>
             {followState ? (
-              <Button title="unfollow" onPress={() => follow()} />
+              <Button
+                title="unfollow"
+                style={{
+                  color: followState ? '#83CCFF' : 'lightgrey',
+                  margin: 5,
+                }}
+                onPress={() => {
+                  setFollowState(!followState);
+                  follow();
+                }}
+              />
             ) : (
-              <Button title="follow" onPress={() => follow()} />
+              <Button
+                title="follow"
+                style={{
+                  color: followState ? '#83CCFF' : 'lightgrey',
+                  margin: 5,
+                }}
+                onPress={() => {
+                  setFollowState(!followState);
+                  follow();
+                }}
+              />
             )}
             <Row size={2} style={Style.editProfileButtonPhone}>
               <Button

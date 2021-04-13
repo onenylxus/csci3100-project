@@ -13,7 +13,7 @@ module.exports = function follow(req, res) {
   const { followState, self, other } = req.body;
 
   const otherClient = Client.findOne({ username: other });
-  const selfClient = Client.findOne({ self });
+  const selfClient = Client.findOne({ username: self });
 
   otherClient.then((data) => {
     if (!data) {
