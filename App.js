@@ -79,7 +79,7 @@ export default function App({ testState }) {
     });
 
     // Login automation
-    if (testState !== undefined) {
+    if (typeof testState === 'boolean') {
       setIsLogin(testState);
     } else {
       AsyncStorage.getItem('@username').then((user) => {
