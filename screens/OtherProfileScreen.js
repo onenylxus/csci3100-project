@@ -99,11 +99,10 @@ export default function OtherProfileScreen() {
   function fetchFollow() {
     (async () => {
       if (!fetched.current) {
-        console.log('fetch follow other: ' + postUsername);
         await fetch('https://cu-there-server.herokuapp.com/fetchFollow', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application.json',
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             other: postUsername,
@@ -116,8 +115,6 @@ export default function OtherProfileScreen() {
           .then((res) => res.json())
           .then((res) => {
             if (status.current === 200) {
-              console.log('res: ' + res);
-              console.log('res.follower: ' + res.follower);
               if (res.follower.includes(username)) {
                 setFollowState(true);
               }
@@ -143,7 +140,19 @@ export default function OtherProfileScreen() {
         self: username,
         other: postUsername,
       }),
-    });
+    })
+      .then((res) => {
+        status.current = res.status;
+        return res;
+      })
+      .then((res) => res.json())
+      .then((res) => {
+        if (status.current === 200) {
+          setNumOfFollower(res.follower.length);
+        }
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
   }
 
   function fetchPost() {
@@ -167,6 +176,12 @@ export default function OtherProfileScreen() {
           .then((res) => res.json())
           .then((res) => {
             if (status.current === 200) {
+              console.log('followState: ' + followState);
+              console.log('username: ' + username);
+              console.log('postUsername: ' + postUsername);
+              console.log(
+                'username !== postUsername: ' + username !== postUsername
+              );
               setList(res.posts);
               setRefreshing(false);
             } else if (status.current === 422) {
@@ -189,9 +204,9 @@ export default function OtherProfileScreen() {
     setTimeout(() => setRefreshing(false), 30000);
   }, []);
 
-  React.useEffect(fetchFollow, [postUsername, username]);
+  React.useEffect(fetchFollow, [postUsername, followState, username]);
 
-  React.useEffect(fetchPost, [postUsername, refreshing, username]);
+  React.useEffect(fetchPost, [followState, postUsername, refreshing, username]);
 
   return (
     <ScrollView

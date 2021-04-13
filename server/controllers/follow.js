@@ -20,7 +20,6 @@ module.exports = function follow(req, res) {
         error: 'Client not found.',
       });
     }
-    console.log(followState);
     if (followState === false) {
       data
         .update({
@@ -41,6 +40,10 @@ module.exports = function follow(req, res) {
             $push: { following: otherClient.username },
           })
           .exec();
+        return res.status(200).send({
+          msg: 'followed',
+          follower: data.follower,
+        });
       });
     } else {
       data.follower.splice(data.follower.indexOf(self), 1);
@@ -64,10 +67,10 @@ module.exports = function follow(req, res) {
           })
           .exec();
       });
+      return res.status(200).send({
+        msg: 'unfollowed',
+        follower: data.follower,
+      });
     }
-    return res.status(200).send({
-      msg: 'unfollowed',
-      follower: data.follower,
-    });
   });
 };
