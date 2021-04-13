@@ -11,6 +11,8 @@ const Post = mongoose.model('post');
 module.exports = function fetchLike(req, res) {
   // Fetch request body
   const { _id } = req.body;
+  console.log('req.body: ' + req.body);
+  console.log('id: ' + _id);
 
   // Fetch client
   const post = Post.findOne({ _id });
