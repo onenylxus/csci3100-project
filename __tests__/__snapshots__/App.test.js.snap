@@ -327,13 +327,10 @@ exports[`App matches snapshot on guest mode 1`] = `
                             style={
                               Object {
                                 "alignItems": "flex-start",
-                                "alignSelf": "center",
-                                "backgroundColor": "#ffffff",
                                 "flexDirection": "column",
                                 "justifyContent": "center",
                                 "marginBottom": 16,
-                                "maxWidth": "80%",
-                                "minWidth": "80%",
+                                "width": "95%",
                               }
                             }
                           >
