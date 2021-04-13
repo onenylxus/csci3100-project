@@ -10,7 +10,7 @@ const uri = process.env.MONGODB_URI;
 const port = process.env.PORT || 8080;
 
 // Use CORS
-app.use(cors);
+app.use(cors({ origin: 'hhtps://cu-there-server.herokuapp.com' }));
 
 // Use express JSON
 app.use(express.json());
@@ -38,7 +38,7 @@ fs.readdirSync('./controllers')
   .filter((file) => file.endsWith('.js'))
   .map((file) => file.slice(0, -3))
   .forEach((file) => {
-    app.post(`/${file}`, cors(), require(`./controllers/${file}`));
+    app.post(`/${file}`, require(`./controllers/${file}`));
   });
 
 // Other requests
