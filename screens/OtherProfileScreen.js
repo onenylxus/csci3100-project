@@ -99,6 +99,7 @@ export default function OtherProfileScreen() {
   function fetchFollow() {
     (async () => {
       if (!fetched.current) {
+        console.log('other: ' + postUsername);
         await fetch('https://cu-there-server.herokuapp.com/fetchFollow', {
           method: 'POST',
           headers: {
@@ -115,6 +116,8 @@ export default function OtherProfileScreen() {
           .then((res) => res.json())
           .then((res) => {
             if (status.current === 200) {
+              console.log('res: ' + res);
+              console.log('res.follower: ' + res.follower);
               if (res.follower.includes(username)) {
                 setFollowState(true);
               }

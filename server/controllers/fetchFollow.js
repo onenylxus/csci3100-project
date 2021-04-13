@@ -22,7 +22,7 @@ module.exports = function fetchFollow(req, res) {
     }
     return res.status(200).send({
       msg: 'follower fetched',
-      follower: otherClient.follower,
+      follower: data.follower,
     });
   });
 };
