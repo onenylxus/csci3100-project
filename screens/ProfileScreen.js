@@ -260,36 +260,24 @@ export default function ProfileScreen() {
               <Text style={Style.userInfoPC}>
                 {username} {'\n'}
                 {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
-                {'\n'}{' '}
+                {'\n'}
                 {CollegeList.hasOwnProperty(college)
                   ? CollegeList[college]
                   : 'N/A'}
                 {'\n'}
               </Text>
             </Row>
-            <Row size={1} style={{ minWidth: '85%', maxWidth: '85%' }}>
-              <View
-                style={{
-                  paddingTop: '2%',
-                  paddingBottom: '1%',
-                  minWidth: '100%',
-                  maxWidth: '100%',
-                }}
-              >
+            <Row style={{ justifyContent: 'center' }}>
+              <View style={Style.bioContainerPC}>
                 <Text
                   style={{
-                    paddingLeft: '10%',
                     marginBottom: '2%',
                     fontSize: 16,
-                    // borderTopWidth: 1,
+                    borderBottomWidth: 1,
                   }}
                 >
                   Biography:
                 </Text>
-              </View>
-            </Row>
-            <Row style={{ justifyContent: 'center' }}>
-              <View style={Style.bioContainerPC}>
                 <Text>{bio}</Text>
               </View>
             </Row>

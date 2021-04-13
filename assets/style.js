@@ -287,7 +287,6 @@ export default StyleSheet.create({
   },
 
   bioContainerPhone: {
-    borderTopWidth: 1,
     paddingHorizontal: '4%',
     paddingVertical: '2%',
     maxWidth: '85%',

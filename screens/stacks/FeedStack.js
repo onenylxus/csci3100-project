@@ -5,6 +5,7 @@ import CreateReportScreen from '../CreateReportScreen';
 import FeedScreen from '../FeedScreen';
 import OtherProfileScreen from '../OtherProfileScreen';
 import Header from '../../assets/headers/Header';
+import BackableHeader from '../../assets/headers/BackableHeader';
 
 // Stack
 const Stack = createStackNavigator();
@@ -21,12 +22,12 @@ export default function FeedStack() {
       <Stack.Screen
         name="CreateReport"
         component={CreateReportScreen}
-        options={() => Header('Create a Report')}
+        options={() => BackableHeader('Create a Report')}
       />
       <Stack.Screen
         name="OtherProfile"
         component={OtherProfileScreen}
-        options={() => Header('Profile')}
+        options={() => BackableHeader('Profile')}
       />
     </Stack.Navigator>
   );

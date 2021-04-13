@@ -9,6 +9,9 @@ import {
   faSchool,
   faNewspaper,
   faGamepad,
+  faRunning,
+  faPuzzlePiece,
+  faTshirt,
 } from '@fortawesome/free-solid-svg-icons';
 import Header from '../assets/headers/Header';
 
@@ -20,10 +23,13 @@ export default function ChannelsScreen() {
 
   const categories = [
     { title: 'Academics', icon: faBook },
-    { title: 'Relationships', icon: faHeart },
     { title: 'CU-Related', icon: faSchool },
+    { title: 'Entertainment', icon: faPuzzlePiece },
+    { title: 'Fashion', icon: faTshirt },
+    { title: 'Gaming', icon: faGamepad },
     { title: 'News', icon: faNewspaper },
-    { title: 'Entertainment', icon: faGamepad },
+    { title: 'Relationships', icon: faHeart },
+    { title: 'Sports', icon: faRunning },
   ];
 
   // const channelCategories = []; { tags: { title } }

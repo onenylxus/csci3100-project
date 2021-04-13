@@ -159,7 +159,16 @@ export default function PostContainer({ post, showButton }) {
                   {postUsername}
                 </Text>
               </TouchableOpacity>
-              <Text style={{ fontSize: 12 }}>{dateString.current}</Text>
+              <View style={{ flexDirection: 'row' }}>
+                <Text style={{ fontSize: 12, marginRight: 5 }}>
+                  {dateString.current}
+                </Text>
+                {post.tags !== '' ? (
+                  <Text style={{ fontSize: 12, alignSelf: 'center' }}>
+                    @{post.tags}
+                  </Text>
+                ) : null}
+              </View>
             </View>
           </Col>
           <Col>
@@ -187,7 +196,13 @@ export default function PostContainer({ post, showButton }) {
       </View>
       <Text style={Style.postTitle}>{post.title}</Text>
       <Text style={{ marginHorizontal: 15, fontSize: 16 }}>{post.content}</Text>
-      <View>
+      <View
+        style={{
+          marginHorizontal: 15,
+          marginVertical: 10,
+          flexDirection: 'row',
+        }}
+      >
         <LikeContainer key={post._id} post={post} />
       </View>
       <View style={{ marginBottom: 10 }}>

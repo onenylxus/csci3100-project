@@ -56,6 +56,21 @@ exports[`TagsPicker matches snapshot 1`] = `
                 "textColor": undefined,
                 "value": "Entertainment",
               },
+              Object {
+                "label": "Sports",
+                "textColor": undefined,
+                "value": "Sports",
+              },
+              Object {
+                "label": "Gaming",
+                "textColor": undefined,
+                "value": "Gaming",
+              },
+              Object {
+                "label": "Fasion",
+                "textColor": undefined,
+                "value": "Fashion",
+              },
             ]
           }
           onChange={[Function]}

@@ -3,7 +3,7 @@ import React from 'react';
 import {
   Text,
   Button,
-  // Dimensions
+  Dimensions,
   View,
   RefreshControl,
   ScrollView,
@@ -20,7 +20,7 @@ import Style from '../assets/style';
 
 // Export other profile screen
 export default function OtherProfileScreen() {
-  // const windowWidth = Dimensions.get('window').width;
+  const windowWidth = Dimensions.get('window').width;
   const route = useRoute();
 
   const { other } = route.params;
@@ -45,63 +45,6 @@ export default function OtherProfileScreen() {
   // Get username
   getUser(setUsername);
 
-  /* function styleByDevice(widthOfDevice, component) {
-    if (widthOfDevice < 1100) {
-      // Style of Small Screen
-      switch (component) {
-        case 'container':
-          return Style.profileContainerPhone;
-
-        case 'button':
-          return Style.editProfileButtonPhone;
-
-        case 'propicSize':
-          return 90;
-
-        case 'propic':
-          return Style.profilePicturePhone;
-
-        case 'propicLayer':
-          return 0.7;
-
-        case 'userInfo':
-          return Style.userInfoPhone;
-
-        case 'infoLayer':
-          return Style.infoLayerPhone;
-
-        default:
-          break;
-      }
-    }
-
-    // Style of Large Screen
-    switch (component) {
-      case 'container':
-        return Style.profileContainerPC;
-
-      case 'button':
-        return Style.editProfileButtonPC;
-
-      case 'propicSize':
-        return 120;
-
-      case 'propic':
-        return Style.profilePicturePC;
-
-      case 'propicLayer':
-        return 0.2;
-
-      case 'userInfo':
-        return Style.userInfoPC;
-
-      case 'infoLayer':
-        return Style.infoLayerPC;
-
-      default:
-        break;
-    }
-  } */
   function fetchData() {
     (async () => {
       if (refreshing) {
@@ -251,6 +194,97 @@ export default function OtherProfileScreen() {
 
   React.useEffect(fetchPost, [followState, other, refreshing, username]);
 
+  if (windowWidth < 800) {
+    return (
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
+        <View style={{ flex: 1 }}>
+          <Grid style={Style.profileContainerPhone}>
+            <View style={Style.infoLayerPhone}>
+              <Row size={1} style={Style.profilePicturePhone}>
+                <Image
+                  style={{
+                    width: 64,
+                    height: 64,
+                    margin: 8,
+                    borderRadius: 32,
+                  }}
+                  source={require('../assets/images/profile.png')}
+                />
+                <Text style={Style.userInfoPhone}>
+                  {other} {'\n'}
+                  {gender} {'\n'}{' '}
+                  {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
+                  {'\n'}{' '}
+                  {CollegeList.hasOwnProperty(college)
+                    ? CollegeList[college]
+                    : 'N/A'}
+                  {'\n'}
+                </Text>
+              </Row>
+              <Row size={1}>
+                <Text
+                  style={{
+                    paddingHorizontal: '10%',
+                    marginBottom: '2%',
+                    fontSize: 16,
+                    borderBottomWidth: 5,
+                  }}
+                >
+                  Biography:
+                </Text>
+              </Row>
+              <Row style={{ justifyContent: 'center' }} size={1}>
+                <View style={Style.bioContainerPhone}>
+                  <Text>{bio}</Text>
+                </View>
+              </Row>
+              <Row size={2} style={Style.editProfileButtonPhone}>
+                {followState ? (
+                  <Button
+                    title="unfollow"
+                    style={{
+                      backgroundColor: followState ? '#69c6f0' : '#cccccc',
+                      margin: 5,
+                    }}
+                    onPress={() => {
+                      setFollowState(!followState);
+                      follow();
+                    }}
+                  />
+                ) : (
+                  <Button
+                    title="follow"
+                    style={{
+                      backgroundColor: followState ? '#69c6f0' : '#cccccc',
+                      margin: 5,
+                    }}
+                    onPress={() => {
+                      setFollowState(!followState);
+                      follow();
+                    }}
+                  />
+                )}
+                <TouchableOpacity style={{ marginHorizontal: 15 }}>
+                  <Text>{numOfFollower} Followers</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{ marginHorizontal: 15 }}>
+                  <Text>{numOfFollowing} Following</Text>
+                </TouchableOpacity>
+              </Row>
+            </View>
+            <Row />
+          </Grid>
+        </View>
+        <View>{generate()}</View>
+      </ScrollView>
+    );
+  }
+
+  // Large screen
   return (
     <ScrollView
       refreshControl={
@@ -258,34 +292,43 @@ export default function OtherProfileScreen() {
       }
     >
       <View style={{ flex: 1 }}>
-        <Grid style={Style.profileContainerPhone}>
-          <View style={Style.infoLayerPhone}>
-            <Row size={1} style={Style.profilePicturePhone}>
+        <Grid style={Style.profileContainerPC}>
+          <View>
+            <Row size={10} style={Style.profilePicturePC}>
               <Image
                 style={{
-                  width: 64,
-                  height: 64,
+                  width: 128,
+                  height: 128,
                   margin: 8,
-                  borderRadius: 32,
+                  borderRadius: 70,
                 }}
                 source={require('../assets/images/profile.png')}
               />
-              <Text style={Style.userInfoPhone}>
-                Username: {other} {'\n'}
-                Gender: {gender} {'\n'}
-                Major:{' '}
+              <Text style={Style.userInfoPC}>
+                {other} {'\n'}
+                {gender} {'\n'}{' '}
                 {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
-                {'\n'}
-                College:{' '}
+                {'\n'}{' '}
                 {CollegeList.hasOwnProperty(college)
                   ? CollegeList[college]
                   : 'N/A'}
                 {'\n'}
-                Bio:{bio}
-                {'\n'}
               </Text>
             </Row>
-
+            <Row style={{ justifyContent: 'center' }}>
+              <View style={Style.bioContainerPC}>
+                <Text
+                  style={{
+                    marginBottom: '2%',
+                    fontSize: 16,
+                    borderBottomWidth: 1,
+                  }}
+                >
+                  Biography:
+                </Text>
+                <Text>{bio}</Text>
+              </View>
+            </Row>
             <Row size={2} style={Style.editProfileButtonPhone}>
               {followState ? (
                 <Button
