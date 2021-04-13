@@ -11,10 +11,12 @@ const Client = mongoose.model('client');
 module.exports = function fetchFollow(req, res) {
   // Fetch request body
   const { other } = req.body;
+  console.log('req.body: ' + req.body);
   console.log('other: ' + other);
   const otherClient = Client.findOne({ other });
 
   otherClient.then((data) => {
+    console.log('other client data: ' + data);
     if (!data) {
       return res.status(422).send({
         error: 'Client not found.',
