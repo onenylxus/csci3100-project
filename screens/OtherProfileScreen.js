@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Row, Grid } from 'react-native-easy-grid';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 import AuthContext from '../components/AuthContext';
 import PostBox from '../components/PostBox';
 import Style from '../assets/style';
@@ -19,10 +19,9 @@ import Style from '../assets/style';
 // Export other profile screen
 export default function OtherProfileScreen() {
   // const windowWidth = Dimensions.get('window').width;
-  const navigation = useNavigation();
   const route = useRoute();
 
-  const { postUsername } = route.params;
+  const { other } = route.params;
   const { getUser } = React.useContext(AuthContext);
 
   const [username, setUsername] = React.useState('');
@@ -106,7 +105,7 @@ export default function OtherProfileScreen() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            other: postUsername,
+            other,
           }),
         })
           .then((res) => {
@@ -116,7 +115,6 @@ export default function OtherProfileScreen() {
           .then((res) => res.json())
           .then((res) => {
             if (status.current === 200) {
-              console.log('res.follower: ' + res.follower);
               if (res.follower.includes(username)) {
                 setFollowState(true);
               }
@@ -141,7 +139,7 @@ export default function OtherProfileScreen() {
       body: JSON.stringify({
         followState,
         self: username,
-        other: postUsername,
+        other,
       }),
     })
       .then((res) => {
@@ -153,7 +151,6 @@ export default function OtherProfileScreen() {
         if (status.current === 200) {
           setNumOfFollower(res.follower.length);
         }
-        console.log(res);
       })
       .catch((err) => console.log(err));
   }
@@ -167,7 +164,7 @@ export default function OtherProfileScreen() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            username: postUsername,
+            username: other,
             page,
             tags: '',
           }),
@@ -202,9 +199,9 @@ export default function OtherProfileScreen() {
     setTimeout(() => setRefreshing(false), 30000);
   }, []);
 
-  React.useEffect(fetchFollow, [postUsername, followState, username]);
+  React.useEffect(fetchFollow, [followState, other, refreshing, username]);
 
-  React.useEffect(fetchPost, [followState, postUsername, refreshing, username]);
+  React.useEffect(fetchPost, [followState, other, refreshing, username]);
 
   return (
     <ScrollView
@@ -226,41 +223,38 @@ export default function OtherProfileScreen() {
                 source={require('../assets/images/profile.png')}
               />
               <Text style={Style.userInfoPhone}>
-                Username: {postUsername} {'\n'}
+                Username: {other} {'\n'}
                 Major:{'\n'}
                 College:{'\n'}
               </Text>
             </Row>
-            {followState ? (
-              <Button
-                title="unfollow"
-                style={{
-                  color: followState ? '#83CCFF' : 'lightgrey',
-                  margin: 5,
-                }}
-                onPress={() => {
-                  setFollowState(!followState);
-                  follow();
-                }}
-              />
-            ) : (
-              <Button
-                title="follow"
-                style={{
-                  color: followState ? '#83CCFF' : 'lightgrey',
-                  margin: 5,
-                }}
-                onPress={() => {
-                  setFollowState(!followState);
-                  follow();
-                }}
-              />
-            )}
+
             <Row size={2} style={Style.editProfileButtonPhone}>
-              <Button
-                title="Edit Profile"
-                onPress={() => navigation.navigate('EditProfile')}
-              />
+              {followState ? (
+                <Button
+                  title="unfollow"
+                  style={{
+                    color: followState ? '#83CCFF' : 'lightgrey',
+                    margin: 5,
+                  }}
+                  onPress={() => {
+                    setFollowState(!followState);
+                    follow();
+                  }}
+                />
+              ) : (
+                <Button
+                  title="follow"
+                  style={{
+                    color: followState ? '#83CCFF' : 'lightgrey',
+                    margin: 5,
+                  }}
+                  onPress={() => {
+                    setFollowState(!followState);
+                    follow();
+                  }}
+                />
+              )}
               <TouchableOpacity style={{ marginHorizontal: 15 }}>
                 <Text>{numOfFollower} Followers</Text>
               </TouchableOpacity>

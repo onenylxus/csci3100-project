@@ -21,7 +21,7 @@ export default function FeedStack() {
       <Stack.Screen
         name="CreateReport"
         component={CreateReportScreen}
-        option={() => Header('CreateReport')}
+        option={() => Header('Create a Report')}
       />
       <Stack.Screen
         name="OtherProfile"

@@ -10,6 +10,7 @@ import {
   faExclamation,
   faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
+import AuthContext from './AuthContext';
 import CommentContainer from './CommentContainer';
 import LikeContainer from './LikeContainer';
 import Style from '../assets/style';
@@ -17,6 +18,9 @@ import Style from '../assets/style';
 // Export Post Box
 export default function PostBox({ post, showButton }) {
   const navigation = useNavigation();
+  const { getUser } = React.useContext(AuthContext);
+
+  const [username, setUsername] = React.useState('');
 
   const [showComment, setShowComment] = React.useState(false);
   const [postUsername, setPostUsername] = React.useState(post.username);
@@ -38,6 +42,8 @@ export default function PostBox({ post, showButton }) {
       .toString()
       .padStart(2, '0')}/${date.current.getFullYear().toString()}`
   );
+
+  getUser(setUsername);
 
   async function deletePost() {
     await fetch('https://cu-there-server.herokuapp.com/deletePost', {
@@ -120,6 +126,12 @@ export default function PostBox({ post, showButton }) {
     );
   }
 
+  function nav(other) {
+    if (username !== other) {
+      navigation.navigate('OtherProfile', { other });
+    } else navigation.navigate('Profile');
+  }
+
   return (
     <View style={Style.profilePost}>
       <View>
@@ -128,7 +140,7 @@ export default function PostBox({ post, showButton }) {
             <TouchableOpacity
               onPress={() => {
                 setPostUsername(post.username);
-                navigation.navigate('OtherProfile', { postUsername });
+                nav(postUsername);
               }}
             >
               <Image
@@ -144,9 +156,10 @@ export default function PostBox({ post, showButton }) {
             </TouchableOpacity>
             <View style={{ flexDirection: 'column' }}>
               <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('OtherProfile', { postUsername })
-                }
+                onPress={() => {
+                  setPostUsername(post.username);
+                  nav(postUsername);
+                }}
               >
                 <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
                   {postUsername}
