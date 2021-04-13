@@ -24,7 +24,9 @@
   ],
   "assets/images": [
     "background.png",
-    "profile.png"
+    "profile.png",
+    "webBG.png"
+    
   ],
   "assets/json": [
     "collegeList.json",

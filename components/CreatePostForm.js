@@ -1,10 +1,20 @@
 // Import
 import React from 'react';
-import { Alert, Button, Switch, Text, TextInput, View } from 'react-native';
+import {
+  Alert,
+  Button,
+  Switch,
+  Text,
+  TextInput,
+  View,
+  Dimensions,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Picker } from '@react-native-community/picker';
 import AuthContext from './AuthContext';
 import Style from '../assets/style';
+
+const windowWidth = Dimensions.get('window').width;
 
 // Export Create Post Form
 export default function CreatePostForm() {
@@ -85,6 +95,13 @@ export default function CreatePostForm() {
 
   React.useEffect(fetchData);
 
+  function hideOutline(screenWidth) {
+    if (screenWidth < 800) {
+      return null;
+    }
+    return { outline: 'none' };
+  }
+
   return (
     <View style={Style.createPostContainer}>
       <View style={Style.createPostInner}>
@@ -94,20 +111,28 @@ export default function CreatePostForm() {
         <Switch onValueChange={toggleSwitch} value={isEnabled} />
       </View>
       <View>
-        <TextInput
-          style={Style.SectionStyle}
-          placeholder="Post title"
-          onChangeText={(text) => setTitle(text)}
-        />
-        <TextInput
-          style={Style.createPostBox}
-          multiline
-          scrollEnabled
-          enablesReturnKeyAutomatically
-          placeholder="What's on your mind?"
-          onChangeText={(text) => setContent(text)}
-        />
-        <Picker selectedValue={tags} onValueChange={(text) => setTags(text)}>
+        <View style={Style.postTitleBox}>
+          <TextInput
+            style={{ ...hideOutline(windowWidth) }}
+            placeholder="Post title"
+            onChangeText={(text) => setTitle(text)}
+          />
+        </View>
+        <View style={Style.createPostBox}>
+          <TextInput
+            style={{ ...hideOutline(windowWidth) }}
+            multiline
+            scrollEnabled
+            enablesReturnKeyAutomatically
+            placeholder="What's on your mind?"
+            onChangeText={(text) => setContent(text)}
+          />
+        </View>
+        <Picker
+          style={{ width: '75%', alignSelf: 'center' }}
+          selectedValue={tags}
+          onValueChange={(text) => setTags(text)}
+        >
           <Picker.Item label="Choose a channel!" value="" />
           <Picker.Item label="Academics" value="Academics" />
           <Picker.Item label="Relationships" value="Relationships" />
@@ -115,7 +140,9 @@ export default function CreatePostForm() {
           <Picker.Item label="CU-Related" value="CU-Related" />
           <Picker.Item label="Entertainment" value="Entertainment" />
         </Picker>
-        <Button title="Post!" onPress={submitData} />
+        <View style={{ maxWidth: '40%', alignSelf: 'center', marginTop: '2%' }}>
+          <Button title="Post!" onPress={submitData} />
+        </View>
       </View>
     </View>
   );

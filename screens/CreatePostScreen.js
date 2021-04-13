@@ -26,26 +26,28 @@ export default function CreatePostScreen() {
   }
 
   return (
-    <View
-      style={{
-        ...Style.Container,
-        width: loginFormWidth,
-        alignSelf: 'center',
-        height: '100%',
-      }}
-    >
+    <View style={{ flex: 1 }}>
       <ImageBackground
-        resizeMode="stretch"
-        source={require('../assets/images/background.png')}
+        resizeMode="cover"
+        source={require('../assets/images/webBG.png')}
         style={{
           flex: 1,
           justifyContent: 'center',
           alignContent: 'center',
-          paddingTop: 50,
         }}
       >
-        <View>
-          <CreatePostForm />
+        <View
+          style={{
+            width: loginFormWidth,
+            alignSelf: 'center',
+            height: '100%',
+            justifyContent: 'center',
+            marginBottom: windowWidth < 800 ? 0 : '10%',
+          }}
+        >
+          <View>
+            <CreatePostForm />
+          </View>
         </View>
       </ImageBackground>
     </View>

@@ -35,7 +35,7 @@ export default function RegisterForm() {
   const status = React.useRef(0);
 
   const windowWidth = Dimensions.get('window').width;
-  const loginFormWidth = Math.min(windowWidth, 400);
+  const registerFormWidth = Math.min(windowWidth, 400);
 
   async function submitData() {
     console.log(
@@ -136,10 +136,12 @@ export default function RegisterForm() {
     );
   }
 
-  const validStyle = { ...Style.validTextInput };
-  const invalidStyle = { ...Style.invalidTextInput };
   function styleByState(state) {
-    return state === 2 ? Style.textInput : state ? validStyle : invalidStyle;
+    return state === 2
+      ? Style.SectionStyle
+      : state
+      ? Style.validTextInput
+      : Style.invalidTextInput;
   }
 
   // Small Screen
@@ -148,7 +150,7 @@ export default function RegisterForm() {
       <View
         style={{
           ...Style.Container,
-          width: loginFormWidth,
+          width: registerFormWidth,
           alignSelf: 'center',
         }}
       >
@@ -169,7 +171,14 @@ export default function RegisterForm() {
               onChangeText={(text) => changeUsername(text)}
             />
           </View>
-          <View style={{ opacity: !usernameState * 100 }}>
+          <View
+            style={{
+              opacity: !usernameState * 100,
+              minWidth: '80%',
+              maxWidth: '80%',
+              marginLeft: '12%',
+            }}
+          >
             <Text style={Style.errorMessage}>
               Username must be of length 4-20 characters
             </Text>
@@ -202,7 +211,14 @@ export default function RegisterForm() {
               />
             </TouchableOpacity>
           </View>
-          <View style={{ opacity: !passwordState * 100 }}>
+          <View
+            style={{
+              opacity: !passwordState * 100,
+              minWidth: '80%',
+              maxWidth: '80%',
+              marginLeft: '12%',
+            }}
+          >
             <Text style={Style.errorMessage}>
               Password must be of length greater than 6 characters
             </Text>
@@ -223,7 +239,14 @@ export default function RegisterForm() {
               onChangeText={(text) => changeEmail(text)}
             />
           </View>
-          <View style={{ opacity: !emailState * 100 }}>
+          <View
+            style={{
+              opacity: !emailState * 100,
+              minWidth: '80%',
+              maxWidth: '80%',
+              marginLeft: '12%',
+            }}
+          >
             <Text style={Style.errorMessage}>
               Email must be a CUHK link email address (example:
               1155123456@link.cuhk.edu.hk)
@@ -239,24 +262,35 @@ export default function RegisterForm() {
   // Large Screen
   return (
     <View
-      style={{ ...Style.Container, width: loginFormWidth, alignSelf: 'center' }}
+      style={{
+        ...Style.Container,
+        width: registerFormWidth,
+        alignSelf: 'center',
+      }}
     >
       {/* Username */}
       <View style={Style.inputContainer}>
         <Text style={Style.sectionText}>Username:</Text>
-        <View style={{ ...Style.SectionStyle, ...styleByState(usernameState) }}>
+        <View style={styleByState(usernameState)}>
           <FontAwesomeIcon
             icon={faUser}
             size={15}
             style={{ marginHorizontal: 5, marginVertical: 12 }}
           />
           <TextInput
-            style={{ minWidth: '85%', maxWidth: '85%' }}
+            style={{ minWidth: '85%', maxWidth: '85%', outline: 'none' }}
             placeholder="Username"
             onChangeText={(text) => changeUsername(text)}
           />
         </View>
-        <View style={{ opacity: !usernameState * 100 }}>
+        <View
+          style={{
+            opacity: !usernameState * 100,
+            minWidth: '80%',
+            maxWidth: '80%',
+            marginLeft: '12%',
+          }}
+        >
           <Text style={Style.errorMessage}>
             Username must be of length 4-20 characters
           </Text>
@@ -265,14 +299,14 @@ export default function RegisterForm() {
         {/* Password */}
 
         <Text style={Style.sectionText}>Password:</Text>
-        <View style={{ ...Style.SectionStyle, ...styleByState(passwordState) }}>
+        <View style={styleByState(passwordState)}>
           <FontAwesomeIcon
             icon={faLock}
             size={15}
             style={{ marginHorizontal: 5, marginVertical: 12 }}
           />
           <TextInput
-            style={{ minWidth: '77%', maxWidth: '77%' }}
+            style={{ minWidth: '77%', maxWidth: '77%', outline: 'none' }}
             placeholder="Password"
             onChangeText={(text) => changePassword(text)}
             secureTextEntry={visibility}
@@ -287,7 +321,14 @@ export default function RegisterForm() {
             />
           </TouchableOpacity>
         </View>
-        <View style={{ opacity: !passwordState * 100 }}>
+        <View
+          style={{
+            opacity: !passwordState * 100,
+            minWidth: '80%',
+            maxWidth: '80%',
+            marginLeft: '12%',
+          }}
+        >
           <Text style={Style.errorMessage}>
             Password must be of length greater than 6 characters
           </Text>
@@ -296,27 +337,35 @@ export default function RegisterForm() {
         {/* Email */}
 
         <Text style={Style.sectionText}>CUHK link email:</Text>
-        <View style={{ ...Style.SectionStyle, ...styleByState(emailState) }}>
+        <View style={styleByState(emailState)}>
           <FontAwesomeIcon
             icon={faEnvelope}
             size={15}
             style={{ marginHorizontal: 5, marginVertical: 12 }}
           />
           <TextInput
-            style={{ minWidth: '85%', maxWidth: '85%' }}
+            style={{ minWidth: '85%', maxWidth: '85%', outline: 'none' }}
             placeholder="CUHK link email"
             onChangeText={(text) => changeEmail(text)}
           />
         </View>
-        <View style={{ opacity: !emailState * 100 }}>
+        <View
+          style={{
+            opacity: !emailState * 100,
+            minWidth: '80%',
+            maxWidth: '80%',
+            marginLeft: '12%',
+          }}
+        >
           <Text style={Style.errorMessage}>
             Email must be a CUHK link email address (example:
             1155123456@link.cuhk.edu.hk)
           </Text>
         </View>
       </View>
-
-      <Button title="Register" onPress={confirmRegister} />
+      <View style={{ maxWidth: '40%', alignSelf: 'center' }}>
+        <Button title="Register" onPress={confirmRegister} />
+      </View>
     </View>
   );
 }

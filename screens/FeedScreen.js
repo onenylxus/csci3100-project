@@ -1,6 +1,12 @@
 // Import
 import React from 'react';
-import { Button, RefreshControl, ScrollView, View } from 'react-native';
+import {
+  Text,
+  RefreshControl,
+  ScrollView,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import SearchBar from '../components/SearchBar';
 import PostBox from '../components/PostBox';
 
@@ -62,20 +68,24 @@ export default function FeedScreen() {
     <View style={{ marginBottom: 50 }}>
       <SearchBar />
       <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-        <Button
-          title="Latest"
+        <TouchableOpacity
           onPress={() => {
             setTags('Newest');
             onRefresh();
           }}
-        />
-        <Button
-          title="Trending"
+          style={{ margin: 15 }}
+        >
+          <Text style={{ color: '#546eff', fontSize: 18 }}>Latest</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
           onPress={() => {
             setTags('Trending');
             onRefresh();
           }}
-        />
+          style={{ margin: 15 }}
+        >
+          <Text style={{ color: '#546eff', fontSize: 18 }}>Trending</Text>
+        </TouchableOpacity>
       </View>
 
       <ScrollView

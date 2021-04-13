@@ -74,18 +74,36 @@ export default StyleSheet.create({
   validTextInput: {
     borderColor: '#00ff00',
     backgroundColor: '#aaf8aa',
+    flexDirection: 'row',
+    borderWidth: 1,
+    minWidth: '75%',
+    maxWidth: '75%',
+    height: 40,
+    borderRadius: 5,
+    paddingHorizontal: '1%',
+    marginVertical: '3%',
+    alignSelf: 'center',
   },
 
   invalidTextInput: {
     borderColor: '#ff0000',
     backgroundColor: '#f8aaaa',
+    flexDirection: 'row',
+    borderWidth: 1,
+    minWidth: '75%',
+    maxWidth: '75%',
+    height: 40,
+    borderRadius: 5,
+    paddingHorizontal: '1%',
+    marginVertical: '3%',
+    alignSelf: 'center',
   },
 
   errorMessage: {
-    maxWidth: '80%',
     fontSize: 11,
     color: '#ff0000',
-    alignContent: 'flex-start',
+    justifyContent: 'flex-start',
+    marginBottom: '4%',
   },
 
   inputContainer: {
@@ -123,15 +141,15 @@ export default StyleSheet.create({
     borderWidth: 1,
     backgroundColor: '#f8f8f8',
     width: '85%',
-    height: 100,
+    minHeight: windowWidth < 800 ? 100 : '90%',
     textAlign: 'left',
     textAlignVertical: 'top',
     alignSelf: 'center',
     borderRadius: 10,
     minWidth: '75%',
     maxWidth: '75%',
-    paddingHorizontal: '2%',
-    marginVertical: '5%',
+    padding: '2%',
+    marginVertical: 15,
   },
 
   createPostContainer: {
@@ -145,7 +163,21 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignContent: 'center',
-    marginLeft: '9%',
+    marginLeft: '13%',
+  },
+
+  postTitleBox: {
+    flexDirection: 'row',
+    backgroundColor: '#ffffff',
+    borderWidth: 1,
+    borderColor: '#000000',
+    minWidth: '75%',
+    maxWidth: '75%',
+    minHeight: windowWidth < 800 ? 40 : '30%',
+    borderRadius: 5,
+    paddingHorizontal: '1%',
+    marginVertical: 15,
+    alignSelf: 'center',
   },
 
   // Styles of Edit Post Page

@@ -1076,8 +1076,6 @@ exports[`App matches snapshot on login mode 1`] = `
                                 }
                               >
                                 <View
-                                  accessibilityRole="button"
-                                  accessibilityState={Object {}}
                                   accessible={true}
                                   focusable={true}
                                   onClick={[Function]}
@@ -1089,36 +1087,23 @@ exports[`App matches snapshot on login mode 1`] = `
                                   onStartShouldSetResponder={[Function]}
                                   style={
                                     Object {
+                                      "margin": 15,
                                       "opacity": 1,
                                     }
                                   }
                                 >
-                                  <View
+                                  <Text
                                     style={
-                                      Array [
-                                        Object {},
-                                      ]
+                                      Object {
+                                        "color": "#546eff",
+                                        "fontSize": 18,
+                                      }
                                     }
                                   >
-                                    <Text
-                                      style={
-                                        Array [
-                                          Object {
-                                            "color": "#007AFF",
-                                            "fontSize": 18,
-                                            "margin": 8,
-                                            "textAlign": "center",
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      Latest
-                                    </Text>
-                                  </View>
+                                    Latest
+                                  </Text>
                                 </View>
                                 <View
-                                  accessibilityRole="button"
-                                  accessibilityState={Object {}}
                                   accessible={true}
                                   focusable={true}
                                   onClick={[Function]}
@@ -1130,32 +1115,21 @@ exports[`App matches snapshot on login mode 1`] = `
                                   onStartShouldSetResponder={[Function]}
                                   style={
                                     Object {
+                                      "margin": 15,
                                       "opacity": 1,
                                     }
                                   }
                                 >
-                                  <View
+                                  <Text
                                     style={
-                                      Array [
-                                        Object {},
-                                      ]
+                                      Object {
+                                        "color": "#546eff",
+                                        "fontSize": 18,
+                                      }
                                     }
                                   >
-                                    <Text
-                                      style={
-                                        Array [
-                                          Object {
-                                            "color": "#007AFF",
-                                            "fontSize": 18,
-                                            "margin": 8,
-                                            "textAlign": "center",
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      Trending
-                                    </Text>
-                                  </View>
+                                    Trending
+                                  </Text>
                                 </View>
                               </View>
                               <RCTScrollView

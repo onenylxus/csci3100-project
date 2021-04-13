@@ -108,6 +108,14 @@ export default function LoginForm() {
     }
   }
 
+  // Hide Outline of Textinput Box
+  function hideOutline(screenWidth) {
+    if (screenWidth < 800) {
+      return null;
+    }
+    return { outline: 'none' };
+  }
+
   return (
     <View
       style={{ ...Style.Container, width: loginFormWidth, alignSelf: 'center' }}
@@ -124,7 +132,11 @@ export default function LoginForm() {
           <TextInput
             placeholder="Username"
             value={username}
-            style={{ minWidth: '85%', maxWidth: '85%' }}
+            style={{
+              minWidth: '85%',
+              maxWidth: '85%',
+              ...hideOutline(windowWidth),
+            }}
             onChangeText={(text) => setUsername(text)}
             testID="username"
           />
@@ -141,7 +153,11 @@ export default function LoginForm() {
           <TextInput
             placeholder="Password"
             value={password}
-            style={{ minWidth: '77%', maxWidth: '77%' }}
+            style={{
+              minWidth: '77%',
+              maxWidth: '77%',
+              ...hideOutline(windowWidth),
+            }}
             onChangeText={(text) => setPassword(text)}
             secureTextEntry={visibility}
             clearTextOnFocus={false}

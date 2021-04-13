@@ -1,10 +1,12 @@
 // Import
 import React from 'react';
-import { Alert, Button, TextInput, View } from 'react-native';
+import { Alert, Button, TextInput, View, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Style from '../assets/style';
+
+const windowWidth = Dimensions.get('window').width;
 
 // Export forgot password form
 export default function ForgotPasswordForm() {
@@ -70,6 +72,13 @@ export default function ForgotPasswordForm() {
       .catch((err) => console.log(err));
   }
 
+  function hideOutline(screenWidth) {
+    if (screenWidth < 800) {
+      return null;
+    }
+    return { outline: 'none' };
+  }
+
   return (
     <View>
       <View style={Style.SectionStyle}>
@@ -79,18 +88,22 @@ export default function ForgotPasswordForm() {
           style={{ marginHorizontal: 5, marginVertical: 12 }}
         />
         <TextInput
-          style={{ width: '95%', alignSelf: 'center' }}
+          style={{
+            width: '85%',
+            alignSelf: 'center',
+            ...hideOutline(windowWidth),
+          }}
           placeholder="CUHK link Email"
           onChangeText={(text) => setEmail(text)}
         />
       </View>
-
-      <Button
-        title="Submit"
-        color="gray"
-        accessibilityLabel="Submit Email"
-        onPress={submitData}
-      />
+      <View style={{ maxWidth: '40%', alignSelf: 'center' }}>
+        <Button
+          title="Submit"
+          accessibilityLabel="Submit Email"
+          onPress={submitData}
+        />
+      </View>
     </View>
   );
 }
