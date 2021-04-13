@@ -13,6 +13,8 @@ import {
 import { Row, Grid } from 'react-native-easy-grid';
 import { useNavigation } from '@react-navigation/native';
 import AuthContext from '../components/AuthContext';
+import CollegeList from '../assets/json/collegeList.json';
+import MajorList from '../assets/json/majorList.json';
 import PostBox from '../components/PostBox';
 import Style from '../assets/style';
 
@@ -27,6 +29,10 @@ export default function ProfileScreen() {
   const [numOfFollowing, setNumOfFollowing] = React.useState(0);
   const [refreshing, setRefreshing] = React.useState(true);
   const [list, setList] = React.useState([]);
+  const [college, setCollege] = React.useState('');
+  const [gender, setGender] = React.useState('');
+  const [major, setMajor] = React.useState('');
+  const [bio, setBio] = React.useState('');
 
   const page = React.useRef(0);
   const fetched = React.useRef(false);
@@ -94,33 +100,69 @@ export default function ProfileScreen() {
     }
   } */
 
+  function fetchData() {
+    (async () => {
+      if (refreshing) {
+        if (!fetched.current) {
+          await fetch('https://cu-there-server.herokuapp.com/fetchData', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              username,
+            }),
+          })
+            .then((res) => {
+              status.current = res.status;
+              return res;
+            })
+            .then((res) => res.json())
+            .then((res) => {
+              if (status.current === 200) {
+                setGender(res.gender);
+                setMajor(res.major);
+                setCollege(res.college);
+                setBio(res.bio);
+              } else if (status.current === 422) {
+                console.log(res.error);
+              }
+            })
+            .catch((err) => console.log(err));
+        }
+      }
+    })();
+  }
+
   function fetchFollow() {
     (async () => {
-      if (!fetched.current) {
-        await fetch('https://cu-there-server.herokuapp.com/fetchFollow', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            other: username,
-          }),
-        })
-          .then((res) => {
-            status.current = res.status;
-            return res;
+      if (refreshing) {
+        if (!fetched.current) {
+          await fetch('https://cu-there-server.herokuapp.com/fetchFollow', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              other: username,
+            }),
           })
-          .then((res) => res.json())
-          .then((res) => {
-            if (status.current === 200) {
-              setNumOfFollower(res.follower.length);
-              setNumOfFollowing(res.following.length);
-              fetched.current = true;
-            } else if (status.current === 422) {
-              console.log(res.error);
-            }
-          })
-          .catch((err) => console.log(err));
+            .then((res) => {
+              status.current = res.status;
+              return res;
+            })
+            .then((res) => res.json())
+            .then((res) => {
+              if (status.current === 200) {
+                setNumOfFollower(res.follower.length);
+                setNumOfFollowing(res.following.length);
+                fetched.current = true;
+              } else if (status.current === 422) {
+                console.log(res.error);
+              }
+            })
+            .catch((err) => console.log(err));
+        }
       }
     })();
   }
@@ -168,7 +210,9 @@ export default function ProfileScreen() {
     setTimeout(() => setRefreshing(false), 30000);
   }, []);
 
-  React.useEffect(fetchFollow, [username]);
+  React.useEffect(fetchData, [refreshing, username]);
+
+  React.useEffect(fetchFollow, [refreshing, username]);
 
   React.useEffect(fetchPost, [refreshing, username]);
 
@@ -193,8 +237,17 @@ export default function ProfileScreen() {
               />
               <Text style={Style.userInfoPhone}>
                 Username: {username} {'\n'}
-                Major:{'\n'}
-                College:{'\n'}
+                Gender: {gender} {'\n'}
+                Major:{' '}
+                {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
+                {'\n'}
+                College:{' '}
+                {CollegeList.hasOwnProperty(college)
+                  ? CollegeList[college]
+                  : 'N/A'}
+                {'\n'}
+                Bio:{bio}
+                {'\n'}
               </Text>
             </Row>
             <Row size={2} style={Style.editProfileButtonPhone}>

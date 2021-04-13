@@ -14,7 +14,6 @@ module.exports = function fetchFollow(req, res) {
   const otherClient = Client.findOne({ username: other });
 
   otherClient.then((data) => {
-    console.log('other client data: ' + data);
     if (!data) {
       return res.status(422).send({
         error: 'Client not found.',

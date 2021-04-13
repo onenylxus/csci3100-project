@@ -13,6 +13,8 @@ import {
 import { Row, Grid } from 'react-native-easy-grid';
 import { useRoute } from '@react-navigation/native';
 import AuthContext from '../components/AuthContext';
+import CollegeList from '../assets/json/collegeList.json';
+import MajorList from '../assets/json/majorList.json';
 import PostBox from '../components/PostBox';
 import Style from '../assets/style';
 
@@ -30,6 +32,10 @@ export default function OtherProfileScreen() {
   const [numOfFollowing, setNumOfFollowing] = React.useState(0);
   const [refreshing, setRefreshing] = React.useState(true);
   const [list, setList] = React.useState([]);
+  const [college, setCollege] = React.useState('');
+  const [gender, setGender] = React.useState('');
+  const [major, setMajor] = React.useState('');
+  const [bio, setBio] = React.useState('');
 
   const page = React.useRef(0);
   const fetched = React.useRef(false);
@@ -96,36 +102,72 @@ export default function OtherProfileScreen() {
         break;
     }
   } */
+  function fetchData() {
+    (async () => {
+      if (refreshing) {
+        if (!fetched.current) {
+          await fetch('https://cu-there-server.herokuapp.com/fetchData', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              username: other,
+            }),
+          })
+            .then((res) => {
+              status.current = res.status;
+              return res;
+            })
+            .then((res) => res.json())
+            .then((res) => {
+              if (status.current === 200) {
+                setGender(res.gender);
+                setMajor(res.major);
+                setCollege(res.college);
+                setBio(res.bio);
+              } else if (status.current === 422) {
+                console.log(res.error);
+              }
+            })
+            .catch((err) => console.log(err));
+        }
+      }
+    })();
+  }
+
   function fetchFollow() {
     (async () => {
-      if (!fetched.current) {
-        await fetch('https://cu-there-server.herokuapp.com/fetchFollow', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            other,
-          }),
-        })
-          .then((res) => {
-            status.current = res.status;
-            return res;
+      if (refreshing) {
+        if (!fetched.current) {
+          await fetch('https://cu-there-server.herokuapp.com/fetchFollow', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              other,
+            }),
           })
-          .then((res) => res.json())
-          .then((res) => {
-            if (status.current === 200) {
-              if (res.follower.includes(username)) {
-                setFollowState(true);
+            .then((res) => {
+              status.current = res.status;
+              return res;
+            })
+            .then((res) => res.json())
+            .then((res) => {
+              if (status.current === 200) {
+                if (res.follower.includes(username)) {
+                  setFollowState(true);
+                }
+                setNumOfFollower(res.follower.length);
+                setNumOfFollowing(res.following.length);
+                fetched.current = true;
+              } else if (status.current === 422) {
+                console.log(res.error);
               }
-              setNumOfFollower(res.follower.length);
-              setNumOfFollowing(res.following.length);
-              fetched.current = true;
-            } else if (status.current === 422) {
-              console.log(res.error);
-            }
-          })
-          .catch((err) => console.log(err));
+            })
+            .catch((err) => console.log(err));
+        }
       }
     })();
   }
@@ -199,6 +241,8 @@ export default function OtherProfileScreen() {
     setTimeout(() => setRefreshing(false), 30000);
   }, []);
 
+  React.useEffect(fetchData, [refreshing, other]);
+
   React.useEffect(fetchFollow, [followState, other, refreshing, username]);
 
   React.useEffect(fetchPost, [followState, other, refreshing, username]);
@@ -224,8 +268,17 @@ export default function OtherProfileScreen() {
               />
               <Text style={Style.userInfoPhone}>
                 Username: {other} {'\n'}
-                Major:{'\n'}
-                College:{'\n'}
+                Gender: {gender} {'\n'}
+                Major:{' '}
+                {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
+                {'\n'}
+                College:{' '}
+                {CollegeList.hasOwnProperty(college)
+                  ? CollegeList[college]
+                  : 'N/A'}
+                {'\n'}
+                Bio:{bio}
+                {'\n'}
               </Text>
             </Row>
 

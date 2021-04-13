@@ -174,13 +174,10 @@ export default function PostBox({ post, showButton }) {
                 >
                   <FontAwesomeIcon icon={faEdit} />
                 </TouchableOpacity>
-                <TouchableOpacity style={{ margin: 8 }} onPress={askReport}>
-                  <FontAwesomeIcon icon={faExclamation} />
-                </TouchableOpacity>
               </View>
             ) : (
               <View style={Style.trashIcon}>
-                <TouchableOpacity style={{ margin: 8 }} onPress={askDelete}>
+                <TouchableOpacity style={{ margin: 8 }} onPress={askReport}>
                   <FontAwesomeIcon icon={faExclamation} />
                 </TouchableOpacity>
               </View>
