@@ -24,15 +24,15 @@ module.exports = function createReport(req, res) {
         error: 'repeatedReportError',
       });
     }
-  });
-  // Create report and save to database
-  const report = new Report({
-    postId,
-    username,
-    content,
-  });
-  report.save();
-  return res.status(200).send({
-    msg: 'Report sent successfully.',
+    // Create report and save to database
+    const report = new Report({
+      postId,
+      username,
+      content,
+    });
+    report.save();
+    return res.status(200).send({
+      msg: 'Report sent successfully.',
+    });
   });
 };
