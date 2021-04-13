@@ -11,16 +11,25 @@ export default function LoginScreen() {
   const navigation = useNavigation();
 
   return (
-    <View style={Style.container}>
+    <View
+      style={{
+        flex: 1,
+        paddingHorizontal: 32,
+        backgroundColor: '#ffffff',
+        justifyContent: 'center',
+      }}
+    >
       <Text style={Style.loginTitle}>CU There</Text>
-      <LoginForm />
+      <View style={{ alignSelf: 'center' }}>
+        <LoginForm />
+      </View>
       <Text
-        style={{ ...Style.hyperlink, marginTop: 20 }}
+        style={{ ...Style.hyperlink, marginTop: 20, alignSelf: 'center' }}
         onPress={() => navigation.navigate('GuestFeed')}
       >
         Continue as guest
       </Text>
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
         <Text
           style={{ ...Style.hyperlink, alignItems: 'flex-start', margin: 8 }}
           onPress={() => navigation.navigate('Register')}

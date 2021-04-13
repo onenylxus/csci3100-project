@@ -1,15 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoginForm matches snapshot 1`] = `
-<View>
+<View
+  style={
+    Object {
+      "alignSelf": "center",
+      "width": 400,
+    }
+  }
+>
   <View
     style={
       Object {
         "alignItems": "flex-start",
+        "alignSelf": "center",
+        "backgroundColor": "#ffffff",
         "flexDirection": "column",
         "justifyContent": "center",
         "marginBottom": 16,
-        "width": "95%",
+        "maxWidth": "80%",
+        "minWidth": "80%",
       }
     }
   >
@@ -35,8 +45,9 @@ exports[`LoginForm matches snapshot 1`] = `
           "flexDirection": "row",
           "height": 40,
           "marginVertical": "5%",
-          "paddingHorizontal": "3%",
-          "width": "85%",
+          "maxWidth": "75%",
+          "minWidth": "75%",
+          "paddingHorizontal": "1%",
         }
       }
     >
@@ -59,6 +70,7 @@ exports[`LoginForm matches snapshot 1`] = `
           Object {
             "marginHorizontal": 5,
             "marginVertical": 12,
+            "width": "50%",
           }
         }
       />
@@ -69,7 +81,8 @@ exports[`LoginForm matches snapshot 1`] = `
         rejectResponderTermination={true}
         style={
           Object {
-            "width": 190,
+            "maxWidth": "85%",
+            "minWidth": "85%",
           }
         }
         testID="username"
@@ -77,18 +90,6 @@ exports[`LoginForm matches snapshot 1`] = `
         value=""
       />
     </View>
-  </View>
-  <View
-    style={
-      Object {
-        "alignItems": "flex-start",
-        "flexDirection": "column",
-        "justifyContent": "center",
-        "marginBottom": 16,
-        "width": "95%",
-      }
-    }
-  >
     <Text
       style={
         Object {
@@ -111,8 +112,9 @@ exports[`LoginForm matches snapshot 1`] = `
           "flexDirection": "row",
           "height": 40,
           "marginVertical": "5%",
-          "paddingHorizontal": "3%",
-          "width": "85%",
+          "maxWidth": "75%",
+          "minWidth": "75%",
+          "paddingHorizontal": "1%",
         }
       }
     >
@@ -135,6 +137,7 @@ exports[`LoginForm matches snapshot 1`] = `
           Object {
             "marginHorizontal": 5,
             "marginVertical": 12,
+            "width": "50%",
           }
         }
       />
@@ -148,7 +151,8 @@ exports[`LoginForm matches snapshot 1`] = `
         secureTextEntry={true}
         style={
           Object {
-            "width": 165,
+            "maxWidth": "77%",
+            "minWidth": "77%",
           }
         }
         testID="password"
@@ -198,45 +202,53 @@ exports[`LoginForm matches snapshot 1`] = `
     </View>
   </View>
   <View
-    accessibilityRole="button"
-    accessibilityState={Object {}}
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "opacity": 1,
+        "marginHorizontal": "40%",
       }
     }
-    testID="login"
   >
     <View
+      accessibilityRole="button"
+      accessibilityState={Object {}}
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
-        Array [
-          Object {},
-        ]
+        Object {
+          "opacity": 1,
+        }
       }
+      testID="login"
     >
-      <Text
+      <View
         style={
           Array [
-            Object {
-              "color": "#007AFF",
-              "fontSize": 18,
-              "margin": 8,
-              "textAlign": "center",
-            },
+            Object {},
           ]
         }
       >
-        Login
-      </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#007AFF",
+                "fontSize": 18,
+                "margin": 8,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Login
+        </Text>
+      </View>
     </View>
   </View>
 </View>

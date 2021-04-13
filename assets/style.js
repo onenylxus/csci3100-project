@@ -1,5 +1,8 @@
 // Import
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const windowWidth = Dimensions.get('window').width;
+const loginFormWidth = Math.min(windowWidth, 400);
 
 // Export stylesheet
 export default StyleSheet.create({
@@ -14,12 +17,6 @@ export default StyleSheet.create({
   hyperlink: {
     color: '#0000ff',
     textDecorationLine: 'underline',
-    fontFamily: 'Roboto',
-  },
-
-  loginTitle: {
-    fontSize: 30,
-    marginBottom: 20,
     fontFamily: 'Roboto',
   },
 
@@ -40,11 +37,30 @@ export default StyleSheet.create({
     backgroundColor: '#ffffff',
     borderWidth: 1,
     borderColor: '#000000',
-    width: '85%',
+    minWidth: '75%',
+    maxWidth: '75%',
     height: 40,
     borderRadius: 5,
-    paddingHorizontal: '3%',
+    paddingHorizontal: '1%',
     marginVertical: '5%',
+    alignSelf: 'center',
+  },
+
+  // Styles of Login Page
+  loginFormContainer: {
+    flex: 1,
+    paddingHorizontal: 32,
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: loginFormWidth,
+    alignSelf: 'center',
+  },
+
+  loginTitle: {
+    fontSize: 30,
+    marginBottom: 20,
+    fontFamily: 'Roboto',
     alignSelf: 'center',
   },
 
@@ -69,8 +85,11 @@ export default StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 16,
     alignItems: 'flex-start',
+    alignSelf: 'center',
     flexDirection: 'column',
-    width: '95%',
+    maxWidth: '80%',
+    minWidth: '80%',
+    backgroundColor: '#ffffff',
   },
 
   // Styles of Verification Page
