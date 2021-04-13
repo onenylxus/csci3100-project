@@ -47,8 +47,10 @@ export default function EditProfileScreen() {
       <ScrollView
         showsVerticalScrollIndicator={styleByDevice(windowWidth, 'scrollBar')}
       >
-        <Text style={Style.editProfileHeading}>Edit Your Profile</Text>
-        <EditProfileForm />
+        <View>
+          <Text style={Style.editProfileHeading}>Edit Your Profile</Text>
+          <EditProfileForm />
+        </View>
       </ScrollView>
     </View>
   );

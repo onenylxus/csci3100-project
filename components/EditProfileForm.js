@@ -25,8 +25,8 @@ export default function EditProfileForm() {
 
   const windowWidth = Dimensions.get('window').width;
 
-  function styleByDevice(widthOfDevice, component) {
-    if (widthOfDevice < 1100) {
+  /* function styleByDevice(widthOfDevice, component) {
+    if (widthOfDevice < 800) {
       // Style of Small Screen
       switch (component) {
         case 'width':
@@ -57,7 +57,7 @@ export default function EditProfileForm() {
       default:
         break;
     }
-  }
+  } */
 
   function fetchData() {
     (async () => {
@@ -125,16 +125,26 @@ export default function EditProfileForm() {
 
   React.useEffect(fetchData);
 
+  // Hide Outline of Textinput Box
+  function hideOutline(screenWidth) {
+    if (screenWidth < 800) {
+      return null;
+    }
+    return { outline: 'none' };
+  }
+
   return (
     <View>
       {/* Profile picture */}
-      <Text style={Style.sectionText}>Profile</Text>
+      <View style={{ borderBottomWidth: 1 }}>
+        <Text style={Style.sectionText}>Profile</Text>
+      </View>
 
       {/* Name */}
       <Text style={Style.sectionText}>Real name:</Text>
       <View style={Style.SectionStyle}>
         <TextInput
-          style={Style.textInput}
+          style={hideOutline(windowWidth)}
           placeholder="Name"
           defaultValue={name}
           onChangeText={(text) => setName(text)}
@@ -148,8 +158,8 @@ export default function EditProfileForm() {
         defaultValue={gender}
         value={gender}
       >
-        <RadioButton.Item label="Male" value="M" />
-        <RadioButton.Item label="Female" value="F" />
+        <RadioButton.Item style={Style.sectionText} label="Male" value="M" />
+        <RadioButton.Item style={Style.sectionText} label="Female" value="F" />
       </RadioButton.Group>
 
       {/* Major */}
@@ -161,10 +171,7 @@ export default function EditProfileForm() {
       {/* Bio */}
       <Text style={Style.sectionText}>Bio:</Text>
       <TextInput
-        style={{
-          ...Style.editBio,
-          width: styleByDevice(windowWidth, 'pickerWidth'),
-        }}
+        style={Style.combineStyle}
         onChangeText={(text) => setBio(text)}
         defaultValue={bio}
         multiline

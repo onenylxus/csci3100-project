@@ -71,7 +71,7 @@ export default function CreateCommentForm({ post }) {
       />
       <TextInput
         placeholder="Write Comment"
-        style={{ width: 230 }}
+        style={{ width: '75%' }}
         value={comment}
         onChangeText={(value) => setComment(value)}
       />

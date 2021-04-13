@@ -30,7 +30,7 @@ export default function CollegePicker({ callback, value }) {
         return 550;
 
       case 'pickerWidth':
-        return 250;
+        return '75%';
 
       default:
         break;
@@ -47,9 +47,7 @@ export default function CollegePicker({ callback, value }) {
           width: styleByDevice(windowWidth, 'width'),
         }}
       >
-        <Text style={{ ...Style.sectionText, marginLeft: '12%' }}>
-          College:{' '}
-        </Text>
+        <Text style={Style.pickerTitle}>College: </Text>
         <View>
           <Picker
             style={{

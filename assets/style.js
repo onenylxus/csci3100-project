@@ -4,6 +4,13 @@ import { StyleSheet, Dimensions } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const loginFormWidth = Math.min(windowWidth, 400);
 
+function hideOutline(screenWidth) {
+  if (screenWidth < 800) {
+    return null;
+  }
+  return { outline: 'none' };
+}
+
 // Export stylesheet
 export default StyleSheet.create({
   container: {
@@ -49,7 +56,7 @@ export default StyleSheet.create({
     height: 40,
     borderRadius: 5,
     paddingHorizontal: '1%',
-    marginVertical: '5%',
+    marginVertical: '4%',
     alignSelf: 'center',
   },
 
@@ -203,6 +210,13 @@ export default StyleSheet.create({
     width: '20%',
   },
 
+  pickerTitle: {
+    alignSelf: 'flex-start',
+    marginLeft: '12%',
+    fontFamily: 'Roboto',
+    marginVertical: '3%',
+  },
+
   // Styles of Profile Page for PC
   profileContainerPC: {
     width: 1000,
@@ -266,6 +280,7 @@ export default StyleSheet.create({
     fontSize: 28,
     alignSelf: 'center',
     marginVertical: 20,
+    fontFamily: 'Roboto',
   },
 
   editBio: {
@@ -277,6 +292,20 @@ export default StyleSheet.create({
     textAlign: 'left',
     textAlignVertical: 'top',
     alignSelf: 'center',
+  },
+
+  combineStyle: {
+    borderColor: '#000000',
+    borderWidth: 1,
+    backgroundColor: '#f8f8f8',
+    height: 100,
+    margin: 16,
+    textAlign: 'left',
+    textAlignVertical: 'top',
+    alignSelf: 'center',
+    padding: '2%',
+    ...hideOutline(windowWidth),
+    width: windowWidth < 800 ? '80%' : '75%',
   },
 
   // Styles of Post
@@ -327,10 +356,10 @@ export default StyleSheet.create({
     backgroundColor: '#ffffff',
     borderWidth: 0.5,
     borderColor: '#000000',
-    width: 300,
+    width: '85%',
     height: 40,
     borderRadius: 15,
-    margin: 10,
+    margin: '4%',
     alignSelf: 'center',
   },
 
