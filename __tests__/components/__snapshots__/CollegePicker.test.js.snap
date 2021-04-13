@@ -21,8 +21,7 @@ exports[`CollegePicker matches snapshot 1`] = `
         }
       }
     >
-      College:
-       
+      College: 
     </Text>
     <View>
       <View

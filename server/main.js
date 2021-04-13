@@ -2,11 +2,15 @@
 const express = require('express');
 const fs = require('fs');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 // Variables
 const app = express();
 const uri = process.env.MONGODB_URI;
 const port = process.env.PORT || 8080;
+
+// Use CORS
+app.use(cors);
 
 // Use express JSON
 app.use(express.json());
