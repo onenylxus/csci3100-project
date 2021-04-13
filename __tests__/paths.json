@@ -98,6 +98,7 @@
     "createComment.js",
     "createPost.js",
     "createReport.js",
+    "deleteAccount.js",
     "deletePost.js",
     "editPost.js",
     "editProfile.js",

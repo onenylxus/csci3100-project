@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {
@@ -13,9 +13,80 @@ import AuthContext from '../components/AuthContext';
 // Export Settings screen
 
 export default function SettingsScreen() {
+  const navigation = useNavigation();
+  const { getUser } = React.useContext(AuthContext);
   const { logout } = React.useContext(AuthContext);
 
-  const navigation = useNavigation();
+  const [username, setUsername] = React.useState('');
+
+  const status = React.useRef(0);
+
+  getUser(setUsername);
+
+  async function deleteAccount() {
+    await fetch('https://cu-there-server.herokuapp.com/deleteAccount', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+      }),
+    })
+      .then((res) => {
+        status.current = res.status;
+        return res;
+      })
+      .then((res) => {
+        console.log(res);
+        if (status.current === 200) {
+          return Alert.alert(
+            'Account deleted',
+            'Your account has been deleted',
+            [
+              {
+                text: 'OK',
+                onPress: () => logout,
+                style: 'cancel',
+              },
+            ]
+          );
+        }
+        if (status.current === 422) {
+          return Alert.alert(
+            'Account not found',
+            'Your account has been deleted',
+            [
+              {
+                text: 'OK',
+                onPress: () => logout,
+                style: 'cancel',
+              },
+            ]
+          );
+        }
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function askDelete() {
+    return Alert.alert(
+      'Delete this account?',
+      'Are you sure you would like to delete this account? This action is irreversible.',
+      [
+        {
+          text: 'No',
+          onPress: () => undefined,
+          style: 'cancel',
+        },
+        {
+          text: 'Yes',
+          onPress: () => deleteAccount(),
+          style: 'destructive',
+        },
+      ]
+    );
+  }
 
   return (
     <View>
@@ -34,7 +105,7 @@ export default function SettingsScreen() {
       </View>
       {/* Delete account */}
       <View style={{ paddingHorizontal: 10 }}>
-        <TouchableOpacity onPress={undefined}>
+        <TouchableOpacity onPress={askDelete()}>
           <View style={{ flexDirection: 'row', alignContent: 'center' }}>
             <FontAwesomeIcon
               icon={faUserSlash}
