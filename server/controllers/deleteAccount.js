@@ -56,7 +56,11 @@ module.exports = function deleteAccount(req, res) {
       return res.status(422).send({ msg: 'Client not found' });
     }
     data.deleteOne({});
-  });
 
-  Post.updateMany({ username }, { username: 'Deleted user' });
+    Post.updateMany({ username }, { username: 'Deleted user' });
+  });
+  return res
+    .status(200)
+    .send({ msg: 'Client deleted' })
+    .catch((err) => console.log(err));
 };
