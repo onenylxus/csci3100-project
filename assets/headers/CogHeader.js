@@ -11,7 +11,7 @@ export default function CogHeader(navigation, title = 'CU There') {
     headerStyle: {
       backgroundColor: '#69c6f0',
     },
-    headerTitleStyle: { alignSelf: 'center' },
+    headerTitleAlign: 'center',
     headerTintColor: '#ffffff',
     headerRight: () => (
       <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
