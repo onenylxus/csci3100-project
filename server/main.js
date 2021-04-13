@@ -38,7 +38,7 @@ fs.readdirSync('./controllers')
   .filter((file) => file.endsWith('.js'))
   .map((file) => file.slice(0, -3))
   .forEach((file) => {
-    app.post(`/${file}`, require(`./controllers/${file}`));
+    app.post(`/${file}`, cors(), require(`./controllers/${file}`));
   });
 
 // Other requests
