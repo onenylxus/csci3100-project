@@ -21,7 +21,7 @@ module.exports = function follow(req, res) {
       });
     }
     console.log(followState);
-    if (followState === true) {
+    if (followState === false) {
       data
         .update({
           $push: { follower: self },
