@@ -4,9 +4,11 @@ exports[`CommentBox matches snapshot 1`] = `
 <View
   style={
     Object {
+      "alignSelf": "center",
       "backgroundColor": "#f8f8f8",
+      "borderRadius": 15,
       "margin": 4,
-      "width": "75%",
+      "width": "85%",
     }
   }
 >
@@ -28,15 +30,33 @@ exports[`CommentBox matches snapshot 1`] = `
       <View
         style={
           Object {
+            "width": "15%",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "alignSelf": "flex-start",
+              "fontFamily": "Roboto",
+              "fontSize": 15,
+              "marginLeft": 13,
+              "marginVertical": 5,
+            }
+          }
+        >
+          #
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
             "flex": 1,
             "flexDirection": "row",
             "marginVertical": 20,
           }
         }
       >
-        <Text>
-          #
-        </Text>
         <Image
           source={1}
           style={
@@ -59,12 +79,11 @@ exports[`CommentBox matches snapshot 1`] = `
           <Text
             style={
               Object {
-                "fontSize": 14,
+                "fontSize": 18,
                 "fontWeight": "bold",
               }
             }
           >
-            Username: 
             testac
           </Text>
           <Text>

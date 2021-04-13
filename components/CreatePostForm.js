@@ -86,49 +86,37 @@ export default function CreatePostForm() {
   React.useEffect(fetchData);
 
   return (
-    <View
-      style={{
-        justifyContent: 'center',
-        alignContent: 'center',
-        minWidth: '96%',
-        maxWidth: '96%',
-      }}
-    >
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'flex-start',
-          alignContent: 'center',
-          marginLeft: '9%',
-        }}
-      >
+    <View style={Style.createPostContainer}>
+      <View style={Style.createPostInner}>
         <Text style={{ alignSelf: 'center', marginRight: 10 }}>
           Post Anonymously?
         </Text>
         <Switch onValueChange={toggleSwitch} value={isEnabled} />
       </View>
-      <TextInput
-        style={Style.SectionStyle}
-        placeholder="Post title"
-        onChangeText={(text) => setTitle(text)}
-      />
-      <TextInput
-        style={Style.createPostBox}
-        multiline
-        scrollEnabled
-        enablesReturnKeyAutomatically
-        placeholder="What's on your mind?"
-        onChangeText={(text) => setContent(text)}
-      />
-      <Picker selectedValue={tags} onValueChange={(text) => setTags(text)}>
-        <Picker.Item label="Choose a channel!" value="" />
-        <Picker.Item label="Academics" value="Academics" />
-        <Picker.Item label="Relationships" value="Relationships" />
-        <Picker.Item label="News" value="News" />
-        <Picker.Item label="CU-Related" value="CU-Related" />
-        <Picker.Item label="Entertainment" value="Entertainment" />
-      </Picker>
-      <Button title="Post!" onPress={submitData} />
+      <View>
+        <TextInput
+          style={Style.SectionStyle}
+          placeholder="Post title"
+          onChangeText={(text) => setTitle(text)}
+        />
+        <TextInput
+          style={Style.createPostBox}
+          multiline
+          scrollEnabled
+          enablesReturnKeyAutomatically
+          placeholder="What's on your mind?"
+          onChangeText={(text) => setContent(text)}
+        />
+        <Picker selectedValue={tags} onValueChange={(text) => setTags(text)}>
+          <Picker.Item label="Choose a channel!" value="" />
+          <Picker.Item label="Academics" value="Academics" />
+          <Picker.Item label="Relationships" value="Relationships" />
+          <Picker.Item label="News" value="News" />
+          <Picker.Item label="CU-Related" value="CU-Related" />
+          <Picker.Item label="Entertainment" value="Entertainment" />
+        </Picker>
+        <Button title="Post!" onPress={submitData} />
+      </View>
     </View>
   );
 }

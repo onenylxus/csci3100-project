@@ -7,6 +7,7 @@ import {
   TextInput,
   View,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
@@ -32,6 +33,9 @@ export default function RegisterForm() {
   const [visibility, setVisibility] = React.useState(true);
 
   const status = React.useRef(0);
+
+  const windowWidth = Dimensions.get('window').width;
+  const loginFormWidth = Math.min(windowWidth, 400);
 
   async function submitData() {
     console.log(
@@ -139,7 +143,9 @@ export default function RegisterForm() {
   }
 
   return (
-    <View>
+    <View
+      style={{ ...Style.Container, width: loginFormWidth, alignSelf: 'center' }}
+    >
       {/* Username */}
       <View style={Style.inputContainer}>
         <Text style={Style.sectionText}>Username:</Text>
@@ -150,7 +156,7 @@ export default function RegisterForm() {
             style={{ marginHorizontal: 5, marginVertical: 12 }}
           />
           <TextInput
-            style={{ width: 200 }}
+            style={{ minWidth: '85%', maxWidth: '85%' }}
             placeholder="Username"
             onChangeText={(text) => changeUsername(text)}
           />
@@ -160,10 +166,9 @@ export default function RegisterForm() {
             Username must be of length 4-20 characters
           </Text>
         </View>
-      </View>
 
-      {/* Password */}
-      <View style={Style.inputContainer}>
+        {/* Password */}
+
         <Text style={Style.sectionText}>Password:</Text>
         <View style={{ ...Style.SectionStyle, ...styleByState(passwordState) }}>
           <FontAwesomeIcon
@@ -172,7 +177,7 @@ export default function RegisterForm() {
             style={{ marginHorizontal: 5, marginVertical: 12 }}
           />
           <TextInput
-            style={{ width: 175 }}
+            style={{ minWidth: '77%', maxWidth: '77%' }}
             placeholder="Password"
             onChangeText={(text) => changePassword(text)}
             secureTextEntry={visibility}
@@ -192,10 +197,9 @@ export default function RegisterForm() {
             Password must be of length greater than 6 characters
           </Text>
         </View>
-      </View>
 
-      {/* Email */}
-      <View style={Style.inputContainer}>
+        {/* Email */}
+
         <Text style={Style.sectionText}>CUHK link email:</Text>
         <View style={{ ...Style.SectionStyle, ...styleByState(emailState) }}>
           <FontAwesomeIcon
@@ -204,7 +208,7 @@ export default function RegisterForm() {
             style={{ marginHorizontal: 5, marginVertical: 12 }}
           />
           <TextInput
-            style={{ width: 200 }}
+            style={{ minWidth: '85%', maxWidth: '85%' }}
             placeholder="CUHK link email"
             onChangeText={(text) => changeEmail(text)}
           />

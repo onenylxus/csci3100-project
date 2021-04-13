@@ -8,9 +8,8 @@ import Style from '../assets/style';
 export default function ForgotPasswordScreen() {
   return (
     <View style={Style.container}>
-      <Text>
-        Enter your verified CUHK Link Email. We will send you a link. Please
-        click the link to reset your password.
+      <Text style={{ width: '85%' }}>
+        Enter your verified CUHK Link Email to reset your password.{' '}
       </Text>
       <ForgotPasswordForm />
     </View>

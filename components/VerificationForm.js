@@ -115,7 +115,7 @@ export default function VerificationForm() {
       back();
 
       Alert.alert(
-        'About confirmation',
+        'Abort confirmation',
         'If you leave this screen, you have to start over your current request. Are you sure you want to do this?',
         [
           {
@@ -155,13 +155,7 @@ export default function VerificationForm() {
     <View style={{ alignContent: 'center' }}>
       <View style={Style.codeInputBox}>
         <TextInput
-          style={{
-            width: '100%',
-            fontSize: 22,
-            alignContent: 'center',
-            marginLeft: '6%',
-            marginTop: '6%',
-          }}
+          style={Style.verificationCode}
           onChangeText={(text) => setCode(text)}
         />
       </View>

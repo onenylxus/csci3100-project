@@ -16,7 +16,7 @@ exports[`MajorPicker matches snapshot 1`] = `
         Object {
           "alignSelf": "flex-start",
           "fontFamily": "Roboto",
-          "marginLeft": "10%",
+          "marginLeft": "12%",
         }
       }
     >

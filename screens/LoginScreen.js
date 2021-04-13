@@ -10,27 +10,19 @@ import Style from '../assets/style';
 export default function LoginScreen() {
   const navigation = useNavigation();
 
-  /* function loadFonts() {
-    (async () => {
-      await Font.loadAsync({
-        Sarina: require('../assets/fonts/Sarina-Regular.ttf'),
-      });
-    })();
-  }
-
-  React.useEffect(loadFonts); */
-
   return (
-    <View style={Style.container}>
-      <Text style={Style.loginTitle}>CU There</Text>
-      <LoginForm />
+    <View style={Style.container2}>
+      <Text style={{ ...Style.loginTitle }}>CU There</Text>
+      <View style={{ alignSelf: 'center' }}>
+        <LoginForm />
+      </View>
       <Text
-        style={{ ...Style.hyperlink, marginTop: 20 }}
+        style={{ ...Style.hyperlink, marginTop: 20, alignSelf: 'center' }}
         onPress={() => navigation.navigate('GuestFeed')}
       >
         Continue as guest
       </Text>
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
         <Text
           style={{ ...Style.hyperlink, alignItems: 'flex-start', margin: 8 }}
           onPress={() => navigation.navigate('Register')}

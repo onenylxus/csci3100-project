@@ -5,6 +5,11 @@ import { render } from '@testing-library/react-native';
 // Import target component
 import LeaderboardBox from '../../components/LeaderboardBox';
 
+// Mock FontAwesome icons
+jest.mock('@fortawesome/react-native-fontawesome', () => ({
+  FontAwesomeIcon: '',
+}));
+
 // Run jest tests
 describe('CommentBox', () => {
   let element;
@@ -15,7 +20,7 @@ describe('CommentBox', () => {
     const popularityMock = 0;
 
     // Render
-    element = render(<LeaderboardBox username={usernameMock} popularity={popularityMock}/>);
+    element = render(<LeaderboardBox username={usernameMock} popularity={popularityMock} />);
   });
 
   it('matches snapshot', () => {

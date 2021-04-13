@@ -1,5 +1,8 @@
 // Import
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const windowWidth = Dimensions.get('window').width;
+const loginFormWidth = Math.min(windowWidth, 400);
 
 // Export stylesheet
 export default StyleSheet.create({
@@ -11,25 +14,17 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
 
+  container2: {
+    flex: 1,
+    paddingHorizontal: 32,
+    backgroundColor: '#ffffff',
+    justifyContent: 'center',
+  },
+
   hyperlink: {
     color: '#0000ff',
     textDecorationLine: 'underline',
     fontFamily: 'Roboto',
-  },
-
-  loginTitle: {
-    fontSize: 30,
-    marginBottom: 20,
-    fontFamily: 'Roboto',
-  },
-
-  codeInputBox: {
-    borderWidth: 0.5,
-    borderColor: '#000',
-    minWidth: '25%',
-    height: 40,
-    borderRadius: 5,
-    margin: '5%',
   },
 
   postBox: {
@@ -49,11 +44,30 @@ export default StyleSheet.create({
     backgroundColor: '#ffffff',
     borderWidth: 1,
     borderColor: '#000000',
-    width: '85%',
+    minWidth: '75%',
+    maxWidth: '75%',
     height: 40,
     borderRadius: 5,
-    paddingHorizontal: '3%',
+    paddingHorizontal: '1%',
     marginVertical: '5%',
+    alignSelf: 'center',
+  },
+
+  // Styles of Login Page
+  loginFormContainer: {
+    flex: 1,
+    paddingHorizontal: 32,
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: loginFormWidth,
+    alignSelf: 'center',
+  },
+
+  loginTitle: {
+    fontSize: 30,
+    marginBottom: 20,
+    fontFamily: 'Roboto',
     alignSelf: 'center',
   },
 
@@ -78,21 +92,60 @@ export default StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 16,
     alignItems: 'flex-start',
+    alignSelf: 'center',
     flexDirection: 'column',
-    width: '95%',
+    maxWidth: '80%',
+    minWidth: '80%',
+    backgroundColor: '#ffffff',
   },
 
+  // Styles of Verification Page
+  codeInputBox: {
+    borderWidth: 0.5,
+    borderColor: '#000',
+    minWidth: '25%',
+    height: 40,
+    borderRadius: 5,
+    margin: '5%',
+  },
+
+  verificationCode: {
+    width: '100%',
+    fontSize: 22,
+    alignContent: 'center',
+    marginLeft: '6%',
+    marginTop: '6%',
+  },
+
+  // Styles of Create Post Page
   createPostBox: {
     borderColor: '#000000',
     borderWidth: 1,
     backgroundColor: '#f8f8f8',
     width: '85%',
     height: 100,
-    marginVertical: '3%',
     textAlign: 'left',
     textAlignVertical: 'top',
     alignSelf: 'center',
     borderRadius: 10,
+    minWidth: '75%',
+    maxWidth: '75%',
+    paddingHorizontal: '1%',
+    marginVertical: '5%',
+  },
+
+  createPostContainer: {
+    justifyContent: 'center',
+    alignContent: 'center',
+    minWidth: '100%',
+    maxWidth: '100%',
+  },
+
+  createPostInner: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignContent: 'center',
+    marginLeft: '9%',
   },
 
   // Styles of Edit Post Page
@@ -176,6 +229,25 @@ export default StyleSheet.create({
     minHeight: '50%',
   },
 
+  // Styles of Edit Profile Page
+  editProfileHeading: {
+    fontSize: 28,
+    alignSelf: 'center',
+    marginVertical: 20,
+  },
+
+  editBio: {
+    borderColor: '#000000',
+    borderWidth: 1,
+    backgroundColor: '#f8f8f8',
+    height: 100,
+    margin: 16,
+    textAlign: 'left',
+    textAlignVertical: 'top',
+    alignSelf: 'center',
+  },
+
+  // Styles of Post
   profilePost: {
     width: '95%',
     marginTop: 20,
@@ -187,6 +259,19 @@ export default StyleSheet.create({
     borderColor: '#f0f0f0',
     justifyContent: 'center',
     alignSelf: 'center',
+  },
+
+  trashIcon: {
+    flexDirection: 'row',
+    alignSelf: 'flex-end',
+    margin: 10,
+  },
+
+  postTitle: {
+    marginHorizontal: 15,
+    marginVertical: 10,
+    fontSize: 20,
+    fontWeight: 'bold',
   },
 
   postBar: {
@@ -202,6 +287,7 @@ export default StyleSheet.create({
     borderColor: '#f0f0f0',
     backgroundColor: 'white',
     flexDirection: 'column',
+    padding: 4,
   },
 
   commentBar: {
@@ -221,6 +307,13 @@ export default StyleSheet.create({
   },
 
   // Styles for LeaderboardScreen
+  leaderboardBackground: {
+    flex: 1,
+    paddingHorizontal: 32,
+    backgroundColor: '#ffffff',
+    paddingTop: '8%',
+  },
+
   LeaderboardLeft: {
     borderWidth: 1,
     borderRightWidth: 0.5,
@@ -233,6 +326,22 @@ export default StyleSheet.create({
     borderLeftWidth: 0.5,
     borderColor: '#dedede',
     backgroundColor: 'white',
+  },
+
+  LeaderboardBox: {
+    width: '85%',
+    margin: 4,
+    backgroundColor: '#f8f8f8',
+    borderRadius: 15,
+    alignSelf: 'center',
+  },
+
+  rankText: {
+    alignSelf: 'flex-start',
+    fontFamily: 'Roboto',
+    marginVertical: 5,
+    marginLeft: 13,
+    fontSize: 15,
   },
 
   chatBox: {
@@ -280,7 +389,6 @@ export default StyleSheet.create({
     borderWidth: 0.5,
     borderColor: '#000000',
     width: '95%',
-    // height: 40,
     borderRadius: 20,
     margin: 10,
     alignSelf: 'center',
@@ -308,5 +416,20 @@ export default StyleSheet.create({
     borderRadius: 5,
     alignSelf: 'center',
     marginTop: 10,
+  },
+
+  userIcon: {
+    width: 32,
+    height: 32,
+    marginHorizontal: 8,
+    marginTop: 4,
+    borderRadius: 28,
+  },
+
+  bigUserIcon: {
+    width: 64,
+    height: 64,
+    margin: 8,
+    borderRadius: 32,
   },
 });

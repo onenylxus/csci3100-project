@@ -61,9 +61,9 @@ export default function FeedScreen() {
   return (
     <View style={{ marginBottom: 50 }}>
       <SearchBar />
-      <View>
+      <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
         <Button
-          title="Newest"
+          title="Latest"
           onPress={() => {
             setTags('Newest');
             onRefresh();

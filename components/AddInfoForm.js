@@ -119,8 +119,16 @@ export default function AddInfoForm() {
             onValueChange={(newValue) => setGender(newValue)}
             value={gender}
           >
-            <RadioButton.Item label="Male" value="M" />
-            <RadioButton.Item label="Female" value="F" />
+            <RadioButton.Item
+              style={Style.sectionText}
+              label="Male"
+              value="M"
+            />
+            <RadioButton.Item
+              style={Style.sectionText}
+              label="Female"
+              value="F"
+            />
           </RadioButton.Group>
         </View>
       </View>

@@ -7,6 +7,7 @@ import {
   TextInput,
   View,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {
@@ -15,7 +16,6 @@ import {
   faEyeSlash,
   faEye,
 } from '@fortawesome/free-solid-svg-icons';
-// import Font from 'expo-font';
 import AuthContext from './AuthContext';
 import Style from '../assets/style';
 
@@ -26,6 +26,9 @@ export default function LoginForm() {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [visibility, setVisibility] = React.useState(true);
+
+  const windowWidth = Dimensions.get('window').width;
+  const loginFormWidth = Math.min(windowWidth, 400);
 
   const status = React.useRef(0);
 
@@ -105,19 +108,10 @@ export default function LoginForm() {
     }
   }
 
-  // Use fonts
-  /* function loadFonts() {
-    (async () => {
-      await Font.loadAsync({
-        ConcertOne: require('../assets/fonts/ConcertOne-Regular.ttf'),
-      });
-    })();
-  }
-
-  React.useEffect(loadFonts); */
-
   return (
-    <View>
+    <View
+      style={{ ...Style.Container, width: loginFormWidth, alignSelf: 'center' }}
+    >
       {/* Username */}
       <View style={Style.inputContainer}>
         <Text style={Style.sectionText}>Username:</Text>
@@ -125,30 +119,29 @@ export default function LoginForm() {
           <FontAwesomeIcon
             icon={faUser}
             size={15}
-            style={{ marginHorizontal: 5, marginVertical: 12 }}
+            style={{ marginHorizontal: 5, marginVertical: 12, width: '50%' }}
           />
           <TextInput
             placeholder="Username"
             value={username}
-            style={{ width: 190 }}
+            style={{ minWidth: '85%', maxWidth: '85%' }}
             onChangeText={(text) => setUsername(text)}
             testID="username"
           />
         </View>
-      </View>
-      {/* Password */}
-      <View style={Style.inputContainer}>
+
+        {/* Password */}
         <Text style={Style.sectionText}>Password:</Text>
         <View style={Style.SectionStyle}>
           <FontAwesomeIcon
             icon={faLock}
             size={15}
-            style={{ marginHorizontal: 5, marginVertical: 12 }}
+            style={{ marginHorizontal: 5, marginVertical: 12, width: '50%' }}
           />
           <TextInput
             placeholder="Password"
             value={password}
-            style={{ width: 165 }}
+            style={{ minWidth: '77%', maxWidth: '77%' }}
             onChangeText={(text) => setPassword(text)}
             secureTextEntry={visibility}
             clearTextOnFocus={false}
@@ -167,12 +160,14 @@ export default function LoginForm() {
           </TouchableOpacity>
         </View>
       </View>
-      <Button
-        title="Login"
-        onPress={confirmLogin}
-        style={{ fontFamily: 'Roboto' }}
-        testID="login"
-      />
+      <View style={{ marginHorizontal: '40%' }}>
+        <Button
+          title="Login"
+          onPress={confirmLogin}
+          style={{ fontFamily: 'Roboto' }}
+          testID="login"
+        />
+      </View>
     </View>
   );
 }
