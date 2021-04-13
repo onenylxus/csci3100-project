@@ -23,6 +23,7 @@ module.exports = function fetchFollow(req, res) {
     return res.status(200).send({
       msg: 'follower fetched',
       follower: data.follower,
+      following: data.following,
     });
   });
 };

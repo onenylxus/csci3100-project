@@ -28,6 +28,7 @@ export default function OtherProfileScreen() {
   const [username, setUsername] = React.useState('');
   const [followState, setFollowState] = React.useState(false);
   const [numOfFollower, setNumOfFollower] = React.useState(0);
+  const [numOfFollowing, setNumOfFollowing] = React.useState(0);
   const [refreshing, setRefreshing] = React.useState(true);
   const [list, setList] = React.useState([]);
 
@@ -120,6 +121,7 @@ export default function OtherProfileScreen() {
                 setFollowState(true);
               }
               setNumOfFollower(res.follower.length);
+              setNumOfFollowing(res.following.length);
               fetched.current = true;
             } else if (status.current === 422) {
               console.log(res.error);
@@ -243,7 +245,7 @@ export default function OtherProfileScreen() {
                 <Text>{numOfFollower} Followers</Text>
               </TouchableOpacity>
               <TouchableOpacity style={{ marginHorizontal: 15 }}>
-                <Text>4 Following</Text>
+                <Text>{numOfFollowing} Following</Text>
               </TouchableOpacity>
             </Row>
           </View>

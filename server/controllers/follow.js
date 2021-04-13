@@ -13,6 +13,7 @@ module.exports = function follow(req, res) {
   const { followState, self, other } = req.body;
 
   const otherClient = Client.findOne({ username: other });
+  const selfClient = Client.findOne({ self });
 
   otherClient.then((data) => {
     if (!data) {
@@ -27,20 +28,17 @@ module.exports = function follow(req, res) {
           $inc: { popularity: 1 },
         })
         .exec();
-      const selfClient = Client.findOne({ self });
       selfClient.then((data1) => {
         if (!data1) {
           return res.status(422).send({
             error: 'Client not found.',
           });
         }
-
         data1
           .update({
-            $push: { following: otherClient.username },
+            $push: { following: data.username },
           })
           .exec();
-
         return res.status(200).send({
           msg: 'followed',
           follower: data.follower,
@@ -48,15 +46,12 @@ module.exports = function follow(req, res) {
       });
     } else {
       data.follower.splice(data.follower.indexOf(self), 1);
-
       data
         .update({
           $set: { follower: data.follower },
           $inc: { popularity: -1 },
         })
         .exec();
-
-      const selfClient = Client.findOne({ self });
 
       selfClient.then((data1) => {
         if (!data1) {
