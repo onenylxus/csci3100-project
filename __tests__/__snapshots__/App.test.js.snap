@@ -112,6 +112,7 @@ exports[`App matches snapshot on guest mode 1`] = `
                 onLayout={[Function]}
                 style={
                   Object {
+                    "alignSelf": "center",
                     "color": "#ffffff",
                     "fontSize": 17,
                     "fontWeight": "600",
@@ -341,7 +342,7 @@ exports[`App matches snapshot on guest mode 1`] = `
                                 Object {
                                   "alignSelf": "flex-start",
                                   "fontFamily": "Roboto",
-                                  "marginLeft": "2%",
+                                  "marginLeft": "10%",
                                 }
                               }
                             >
@@ -408,7 +409,7 @@ exports[`App matches snapshot on guest mode 1`] = `
                                 Object {
                                   "alignSelf": "flex-start",
                                   "fontFamily": "Roboto",
-                                  "marginLeft": "2%",
+                                  "marginLeft": "10%",
                                 }
                               }
                             >
@@ -793,6 +794,7 @@ exports[`App matches snapshot on login mode 1`] = `
                         onLayout={[Function]}
                         style={
                           Object {
+                            "alignSelf": "center",
                             "color": "#ffffff",
                             "fontSize": 17,
                             "fontWeight": "600",

@@ -114,9 +114,7 @@ export default function LoginForm() {
     >
       {/* Username */}
       <View style={Style.inputContainer}>
-        <Text style={{ ...Style.sectionText, marginLeft: '2%' }}>
-          Username:
-        </Text>
+        <Text style={Style.sectionText}>Username:</Text>
         <View style={Style.SectionStyle}>
           <FontAwesomeIcon
             icon={faUser}
@@ -133,9 +131,7 @@ export default function LoginForm() {
         </View>
 
         {/* Password */}
-        <Text style={{ ...Style.sectionText, marginLeft: '2%' }}>
-          Password:
-        </Text>
+        <Text style={Style.sectionText}>Password:</Text>
         <View style={Style.SectionStyle}>
           <FontAwesomeIcon
             icon={faLock}

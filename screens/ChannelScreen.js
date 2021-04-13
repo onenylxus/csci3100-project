@@ -26,7 +26,7 @@ export default function ChannelsScreen() {
   // const channelCategories = []; { tags: { title } }
 
   const Item = categories.map((data) => (
-    <View style={{ paddingHorizontal: 10 }}>
+    <View style={{ paddingHorizontal: 10 }} key={data.index}>
       <TouchableOpacity
         onPress={() => navigation.navigate('ChannelFeed', { tags: data })}
       >

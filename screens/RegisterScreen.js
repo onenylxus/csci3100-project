@@ -7,7 +7,7 @@ import Style from '../assets/style';
 // Export register screen
 export default function RegisterScreen() {
   return (
-    <View style={Style.container}>
+    <View style={Style.container2}>
       <Text style={Style.loginTitle}>Create your account</Text>
       <RegisterForm />
     </View>

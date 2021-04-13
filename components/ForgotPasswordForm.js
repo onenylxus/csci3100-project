@@ -72,20 +72,19 @@ export default function ForgotPasswordForm() {
 
   return (
     <View>
-      <View style={Style.inputContainer}>
-        <View style={Style.SectionStyle}>
-          <FontAwesomeIcon
-            icon={faEnvelope}
-            size={15}
-            style={{ marginHorizontal: 5, marginVertical: 12 }}
-          />
-          <TextInput
-            style={{ width: '90%' }}
-            placeholder="CUHK link Email"
-            onChangeText={(text) => setEmail(text)}
-          />
-        </View>
+      <View style={Style.SectionStyle}>
+        <FontAwesomeIcon
+          icon={faEnvelope}
+          size={15}
+          style={{ marginHorizontal: 5, marginVertical: 12 }}
+        />
+        <TextInput
+          style={{ width: '95%', alignSelf: 'center' }}
+          placeholder="CUHK link Email"
+          onChangeText={(text) => setEmail(text)}
+        />
       </View>
+
       <Button
         title="Submit"
         color="gray"

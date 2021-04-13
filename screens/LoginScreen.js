@@ -11,15 +11,8 @@ export default function LoginScreen() {
   const navigation = useNavigation();
 
   return (
-    <View
-      style={{
-        flex: 1,
-        paddingHorizontal: 32,
-        backgroundColor: '#ffffff',
-        justifyContent: 'center',
-      }}
-    >
-      <Text style={Style.loginTitle}>CU There</Text>
+    <View style={Style.container2}>
+      <Text style={{ ...Style.loginTitle }}>CU There</Text>
       <View style={{ alignSelf: 'center' }}>
         <LoginForm />
       </View>

@@ -14,6 +14,13 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
 
+  container2: {
+    flex: 1,
+    paddingHorizontal: 32,
+    backgroundColor: '#ffffff',
+    justifyContent: 'center',
+  },
+
   hyperlink: {
     color: '#0000ff',
     textDecorationLine: 'underline',
@@ -117,18 +124,21 @@ export default StyleSheet.create({
     backgroundColor: '#f8f8f8',
     width: '85%',
     height: 100,
-    marginVertical: '3%',
     textAlign: 'left',
     textAlignVertical: 'top',
     alignSelf: 'center',
     borderRadius: 10,
+    minWidth: '75%',
+    maxWidth: '75%',
+    paddingHorizontal: '1%',
+    marginVertical: '5%',
   },
 
   createPostContainer: {
     justifyContent: 'center',
     alignContent: 'center',
-    minWidth: '96%',
-    maxWidth: '96%',
+    minWidth: '100%',
+    maxWidth: '100%',
   },
 
   createPostInner: {
