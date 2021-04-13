@@ -50,8 +50,8 @@ module.exports = function deleteAccount(req, res) {
     });
     */
 
-    const post = Post.updateMany({ username }, { username: 'Deleted User' });
-
-    return res.status(200).send({ msg: 'Deleted post and comment', post });
+    // const post = Post.updateMany({ username }, { username: 'Deleted User' });
+    Post.where({ username }).update({ $set: { username: 'Deleted' } });
+    return res.status(200).send({ msg: 'Deleted post and comment' });
   });
 };
