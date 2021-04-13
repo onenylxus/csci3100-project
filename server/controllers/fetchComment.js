@@ -20,7 +20,6 @@ module.exports = function fetchComment(req, res) {
         error: 'no comment in database',
       });
     }
-    console.log(data);
     return res.status(200).send({ msg: 'Comment fetched.', comment: data });
   });
 };
