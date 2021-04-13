@@ -1,0 +1,125 @@
+{
+  "assets": [
+    "style.js"
+  ],
+  "assets/fonts": [
+    "Baloo2-Medium.ttf",
+    "ConcertOne-Regular.ttf",
+    "Sarina-Regular.ttf",
+    "RobotoSlab-Regular.ttf",
+    "MuthiaraDemoVersion.otf",
+    "Montserrat-Regular.ttf"
+  ],
+  "assets/headers": [
+    "BackableHeader.js",
+    "CogHeader.js",
+    "Header.js",
+    "Headerless.js"
+  ],
+  "assets/icons": [
+    "adaptive-icon.png",
+    "favicon.png",
+    "icon.png",
+    "splash.png"
+  ],
+  "assets/images": [
+    "background.png",
+    "profile.png"
+  ],
+  "assets/json": [
+    "collegeList.json",
+    "majorList.json",
+    "tagsList.json"
+  ],
+  "components": [
+    "AddInfoForm.js",
+    "AuthContext.js",
+    "CollegePicker.js",
+    "CommentBox.js",
+    "CommentContainer.js",
+    "CreateCommentForm.js",
+    "CreatePostForm.js",
+    "CreateReportForm.js",
+    "EditPostForm.js",
+    "EditProfileForm.js",
+    "ForgotPasswordForm.js",
+    "LeaderboardBox.js",
+    "LikeContainer.js",
+    "LoginForm.js",
+    "MajorPicker.js",
+    "MessageBar.js",
+    "PostBox.js",
+    "RegisterForm.js",
+    "ResetPasswordForm.js",
+    "SearchBar.js",
+    "TagsPicker.js",
+    "VerificationForm.js"
+  ],
+  "screens": [
+    "AddInfoScreen.js",
+    "ChannelFeedScreen.js",
+    "ChannelScreen.js",
+    "CreatePostScreen.js",
+    "CreateReportScreen.js",
+    "EditPostScreen.js",
+    "EditProfileScreen.js",
+    "FeedScreen.js",
+    "ForgotPasswordScreen.js",
+    "GuestFeedScreen.js",
+    "LeaderboardScreen.js",
+    "LoginScreen.js",
+    "OtherProfileScreen.js",
+    "ProfileScreen.js",
+    "RegisterScreen.js",
+    "ResetPasswordScreen.js",
+    "SettingsScreen.js",
+    "VerificationScreen.js"
+  ],
+  "screens/navigators": [
+    "ChannelStack.js",
+    "CreatePostStack.js",
+    "FeedStack.js",
+    "ForgotPasswordStack.js",
+    "GuestFeedStack.js",
+    "LeaderboardStack.js",
+    "ProfileStack.js",
+    "RegisterStack.js"
+  ],
+  "server": [
+    "cipher.js",
+    "main.js",
+    "sender.js",
+    "transporter.js"
+  ],
+  "server/controllers": [
+    "abort.js",
+    "addInfo.js",
+    "createComment.js",
+    "createPost.js",
+    "createReport.js",
+    "deletePost.js",
+    "editPost.js",
+    "editProfile.js",
+    "fetchComment.js",
+    "fetchData.js",
+    "fetchFollow.js",
+    "fetchLike.js",
+    "fetchPost.js",
+    "fetchUsername.js",
+    "follow.js",
+    "forgotPassword.js",
+    "like.js",
+    "login.js",
+    "register.js",
+    "resend.js",
+    "resetPassword.js",
+    "verify.js"
+  ],
+  "server/schemas": [
+    "Client.js",
+    "Comment.js",
+    "Post.js",
+    "Report.js",
+    "Token.js"
+  ]
+}

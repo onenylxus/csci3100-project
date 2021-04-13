@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import AuthContext from './AuthContext';
 
-// Export
-export default function LikeAndDislike({ post }) {
+// Export like container
+export default function LikeContainer({ post }) {
   const { getUser } = React.useContext(AuthContext);
 
   const [username, setUsername] = React.useState('');
@@ -17,23 +17,20 @@ export default function LikeAndDislike({ post }) {
   const fetched = React.useRef(false);
   const status = React.useRef(0);
 
-  // Fetch Like
-  function fetchLikeAndDislike() {
+  // Fetch like
+  function fetchLike() {
     (async () => {
       if (!fetched.current) {
         await getUser(setUsername);
-        await fetch(
-          'https://cu-there-server.herokuapp.com/fetchLikeAndDislike',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              _id: postId.current,
-            }),
-          }
-        )
+        await fetch('https://cu-there-server.herokuapp.com/fetchLike', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            _id: postId.current,
+          }),
+        })
           .then((res) => {
             status.current = res.status;
             return res;
@@ -82,7 +79,7 @@ export default function LikeAndDislike({ post }) {
       .catch((err) => console.log(err));
   }
 
-  React.useEffect(fetchLikeAndDislike, [getUser, likeState, username]);
+  React.useEffect(fetchLike, [getUser, likeState, username]);
 
   return (
     <View>

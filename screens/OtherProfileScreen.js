@@ -3,7 +3,7 @@ import React from 'react';
 import {
   Text,
   Button,
-  // Dimensions,
+  // Dimensions,n
   View,
   RefreshControl,
   ScrollView,
@@ -11,18 +11,21 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Row, Grid } from 'react-native-easy-grid';
-import { useNavigation } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 import AuthContext from '../components/AuthContext';
 import PostBox from '../components/PostBox';
 import Style from '../assets/style';
 
-// Export profile screen
-export default function ProfileScreen() {
+// Export other profile screen
+export default function OtherProfileScreen() {
   // const windowWidth = Dimensions.get('window').width;
-  const navigation = useNavigation();
+  const route = useRoute();
+
+  const { other } = route.params;
   const { getUser } = React.useContext(AuthContext);
 
   const [username, setUsername] = React.useState('');
+  const [followState, setFollowState] = React.useState(false);
   const [numOfFollower, setNumOfFollower] = React.useState(0);
   const [numOfFollowing, setNumOfFollowing] = React.useState(0);
   const [refreshing, setRefreshing] = React.useState(true);
@@ -31,7 +34,7 @@ export default function ProfileScreen() {
   const page = React.useRef(0);
   const fetched = React.useRef(false);
   const status = React.useRef(0);
-  const showButton = React.useRef(true);
+  const showButton = React.useRef(false);
 
   // Get username
   getUser(setUsername);
@@ -93,7 +96,6 @@ export default function ProfileScreen() {
         break;
     }
   } */
-
   function fetchFollow() {
     (async () => {
       if (!fetched.current) {
@@ -103,7 +105,7 @@ export default function ProfileScreen() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            other: username,
+            other,
           }),
         })
           .then((res) => {
@@ -113,6 +115,9 @@ export default function ProfileScreen() {
           .then((res) => res.json())
           .then((res) => {
             if (status.current === 200) {
+              if (res.follower.includes(username)) {
+                setFollowState(true);
+              }
               setNumOfFollower(res.follower.length);
               setNumOfFollowing(res.following.length);
               fetched.current = true;
@@ -125,6 +130,31 @@ export default function ProfileScreen() {
     })();
   }
 
+  async function follow() {
+    await fetch('https://cu-there-server.herokuapp.com/follow', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        followState,
+        self: username,
+        other,
+      }),
+    })
+      .then((res) => {
+        status.current = res.status;
+        return res;
+      })
+      .then((res) => res.json())
+      .then((res) => {
+        if (status.current === 200) {
+          setNumOfFollower(res.follower.length);
+        }
+      })
+      .catch((err) => console.log(err));
+  }
+
   function fetchPost() {
     (async () => {
       if (refreshing) {
@@ -134,7 +164,7 @@ export default function ProfileScreen() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            username,
+            username: other,
             page,
             tags: '',
           }),
@@ -146,6 +176,7 @@ export default function ProfileScreen() {
           .then((res) => res.json())
           .then((res) => {
             if (status.current === 200) {
+              console.log('followState: ' + followState);
               setList(res.posts);
               setRefreshing(false);
             } else if (status.current === 422) {
@@ -168,9 +199,9 @@ export default function ProfileScreen() {
     setTimeout(() => setRefreshing(false), 30000);
   }, []);
 
-  React.useEffect(fetchFollow, [username]);
+  React.useEffect(fetchFollow, [followState, other, refreshing, username]);
 
-  React.useEffect(fetchPost, [refreshing, username]);
+  React.useEffect(fetchPost, [followState, other, refreshing, username]);
 
   return (
     <ScrollView
@@ -192,16 +223,38 @@ export default function ProfileScreen() {
                 source={require('../assets/images/profile.png')}
               />
               <Text style={Style.userInfoPhone}>
-                Username: {username} {'\n'}
+                Username: {other} {'\n'}
                 Major:{'\n'}
                 College:{'\n'}
               </Text>
             </Row>
+
             <Row size={2} style={Style.editProfileButtonPhone}>
-              <Button
-                title="Edit Profile"
-                onPress={() => navigation.navigate('EditProfile')}
-              />
+              {followState ? (
+                <Button
+                  title="unfollow"
+                  style={{
+                    color: followState ? '#83CCFF' : 'lightgrey',
+                    margin: 5,
+                  }}
+                  onPress={() => {
+                    setFollowState(!followState);
+                    follow();
+                  }}
+                />
+              ) : (
+                <Button
+                  title="follow"
+                  style={{
+                    color: followState ? '#83CCFF' : 'lightgrey',
+                    margin: 5,
+                  }}
+                  onPress={() => {
+                    setFollowState(!followState);
+                    follow();
+                  }}
+                />
+              )}
               <TouchableOpacity style={{ marginHorizontal: 15 }}>
                 <Text>{numOfFollower} Followers</Text>
               </TouchableOpacity>
