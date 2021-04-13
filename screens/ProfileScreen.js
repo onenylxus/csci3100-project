@@ -30,7 +30,7 @@ export default function ProfileScreen() {
   const [refreshing, setRefreshing] = React.useState(true);
   const [list, setList] = React.useState([]);
   const [college, setCollege] = React.useState('');
-  const [gender, setGender] = React.useState('');
+  // const [gender, setGender] = React.useState('');
   const [major, setMajor] = React.useState('');
   const [bio, setBio] = React.useState('');
 
@@ -41,64 +41,6 @@ export default function ProfileScreen() {
 
   // Get username
   getUser(setUsername);
-
-  function styleByDevice(widthOfDevice, component) {
-    if (widthOfDevice < 800) {
-      // Style of Small Screen
-      switch (component) {
-        case 'container':
-          return Style.profileContainerPhone;
-
-        case 'button':
-          return Style.editProfileButtonPhone;
-
-        case 'propicSize':
-          return 90;
-
-        case 'propic':
-          return Style.profilePicturePhone;
-
-        case 'propicLayer':
-          return 0.7;
-
-        case 'userInfo':
-          return Style.userInfoPhone;
-
-        case 'infoLayer':
-          return Style.infoLayerPhone;
-
-        default:
-          break;
-      }
-    }
-
-    // Style of Large Screen
-    switch (component) {
-      case 'container':
-        return Style.profileContainerPC;
-
-      case 'button':
-        return Style.editProfileButtonPC;
-
-      case 'propicSize':
-        return 120;
-
-      case 'propic':
-        return Style.profilePicturePC;
-
-      case 'propicLayer':
-        return 0.2;
-
-      case 'userInfo':
-        return Style.userInfoPC;
-
-      case 'infoLayer':
-        return Style.infoLayerPC;
-
-      default:
-        break;
-    }
-  }
 
   function fetchData() {
     (async () => {
@@ -120,7 +62,7 @@ export default function ProfileScreen() {
             .then((res) => res.json())
             .then((res) => {
               if (status.current === 200) {
-                setGender(res.gender);
+                // setGender(res.gender);
                 setMajor(res.major);
                 setCollege(res.college);
                 setBio(res.bio);
@@ -220,6 +162,76 @@ export default function ProfileScreen() {
 
   React.useEffect(fetchPost, [refreshing, username]);
 
+  // Small screen
+  if (windowWidth < 800) {
+    return (
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
+        <View style={{ flex: 1 }}>
+          <Grid style={Style.profileContainerPhone}>
+            <View style={Style.infoLayerPhone}>
+              <Row size={1} style={Style.profilePicturePhone}>
+                <Image
+                  style={{
+                    width: 64,
+                    height: 64,
+                    margin: 8,
+                    borderRadius: 32,
+                  }}
+                  source={require('../assets/images/profile.png')}
+                />
+                <Text style={Style.userInfoPhone}>
+                  {username} {'\n'}
+                  {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
+                  {'\n'}
+                  {CollegeList.hasOwnProperty(college)
+                    ? CollegeList[college]
+                    : 'N/A'}
+                  {'\n'}
+                </Text>
+              </Row>
+              <Row>
+                <View>
+                  <Text
+                    style={{
+                      paddingHorizontal: '10%',
+                      marginBottom: '2%',
+                      fontSize: 16,
+                    }}
+                  >
+                    Biography:
+                  </Text>
+                </View>
+              </Row>
+              <Row style={{ justifyContent: 'center' }}>
+                <View style={Style.bioContainerPhone}>
+                  <Text>{bio}</Text>
+                </View>
+              </Row>
+              <Row size={2} style={Style.editProfileButtonPhone}>
+                <Button
+                  title="Edit Profile"
+                  onPress={() => navigation.navigate('EditProfile')}
+                />
+                <TouchableOpacity style={{ marginHorizontal: 15 }}>
+                  <Text>{numOfFollower} Followers</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{ marginHorizontal: 15 }}>
+                  <Text>{numOfFollowing} Following</Text>
+                </TouchableOpacity>
+              </Row>
+            </View>
+          </Grid>
+        </View>
+        <View>{generate()}</View>
+      </ScrollView>
+    );
+  }
+
+  // Large screen
   return (
     <ScrollView
       refreshControl={
@@ -227,38 +239,43 @@ export default function ProfileScreen() {
       }
     >
       <View style={{ flex: 1 }}>
-        <Grid style={styleByDevice(windowWidth, 'container')}>
-          <View style={styleByDevice(windowWidth, 'infoLayer')}>
-            <Row size={1} style={styleByDevice(windowWidth, 'propic')}>
+        <Grid style={Style.profileContainerPC}>
+          <View>
+            <Row size={10} style={Style.profilePicturePC}>
               <Image
                 style={{
-                  width: 64,
-                  height: 64,
+                  width: 128,
+                  height: 128,
                   margin: 8,
-                  borderRadius: 32,
+                  borderRadius: 70,
                 }}
                 source={require('../assets/images/profile.png')}
               />
-              <Text style={styleByDevice(windowWidth, 'userInfo')}>
-                Username: {username} {'\n'}
-                Gender: {gender} {'\n'}
-                Major:{' '}
+              <Text style={Style.userInfoPC}>
+                {username} {'\n'}
                 {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
-                {'\n'}
-                College:{' '}
+                {'\n'}{' '}
                 {CollegeList.hasOwnProperty(college)
                   ? CollegeList[college]
                   : 'N/A'}
                 {'\n'}
               </Text>
             </Row>
-            <Row>
-              <View>
+            <Row size={1} style={{ minWidth: '85%', maxWidth: '85%' }}>
+              <View
+                style={{
+                  paddingTop: '2%',
+                  paddingBottom: '1%',
+                  minWidth: '100%',
+                  maxWidth: '100%',
+                }}
+              >
                 <Text
                   style={{
-                    paddingHorizontal: '10%',
+                    paddingLeft: '10%',
                     marginBottom: '2%',
                     fontSize: 16,
+                    // borderTopWidth: 1,
                   }}
                 >
                   Biography:
@@ -266,11 +283,11 @@ export default function ProfileScreen() {
               </View>
             </Row>
             <Row style={{ justifyContent: 'center' }}>
-              <View style={Style.bioContainer}>
+              <View style={Style.bioContainerPC}>
                 <Text>{bio}</Text>
               </View>
             </Row>
-            <Row size={2} style={styleByDevice(windowWidth, 'button')}>
+            <Row size={2} style={Style.editProfileButtonPC}>
               <Button
                 title="Edit Profile"
                 onPress={() => navigation.navigate('EditProfile')}
