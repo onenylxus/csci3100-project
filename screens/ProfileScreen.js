@@ -23,6 +23,8 @@ export default function ProfileScreen() {
   const { getUser } = React.useContext(AuthContext);
 
   const [username, setUsername] = React.useState('');
+  const [numOfFollower, setNumOfFollower] = React.useState(0);
+  const [numOfFollowing, setNumOfFollowing] = React.useState(0);
   const [refreshing, setRefreshing] = React.useState(true);
   const [list, setList] = React.useState([]);
 
@@ -111,6 +113,8 @@ export default function ProfileScreen() {
           .then((res) => res.json())
           .then((res) => {
             if (status.current === 200) {
+              setNumOfFollower(res.follower.length);
+              setNumOfFollowing(res.following.length);
               fetched.current = true;
             } else if (status.current === 422) {
               console.log(res.error);
@@ -199,10 +203,10 @@ export default function ProfileScreen() {
                 onPress={() => navigation.navigate('EditProfile')}
               />
               <TouchableOpacity style={{ marginHorizontal: 15 }}>
-                <Text>4 Followers</Text>
+                <Text>{numOfFollower} Followers</Text>
               </TouchableOpacity>
               <TouchableOpacity style={{ marginHorizontal: 15 }}>
-                <Text>4 Following</Text>
+                <Text>{numOfFollowing} Following</Text>
               </TouchableOpacity>
             </Row>
           </View>

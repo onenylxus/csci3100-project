@@ -40,8 +40,9 @@ module.exports = function follow(req, res) {
           })
           .exec();
         return res.status(200).send({
-          msg: 'followed',
+          msg: 'follower, following updated. User followed',
           follower: data.follower,
+          following: data1.following,
         });
       });
     } else {
@@ -70,6 +71,7 @@ module.exports = function follow(req, res) {
         return res.status(200).send({
           msg: 'unfollowed',
           follower: data.follower,
+          following: data1.following,
         });
       });
     }
