@@ -214,7 +214,8 @@ export default StyleSheet.create({
     alignSelf: 'flex-start',
     marginLeft: '10%',
     fontFamily: 'Roboto',
-    marginVertical: '3%',
+    marginTop: '1%',
+    marginBottom: '2%',
   },
 
   // Styles of Profile Page for PC
@@ -321,7 +322,7 @@ export default StyleSheet.create({
 
   // Styles of Post
   profilePost: {
-    width: '95%',
+    width: windowWidth < 800 ? '95%' : 600,
     marginTop: 20,
     marginBottom: 10,
     backgroundColor: 'white',
@@ -383,7 +384,7 @@ export default StyleSheet.create({
     flex: 1,
     paddingHorizontal: 32,
     backgroundColor: '#ffffff',
-    paddingTop: '8%',
+    paddingVertical: '8%',
   },
 
   LeaderboardLeft: {

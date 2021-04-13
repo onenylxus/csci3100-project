@@ -190,7 +190,7 @@ export default function PostContainer({ post, showButton }) {
       <View>
         <LikeContainer key={post._id} post={post} />
       </View>
-      <View>
+      <View style={{ marginBottom: 10 }}>
         <TouchableOpacity
           style={{ flexDirection: 'row' }}
           onPress={() => setShowComment(!showComment)}

@@ -1,6 +1,13 @@
 // Import
 import React from 'react';
-import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import {
+  Alert,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  Dimensions,
+} from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import AuthContext from './AuthContext';
@@ -8,6 +15,8 @@ import Style from '../assets/style';
 
 // Export Comment
 export default function CreateCommentForm({ post }) {
+  const windowWidth = Dimensions.get('window').width;
+
   const { getUser } = React.useContext(AuthContext);
 
   const [username, setUsername] = React.useState('');
@@ -62,6 +71,28 @@ export default function CreateCommentForm({ post }) {
       })
       .catch((err) => console.log(err));
   }
+
+  if (windowWidth < 800) {
+    return (
+      <View style={Style.commentBar}>
+        <FontAwesomeIcon
+          icon={faPen}
+          size={15}
+          style={{ marginHorizontal: 5, marginVertical: 12 }}
+        />
+        <TextInput
+          placeholder="Write Comment"
+          style={{ width: '75%' }}
+          value={comment}
+          onChangeText={(value) => setComment(value)}
+        />
+        <TouchableOpacity style={Style.sendMessageButtom} onPress={submitData}>
+          <Text style={{ color: 'blue' }}>Send</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
   return (
     <View style={Style.commentBar}>
       <FontAwesomeIcon

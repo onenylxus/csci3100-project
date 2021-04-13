@@ -1003,6 +1003,8 @@ exports[`App matches snapshot on login mode 1`] = `
                                   <Text
                                     style={
                                       Object {
+                                        "borderBottomWidth": 0,
+                                        "borderColor": "#546eff",
                                         "color": "#546eff",
                                         "fontSize": 18,
                                       }
@@ -1031,6 +1033,8 @@ exports[`App matches snapshot on login mode 1`] = `
                                   <Text
                                     style={
                                       Object {
+                                        "borderBottomWidth": 1,
+                                        "borderColor": "#546eff",
                                         "color": "#546eff",
                                         "fontSize": 18,
                                       }

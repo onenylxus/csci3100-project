@@ -15,14 +15,21 @@ exports[`MajorPicker matches snapshot 1`] = `
         Object {
           "alignSelf": "flex-start",
           "fontFamily": "Roboto",
+          "marginBottom": "2%",
           "marginLeft": "10%",
-          "marginVertical": "3%",
+          "marginTop": "1%",
         }
       }
     >
       Major:
     </Text>
-    <View>
+    <View
+      style={
+        Object {
+          "marginBottom": 10,
+        }
+      }
+    >
       <View
         style={
           Object {

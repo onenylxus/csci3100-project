@@ -60,6 +60,19 @@ export default function FeedScreen() {
     ));
   }
 
+  function underlineTag(clickingTag, tag) {
+    if (clickingTag === 'Trending') {
+      if (tag === 'Trending') {
+        return 1;
+      }
+      return 0;
+    }
+    if (tag === 'Newest') {
+      return 1;
+    }
+    return 0;
+  }
+
   const onRefresh = React.useCallback(async () => {
     setRefreshing(true);
     setTimeout(() => setRefreshing(false), 30000);
@@ -77,7 +90,16 @@ export default function FeedScreen() {
           }}
           style={{ margin: 15 }}
         >
-          <Text style={{ color: '#546eff', fontSize: 18 }}>Latest</Text>
+          <Text
+            style={{
+              color: '#546eff',
+              fontSize: 18,
+              borderBottomWidth: underlineTag('Newest', tags),
+              borderColor: '#546eff',
+            }}
+          >
+            Latest
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
@@ -86,7 +108,16 @@ export default function FeedScreen() {
           }}
           style={{ margin: 15 }}
         >
-          <Text style={{ color: '#546eff', fontSize: 18 }}>Trending</Text>
+          <Text
+            style={{
+              color: '#546eff',
+              fontSize: 18,
+              borderBottomWidth: underlineTag('Trending', tags),
+              borderColor: '#546eff',
+            }}
+          >
+            Trending
+          </Text>
         </TouchableOpacity>
       </View>
 
