@@ -16,17 +16,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { loadAsync } from 'expo-font';
 // import AppLoading from 'expo-app-loading';
 import AuthContext from './components/AuthContext';
-import ChannelStack from './screens/navigators/ChannelStack';
-import CreatePostStack from './screens/navigators/CreatePostStack';
-import FeedStack from './screens/navigators/FeedStack';
-import ForgotPasswordStack from './screens/navigators/ForgotPasswordStack';
-import GuestFeedStack from './screens/navigators/GuestFeedStack';
+import ChannelStack from './screens/stacks/ChannelStack';
+import CreatePostStack from './screens/stacks/CreatePostStack';
+import FeedStack from './screens/stacks/FeedStack';
+import ForgotPasswordStack from './screens/stacks/ForgotPasswordStack';
+import GuestFeedStack from './screens/stacks/GuestFeedStack';
 import Header from './assets/headers/Header';
 import Headerless from './assets/headers/Headerless';
-import LeaderboardStack from './screens/navigators/LeaderboardStack';
+import LeaderboardStack from './screens/stacks/LeaderboardStack';
 import LoginScreen from './screens/LoginScreen';
-import ProfileStack from './screens/navigators/ProfileStack';
-import RegisterStack from './screens/navigators/RegisterStack';
+import ProfileStack from './screens/stacks/ProfileStack';
+import RegisterStack from './screens/stacks/RegisterStack';
 
 // Stack and tab
 const Stack = createStackNavigator();

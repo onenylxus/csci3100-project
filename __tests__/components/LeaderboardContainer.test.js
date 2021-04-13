@@ -3,7 +3,7 @@ import React from 'react';
 import { render } from '@testing-library/react-native';
 
 // Import target component
-import LeaderboardBox from '../../components/LeaderboardBox';
+import LeaderboardContainer from '../../components/LeaderboardContainer';
 
 // Mock FontAwesome icons
 jest.mock('@fortawesome/react-native-fontawesome', () => ({
@@ -11,7 +11,7 @@ jest.mock('@fortawesome/react-native-fontawesome', () => ({
 }));
 
 // Run jest tests
-describe('CommentBox', () => {
+describe('Comment', () => {
   let element;
 
   beforeEach(() => {
@@ -20,7 +20,7 @@ describe('CommentBox', () => {
     const popularityMock = 0;
 
     // Render
-    element = render(<LeaderboardBox username={usernameMock} popularity={popularityMock} />);
+    element = render(<LeaderboardContainer username={usernameMock} popularity={popularityMock} />);
   });
 
   it('matches snapshot', () => {

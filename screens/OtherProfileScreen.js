@@ -3,7 +3,7 @@ import React from 'react';
 import {
   Text,
   Button,
-  // Dimensions,n
+  // Dimensions
   View,
   RefreshControl,
   ScrollView,
@@ -15,7 +15,7 @@ import { useRoute } from '@react-navigation/native';
 import AuthContext from '../components/AuthContext';
 import CollegeList from '../assets/json/collegeList.json';
 import MajorList from '../assets/json/majorList.json';
-import PostBox from '../components/PostBox';
+import PostContainer from '../components/PostContainer';
 import Style from '../assets/style';
 
 // Export other profile screen
@@ -232,7 +232,11 @@ export default function OtherProfileScreen() {
 
   function generate() {
     return list.map((post) => (
-      <PostBox key={post._id} post={post} showButton={showButton.current} />
+      <PostContainer
+        key={post._id}
+        post={post}
+        showButton={showButton.current}
+      />
     ));
   }
 
@@ -287,7 +291,7 @@ export default function OtherProfileScreen() {
                 <Button
                   title="unfollow"
                   style={{
-                    color: followState ? '#83CCFF' : 'lightgrey',
+                    backgroundColor: followState ? '#69c6f0' : '#cccccc',
                     margin: 5,
                   }}
                   onPress={() => {
@@ -299,7 +303,7 @@ export default function OtherProfileScreen() {
                 <Button
                   title="follow"
                   style={{
-                    color: followState ? '#83CCFF' : 'lightgrey',
+                    backgroundColor: followState ? '#69c6f0' : '#cccccc',
                     margin: 5,
                   }}
                   onPress={() => {

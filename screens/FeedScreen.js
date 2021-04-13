@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import SearchBar from '../components/SearchBar';
-import PostBox from '../components/PostBox';
+import PostContainer from '../components/PostContainer';
 
 // Export feed screen
 export default function FeedScreen() {
@@ -53,7 +53,11 @@ export default function FeedScreen() {
 
   function generate() {
     return list.map((post) => (
-      <PostBox key={post._id} post={post} showButton={showButton.current} />
+      <PostContainer
+        key={post._id}
+        post={post}
+        showButton={showButton.current}
+      />
     ));
   }
 

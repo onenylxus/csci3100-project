@@ -37,7 +37,7 @@
     "AddInfoForm.js",
     "AuthContext.js",
     "CollegePicker.js",
-    "CommentBox.js",
+    "Comment.js",
     "CommentContainer.js",
     "CreateCommentForm.js",
     "CreatePostForm.js",
@@ -45,12 +45,12 @@
     "EditPostForm.js",
     "EditProfileForm.js",
     "ForgotPasswordForm.js",
-    "LeaderboardBox.js",
+    "LeaderboardContainer.js",
     "LikeContainer.js",
     "LoginForm.js",
     "MajorPicker.js",
     "MessageBar.js",
-    "PostBox.js",
+    "PostContainer.js",
     "RegisterForm.js",
     "ResetPasswordForm.js",
     "SearchBar.js",
@@ -58,6 +58,7 @@
     "VerificationForm.js"
   ],
   "screens": [
+    "AboutUsScreen.js",
     "AddInfoScreen.js",
     "ChannelFeedScreen.js",
     "ChannelScreen.js",
@@ -77,7 +78,7 @@
     "SettingsScreen.js",
     "VerificationScreen.js"
   ],
-  "screens/navigators": [
+  "screens/stacks": [
     "ChannelStack.js",
     "CreatePostStack.js",
     "FeedStack.js",
@@ -99,6 +100,7 @@
     "createComment.js",
     "createPost.js",
     "createReport.js",
+    "deleteAccount.js",
     "deletePost.js",
     "editPost.js",
     "editProfile.js",
