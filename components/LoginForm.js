@@ -35,6 +35,7 @@ export default function LoginForm() {
   async function submitData() {
     await fetch('https://cu-there-server.herokuapp.com/login', {
       method: 'POST',
+      mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
       },

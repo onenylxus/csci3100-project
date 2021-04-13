@@ -42,7 +42,7 @@ export default function CollegePicker({ callback, value }) {
       {/* College */}
       <View
         style={{
-          marginVertical: 40,
+          // marginVertical: '1%',
           flexDirection: 'column',
           width: styleByDevice(windowWidth, 'width'),
         }}

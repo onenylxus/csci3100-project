@@ -42,7 +42,7 @@ export default function MajorPicker({ callback, value }) {
       {/* Major */}
       <View
         style={{
-          marginVertical: 40,
+          // marginVertical: '1%',
           flexDirection: 'column',
           width: styleByDevice(windowWidth, 'width'),
         }}

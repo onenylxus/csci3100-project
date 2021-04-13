@@ -212,14 +212,14 @@ export default StyleSheet.create({
 
   pickerTitle: {
     alignSelf: 'flex-start',
-    marginLeft: '12%',
+    marginLeft: '10%',
     fontFamily: 'Roboto',
     marginVertical: '3%',
   },
 
   // Styles of Profile Page for PC
   profileContainerPC: {
-    width: 1000,
+    width: 700,
     alignSelf: 'center',
     paddingTop: 32,
   },
@@ -259,7 +259,7 @@ export default StyleSheet.create({
   },
 
   editProfileButtonPhone: {
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 10,
   },
@@ -273,6 +273,15 @@ export default StyleSheet.create({
 
   infoLayerPhone: {
     minHeight: '50%',
+  },
+
+  bioContainer: {
+    borderTopWidth: 1,
+    paddingHorizontal: '4%',
+    paddingVertical: '2%',
+    maxWidth: '85%',
+    minWidth: '85%',
+    fontSize: 17,
   },
 
   // Styles of Edit Profile Page
@@ -305,7 +314,9 @@ export default StyleSheet.create({
     alignSelf: 'center',
     padding: '2%',
     ...hideOutline(windowWidth),
-    width: windowWidth < 800 ? '80%' : '75%',
+    // width: windowWidth < 800 ? '80%' : '75%',
+    maxWidth: '100%',
+    minWidth: '100%',
   },
 
   // Styles of Post

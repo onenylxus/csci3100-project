@@ -6,7 +6,6 @@ exports[`MajorPicker matches snapshot 1`] = `
     style={
       Object {
         "flexDirection": "column",
-        "marginVertical": 40,
         "width": "100%",
       }
     }
@@ -16,7 +15,7 @@ exports[`MajorPicker matches snapshot 1`] = `
         Object {
           "alignSelf": "flex-start",
           "fontFamily": "Roboto",
-          "marginLeft": "12%",
+          "marginLeft": "10%",
           "marginVertical": "3%",
         }
       }

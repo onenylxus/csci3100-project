@@ -3,7 +3,7 @@ import React from 'react';
 import {
   Text,
   Button,
-  // Dimensions,
+  Dimensions,
   View,
   RefreshControl,
   ScrollView,
@@ -20,7 +20,7 @@ import Style from '../assets/style';
 
 // Export profile screen
 export default function ProfileScreen() {
-  // const windowWidth = Dimensions.get('window').width;
+  const windowWidth = Dimensions.get('window').width;
   const navigation = useNavigation();
   const { getUser } = React.useContext(AuthContext);
 
@@ -42,8 +42,8 @@ export default function ProfileScreen() {
   // Get username
   getUser(setUsername);
 
-  /* function styleByDevice(widthOfDevice, component) {
-    if (widthOfDevice < 1100) {
+  function styleByDevice(widthOfDevice, component) {
+    if (widthOfDevice < 800) {
       // Style of Small Screen
       switch (component) {
         case 'container':
@@ -98,7 +98,7 @@ export default function ProfileScreen() {
       default:
         break;
     }
-  } */
+  }
 
   function fetchData() {
     (async () => {
@@ -227,9 +227,9 @@ export default function ProfileScreen() {
       }
     >
       <View style={{ flex: 1 }}>
-        <Grid style={Style.profileContainerPhone}>
-          <View style={Style.infoLayerPhone}>
-            <Row size={1} style={Style.profilePicturePhone}>
+        <Grid style={styleByDevice(windowWidth, 'container')}>
+          <View style={styleByDevice(windowWidth, 'infoLayer')}>
+            <Row size={1} style={styleByDevice(windowWidth, 'propic')}>
               <Image
                 style={{
                   width: 64,
@@ -239,7 +239,7 @@ export default function ProfileScreen() {
                 }}
                 source={require('../assets/images/profile.png')}
               />
-              <Text style={Style.userInfoPhone}>
+              <Text style={styleByDevice(windowWidth, 'userInfo')}>
                 Username: {username} {'\n'}
                 Gender: {gender} {'\n'}
                 Major:{' '}
@@ -250,11 +250,27 @@ export default function ProfileScreen() {
                   ? CollegeList[college]
                   : 'N/A'}
                 {'\n'}
-                Bio:{bio}
-                {'\n'}
               </Text>
             </Row>
-            <Row size={2} style={Style.editProfileButtonPhone}>
+            <Row>
+              <View>
+                <Text
+                  style={{
+                    paddingHorizontal: '10%',
+                    marginBottom: '2%',
+                    fontSize: 16,
+                  }}
+                >
+                  Biography:
+                </Text>
+              </View>
+            </Row>
+            <Row style={{ justifyContent: 'center' }}>
+              <View style={Style.bioContainer}>
+                <Text>{bio}</Text>
+              </View>
+            </Row>
+            <Row size={2} style={styleByDevice(windowWidth, 'button')}>
               <Button
                 title="Edit Profile"
                 onPress={() => navigation.navigate('EditProfile')}
@@ -267,7 +283,6 @@ export default function ProfileScreen() {
               </TouchableOpacity>
             </Row>
           </View>
-          <Row />
         </Grid>
       </View>
       <View>{generate()}</View>

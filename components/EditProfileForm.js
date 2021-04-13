@@ -136,47 +136,95 @@ export default function EditProfileForm() {
   return (
     <View>
       {/* Profile picture */}
-      <View style={{ borderBottomWidth: 1 }}>
+      <View
+        style={{
+          borderBottomWidth: 1,
+          borderColor: '#dcdcdc',
+          paddingVertical: 10,
+        }}
+      >
         <Text style={Style.sectionText}>Profile</Text>
       </View>
 
       {/* Name */}
-      <Text style={Style.sectionText}>Real name:</Text>
-      <View style={Style.SectionStyle}>
-        <TextInput
-          style={hideOutline(windowWidth)}
-          placeholder="Name"
-          defaultValue={name}
-          onChangeText={(text) => setName(text)}
-        />
+      <View
+        style={{
+          borderBottomWidth: 1,
+          borderColor: '#dcdcdc',
+          paddingVertical: 10,
+        }}
+      >
+        <Text style={Style.sectionText}>Real name:</Text>
+        <View style={Style.SectionStyle}>
+          <TextInput
+            style={{
+              ...hideOutline(windowWidth),
+              maxWidth: '100%',
+              minWidth: '100%',
+            }}
+            placeholder="Name"
+            defaultValue={name}
+            onChangeText={(text) => setName(text)}
+          />
+        </View>
       </View>
 
       {/* Gender */}
-      <Text style={Style.sectionText}>Gender:</Text>
-      <RadioButton.Group
-        onValueChange={(newValue) => setGender(newValue)}
-        defaultValue={gender}
-        value={gender}
+      <View
+        style={{
+          borderBottomWidth: 1,
+          borderColor: '#dcdcdc',
+          paddingVertical: 10,
+        }}
       >
-        <RadioButton.Item style={Style.sectionText} label="Male" value="M" />
-        <RadioButton.Item style={Style.sectionText} label="Female" value="F" />
-      </RadioButton.Group>
+        <Text style={Style.sectionText}>Gender:</Text>
+        <RadioButton.Group
+          onValueChange={(newValue) => setGender(newValue)}
+          defaultValue={gender}
+          value={gender}
+        >
+          <RadioButton.Item style={Style.sectionText} label="Male" value="M" />
+          <RadioButton.Item
+            style={Style.sectionText}
+            label="Female"
+            value="F"
+          />
+        </RadioButton.Group>
+      </View>
 
       {/* Major */}
-      <MajorPicker callback={setMajor} value={major} />
+      <View
+        style={{
+          borderBottomWidth: 1,
+          borderColor: '#dcdcdc',
+          paddingVertical: 10,
+        }}
+      >
+        <MajorPicker callback={setMajor} value={major} />
+      </View>
 
       {/* College */}
-      <CollegePicker callback={setCollege} value={college} />
+      <View
+        style={{
+          borderBottomWidth: 1,
+          borderColor: '#dcdcdc',
+          paddingVertical: 10,
+        }}
+      >
+        <CollegePicker callback={setCollege} value={college} />
+      </View>
 
       {/* Bio */}
-      <Text style={Style.sectionText}>Bio:</Text>
-      <TextInput
-        style={Style.combineStyle}
-        onChangeText={(text) => setBio(text)}
-        defaultValue={bio}
-        multiline
-        enablesReturnKeyAutomatically
-      />
+      <Text style={Style.pickerTitle}>Bio:</Text>
+      <View style={{ maxWidth: '75%', minWidth: '75%', alignSelf: 'center' }}>
+        <TextInput
+          style={Style.combineStyle}
+          onChangeText={(text) => setBio(text)}
+          defaultValue={bio}
+          multiline
+          enablesReturnKeyAutomatically
+        />
+      </View>
 
       {/* Buttons */}
       <View style={Style.submitAndCancelButton}>
