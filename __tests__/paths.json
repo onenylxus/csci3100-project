@@ -45,6 +45,7 @@
     "CreateReportForm.js",
     "EditPostForm.js",
     "EditProfileForm.js",
+    "FollowerContainer.js",
     "ForgotPasswordForm.js",
     "LeaderboardContainer.js",
     "LikeContainer.js",
@@ -75,6 +76,8 @@
     "ProfileScreen.js",
     "RegisterScreen.js",
     "ResetPasswordScreen.js",
+    "SeeFollowerScreen.js",
+    "SeeFollowingScreen.js",
     "SettingsScreen.js",
     "VerificationScreen.js"
   ],
