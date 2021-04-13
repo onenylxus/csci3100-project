@@ -22,6 +22,7 @@ module.exports = function deleteAccount(req, res) {
   const post = Post.find({ username });
 
   client.then((data) => {
+    console.log('data: ' + data);
     if (!data) {
       return res.status(422).send({ msg: 'Client not found' });
     }
@@ -29,6 +30,7 @@ module.exports = function deleteAccount(req, res) {
 
     comment.then((data1) => {
       if (data1) {
+        console.log('data1: ' + data1);
         console.log(data1.username);
         data1
           .updateMany({
@@ -40,6 +42,7 @@ module.exports = function deleteAccount(req, res) {
 
     post.then((data2) => {
       if (data2) {
+        console.log('data2: ' + data2);
         data2
           .updateMany({
             $set: { username: 'Deleted User' },
