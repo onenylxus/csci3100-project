@@ -5,7 +5,7 @@ import { render } from '@testing-library/react-native';
 
 // Import target component
 import AuthContext from '../../components/AuthContext';
-import PostBox from '../../components/PostBox';
+import PostContainer from '../../components/PostContainer';
 
 // Mock authentication method
 const AuthMethodMock = {
@@ -23,7 +23,7 @@ jest.mock('@fortawesome/react-native-fontawesome', () => ({
 }));
 
 // Run jest tests
-describe('PostBox', () => {
+describe('PostContainer', () => {
   let element;
 
   beforeEach(() => {
@@ -41,7 +41,7 @@ describe('PostBox', () => {
     element = render(
       <NavigationContainer>
         <AuthContext.Provider value={AuthMethodMock}>
-          <PostBox post={postMock} showButton={true} />
+          <PostContainer post={postMock} showButton={true} />
         </AuthContext.Provider>
       </NavigationContainer>
     );

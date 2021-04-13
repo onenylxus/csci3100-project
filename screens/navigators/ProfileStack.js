@@ -2,6 +2,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
+import AboutUsScreen from '../AboutUsScreen';
 import ProfileScreen from '../ProfileScreen';
 import EditPostScreen from '../EditPostScreen';
 import EditProfileScreen from '../EditProfileScreen';
@@ -32,6 +33,11 @@ export default function ProfileStack() {
         name="Settings"
         component={SettingsScreen}
         options={() => BackableHeader('Settings')}
+      />
+      <Stack.Screen
+        name="AboutUs"
+        component={AboutUsScreen}
+        option={() => BackableHeader('AboutUs')}
       />
       <Stack.Screen
         name="EditPost"

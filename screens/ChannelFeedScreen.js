@@ -2,7 +2,7 @@
 import React from 'react';
 import { RefreshControl, ScrollView, View } from 'react-native';
 import { useRoute } from '@react-navigation/native';
-import PostBox from '../components/PostBox';
+import PostContainer from '../components/PostContainer';
 import SearchBar from '../components/SearchBar';
 
 // Export Channel Feed screen
@@ -49,7 +49,7 @@ export default function ChannelFeedScreen() {
   }
 
   function generate() {
-    return list.map((post) => <PostBox key={post._id} post={post} />);
+    return list.map((post) => <PostContainer key={post._id} post={post} />);
   }
 
   const onRefresh = React.useCallback(async () => {

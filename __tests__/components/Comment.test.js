@@ -4,7 +4,7 @@ import { render } from '@testing-library/react-native';
 
 // Import target component
 import AuthContext from '../../components/AuthContext';
-import CommentBox from '../../components/CommentBox';
+import Comment from '../../components/Comment';
 
 // Mock authentication method
 const AuthMethodMock = {
@@ -19,7 +19,7 @@ jest.mock('@fortawesome/react-native-fontawesome', () => ({
 }));
 
 // Run jest tests
-describe('CommentBox', () => {
+describe('Comment', () => {
   let element;
 
   beforeEach(() => {
@@ -44,7 +44,7 @@ describe('CommentBox', () => {
     // Render
     element = render(
       <AuthContext.Provider value={AuthMethodMock}>
-        <CommentBox comment={commentMock} />
+        <Comment comment={commentMock} />
       </AuthContext.Provider>
     );
   });

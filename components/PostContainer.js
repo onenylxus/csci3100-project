@@ -15,8 +15,8 @@ import CommentContainer from './CommentContainer';
 import LikeContainer from './LikeContainer';
 import Style from '../assets/style';
 
-// Export Post Box
-export default function PostBox({ post, showButton }) {
+// Export post container
+export default function PostContainer({ post, showButton }) {
   const navigation = useNavigation();
   const { getUser } = React.useContext(AuthContext);
 

@@ -15,7 +15,7 @@ import { useNavigation } from '@react-navigation/native';
 import AuthContext from '../components/AuthContext';
 import CollegeList from '../assets/json/collegeList.json';
 import MajorList from '../assets/json/majorList.json';
-import PostBox from '../components/PostBox';
+import PostContainer from '../components/PostContainer';
 import Style from '../assets/style';
 
 // Export profile screen
@@ -201,7 +201,11 @@ export default function ProfileScreen() {
 
   function generate() {
     return list.map((post) => (
-      <PostBox key={post._id} post={post} showButton={showButton.current} />
+      <PostContainer
+        key={post._id}
+        post={post}
+        showButton={showButton.current}
+      />
     ));
   }
 

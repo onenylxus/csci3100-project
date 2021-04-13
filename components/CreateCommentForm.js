@@ -6,7 +6,7 @@ import { faPen } from '@fortawesome/free-solid-svg-icons';
 import AuthContext from './AuthContext';
 import Style from '../assets/style';
 
-// Export Comment Box
+// Export Comment
 export default function CreateCommentForm({ post }) {
   const { getUser } = React.useContext(AuthContext);
 

@@ -6,8 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faMedal } from '@fortawesome/free-solid-svg-icons';
 import Style from '../assets/style';
 
-// Export Leaderboard box
-export default function LeaderboardBox({ username, popularity, rank }) {
+// Export Leaderboard
+export default function LeaderboardContainer({ username, popularity, rank }) {
   // Medal and Ranking
   function showMedal(ranking) {
     if (ranking === 1) {
@@ -41,7 +41,7 @@ export default function LeaderboardBox({ username, popularity, rank }) {
   }
 
   return (
-    <View style={Style.LeaderboardBox}>
+    <View style={Style.LeaderboardContainer}>
       <View style={{ flexDirection: 'row' }}>
         <Grid>
           <View style={{ width: '15%' }}>{showMedal(rank)}</View>
