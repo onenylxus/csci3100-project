@@ -30,14 +30,18 @@ module.exports = function deleteAccount(req, res) {
 
     comment.then((data1) => {
       if (data1) {
-        console.log('data1: ' + data1);
+        console.log('data1 before delete: ' + data1);
         console.log(data1.username);
         data1
-          .updateMany({
-            $set: { username: 'Deleted User' },
-          })
+          .update(
+            {
+              $set: { username: 'Deleted User' },
+            },
+            { multi: true }
+          )
           .exec();
       }
+      console.log('data1 after delete: ' + data1);
     });
 
     post.then((data2) => {
