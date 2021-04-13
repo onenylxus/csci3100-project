@@ -18,27 +18,34 @@ module.exports = function deleteAccount(req, res) {
 
   // Fetch client
   const client = Client.findOne({ username });
+  const comment = Comment.find({ username });
+  const post = Post.find({ username });
+
   client.then((data) => {
     if (!data) {
       return res.status(422).send({ msg: 'Client not found' });
     }
     data.deleteOne({});
-    const comment = Comment.find({ username });
+
     comment.then((data1) => {
-      data1
-        .update({
-          $set: { username: 'Deleted User' },
-        })
-        .exec();
+      if (data1) {
+        console.log(data1.username);
+        data1
+          .updateMany({
+            $set: { username: 'Deleted User' },
+          })
+          .exec();
+      }
     });
 
-    const post = Post.find({ username });
     post.then((data2) => {
-      data2
-        .update({
-          $set: { username: 'Deleted User' },
-        })
-        .exec();
+      if (data2) {
+        data2
+          .updateMany({
+            $set: { username: 'Deleted User' },
+          })
+          .exec();
+      }
     });
     return res.status(200).send({ msg: 'Deleted post and comment' });
   });

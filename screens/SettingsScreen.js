@@ -40,26 +40,28 @@ export default function SettingsScreen() {
       .then((res) => {
         console.log(res);
         if (status.current === 200) {
+          logout();
           return Alert.alert(
             'Account deleted',
             'Your account has been deleted',
             [
               {
                 text: 'OK',
-                onPress: () => logout,
+                onPress: () => undefined,
                 style: 'cancel',
               },
             ]
           );
         }
         if (status.current === 422) {
+          logout();
           return Alert.alert(
             'Account not found',
             'Your account has been deleted',
             [
               {
                 text: 'OK',
-                onPress: () => logout,
+                onPress: () => undefined,
                 style: 'cancel',
               },
             ]
