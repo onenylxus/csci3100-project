@@ -12,7 +12,7 @@ export default function LoginScreen() {
 
   return (
     <View style={Style.container2}>
-      <Text style={{ ...Style.loginTitle }}>CU There</Text>
+      <Text style={Style.loginTitle}>CU There</Text>
       <View style={{ alignSelf: 'center' }}>
         <LoginForm />
       </View>

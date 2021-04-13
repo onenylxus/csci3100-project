@@ -130,7 +130,7 @@ export default StyleSheet.create({
     borderRadius: 10,
     minWidth: '75%',
     maxWidth: '75%',
-    paddingHorizontal: '1%',
+    paddingHorizontal: '2%',
     marginVertical: '5%',
   },
 
