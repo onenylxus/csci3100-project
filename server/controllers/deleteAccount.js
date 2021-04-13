@@ -16,9 +16,8 @@ module.exports = function deleteAccount(req, res) {
   const { username } = req.body;
 
   // Fetch client
-  /*
   const client = Client.findOne({ username });
-  const comment = Comment.find({ username });
+  // const comment = Comment.find({ username });
   const post = Post.find({ username });
 
   client.then((data) => {
@@ -28,20 +27,21 @@ module.exports = function deleteAccount(req, res) {
     }
     data.deleteOne({});
 
+    /*
     comment.then((data1) => {
       if (data1) {
         console.log('data1 before delete: ' + data1);
-        console.log(data1.username);
-        data1.updateMany({ username }, { username: 'Deleted User' }).exec();
+        data1.updateMany({ $set: { username: 'Deleted User' } }).exec();
       }
       console.log('data1 after delete: ' + data1);
     });
+    */
 
     post.then((data2) => {
       if (data2) {
         console.log('data2: ' + data2);
         data2
-          .updateMany({
+          .update({
             $set: { username: 'Deleted User' },
           })
           .exec();
@@ -49,18 +49,4 @@ module.exports = function deleteAccount(req, res) {
     });
     return res.status(200).send({ msg: 'Deleted post and comment' });
   });
-  */
-  Client.findOne({ username }).then((data) => {
-    console.log('data: ' + data);
-    if (!data) {
-      return res.status(422).send({ msg: 'Client not found' });
-    }
-    data.deleteOne({});
-
-    Post.updateMany({ username }, { username: 'Deleted user' });
-  });
-  return res
-    .status(200)
-    .send({ msg: 'Client deleted' })
-    .catch((err) => console.log(err));
 };
