@@ -114,7 +114,7 @@ export default function ProfileScreen() {
                 setMajor(res.major);
                 setCollege(res.college);
                 setBio(res.bio);
-                setImage(res.profileImage.toString('base64'));
+                setImage(res.image);
               } else if (status.current === 422) {
                 console.log(res.error);
               }
@@ -190,6 +190,11 @@ export default function ProfileScreen() {
     })();
   }
 
+  const onRefresh = React.useCallback(async () => {
+    setRefreshing(true);
+    setTimeout(() => setRefreshing(false), 30000);
+  }, []);
+
   async function changePic(type) {
     if (type === 'gallery') {
       if (!imagePerm && platform !== 'web') {
@@ -205,10 +210,12 @@ export default function ProfileScreen() {
           base64: true,
         });
         if (!res.cancelled) {
+          console.log(res.base64.substr(0, 20));
           setImage(res.base64);
         }
       }
       setShowModal(false);
+      await onRefresh();
     } else {
       if (!cameraPerm && platform !== 'web') {
         await askPerm(type);
@@ -223,10 +230,12 @@ export default function ProfileScreen() {
           base64: true,
         });
         if (!res.cancelled) {
+          console.log(res.base64.substr(0, 20));
           setImage(res.base64);
         }
       }
       setShowModal(false);
+      await onRefresh();
     }
   }
 
@@ -240,12 +249,7 @@ export default function ProfileScreen() {
     ));
   }
 
-  const onRefresh = React.useCallback(async () => {
-    setRefreshing(true);
-    setTimeout(() => setRefreshing(false), 30000);
-  }, []);
-
-  React.useEffect(editProfile, [image, refreshing, username]);
+  React.useEffect(editProfile, [refreshing, username, image]);
   React.useEffect(fetchData, [refreshing, username]);
   React.useEffect(fetchFollow, [refreshing, username]);
   React.useEffect(fetchPost, [refreshing, username]);
