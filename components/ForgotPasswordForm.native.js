@@ -1,12 +1,10 @@
 // Import
 import React from 'react';
-import { Alert, Button, TextInput, View, Dimensions } from 'react-native';
+import { Alert, Button, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Style from '../assets/style';
-
-const windowWidth = Dimensions.get('window').width;
 
 // Export forgot password form
 export default function ForgotPasswordForm() {
@@ -72,11 +70,8 @@ export default function ForgotPasswordForm() {
       .catch((err) => console.log(err));
   }
 
-  function hideOutline(screenWidth) {
-    if (screenWidth < 800) {
-      return null;
-    }
-    return { outline: 'none' };
+  function hideOutline() {
+    return null;
   }
 
   return (
@@ -91,7 +86,7 @@ export default function ForgotPasswordForm() {
           style={{
             width: '85%',
             alignSelf: 'center',
-            ...hideOutline(windowWidth),
+            ...hideOutline(),
           }}
           placeholder="CUHK link Email"
           onChangeText={(text) => setEmail(text)}
