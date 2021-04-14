@@ -40,6 +40,7 @@ module.exports = function verify(req, res) {
           email: data.email,
           isPublic: true,
           popularity: 0,
+          profilePicture: '',
         });
         client.save();
 
