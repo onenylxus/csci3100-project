@@ -968,96 +968,109 @@ exports[`App matches snapshot on login mode 1`] = `
                               }
                             }
                           >
-                            <View
+                            <RCTScrollView
+                              refreshControl={
+                                <RefreshControlMock
+                                  onRefresh={[Function]}
+                                  refreshing={true}
+                                />
+                              }
+                              stickyHeaderIndices={
+                                Array [
+                                  0,
+                                ]
+                              }
                               style={
                                 Object {
-                                  "marginBottom": 50,
+                                  "marginBottom": "1%",
                                 }
                               }
                             >
-                              <View
-                                style={
-                                  Object {
-                                    "flexDirection": "row",
-                                    "justifyContent": "center",
-                                  }
-                                }
-                              >
-                                <View
-                                  accessible={true}
-                                  focusable={true}
-                                  onClick={[Function]}
-                                  onResponderGrant={[Function]}
-                                  onResponderMove={[Function]}
-                                  onResponderRelease={[Function]}
-                                  onResponderTerminate={[Function]}
-                                  onResponderTerminationRequest={[Function]}
-                                  onStartShouldSetResponder={[Function]}
-                                  style={
-                                    Object {
-                                      "margin": 15,
-                                      "opacity": 1,
-                                    }
-                                  }
-                                >
-                                  <Text
-                                    style={
-                                      Object {
-                                        "borderBottomWidth": 0,
-                                        "borderColor": "#546eff",
-                                        "color": "#546eff",
-                                        "fontSize": 18,
-                                      }
-                                    }
-                                  >
-                                    Latest
-                                  </Text>
-                                </View>
-                                <View
-                                  accessible={true}
-                                  focusable={true}
-                                  onClick={[Function]}
-                                  onResponderGrant={[Function]}
-                                  onResponderMove={[Function]}
-                                  onResponderRelease={[Function]}
-                                  onResponderTerminate={[Function]}
-                                  onResponderTerminationRequest={[Function]}
-                                  onStartShouldSetResponder={[Function]}
-                                  style={
-                                    Object {
-                                      "margin": 15,
-                                      "opacity": 1,
-                                    }
-                                  }
-                                >
-                                  <Text
-                                    style={
-                                      Object {
-                                        "borderBottomWidth": 1,
-                                        "borderColor": "#546eff",
-                                        "color": "#546eff",
-                                        "fontSize": 18,
-                                      }
-                                    }
-                                  >
-                                    Trending
-                                  </Text>
-                                </View>
-                              </View>
-                              <RCTScrollView
-                                refreshControl={
-                                  <RefreshControlMock
-                                    onRefresh={[Function]}
-                                    refreshing={true}
-                                  />
-                                }
-                              >
-                                <RCTRefreshControl />
+                              <RCTRefreshControl />
+                              <View>
                                 <View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "backgroundColor": "#f2f2f2",
+                                        "flexDirection": "row",
+                                        "justifyContent": "center",
+                                      }
+                                    }
+                                  >
+                                    <View
+                                      accessible={true}
+                                      focusable={true}
+                                      onClick={[Function]}
+                                      onResponderGrant={[Function]}
+                                      onResponderMove={[Function]}
+                                      onResponderRelease={[Function]}
+                                      onResponderTerminate={[Function]}
+                                      onResponderTerminationRequest={[Function]}
+                                      onStartShouldSetResponder={[Function]}
+                                      style={
+                                        Object {
+                                          "borderBottomWidth": 0,
+                                          "borderColor": "#546eff",
+                                          "margin": 15,
+                                          "opacity": 1,
+                                        }
+                                      }
+                                    >
+                                      <Text
+                                        style={
+                                          Object {
+                                            "color": "#546eff",
+                                            "fontSize": 18,
+                                          }
+                                        }
+                                      >
+                                        Latest
+                                      </Text>
+                                    </View>
+                                    <View
+                                      accessible={true}
+                                      focusable={true}
+                                      onClick={[Function]}
+                                      onResponderGrant={[Function]}
+                                      onResponderMove={[Function]}
+                                      onResponderRelease={[Function]}
+                                      onResponderTerminate={[Function]}
+                                      onResponderTerminationRequest={[Function]}
+                                      onStartShouldSetResponder={[Function]}
+                                      style={
+                                        Object {
+                                          "borderBottomWidth": 1,
+                                          "borderColor": "#546eff",
+                                          "margin": 15,
+                                          "opacity": 1,
+                                        }
+                                      }
+                                    >
+                                      <Text
+                                        style={
+                                          Object {
+                                            "color": "#546eff",
+                                            "fontSize": 18,
+                                          }
+                                        }
+                                      >
+                                        Trending
+                                      </Text>
+                                    </View>
+                                  </View>
+                                </View>
+                                <View
+                                  style={
+                                    Object {
+                                      "flex": 1,
+                                    }
+                                  }
+                                >
                                   <View />
                                 </View>
-                              </RCTScrollView>
-                            </View>
+                              </View>
+                            </RCTScrollView>
                           </View>
                         </View>
                       </View>

@@ -154,7 +154,8 @@ export default StyleSheet.create({
     alignSelf: 'center',
     minWidth: '75%',
     maxWidth: '75%',
-    marginVertical: 15,
+    marginVertical: 10,
+    padding: '1%',
   },
 
   createPostContainer: {
@@ -178,15 +179,14 @@ export default StyleSheet.create({
     borderColor: '#000000',
     minWidth: '75%',
     maxWidth: '75%',
-    minHeight: windowWidth < 800 ? 40 : '30%',
+    minHeight: windowWidth < 800 ? 35 : '25%',
     borderRadius: 5,
     paddingHorizontal: '1%',
-    marginVertical: 15,
+    marginVertical: 10,
     alignSelf: 'center',
   },
 
   postTextInputPC: {
-    padding: '2%',
     height: '100%',
   },
 
@@ -218,7 +218,7 @@ export default StyleSheet.create({
   tagsTitle: {
     alignSelf: 'flex-start',
     width: '20%',
-    marginVertical: 5,
+    marginBottom: '1%',
   },
 
   pickerTitle: {
@@ -347,7 +347,6 @@ export default StyleSheet.create({
     alignSelf: 'center',
     padding: '2%',
     ...hideOutline(windowWidth),
-    // width: windowWidth < 800 ? '80%' : '75%',
     maxWidth: '100%',
     minWidth: '100%',
   },
@@ -511,6 +510,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
 
+  // Styles of Users' Icons
   userIcon: {
     width: 32,
     height: 32,
@@ -524,5 +524,13 @@ export default StyleSheet.create({
     height: 64,
     margin: 8,
     borderRadius: 32,
+  },
+
+  followScreenIcon: {
+    width: 32,
+    height: 32,
+    marginHorizontal: 8,
+    borderRadius: 28,
+    alignSelf: 'center',
   },
 });

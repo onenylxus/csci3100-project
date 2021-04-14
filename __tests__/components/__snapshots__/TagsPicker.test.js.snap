@@ -14,7 +14,7 @@ exports[`TagsPicker matches snapshot 1`] = `
       style={
         Object {
           "alignSelf": "flex-start",
-          "marginVertical": 5,
+          "marginBottom": "1%",
           "width": "20%",
         }
       }
@@ -22,8 +22,8 @@ exports[`TagsPicker matches snapshot 1`] = `
       <Text
         style={
           Object {
-            "alignSelf": "center",
-            "marginVertical": 5,
+            "alignSelf": "flex-start",
+            "paddingLeft": "6%",
           }
         }
       >
@@ -35,7 +35,6 @@ exports[`TagsPicker matches snapshot 1`] = `
         style={
           Object {
             "alignSelf": "center",
-            "marginVertical": 5,
             "width": "100%",
           }
         }
@@ -44,7 +43,7 @@ exports[`TagsPicker matches snapshot 1`] = `
           items={
             Array [
               Object {
-                "label": "Choose a channel!",
+                "label": "Choose a channel",
                 "textColor": undefined,
                 "value": "",
               },

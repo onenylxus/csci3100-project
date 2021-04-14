@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { TouchableOpacity, Text, View } from 'react-native';
+import { TouchableOpacity, Text, View, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {
@@ -54,5 +54,9 @@ export default function ChannelsScreen() {
     </View>
   ));
 
-  return <View>{Item}</View>;
+  return (
+    <ScrollView>
+      <View>{Item}</View>
+    </ScrollView>
+  );
 }

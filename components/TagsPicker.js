@@ -30,7 +30,7 @@ export default function TagPicker({ callback, value }) {
         return 600;
 
       case 'pickerWidth':
-        return 450;
+        return 600;
 
       default:
         break;
@@ -47,20 +47,21 @@ export default function TagPicker({ callback, value }) {
         }}
       >
         <View style={Style.tagsTitle}>
-          <Text style={{ alignSelf: 'center', marginVertical: 5 }}>Tag: </Text>
+          <Text style={{ alignSelf: 'flex-start', paddingLeft: '6%' }}>
+            Tag:{' '}
+          </Text>
         </View>
         <View>
           <Picker
             style={{
               width: styleByDevice(windowWidth, 'pickerWidth'),
               alignSelf: 'center',
-              marginVertical: 5,
             }}
             selectedValue={value}
             onValueChange={(itemValue) => callback(itemValue)}
           >
             {[
-              <Picker.Item label="Choose a channel!" value="" key="" />,
+              <Picker.Item label="Choose a channel" value="" key="" />,
               ...Object.keys(TagsList).map((item) => (
                 <Picker.Item label={TagsList[item]} value={item} key={item} />
               )),
