@@ -63,7 +63,7 @@ export default function ProfileScreen() {
     (async () => {
       if (refreshing) {
         if (!fetched.current) {
-          console.log(image.substr(0, 20));
+          console.log(image.substr(0, 10));
           await fetch('https://cu-there-server.herokuapp.com/editProfile', {
             method: 'POST',
             headers: {
@@ -207,11 +207,12 @@ export default function ProfileScreen() {
           mediaTypes: ImagePicker.MediaTypeOptions.Images,
           allowEditing: true,
           aspect: [1, 1],
-          quality: 1,
+          quality: 0,
           base64: true,
         });
         if (!res.cancelled) {
           console.log(res.base64.substr(0, 20));
+          fetched.current = false;
           setImage(res.base64);
         }
       }
@@ -227,11 +228,12 @@ export default function ProfileScreen() {
           mediaTypes: ImagePicker.MediaTypeOptions.Images,
           allowEditing: true,
           aspect: [1, 1],
-          quality: 1,
+          quality: 0,
           base64: true,
         });
         if (!res.cancelled) {
           console.log(res.base64.substr(0, 20));
+          fetched.current = false;
           setImage(res.base64);
         }
       }
