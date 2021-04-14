@@ -34,7 +34,7 @@ export default function OtherProfileScreen() {
   const [refreshing, setRefreshing] = React.useState(true);
   const [list, setList] = React.useState([]);
   const [college, setCollege] = React.useState('');
-  const [gender, setGender] = React.useState('');
+  // const [gender, setGender] = React.useState('');
   const [major, setMajor] = React.useState('');
   const [bio, setBio] = React.useState('');
 
@@ -66,7 +66,7 @@ export default function OtherProfileScreen() {
             .then((res) => res.json())
             .then((res) => {
               if (status.current === 200) {
-                setGender(res.gender);
+                // setGender(res.gender);
                 setMajor(res.major);
                 setCollege(res.college);
                 setBio(res.bio);
@@ -238,7 +238,6 @@ export default function OtherProfileScreen() {
                 />
                 <Text style={Style.userInfoPhone}>
                   {other} {'\n'}
-                  {gender} {'\n'}{' '}
                   {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
                   {'\n'}{' '}
                   {CollegeList.hasOwnProperty(college)
@@ -328,27 +327,41 @@ export default function OtherProfileScreen() {
               />
               <Text style={Style.userInfoPC}>
                 {other} {'\n'}
-                {gender} {'\n'}{' '}
                 {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
-                {'\n'}{' '}
+                {'\n'}
                 {CollegeList.hasOwnProperty(college)
                   ? CollegeList[college]
                   : 'N/A'}
                 {'\n'}
               </Text>
             </Row>
-            <Row style={{ justifyContent: 'center' }}>
+            <Row
+              style={{
+                justifyContent: 'center',
+                flexDirection: 'column',
+                alignContent: 'center',
+                alignItems: 'center',
+              }}
+            >
               <View style={Style.bioContainerPC}>
                 <Text
                   style={{
-                    marginBottom: '2%',
+                    paddingBottom: '2%',
                     fontSize: 16,
                     borderBottomWidth: 1,
                   }}
                 >
                   Biography:
                 </Text>
-                <Text>{bio}</Text>
+              </View>
+              <View
+                style={{
+                  maxWidth: '85%',
+                  minWidth: '85%',
+                  paddingHorizontal: '4%',
+                }}
+              >
+                <Text style={{ padding: '2%' }}>{bio}</Text>
               </View>
             </Row>
             <Row size={2} style={Style.editProfileButtonPhone}>
