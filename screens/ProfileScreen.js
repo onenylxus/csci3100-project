@@ -185,8 +185,10 @@ export default function ProfileScreen() {
                 />
                 <Text style={Style.userInfoPhone}>
                   {username} {'\n'}
+                  Major:{' '}
                   {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
                   {'\n'}
+                  College:{' '}
                   {CollegeList.hasOwnProperty(college)
                     ? CollegeList[college]
                     : 'N/A'}
@@ -259,8 +261,10 @@ export default function ProfileScreen() {
               />
               <Text style={Style.userInfoPC}>
                 {username} {'\n'}
+                Major:{' '}
                 {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
                 {'\n'}
+                College:{' '}
                 {CollegeList.hasOwnProperty(college)
                   ? CollegeList[college]
                   : 'N/A'}

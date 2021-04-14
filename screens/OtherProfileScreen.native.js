@@ -237,8 +237,10 @@ export default function OtherProfileScreen() {
                 <Text style={{ fontWeight: 'bold' }}>
                   {other} {'\n'}
                 </Text>
+                Major:{' '}
                 {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
                 {'\n'}
+                College:{' '}
                 {CollegeList.hasOwnProperty(college)
                   ? CollegeList[college]
                   : 'N/A'}
