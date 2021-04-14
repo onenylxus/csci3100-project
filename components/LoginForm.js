@@ -16,12 +16,12 @@ import {
   faEyeSlash,
   faEye,
 } from '@fortawesome/free-solid-svg-icons';
-import AuthContext from './AuthContext';
+import AppContext from './AppContext';
 import Style from '../assets/style';
 
 // Export login form
 export default function LoginForm() {
-  const { login } = React.useContext(AuthContext);
+  const { login } = React.useContext(AppContext);
 
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');

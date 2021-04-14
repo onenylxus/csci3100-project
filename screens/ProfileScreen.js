@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { Row, Grid } from 'react-native-easy-grid';
 import { useNavigation } from '@react-navigation/native';
-import AuthContext from '../components/AuthContext';
+import AppContext from '../components/AppContext';
 import CollegeList from '../assets/json/collegeList.json';
 import MajorList from '../assets/json/majorList.json';
 import PostContainer from '../components/PostContainer';
@@ -22,25 +22,74 @@ import Style from '../assets/style';
 export default function ProfileScreen() {
   const windowWidth = Dimensions.get('window').width;
   const navigation = useNavigation();
-  const { getUser } = React.useContext(AuthContext);
+  const {
+    askPerm,
+    getUser,
+    getPlatform,
+    getCameraPerm,
+    getImagePerm,
+  } = React.useContext(AppContext);
+
+  const [refreshing, setRefreshing] = React.useState(true);
+  const [platform, setPlatform] = React.useState('');
+  const [cameraPerm, setCameraPerm] = React.useState(false);
+  const [imagePerm, setImagePerm] = React.useState(false);
 
   const [username, setUsername] = React.useState('');
   const [numOfFollower, setNumOfFollower] = React.useState(0);
   const [numOfFollowing, setNumOfFollowing] = React.useState(0);
-  const [refreshing, setRefreshing] = React.useState(true);
-  const [list, setList] = React.useState([]);
   const [college, setCollege] = React.useState('');
-  // const [gender, setGender] = React.useState('');
+  const [image, setImage] = React.useState(Buffer.from([], 'base64'));
   const [major, setMajor] = React.useState('');
   const [bio, setBio] = React.useState('');
+
+  const [list, setList] = React.useState([]);
 
   const page = React.useRef(0);
   const fetched = React.useRef(false);
   const status = React.useRef(0);
   const showButton = React.useRef(true);
 
-  // Get username
+  // Get from context
   getUser(setUsername);
+  getPlatform(setPlatform);
+  getCameraPerm(setCameraPerm);
+  getImagePerm(setImagePerm);
+
+  console.log(askPerm, setImage);
+  console.log(platform, cameraPerm, imagePerm);
+
+  function editProfile() {
+    (async () => {
+      if (refreshing) {
+        if (!fetched.current) {
+          await fetch('https://cu-there-server.herokuapp.com/editProfile', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              username,
+              profileImage: image,
+            }),
+          })
+            .then((res) => {
+              status.current = res.status;
+              return res;
+            })
+            .then((res) => res.json())
+            .then((res) => {
+              if (status.current === 200) {
+                console.log(res);
+              } else if (status.current === 422) {
+                console.log(res.error);
+              }
+            })
+            .catch((err) => console.log(err));
+        }
+      }
+    })();
+  }
 
   function fetchData() {
     (async () => {
@@ -62,7 +111,6 @@ export default function ProfileScreen() {
             .then((res) => res.json())
             .then((res) => {
               if (status.current === 200) {
-                // setGender(res.gender);
                 setMajor(res.major);
                 setCollege(res.college);
                 setBio(res.bio);
@@ -155,6 +203,8 @@ export default function ProfileScreen() {
     setRefreshing(true);
     setTimeout(() => setRefreshing(false), 30000);
   }, []);
+
+  React.useEffect(editProfile, [image, refreshing, username]);
 
   React.useEffect(fetchData, [refreshing, username]);
 

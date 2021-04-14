@@ -3,12 +3,12 @@ import React from 'react';
 import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
-import AuthContext from './AuthContext';
+import AppContext from './AppContext';
 import Style from '../assets/style';
 
 // Export Comment
 export default function CreateCommentForm({ post }) {
-  const { getUser } = React.useContext(AuthContext);
+  const { getUser } = React.useContext(AppContext);
 
   const [username, setUsername] = React.useState('');
   const [comment, setComment] = React.useState('');

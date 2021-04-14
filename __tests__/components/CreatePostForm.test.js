@@ -4,11 +4,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { render } from '@testing-library/react-native';
 
 // Import target component
-import AuthContext from '../../components/AuthContext';
+import AppContext from '../../components/AppContext';
 import CreatePostForm from '../../components/CreatePostForm';
 
 // Mock authentication method
-const AuthMethodMock = {
+const AppMethodMock = {
   login: jest.fn(),
   logout: jest.fn(),
   getUser: jest.fn(),
@@ -30,9 +30,9 @@ describe('CreatePostForm', () => {
     // Render
     element = render(
       <NavigationContainer>
-        <AuthContext.Provider value={AuthMethodMock}>
+        <AppContext.Provider value={AppMethodMock}>
           <CreatePostForm />
-        </AuthContext.Provider>
+        </AppContext.Provider>
       </NavigationContainer>
     );
   });

@@ -8,14 +8,14 @@ import {
   faInfoCircle,
   faUserSlash,
 } from '@fortawesome/free-solid-svg-icons';
-import AuthContext from '../components/AuthContext';
+import AppContext from '../components/AppContext';
 
 // Export Settings screen
 
 export default function SettingsScreen() {
   const navigation = useNavigation();
-  const { getUser } = React.useContext(AuthContext);
-  const { logout } = React.useContext(AuthContext);
+  const { getUser } = React.useContext(AppContext);
+  const { logout } = React.useContext(AppContext);
 
   const [username, setUsername] = React.useState('');
 

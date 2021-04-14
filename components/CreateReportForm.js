@@ -2,12 +2,12 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Alert, Button, Text, TextInput, View } from 'react-native';
-import AuthContext from './AuthContext';
+import AppContext from './AppContext';
 import Style from '../assets/style';
 
 // Export create report form
 export default function CreateReportForm({ post }) {
-  const { getUser } = React.useContext(AuthContext);
+  const { getUser } = React.useContext(AppContext);
   const navigation = useNavigation();
 
   const [username, setUsername] = React.useState('');

@@ -3,13 +3,13 @@ import React from 'react';
 import { Image, Text, View, TouchableOpacity } from 'react-native';
 import { Col, Grid } from 'react-native-easy-grid';
 import { useNavigation } from '@react-navigation/native';
-import AuthContext from './AuthContext';
+import AppContext from './AppContext';
 import Style from '../assets/style';
 
 // Export Comment
 export default function Comment({ comment }) {
   const navigation = useNavigation();
-  const { getUser } = React.useContext(AuthContext);
+  const { getUser } = React.useContext(AppContext);
 
   const [username, setUsername] = React.useState('');
   const [commentUsername, setCommentUsername] = React.useState(

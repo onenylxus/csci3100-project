@@ -10,7 +10,7 @@ import {
   faExclamation,
   faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
-import AuthContext from './AuthContext';
+import AppContext from './AppContext';
 import CommentContainer from './CommentContainer';
 import LikeContainer from './LikeContainer';
 import Style from '../assets/style';
@@ -18,7 +18,7 @@ import Style from '../assets/style';
 // Export post container
 export default function PostContainer({ post, showButton }) {
   const navigation = useNavigation();
-  const { getUser } = React.useContext(AuthContext);
+  const { getUser } = React.useContext(AppContext);
 
   const [username, setUsername] = React.useState('');
 

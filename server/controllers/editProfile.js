@@ -10,7 +10,7 @@ const Client = mongoose.model('client');
 // Exports
 module.exports = function editProject(req, res) {
   // Fetch request body
-  const { username, name, gender, major, college, bio } = req.body;
+  const { username, name, gender, major, college, bio, image } = req.body;
 
   // Fetch client
   const client = Client.findOne({ username });
@@ -28,6 +28,7 @@ module.exports = function editProject(req, res) {
           major,
           college,
           bio,
+          profileImage: image,
         },
       })
       .exec();

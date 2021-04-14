@@ -3,11 +3,11 @@ import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
-import AuthContext from './AuthContext';
+import AppContext from './AppContext';
 
 // Export like container
 export default function LikeContainer({ post }) {
-  const { getUser } = React.useContext(AuthContext);
+  const { getUser } = React.useContext(AppContext);
 
   const [username, setUsername] = React.useState('');
   const [likeState, setLikeState] = React.useState(false);

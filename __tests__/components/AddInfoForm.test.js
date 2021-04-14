@@ -5,10 +5,10 @@ import { render } from '@testing-library/react-native';
 
 // Import target component
 import AddInfoForm from '../../components/AddInfoForm';
-import AuthContext from '../../components/AuthContext';
+import AppContext from '../../components/AppContext';
 
 // Mock authentication method
-const AuthMethodMock = {
+const AppMethodMock = {
   login: jest.fn(),
   logout: jest.fn(),
   getUser: jest.fn(),
@@ -33,9 +33,9 @@ describe('AddInfoForm', () => {
     // Render
     element = render(
       <NavigationContainer>
-        <AuthContext.Provider value={AuthMethodMock}>
+        <AppContext.Provider value={AppMethodMock}>
           <AddInfoForm />
-        </AuthContext.Provider>
+        </AppContext.Provider>
       </NavigationContainer>
     );
   });

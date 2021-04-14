@@ -3,7 +3,7 @@ import React from 'react';
 import { Alert, Button, Text, TextInput, View } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import AuthContext from './AuthContext';
+import AppContext from './AppContext';
 import CollegePicker from './CollegePicker';
 import MajorPicker from './MajorPicker';
 import Style from '../assets/style';
@@ -13,7 +13,7 @@ export default function AddInfoForm() {
   const navigation = useNavigation();
 
   const route = useRoute();
-  const { login } = React.useContext(AuthContext);
+  const { login } = React.useContext(AppContext);
 
   const { email } = route.params;
   const [gender, setGender] = React.useState('');

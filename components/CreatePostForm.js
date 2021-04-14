@@ -10,7 +10,7 @@ import {
   Dimensions,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import AuthContext from './AuthContext';
+import AppContext from './AppContext';
 import TagsPicker from './TagsPicker';
 import Style from '../assets/style';
 
@@ -19,7 +19,7 @@ const windowWidth = Dimensions.get('window').width;
 // Export Create Post Form
 export default function CreatePostForm() {
   const navigation = useNavigation();
-  const { getUser } = React.useContext(AuthContext);
+  const { getUser } = React.useContext(AppContext);
 
   const [username, setUsername] = React.useState('');
   const [content, setContent] = React.useState('');
