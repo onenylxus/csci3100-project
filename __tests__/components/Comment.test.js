@@ -1,5 +1,6 @@
 // Import
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import { render } from '@testing-library/react-native';
 
 // Import target component
@@ -12,6 +13,9 @@ const AuthMethodMock = {
   logout: jest.fn(),
   getUser: jest.fn(),
 };
+
+// Mock navigation route
+jest.mock('@react-navigation/core');
 
 // Mock FontAwesome icons
 jest.mock('@fortawesome/react-native-fontawesome', () => ({
@@ -43,9 +47,11 @@ describe('Comment', () => {
 
     // Render
     element = render(
-      <AuthContext.Provider value={AuthMethodMock}>
-        <Comment comment={commentMock} />
-      </AuthContext.Provider>
+      <NavigationContainer>
+        <AuthContext.Provider value={AuthMethodMock}>
+          <Comment comment={commentMock} />
+        </AuthContext.Provider>
+      </NavigationContainer>
     );
   });
 

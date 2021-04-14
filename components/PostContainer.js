@@ -1,8 +1,8 @@
 // Import
 import React from 'react';
 import { Alert, Text, View, TouchableOpacity, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { Col, Grid } from 'react-native-easy-grid';
+import { useNavigation } from '@react-navigation/native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {
   faCommentAlt,
