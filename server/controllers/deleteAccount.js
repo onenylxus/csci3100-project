@@ -9,7 +9,7 @@ require('../schemas/Comment');
 // Models
 const Client = mongoose.model('client');
 const Comment = mongoose.model('comment');
-// const Post = mongoose.model('post');
+const Post = mongoose.model('post');
 
 // Exports
 module.exports = function deleteAccount(req, res) {
@@ -29,6 +29,15 @@ module.exports = function deleteAccount(req, res) {
     data.deleteOne({});
 
     Comment.update(
+      { username },
+      { $set: { username: 'deleted account' } },
+      { multi: true },
+      (err) => {
+        console.log(err);
+      }
+    );
+
+    Post.update(
       { username },
       { $set: { username: 'deleted account' } },
       { multi: true },
