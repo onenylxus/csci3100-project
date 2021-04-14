@@ -4,7 +4,6 @@ import {
   Alert,
   Text,
   Button,
-  Dimensions,
   View,
   RefreshControl,
   ScrollView,
@@ -21,7 +20,6 @@ import Style from '../assets/style';
 
 // Export other profile screen
 export default function OtherProfileScreen() {
-  const windowWidth = Dimensions.get('window').width;
   const route = useRoute();
 
   const { author } = route.params;
@@ -216,96 +214,6 @@ export default function OtherProfileScreen() {
     );
   }
 
-  if (windowWidth < 800) {
-    return (
-      <ScrollView
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
-      >
-        <View style={{ flex: 1 }}>
-          <Grid style={Style.profileContainerPhone}>
-            <View style={Style.infoLayerPhone}>
-              <Row size={1} style={Style.profilePicturePhone}>
-                <Image
-                  style={{
-                    width: 64,
-                    height: 64,
-                    margin: 8,
-                    borderRadius: 32,
-                  }}
-                  source={require('../assets/images/profile.png')}
-                />
-                <Text style={Style.userInfoPhone}>
-                  {author} {'\n'}
-                  {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
-                  {'\n'}{' '}
-                  {CollegeList.hasOwnProperty(college)
-                    ? CollegeList[college]
-                    : 'N/A'}
-                  {'\n'}
-                </Text>
-              </Row>
-              <Row size={1}>
-                <Text
-                  style={{
-                    paddingHorizontal: '10%',
-                    marginBottom: '2%',
-                    fontSize: 16,
-                    borderBottomWidth: 5,
-                  }}
-                >
-                  Biography:
-                </Text>
-              </Row>
-              <Row style={{ justifyContent: 'center' }} size={1}>
-                <View style={Style.bioContainerPhone}>
-                  <Text>{bio}</Text>
-                </View>
-              </Row>
-              <Row size={2} style={Style.editProfileButtonPhone}>
-                {followState ? (
-                  <Button
-                    title="unfollow"
-                    style={{
-                      backgroundColor: followState ? '#69c6f0' : '#cccccc',
-                      margin: 5,
-                    }}
-                    onPress={() => {
-                      setFollowState(!followState);
-                      follow();
-                    }}
-                  />
-                ) : (
-                  <Button
-                    title="follow"
-                    style={{
-                      backgroundColor: followState ? '#69c6f0' : '#cccccc',
-                      margin: 5,
-                    }}
-                    onPress={() => {
-                      setFollowState(!followState);
-                      follow();
-                    }}
-                  />
-                )}
-                <TouchableOpacity style={{ marginHorizontal: 15 }}>
-                  <Text>{numOfFollower} Followers</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={{ marginHorizontal: 15 }}>
-                  <Text>{numOfFollowing} Following</Text>
-                </TouchableOpacity>
-              </Row>
-            </View>
-            <Row />
-          </Grid>
-        </View>
-        <View>{generate()}</View>
-      </ScrollView>
-    );
-  }
-
-  // Large screen
   return (
     <ScrollView
       refreshControl={
@@ -326,9 +234,13 @@ export default function OtherProfileScreen() {
                 source={require('../assets/images/profile.png')}
               />
               <Text style={Style.userInfoPC}>
-                {author} {'\n'}
+                <Text style={{ fontWeight: 'bold' }}>
+                  {author} {'\n'}
+                </Text>
+                Major:{' '}
                 {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
                 {'\n'}
+                College:{' '}
                 {CollegeList.hasOwnProperty(college)
                   ? CollegeList[college]
                   : 'N/A'}

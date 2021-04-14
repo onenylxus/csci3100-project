@@ -1,7 +1,7 @@
 // Import
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import AddInfoScreen from '../AddInfoScreen';
+import AddInfoScreen from '../AddInfoScreen.web';
 import RegisterScreen from '../RegisterScreen';
 import VerificationScreen from '../VerificationScreen';
 import BackableHeader from '../../assets/headers/BackableHeader';

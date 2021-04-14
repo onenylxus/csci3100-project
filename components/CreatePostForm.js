@@ -113,7 +113,11 @@ export default function CreatePostForm() {
       <View>
         <View style={Style.postTitleBox}>
           <TextInput
-            style={{ ...hideOutline(windowWidth) }}
+            style={{
+              minWidth: '100%',
+              maxWidth: '100%',
+              ...hideOutline(windowWidth),
+            }}
             placeholder="Post title"
             onChangeText={(text) => setTitle(text)}
           />

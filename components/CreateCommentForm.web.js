@@ -43,14 +43,8 @@ export default function CreateCommentForm({ post }) {
         if (status.current === 200) {
           setComment('');
         } else if (status.current === 422) {
-          switch (res.error) {
-            // Empty content
-            case 'missingContentError':
-              return setShowAlert(true);
-
-            default:
-              return new Error();
-          }
+          console.log(res);
+          setShowAlert(true);
         }
       })
       .catch((err) => console.log(err));

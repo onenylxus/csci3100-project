@@ -2,11 +2,11 @@
 import React from 'react';
 import { Text, View, Dimensions } from 'react-native';
 import { Picker } from '@react-native-community/picker';
-import MajorList from '../assets/json/majorList.json';
+import CollegeList from '../assets/json/collegeList.json';
 import Style from '../assets/style';
 
-// Export major picker
-export default function MajorPicker({ callback, value }) {
+// Export college picker
+export default function CollegePicker({ callback, value }) {
   const windowWidth = Dimensions.get('window').width;
 
   function styleByDevice(widthOfDevice, component) {
@@ -39,7 +39,7 @@ export default function MajorPicker({ callback, value }) {
 
   return (
     <View>
-      {/* Major */}
+      {/* College */}
       <View
         style={{
           // marginVertical: '1%',
@@ -47,7 +47,7 @@ export default function MajorPicker({ callback, value }) {
           width: styleByDevice(windowWidth, 'width'),
         }}
       >
-        <Text style={Style.pickerTitle}>Major:</Text>
+        <Text style={Style.pickerTitle}>College: </Text>
         <View style={{ marginBottom: 10 }}>
           <Picker
             style={{
@@ -58,9 +58,13 @@ export default function MajorPicker({ callback, value }) {
             onValueChange={(itemValue) => callback(itemValue)}
           >
             {[
-              <Picker.Item label="Choose a major" value="" key="" />,
-              ...Object.keys(MajorList).map((item) => (
-                <Picker.Item label={MajorList[item]} value={item} key={item} />
+              <Picker.Item label="Choose a college" value="" key="" />,
+              ...Object.keys(CollegeList).map((item) => (
+                <Picker.Item
+                  label={CollegeList[item]}
+                  value={item}
+                  key={item}
+                />
               )),
             ]}
           </Picker>

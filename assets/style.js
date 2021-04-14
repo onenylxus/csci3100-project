@@ -134,12 +134,33 @@ export default StyleSheet.create({
     margin: '5%',
   },
 
+  codeInputBoxPC: {
+    borderWidth: 0.5,
+    borderColor: '#000',
+    minWidth: 200,
+    maxWidth: 200,
+    height: 40,
+    borderRadius: 5,
+    margin: '5%',
+    alignContent: 'center',
+    justifyContent: 'center',
+  },
+
   verificationCode: {
     width: '100%',
     fontSize: 22,
     alignContent: 'center',
     marginLeft: '6%',
     marginTop: '6%',
+  },
+
+  verificationCodePC: {
+    minWidth: '100%',
+    maxWidth: '100%',
+    fontSize: 22,
+    alignSelf: 'center',
+    minHeight: '100%',
+    maxHeight: '100%',
   },
 
   // Styles of Create Post Page
@@ -154,7 +175,8 @@ export default StyleSheet.create({
     alignSelf: 'center',
     minWidth: '75%',
     maxWidth: '75%',
-    marginVertical: 15,
+    marginVertical: 10,
+    padding: '1%',
   },
 
   createPostContainer: {
@@ -178,15 +200,14 @@ export default StyleSheet.create({
     borderColor: '#000000',
     minWidth: '75%',
     maxWidth: '75%',
-    minHeight: windowWidth < 800 ? 40 : '30%',
+    minHeight: windowWidth < 800 ? 35 : '25%',
     borderRadius: 5,
     paddingHorizontal: '1%',
-    marginVertical: 15,
+    marginVertical: 10,
     alignSelf: 'center',
   },
 
   postTextInputPC: {
-    padding: '2%',
     height: '100%',
   },
 
@@ -218,7 +239,7 @@ export default StyleSheet.create({
   tagsTitle: {
     alignSelf: 'flex-start',
     width: '20%',
-    marginVertical: 5,
+    marginBottom: '1%',
   },
 
   pickerTitle: {
@@ -347,7 +368,6 @@ export default StyleSheet.create({
     alignSelf: 'center',
     padding: '2%',
     ...hideOutline(windowWidth),
-    // width: windowWidth < 800 ? '80%' : '75%',
     maxWidth: '100%',
     minWidth: '100%',
   },
@@ -449,43 +469,12 @@ export default StyleSheet.create({
     fontSize: 15,
   },
 
-  chatBox: {
-    flexDirection: 'row',
-    height: 100,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: '#f0f0f0',
-  },
-
   LeaderboardContainerPhone: {
     width: '95%',
     alignSelf: 'center',
     marginTop: 5,
     backgroundColor: 'white',
     borderRadius: 10,
-  },
-
-  chatMenuIcon: {
-    width: 64,
-    height: 64,
-    margin: 8,
-    borderRadius: 28,
-    alignSelf: 'center',
-  },
-
-  chatMenuInfo: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    marginLeft: 5,
-  },
-
-  chatDate: {
-    alignSelf: 'center',
-    textAlign: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#d2d2d2',
-    borderRadius: 15,
-    marginVertical: 5,
   },
 
   messageBar: {
@@ -511,6 +500,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
 
+  // Styles of Users' Icons
   userIcon: {
     width: 32,
     height: 32,
@@ -524,5 +514,13 @@ export default StyleSheet.create({
     height: 64,
     margin: 8,
     borderRadius: 32,
+  },
+
+  followScreenIcon: {
+    width: 32,
+    height: 32,
+    marginHorizontal: 8,
+    borderRadius: 28,
+    alignSelf: 'center',
   },
 });

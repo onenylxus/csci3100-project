@@ -7,7 +7,7 @@ import VerificationForm from '../components/VerificationForm';
 // Export register screen
 export default function VerificationScreen() {
   return (
-    <View style={{ ...Style.container, marginBottom: '20%' }}>
+    <View style={Style.container}>
       <Text style={{ fontFamily: 'Roboto' }}>Your verification code:</Text>
       <VerificationForm />
     </View>

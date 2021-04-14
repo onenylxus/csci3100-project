@@ -20,6 +20,7 @@ export default function GuestFeedScreen() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
+            username: '',
             page,
             tags: '',
           }),

@@ -84,53 +84,66 @@ export default function FeedScreen() {
   React.useEffect(fetchPost, [refreshing, tags]);
 
   return (
-    <View style={{ marginBottom: 50 }}>
-      <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-        <TouchableOpacity
-          onPress={() => {
-            setTags('Newest');
-            onRefresh();
+    <ScrollView
+      stickyHeaderIndices={[0]}
+      style={{ marginBottom: '1%' }}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+    >
+      <View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            backgroundColor: '#f2f2f2',
           }}
-          style={{ margin: 15 }}
         >
-          <Text
+          <TouchableOpacity
+            onPress={() => {
+              setTags('Newest');
+              onRefresh();
+            }}
             style={{
-              color: '#546eff',
-              fontSize: 18,
+              margin: 15,
               borderBottomWidth: underlineTag('Newest', tags),
               borderColor: '#546eff',
             }}
           >
-            Latest
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            setTags('Trending');
-            onRefresh();
-          }}
-          style={{ margin: 15 }}
-        >
-          <Text
+            <Text
+              style={{
+                color: '#546eff',
+                fontSize: 18,
+              }}
+            >
+              Latest
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setTags('Trending');
+              onRefresh();
+            }}
             style={{
-              color: '#546eff',
-              fontSize: 18,
+              margin: 15,
               borderBottomWidth: underlineTag('Trending', tags),
               borderColor: '#546eff',
             }}
           >
-            Trending
-          </Text>
-        </TouchableOpacity>
+            <Text
+              style={{
+                color: '#546eff',
+                fontSize: 18,
+              }}
+            >
+              Trending
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
-
-      <ScrollView
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
-      >
+      <View style={{ flex: 1 }}>
         <View>{generate()}</View>
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 }
