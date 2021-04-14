@@ -49,11 +49,12 @@ module.exports = function fetchPost(req, res) {
     const arr = [];
     let bool = false;
     for (const item of data) {
+      console.log(item.username);
       const client = Client.findOne({ username: item.username });
       client.then((data1) => {
         bool |= !data1;
         if (!bool) {
-          arr.push(data1.profileImage);
+          arr.push(data1._id);
         }
       });
     }
