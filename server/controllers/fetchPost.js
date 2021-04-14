@@ -30,6 +30,7 @@ module.exports = function fetchPost(req, res) {
 
         const arr = [];
         data.forEach((item) => {
+          console.log('item.username: ' + item.username);
           const client = Client.findOne({ username: item.username });
           client.then((data1) => {
             if (!data1) {
@@ -62,6 +63,7 @@ module.exports = function fetchPost(req, res) {
 
         const arr = [];
         data.forEach((item) => {
+          console.log('item.username: ' + item.username);
           const client = Client.findOne({ username: item.username });
           client.then((data1) => {
             if (!data1) {
@@ -94,6 +96,7 @@ module.exports = function fetchPost(req, res) {
 
         const arr = [];
         data.forEach((item) => {
+          console.log('item.username: ' + item.username);
           const client = Client.findOne({ username: item.username });
           client.then((data1) => {
             if (!data1) {
@@ -127,6 +130,7 @@ module.exports = function fetchPost(req, res) {
 
       const arr = [];
       data.forEach((item) => {
+        console.log('item.username: ' + item.username);
         const client = Client.findOne({ username: item.username });
         client.then((data1) => {
           if (!data1) {
