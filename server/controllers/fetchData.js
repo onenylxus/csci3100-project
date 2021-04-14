@@ -27,7 +27,7 @@ module.exports = function fetchData(req, res) {
       major: data.major,
       college: data.college,
       bio: data.bio,
-      image: data.profileImage ? data.profileImage.toString('base64') : '',
+      image: data.profilePicture ? data.profilePicture.toString('base64') : '',
     });
   });
 };
