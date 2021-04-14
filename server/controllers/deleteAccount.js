@@ -18,7 +18,7 @@ module.exports = function deleteAccount(req, res) {
 
   // Fetch client
   const client = Client.findOne({ username });
-  const comment = Comment.find({ username });
+  // const comment = Comment.find({ username });
   // const post = Post.find({ username });
 
   client.then((data) => {
@@ -28,6 +28,15 @@ module.exports = function deleteAccount(req, res) {
     }
     data.deleteOne({});
 
+    Comment.update(
+      { username },
+      { $set: { username: 'deleted account' } },
+      { multi: true },
+      (err) => {
+        console.log(err);
+      }
+    );
+    /*
     comment.then((data1) => {
       if (data1) {
         console.log('data1 before delete: ' + data1);
@@ -35,6 +44,7 @@ module.exports = function deleteAccount(req, res) {
       }
       console.log('data1 after delete: ' + data1);
     });
+    */
 
     /*
     post.then((data2) => {
