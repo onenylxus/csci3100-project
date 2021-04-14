@@ -42,7 +42,6 @@ const ClientSchema = new mongoose.Schema({
     data: Buffer,
     type: String,
     required: true,
-    default: Buffer.from([], 'base64'),
   },
   status: {
     type: String,

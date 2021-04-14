@@ -18,7 +18,7 @@ module.exports = function addInfo(req, res) {
   client.then((data) => {
     if (!data) {
       return res.status(422).send({
-        error: 'Your verification code is invalid.',
+        error: 'Client not found.',
       });
     }
 

@@ -1,6 +1,9 @@
 // Require
 const mongoose = require('mongoose');
 
+// Set global buffer
+global.Buffer = global.Buffer || require('buffer').Buffer;
+
 // Schemas
 require('../schemas/Client');
 require('../schemas/Token');
@@ -37,6 +40,7 @@ module.exports = function verify(req, res) {
           email: data.email,
           isPublic: true,
           popularity: 0,
+          profileImage: Buffer.from([], 'base64'),
         });
         client.save();
 
