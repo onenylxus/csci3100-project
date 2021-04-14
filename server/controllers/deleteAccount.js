@@ -8,6 +8,7 @@ require('../schemas/Comment');
 
 // Models
 const Client = mongoose.model('client');
+const Comment = mongoose.model('comment');
 // const Post = mongoose.model('post');
 
 // Exports

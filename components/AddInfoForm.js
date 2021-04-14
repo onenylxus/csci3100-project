@@ -10,6 +10,8 @@ import Style from '../assets/style';
 
 // Export add info form
 export default function AddInfoForm() {
+  const navigation = useNavigation();
+
   const route = useRoute();
   const { login } = React.useContext(AuthContext);
 
