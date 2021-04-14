@@ -28,7 +28,7 @@ module.exports = function editProject(req, res) {
           major,
           college,
           bio,
-          profileImage: image,
+          profileImage: Buffer.from(image, 'base64'),
         },
       })
       .exec();

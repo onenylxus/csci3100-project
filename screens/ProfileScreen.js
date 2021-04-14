@@ -59,9 +59,6 @@ export default function ProfileScreen() {
   getCameraPerm(setCameraPerm);
   getImagePerm(setImagePerm);
 
-  console.log(askPerm, setImage);
-  console.log(platform, cameraPerm, imagePerm);
-
   function editProfile() {
     (async () => {
       if (refreshing) {
@@ -73,7 +70,7 @@ export default function ProfileScreen() {
             },
             body: JSON.stringify({
               username,
-              profileImage: image,
+              image,
             }),
           })
             .then((res) => {
@@ -117,7 +114,7 @@ export default function ProfileScreen() {
                 setMajor(res.major);
                 setCollege(res.college);
                 setBio(res.bio);
-                setImage(res.profileImage);
+                setImage(res.profileImage.toString('base64'));
               } else if (status.current === 422) {
                 console.log(res.error);
               }
@@ -194,9 +191,8 @@ export default function ProfileScreen() {
   }
 
   async function changePic(type) {
-    askPerm(type);
     if (type === 'gallery') {
-      if (!imagePerm) {
+      if (!imagePerm && platform !== 'web') {
         await askPerm(type);
         await getImagePerm(setImagePerm);
       }
@@ -214,7 +210,7 @@ export default function ProfileScreen() {
       }
       setShowModal(false);
     } else {
-      if (!cameraPerm) {
+      if (!cameraPerm && platform !== 'web') {
         await askPerm(type);
         await getCameraPerm(setCameraPerm);
       }

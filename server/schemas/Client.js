@@ -1,9 +1,6 @@
 // Require
 const mongoose = require('mongoose');
 
-// Set global buffer
-global.Buffer = global.Buffer || require('buffer').Buffer;
-
 // Client schema
 const ClientSchema = new mongoose.Schema({
   username: {
@@ -38,10 +35,7 @@ const ClientSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  profilePicture: {
-    type: String,
-    default: '',
-  },
+  profilePicture: Buffer,
   status: {
     type: String,
     required: false,
