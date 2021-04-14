@@ -3,9 +3,11 @@ const mongoose = require('mongoose');
 
 // Schemas
 require('../schemas/Post');
+require('../schemas/Client');
 
 // Models
 const Post = mongoose.model('post');
+const Client = mongoose.model('client');
 
 // Exports
 module.exports = function fetchPost(req, res) {
@@ -25,7 +27,23 @@ module.exports = function fetchPost(req, res) {
           });
         }
 
-        return res.status(200).send({ msg: 'Post fetched.', posts: data });
+        const arr = [];
+        data.forEach((item) => {
+          const client = Client.findOne({ username: item.username });
+          client.then((data1) => {
+            if (!data1) {
+              return res.status(422).send({
+                error: 'no post in database.',
+              });
+            }
+
+            arr.push(data1);
+          });
+        });
+
+        return res
+          .status(200)
+          .send({ msg: 'Post fetched.', post: data, client: arr });
       });
     } else if (tags === 'Trending') {
       const post = Post.find({})

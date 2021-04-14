@@ -12,7 +12,8 @@ import PostContainer from '../components/PostContainer';
 // Export feed screen
 export default function FeedScreen() {
   const [refreshing, setRefreshing] = React.useState(true);
-  const [list, setList] = React.useState([]);
+  const [clientList, setClientList] = React.useState([]);
+  const [postList, setPostList] = React.useState([]);
   const [tags, setTags] = React.useState('Trending');
   const showButton = React.useRef(false);
   const page = React.useRef(0);
@@ -39,7 +40,8 @@ export default function FeedScreen() {
           .then((res) => res.json())
           .then((res) => {
             if (status.current === 200) {
-              setList(res.posts);
+              setPostList(res.posts);
+              setClientList(res.clients);
               setRefreshing(false);
             } else if (status.current === 422) {
               console.log(res.error);
@@ -51,10 +53,11 @@ export default function FeedScreen() {
   }
 
   function generate() {
-    return list.map((post) => (
+    return postList.map((post, index) => (
       <PostContainer
         key={post._id}
         post={post}
+        client={clientList[index]}
         showButton={showButton.current}
       />
     ));

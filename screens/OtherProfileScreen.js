@@ -24,7 +24,7 @@ export default function OtherProfileScreen() {
   const windowWidth = Dimensions.get('window').width;
   const route = useRoute();
 
-  const { other } = route.params;
+  const { author } = route.params;
   const { getUser } = React.useContext(AppContext);
 
   const [username, setUsername] = React.useState('');
@@ -56,7 +56,7 @@ export default function OtherProfileScreen() {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              username: other,
+              username: author,
             }),
           })
             .then((res) => {
@@ -90,7 +90,7 @@ export default function OtherProfileScreen() {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              other,
+              other: author,
             }),
           })
             .then((res) => {
@@ -125,7 +125,7 @@ export default function OtherProfileScreen() {
       body: JSON.stringify({
         followState,
         self: username,
-        other,
+        other: author,
       }),
     })
       .then((res) => {
@@ -163,7 +163,7 @@ export default function OtherProfileScreen() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            username: other,
+            username: author,
             page,
             tags: '',
           }),
@@ -202,13 +202,13 @@ export default function OtherProfileScreen() {
     setTimeout(() => setRefreshing(false), 30000);
   }, []);
 
-  React.useEffect(fetchData, [refreshing, other]);
+  React.useEffect(fetchData, [refreshing, author]);
 
-  React.useEffect(fetchFollow, [followState, other, refreshing, username]);
+  React.useEffect(fetchFollow, [followState, author, refreshing, username]);
 
-  React.useEffect(fetchPost, [followState, other, refreshing, username]);
+  React.useEffect(fetchPost, [followState, author, refreshing, username]);
 
-  if (other === 'deleted account') {
+  if (author === 'deleted account') {
     return (
       <View>
         <Text>This user is no longer avaliable</Text>
@@ -237,7 +237,7 @@ export default function OtherProfileScreen() {
                   source={require('../assets/images/profile.png')}
                 />
                 <Text style={Style.userInfoPhone}>
-                  {other} {'\n'}
+                  {author} {'\n'}
                   {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
                   {'\n'}{' '}
                   {CollegeList.hasOwnProperty(college)
@@ -326,7 +326,7 @@ export default function OtherProfileScreen() {
                 source={require('../assets/images/profile.png')}
               />
               <Text style={Style.userInfoPC}>
-                {other} {'\n'}
+                {author} {'\n'}
                 {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
                 {'\n'}
                 {CollegeList.hasOwnProperty(college)

@@ -261,21 +261,17 @@ export default function ProfileScreen() {
   if (windowWidth < 800) {
     return (
       <View>
-        {showModal ? (
-          <Modal>
-            <Button
-              title="Choose from gallery"
-              onPress={() => changePic('gallery')}
-            />
-            <Button
-              title="Choose from camera"
-              onPress={() => changePic('camera')}
-            />
-            <Button title="Cancel" onPress={() => setShowModal(false)} />
-          </Modal>
-        ) : (
-          <View />
-        )}
+        <Modal visible={showModal}>
+          <Button
+            title="Choose from gallery"
+            onPress={() => changePic('gallery')}
+          />
+          <Button
+            title="Choose from camera"
+            onPress={() => changePic('camera')}
+          />
+          <Button title="Cancel" onPress={() => setShowModal(false)} />
+        </Modal>
         <ScrollView
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
@@ -294,7 +290,7 @@ export default function ProfileScreen() {
                         borderRadius: 32,
                       }}
                       source={
-                        image.toString('base64') !== ''
+                        image && image.byteLength > 0
                           ? {
                               uri:
                                 'data:image/jpeg;base64,' +
