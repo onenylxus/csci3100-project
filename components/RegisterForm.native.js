@@ -35,7 +35,6 @@ export default function RegisterForm() {
   const status = React.useRef(0);
 
   const windowWidth = Dimensions.get('window').width;
-  const registerFormWidth = Math.min(windowWidth, 400);
 
   async function submitData() {
     console.log(
@@ -144,142 +143,25 @@ export default function RegisterForm() {
       : Style.invalidTextInput;
   }
 
-  // Small Screen
-  if (windowWidth < 800) {
-    return (
-      <View
-        style={{
-          ...Style.Container,
-          width: registerFormWidth,
-          alignSelf: 'center',
-        }}
-      >
-        {/* Username */}
-        <View style={Style.inputContainer}>
-          <Text style={Style.sectionText}>Username:</Text>
-          <View
-            style={{ ...Style.SectionStyle, ...styleByState(usernameState) }}
-          >
-            <FontAwesomeIcon
-              icon={faUser}
-              size={15}
-              style={{ marginHorizontal: 5, marginVertical: 12 }}
-            />
-            <TextInput
-              style={{ minWidth: '85%', maxWidth: '85%' }}
-              placeholder="Username"
-              onChangeText={(text) => changeUsername(text)}
-            />
-          </View>
-          <View
-            style={{
-              opacity: !usernameState * 100,
-              minWidth: '80%',
-              maxWidth: '80%',
-              marginLeft: '12%',
-            }}
-          >
-            <Text style={Style.errorMessage}>
-              Username must be of length 4-20 characters
-            </Text>
-          </View>
-
-          {/* Password */}
-
-          <Text style={Style.sectionText}>Password:</Text>
-          <View
-            style={{ ...Style.SectionStyle, ...styleByState(passwordState) }}
-          >
-            <FontAwesomeIcon
-              icon={faLock}
-              size={15}
-              style={{ marginHorizontal: 5, marginVertical: 12 }}
-            />
-            <TextInput
-              style={{ minWidth: '77%', maxWidth: '77%' }}
-              placeholder="Password"
-              onChangeText={(text) => changePassword(text)}
-              secureTextEntry={visibility}
-              clearTextOnFocus={false}
-              enablesReturnKeyAutomatically
-            />
-            <TouchableOpacity onPress={() => setVisibility(!visibility)}>
-              <FontAwesomeIcon
-                icon={visibility ? faEyeSlash : faEye}
-                size={15}
-                style={{ marginHorizontal: 5, marginVertical: 12 }}
-              />
-            </TouchableOpacity>
-          </View>
-          <View
-            style={{
-              opacity: !passwordState * 100,
-              minWidth: '80%',
-              maxWidth: '80%',
-              marginLeft: '12%',
-            }}
-          >
-            <Text style={Style.errorMessage}>
-              Password must be of length greater than 6 characters
-            </Text>
-          </View>
-
-          {/* Email */}
-
-          <Text style={Style.sectionText}>CUHK link email:</Text>
-          <View style={{ ...Style.SectionStyle, ...styleByState(emailState) }}>
-            <FontAwesomeIcon
-              icon={faEnvelope}
-              size={15}
-              style={{ marginHorizontal: 5, marginVertical: 12 }}
-            />
-            <TextInput
-              style={{ minWidth: '85%', maxWidth: '85%' }}
-              placeholder="CUHK link email"
-              onChangeText={(text) => changeEmail(text)}
-            />
-          </View>
-          <View
-            style={{
-              opacity: !emailState * 100,
-              minWidth: '80%',
-              maxWidth: '80%',
-              marginLeft: '12%',
-            }}
-          >
-            <Text style={Style.errorMessage}>
-              Email must be a CUHK link email address (example:
-              1155123456@link.cuhk.edu.hk)
-            </Text>
-          </View>
-        </View>
-        <View style={{ marginHorizontal: '30%' }}>
-          <Button title="Register" onPress={confirmRegister} />
-        </View>
-      </View>
-    );
-  }
-
-  // Large Screen
   return (
     <View
       style={{
         ...Style.Container,
-        width: registerFormWidth,
+        width: windowWidth,
         alignSelf: 'center',
       }}
     >
       {/* Username */}
       <View style={Style.inputContainer}>
         <Text style={Style.sectionText}>Username:</Text>
-        <View style={styleByState(usernameState)}>
+        <View style={{ ...Style.SectionStyle, ...styleByState(usernameState) }}>
           <FontAwesomeIcon
             icon={faUser}
             size={15}
             style={{ marginHorizontal: 5, marginVertical: 12 }}
           />
           <TextInput
-            style={{ minWidth: '85%', maxWidth: '85%', outline: 'none' }}
+            style={{ minWidth: '85%', maxWidth: '85%' }}
             placeholder="Username"
             onChangeText={(text) => changeUsername(text)}
           />
@@ -300,14 +182,14 @@ export default function RegisterForm() {
         {/* Password */}
 
         <Text style={Style.sectionText}>Password:</Text>
-        <View style={styleByState(passwordState)}>
+        <View style={{ ...Style.SectionStyle, ...styleByState(passwordState) }}>
           <FontAwesomeIcon
             icon={faLock}
             size={15}
             style={{ marginHorizontal: 5, marginVertical: 12 }}
           />
           <TextInput
-            style={{ minWidth: '77%', maxWidth: '77%', outline: 'none' }}
+            style={{ minWidth: '77%', maxWidth: '77%' }}
             placeholder="Password"
             onChangeText={(text) => changePassword(text)}
             secureTextEntry={visibility}
@@ -338,14 +220,14 @@ export default function RegisterForm() {
         {/* Email */}
 
         <Text style={Style.sectionText}>CUHK link email:</Text>
-        <View style={styleByState(emailState)}>
+        <View style={{ ...Style.SectionStyle, ...styleByState(emailState) }}>
           <FontAwesomeIcon
             icon={faEnvelope}
             size={15}
             style={{ marginHorizontal: 5, marginVertical: 12 }}
           />
           <TextInput
-            style={{ minWidth: '85%', maxWidth: '85%', outline: 'none' }}
+            style={{ minWidth: '85%', maxWidth: '85%' }}
             placeholder="CUHK link email"
             onChangeText={(text) => changeEmail(text)}
           />
@@ -364,7 +246,7 @@ export default function RegisterForm() {
           </Text>
         </View>
       </View>
-      <View style={{ maxWidth: '40%', alignSelf: 'center' }}>
+      <View style={{ marginHorizontal: '30%' }}>
         <Button title="Register" onPress={confirmRegister} />
       </View>
     </View>

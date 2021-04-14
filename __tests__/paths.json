@@ -54,7 +54,8 @@
     "MajorPicker.js",
     "MessageBar.js",
     "PostContainer.js",
-    "RegisterForm.js",
+    "RegisterForm.native.js",
+    "RegisterForm.web.js",
     "ResetPasswordForm.js",
     "TagsPicker.js",
     "VerificationForm.js"
