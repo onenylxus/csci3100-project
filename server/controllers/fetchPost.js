@@ -9,6 +9,9 @@ require('../schemas/Client');
 const Post = mongoose.model('post');
 const Client = mongoose.model('client');
 
+// Set global buffer
+global.Buffer = global.Buffer || require('buffer').Buffer;
+
 // Exports
 module.exports = function fetchPost(req, res) {
   // Fetch request body
@@ -50,13 +53,17 @@ module.exports = function fetchPost(req, res) {
     let bool = false;
     for (const item of data) {
       console.log(item.username);
-      const client = Client.findOne({ username: item.username });
-      client.then((data1) => {
-        bool |= !data1;
-        if (!bool) {
-          arr.push(data1._id);
-        }
-      });
+      if (item.username === 'Anonymous') {
+        arr.push(Buffer.from([], 'base64'));
+      } else {
+        const client = Client.findOne({ username: item.username });
+        client.then((data1) => {
+          bool |= !data1;
+          if (!bool) {
+            arr.push(data1.profileImage);
+          }
+        });
+      }
     }
     console.log(arr);
     if (bool) {
