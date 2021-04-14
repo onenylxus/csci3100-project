@@ -47,18 +47,22 @@ module.exports = function fetchPost(req, res) {
     }
 
     const arr = [];
+    let bool = false;
     for (const item of data) {
       const client = Client.findOne({ username: item.username });
       client.then((data1) => {
-        if (!data1) {
-          return res.status(422).send({
-            error: 'no client in database',
-          });
+        bool |= !data1;
+        if (!bool) {
+          arr.push(data1);
         }
-        arr.push(data1);
       });
     }
     console.log(arr);
+    if (bool) {
+      return res.status(422).send({
+        error: 'no client in database',
+      });
+    }
 
     return res
       .status(200)
