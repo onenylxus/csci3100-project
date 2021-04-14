@@ -16,7 +16,7 @@ import LikeContainer from './LikeContainer';
 import Style from '../assets/style';
 
 // Export post container
-export default function PostContainer({ post, client, showButton }) {
+export default function PostContainer({ post, showButton }) {
   const navigation = useNavigation();
   const { getUser } = React.useContext(AppContext);
 
@@ -24,7 +24,7 @@ export default function PostContainer({ post, client, showButton }) {
   const [showComment, setShowComment] = React.useState(false);
 
   const author = React.useRef(post.username);
-  const image = React.useRef(client.profilePicture);
+  // const image = React.useRef(client.profilePicture);
 
   const status = React.useRef(0);
   const date = React.useRef(new Date(post.timestamp));
@@ -143,14 +143,7 @@ export default function PostContainer({ post, client, showButton }) {
             <TouchableOpacity onPress={() => nav(author)}>
               <Image
                 style={Style.userIcon}
-                source={
-                  image && image.byteLength > 0
-                    ? {
-                        uri:
-                          'data:image/jpeg;base64,' + image.toString('base64'),
-                      }
-                    : require('../assets/images/profile.png')
-                }
+                source={require('../assets/images/profile.png')}
               />
             </TouchableOpacity>
             <View style={{ flexDirection: 'column' }}>

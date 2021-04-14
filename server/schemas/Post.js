@@ -13,11 +13,11 @@ const PostSchema = new mongoose.Schema({
   },
   title: {
     type: String,
-    default: true,
+    required: true,
   },
   content: {
     type: String,
-    default: true,
+    required: true,
   },
   peopleLike: {
     type: [String],
