@@ -8,7 +8,7 @@ require('../schemas/Client');
 const Client = mongoose.model('client');
 
 // Exports
-module.exports = function editProject(req, res) {
+module.exports = function editProfile(req, res) {
   // Fetch request body
   const { username, name, gender, major, college, bio, image } = req.body;
 

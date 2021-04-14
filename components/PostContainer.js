@@ -23,7 +23,6 @@ export default function PostContainer({ post, showButton }) {
   const [username, setUsername] = React.useState('');
   const [showComment, setShowComment] = React.useState(false);
 
-  const author = React.useRef(post.username);
   // const image = React.useRef(client.profilePicture);
 
   const status = React.useRef(0);
@@ -140,16 +139,16 @@ export default function PostContainer({ post, showButton }) {
       <View>
         <Grid>
           <Col style={{ flexDirection: 'row', marginTop: 15 }}>
-            <TouchableOpacity onPress={() => nav(author)}>
+            <TouchableOpacity onPress={() => nav(post.username)}>
               <Image
                 style={Style.userIcon}
                 source={require('../assets/images/profile.png')}
               />
             </TouchableOpacity>
             <View style={{ flexDirection: 'column' }}>
-              <TouchableOpacity onPress={() => nav(author)}>
+              <TouchableOpacity onPress={() => nav(post.username)}>
                 <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                  {author}
+                  {post.username}
                 </Text>
               </TouchableOpacity>
               <View style={{ flexDirection: 'row' }}>
