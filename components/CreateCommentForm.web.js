@@ -14,21 +14,13 @@ export default function CreateCommentForm({ post }) {
   const [username, setUsername] = React.useState('');
   const [comment, setComment] = React.useState('');
 
-  const [alert, setAlert] = React.useState(false);
+  const [showAlert, setShowAlert] = React.useState(false);
 
   const status = React.useRef(0);
   const postId = React.useRef(post._id);
 
   // Get username
   getUser(setUsername);
-
-  function showAlert() {
-    setAlert(true);
-  }
-
-  function hideAlert() {
-    setAlert(false);
-  }
 
   async function submitData() {
     await fetch(`https://cu-there-server.herokuapp.com/createComment`, {
@@ -54,7 +46,7 @@ export default function CreateCommentForm({ post }) {
           switch (res.error) {
             // Empty content
             case 'missingContentError':
-              return showAlert();
+              return setShowAlert(true);
 
             default:
               return new Error();
@@ -91,7 +83,7 @@ export default function CreateCommentForm({ post }) {
         </TouchableOpacity>
       )}
       <AwesomeAlert
-        show={alert}
+        show={showAlert}
         showProgress={false}
         title="Comment is blank"
         message="Please enter something to comment."
@@ -101,7 +93,7 @@ export default function CreateCommentForm({ post }) {
         confirmText="OK"
         confirmButtonColor="#DD6B55"
         onConfirmPressed={() => {
-          hideAlert();
+          setShowAlert(false);
         }}
         contentContainerStyle={100}
       />

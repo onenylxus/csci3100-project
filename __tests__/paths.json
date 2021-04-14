@@ -61,7 +61,8 @@
   ],
   "screens": [
     "AboutUsScreen.js",
-    "AddInfoScreen.js",
+    "AddInfoScreen.native.js",
+    "AddInfoScreen.web.js",
     "ChannelFeedScreen.js",
     "ChannelScreen.js",
     "CreatePostScreen.js",

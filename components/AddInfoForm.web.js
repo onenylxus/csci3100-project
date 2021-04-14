@@ -1,8 +1,9 @@
 // Import
 import React from 'react';
-import { Alert, Button, Text, TextInput, View } from 'react-native';
+import { Button, Text, TextInput, View } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import AwesomeAlert from 'react-native-awesome-alerts';
 import AuthContext from './AuthContext';
 import CollegePicker from './CollegePicker';
 import MajorPicker from './MajorPicker';
@@ -20,6 +21,8 @@ export default function AddInfoForm() {
   const [college, setCollege] = React.useState('');
   const [name, setName] = React.useState('');
   const [major, setMajor] = React.useState('');
+
+  const [showAlert, setShowAlert] = React.useState(false);
 
   const status = React.useRef(0);
   const username = React.useRef('');
@@ -57,22 +60,7 @@ export default function AddInfoForm() {
     if ([gender, college, name, major].every((data) => data.length > 0)) {
       submitData();
     } else {
-      return Alert.alert(
-        'Some information are missing',
-        'Some fields are missing, do you want to continue without these information? (You can edit these information in the application later.)',
-        [
-          {
-            text: 'Cancel',
-            onPress: () => undefined,
-            style: 'cancel',
-          },
-          {
-            text: 'Continue',
-            onPress: submitData,
-            style: 'cancel',
-          },
-        ]
-      );
+      return setShowAlert(true);
     }
   }
 
@@ -80,23 +68,6 @@ export default function AddInfoForm() {
     const back = navigation.addListener('beforeRemove', (e) => {
       e.preventDefault();
       back();
-
-      Alert.alert(
-        'Continue',
-        'Do you want to continue? (You can edit these information in the application later.)',
-        [
-          {
-            text: 'Cancel',
-            onPress: () => undefined,
-            style: 'cancel',
-          },
-          {
-            text: 'Continue',
-            onPress: submitData,
-            style: 'cancel',
-          },
-        ]
-      );
     });
   }, [navigation, submitData]);
 
@@ -114,7 +85,7 @@ export default function AddInfoForm() {
 
       {/* Gender */}
       <View>
-        <Text style={Style.sectionText}>Gender:</Text>
+        <Text style={Style.sectionText}>Gender: (required)</Text>
         <View style={{ margin: '5%' }}>
           <RadioButton.Group
             onValueChange={(newValue) => setGender(newValue)}
@@ -141,6 +112,21 @@ export default function AddInfoForm() {
       <CollegePicker callback={setCollege} value={college} />
 
       <Button title="Submit!" onPress={confirmAddInfo} />
+      <AwesomeAlert
+        show={showAlert}
+        showProgress={false}
+        title="Some information are missing"
+        message="Some fields are missing, please fill in all of them."
+        closeOnHardwareBackPress
+        closeOnTouchOutside
+        showConfirmButton
+        confirmText="OK"
+        confirmButtonColor="#DD6B55"
+        onConfirmPressed={() => {
+          setShowAlert(false);
+        }}
+        contentContainerStyle={100}
+      />
     </View>
   );
 }

@@ -1,7 +1,7 @@
 // Import
 import React from 'react';
 import { Text, View, ScrollView } from 'react-native';
-import AddInfoForm from '../components/AddInfoForm';
+import AddInfoForm from '../components/AddInfoForm.native';
 import Style from '../assets/style';
 
 // Export register screen
