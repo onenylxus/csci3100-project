@@ -31,7 +31,8 @@ module.exports = function editProject(req, res) {
           profileImage: Buffer.from(image, 'base64'),
         },
       })
-      .exec();
+      .exec()
+      .catch((err) => console.log(err));
 
     return res.status(200).send({ msg: 'Client updated.' });
   });
