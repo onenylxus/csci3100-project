@@ -448,43 +448,12 @@ export default StyleSheet.create({
     fontSize: 15,
   },
 
-  chatBox: {
-    flexDirection: 'row',
-    height: 100,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: '#f0f0f0',
-  },
-
   LeaderboardContainerPhone: {
     width: '95%',
     alignSelf: 'center',
     marginTop: 5,
     backgroundColor: 'white',
     borderRadius: 10,
-  },
-
-  chatMenuIcon: {
-    width: 64,
-    height: 64,
-    margin: 8,
-    borderRadius: 28,
-    alignSelf: 'center',
-  },
-
-  chatMenuInfo: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    marginLeft: 5,
-  },
-
-  chatDate: {
-    alignSelf: 'center',
-    textAlign: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#d2d2d2',
-    borderRadius: 15,
-    marginVertical: 5,
   },
 
   messageBar: {

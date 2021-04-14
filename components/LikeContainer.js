@@ -102,23 +102,6 @@ export default function LikeContainer({ post }) {
           {numOfLike}
         </Text>
       </TouchableOpacity>
-      {/*
-      <TouchableOpacity
-        style={{ flexDirection: 'row' }}
-        onPress={() => {
-          setDislike(!dislike);
-          setLike(false);
-        }}
-      >
-        <FontAwesomeIcon
-          icon={faThumbsDown}
-          style={{ color: dislike ? '#FB7676' : 'lightgrey', margin: 5 }}
-        />
-        <Text style={{ alignSelf: 'center', marginRight: 15 }}>
-          {numOfDislike.current}
-        </Text>
-      </TouchableOpacity>
-      */}
     </View>
   );
 }
