@@ -60,7 +60,7 @@ module.exports = function fetchPost(req, res) {
         client.then((data1) => {
           bool |= !data1;
           if (!bool) {
-            arr.push(data1.profileImage);
+            arr.push(Buffer.from(data1.profileImage));
           }
         });
       }
