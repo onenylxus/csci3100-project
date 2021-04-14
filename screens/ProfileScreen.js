@@ -207,7 +207,7 @@ export default function ProfileScreen() {
           mediaTypes: ImagePicker.MediaTypeOptions.Images,
           allowEditing: true,
           aspect: [1, 1],
-          quality: 0,
+          quality: 1,
           base64: true,
         });
         if (!res.cancelled) {
@@ -228,7 +228,7 @@ export default function ProfileScreen() {
           mediaTypes: ImagePicker.MediaTypeOptions.Images,
           allowEditing: true,
           aspect: [1, 1],
-          quality: 0,
+          quality: 1,
           base64: true,
         });
         if (!res.cancelled) {

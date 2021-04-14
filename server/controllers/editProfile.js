@@ -28,7 +28,7 @@ module.exports = function editProfile(req, res) {
           major: !major ? data.major : major,
           college: !college ? data.college : college,
           bio: !bio ? data.bio : bio,
-          profileImage: image
+          profilePicture: image
             ? Buffer.from(image, 'base64')
             : Buffer.from([], 'base64'),
         },
