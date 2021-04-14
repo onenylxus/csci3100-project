@@ -37,7 +37,7 @@ const ClientSchema = new mongoose.Schema({
   },
   profilePicture: {
     data: Buffer,
-    Ttype: String,
+    type: String,
     required: true,
     default: Buffer.from([], 'base64'),
   },
