@@ -134,12 +134,33 @@ export default StyleSheet.create({
     margin: '5%',
   },
 
+  codeInputBoxPC: {
+    borderWidth: 0.5,
+    borderColor: '#000',
+    minWidth: 200,
+    maxWidth: 200,
+    height: 40,
+    borderRadius: 5,
+    margin: '5%',
+    alignContent: 'center',
+    justifyContent: 'center',
+  },
+
   verificationCode: {
     width: '100%',
     fontSize: 22,
     alignContent: 'center',
     marginLeft: '6%',
     marginTop: '6%',
+  },
+
+  verificationCodePC: {
+    minWidth: '100%',
+    maxWidth: '100%',
+    fontSize: 22,
+    alignSelf: 'center',
+    minHeight: '100%',
+    maxHeight: '100%',
   },
 
   // Styles of Create Post Page
