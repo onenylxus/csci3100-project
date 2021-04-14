@@ -187,6 +187,11 @@ export default StyleSheet.create({
     alignSelf: 'center',
   },
 
+  postTextInputPC: {
+    height: '100%',
+    ...hideOutline(windowWidth),
+  },
+
   // Styles of Edit Post Page
   editPostContainer: {
     justifyContent: 'center',

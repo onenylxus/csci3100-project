@@ -1,6 +1,7 @@
 // Import
 import React from 'react';
 import {
+  Alert,
   Text,
   Button,
   Dimensions,
@@ -135,6 +136,19 @@ export default function OtherProfileScreen() {
       .then((res) => {
         if (status.current === 200) {
           setNumOfFollower(res.follower.length);
+        }
+        if (status.current === 422) {
+          return Alert.alert(
+            'Client not found',
+            'User does not exist. The user should have deleted his or her account',
+            [
+              {
+                text: 'OK',
+                onPress: () => undefined,
+                style: 'cancel',
+              },
+            ]
+          );
         }
       })
       .catch((err) => console.log(err));

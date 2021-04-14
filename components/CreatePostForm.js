@@ -120,7 +120,7 @@ export default function CreatePostForm() {
         </View>
         <View style={Style.createPostBox}>
           <TextInput
-            style={{ ...hideOutline(windowWidth) }}
+            style={windowWidth < 800 ? null : Style.postTextInputPC}
             multiline
             scrollEnabled
             enablesReturnKeyAutomatically
