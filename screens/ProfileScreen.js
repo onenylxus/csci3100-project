@@ -9,14 +9,19 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
+  Modal,
 } from 'react-native';
 import { Row, Grid } from 'react-native-easy-grid';
 import { useNavigation } from '@react-navigation/native';
+import * as ImagePicker from 'expo-image-picker';
 import AppContext from '../components/AppContext';
 import CollegeList from '../assets/json/collegeList.json';
 import MajorList from '../assets/json/majorList.json';
 import PostContainer from '../components/PostContainer';
 import Style from '../assets/style';
+
+// Set global buffer
+global.Buffer = global.Buffer || require('buffer').Buffer;
 
 // Export profile screen
 export default function ProfileScreen() {
@@ -31,6 +36,7 @@ export default function ProfileScreen() {
   } = React.useContext(AppContext);
 
   const [refreshing, setRefreshing] = React.useState(true);
+  const [showModal, setShowModal] = React.useState(false);
   const [platform, setPlatform] = React.useState('');
   const [cameraPerm, setCameraPerm] = React.useState(false);
   const [imagePerm, setImagePerm] = React.useState(false);
@@ -114,6 +120,7 @@ export default function ProfileScreen() {
                 setMajor(res.major);
                 setCollege(res.college);
                 setBio(res.bio);
+                setImage(res.profileImage);
               } else if (status.current === 422) {
                 console.log(res.error);
               }
@@ -189,6 +196,47 @@ export default function ProfileScreen() {
     })();
   }
 
+  async function changePic(type) {
+    askPerm(type);
+    if (type === 'gallery') {
+      if (!imagePerm) {
+        await askPerm(type);
+        await getImagePerm(setImagePerm);
+      }
+      if (imagePerm) {
+        const res = await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.Images,
+          allowEditing: true,
+          aspect: [1, 1],
+          quality: 1,
+          base64: true,
+        });
+        if (!res.cancelled) {
+          setImage(Buffer.from(res.base64, 'base64'));
+        }
+      }
+      setShowModal(false);
+    } else {
+      if (!cameraPerm) {
+        await askPerm(type);
+        await getCameraPerm(setCameraPerm);
+      }
+      if (cameraPerm) {
+        const res = await ImagePicker.launchCameraAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.Images,
+          allowEditing: true,
+          aspect: [1, 1],
+          quality: 1,
+          base64: true,
+        });
+        if (!res.cancelled) {
+          setImage(Buffer.from(res.base64, 'base64'));
+        }
+      }
+      setShowModal(false);
+    }
+  }
+
   function generate() {
     return list.map((post) => (
       <PostContainer
@@ -205,85 +253,113 @@ export default function ProfileScreen() {
   }, []);
 
   React.useEffect(editProfile, [image, refreshing, username]);
-
   React.useEffect(fetchData, [refreshing, username]);
-
   React.useEffect(fetchFollow, [refreshing, username]);
-
   React.useEffect(fetchPost, [refreshing, username]);
 
   // Small screen
   if (windowWidth < 800) {
     return (
-      <ScrollView
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
-      >
-        <View style={{ flex: 1 }}>
-          <Grid style={Style.profileContainerPhone}>
-            <View style={Style.infoLayerPhone}>
-              <Row size={1} style={Style.profilePicturePhone}>
-                <Image
-                  style={{
-                    width: 64,
-                    height: 64,
-                    margin: 8,
-                    borderRadius: 32,
-                  }}
-                  source={require('../assets/images/profile.png')}
-                />
-                <Text style={Style.userInfoPhone}>
-                  {username} {'\n'}
-                  {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
-                  {'\n'}
-                  {CollegeList.hasOwnProperty(college)
-                    ? CollegeList[college]
-                    : 'N/A'}
-                  {'\n'}
-                </Text>
-              </Row>
-              <Row>
-                <View>
-                  <Text
-                    style={{
-                      paddingHorizontal: '10%',
-                      marginBottom: '2%',
-                      fontSize: 16,
-                    }}
-                  >
-                    Biography:
+      <View>
+        {showModal ? (
+          <Modal>
+            <Button
+              title="Choose from gallery"
+              onPress={() => changePic('gallery')}
+            />
+            <Button
+              title="Choose from camera"
+              onPress={() => changePic('camera')}
+            />
+            <Button title="Cancel" onPress={() => setShowModal(false)} />
+          </Modal>
+        ) : (
+          <View />
+        )}
+        <ScrollView
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+        >
+          <View style={{ flex: 1 }}>
+            <Grid style={Style.profileContainerPhone}>
+              <View style={Style.infoLayerPhone}>
+                <Row size={1} style={Style.profilePicturePhone}>
+                  <TouchableOpacity onPress={() => setShowModal(true)}>
+                    <Image
+                      style={{
+                        width: 64,
+                        height: 64,
+                        margin: 8,
+                        borderRadius: 32,
+                      }}
+                      source={
+                        image.toString('base64') !== ''
+                          ? {
+                              uri:
+                                'data:image/jpeg;base64,' +
+                                image.toString('base64'),
+                            }
+                          : require('../assets/images/profile.png')
+                      }
+                    />
+                  </TouchableOpacity>
+                  <Text style={Style.userInfoPhone}>
+                    {username} {'\n'}
+                    {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
+                    {'\n'}
+                    {CollegeList.hasOwnProperty(college)
+                      ? CollegeList[college]
+                      : 'N/A'}
+                    {'\n'}
                   </Text>
-                </View>
-              </Row>
-              <Row style={{ justifyContent: 'center' }}>
-                <View style={Style.bioContainerPhone}>
-                  <Text>{bio}</Text>
-                </View>
-              </Row>
-              <Row size={2} style={Style.editProfileButtonPhone}>
-                <Button
-                  title="Edit Profile"
-                  onPress={() => navigation.navigate('EditProfile')}
-                />
-                <TouchableOpacity
-                  style={{ marginHorizontal: 15 }}
-                  onPress={() => navigation.navigate('Follower', { username })}
-                >
-                  <Text>{numOfFollower} Followers</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={{ marginHorizontal: 15 }}
-                  onPress={() => navigation.navigate('Following', { username })}
-                >
-                  <Text>{numOfFollowing} Following</Text>
-                </TouchableOpacity>
-              </Row>
-            </View>
-          </Grid>
-        </View>
-        <View>{generate()}</View>
-      </ScrollView>
+                </Row>
+                <Row>
+                  <View>
+                    <Text
+                      style={{
+                        paddingHorizontal: '10%',
+                        marginBottom: '2%',
+                        fontSize: 16,
+                      }}
+                    >
+                      Biography:
+                    </Text>
+                  </View>
+                </Row>
+                <Row style={{ justifyContent: 'center' }}>
+                  <View style={Style.bioContainerPhone}>
+                    <Text>{bio}</Text>
+                  </View>
+                </Row>
+                <Row size={2} style={Style.editProfileButtonPhone}>
+                  <Button
+                    title="Edit Profile"
+                    onPress={() => navigation.navigate('EditProfile')}
+                  />
+                  <TouchableOpacity
+                    style={{ marginHorizontal: 15 }}
+                    onPress={() =>
+                      navigation.navigate('Follower', { username })
+                    }
+                  >
+                    <Text>{numOfFollower} Followers</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={{ marginHorizontal: 15 }}
+                    onPress={() =>
+                      navigation.navigate('Following', { username })
+                    }
+                  >
+                    <Text>{numOfFollowing} Following</Text>
+                  </TouchableOpacity>
+                </Row>
+              </View>
+            </Grid>
+          </View>
+          <View>{generate()}</View>
+        </ScrollView>
+      </View>
     );
   }
 
@@ -298,15 +374,17 @@ export default function ProfileScreen() {
         <Grid style={Style.profileContainerPC}>
           <View>
             <Row size={10} style={Style.profilePicturePC}>
-              <Image
-                style={{
-                  width: 128,
-                  height: 128,
-                  margin: 8,
-                  borderRadius: 70,
-                }}
-                source={require('../assets/images/profile.png')}
-              />
+              <TouchableOpacity>
+                <Image
+                  style={{
+                    width: 128,
+                    height: 128,
+                    margin: 8,
+                    borderRadius: 70,
+                  }}
+                  source={require('../assets/images/profile.png')}
+                />
+              </TouchableOpacity>
               <Text style={Style.userInfoPC}>
                 {username} {'\n'}
                 {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}

@@ -52,48 +52,50 @@ export default function App({ testState }) {
         await AsyncStorage.setItem('@username', '');
         setIsLogin(false);
       },
-      askPerm: async () => {
+      askPerm: async (type) => {
         if (AsyncStorage.getItem('@platform') !== 'web') {
-          // Camera permission
-          if (!AsyncStorage.getItem('@cameraPerm')) {
-            const {
-              status,
-            } = await ImagePicker.requestCameraPermissionsAsync();
-            AsyncStorage.setItem('@cameraPerm', String(status === 'granted'));
-          }
-          if (!AsyncStorage.getItem('@cameraPerm')) {
-            return Alert.alert(
-              'Camera Permission required',
-              'Sorry, we need camera permissions to make this work!',
-              [
-                {
-                  text: 'OK',
-                  onPress: () => undefined,
-                  style: 'cancel',
-                },
-              ]
-            );
-          }
-
-          // Image permission
-          if (!AsyncStorage.getItem('@imagePerm')) {
-            const {
-              status,
-            } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-            AsyncStorage.setItem('@imagePerm', String(status === 'granted'));
-          }
-          if (!AsyncStorage.getItem('@imagePerm')) {
-            return Alert.alert(
-              'Image Permission required',
-              'Sorry, we need to access your gallery in order to make this work!',
-              [
-                {
-                  text: 'OK',
-                  onPress: () => undefined,
-                  style: 'cancel',
-                },
-              ]
-            );
+          if (type === 'camera') {
+            // Camera permission
+            if (!AsyncStorage.getItem('@cameraPerm')) {
+              const {
+                status,
+              } = await ImagePicker.requestCameraPermissionsAsync();
+              AsyncStorage.setItem('@cameraPerm', String(status === 'granted'));
+            }
+            if (!AsyncStorage.getItem('@cameraPerm')) {
+              return Alert.alert(
+                'Camera Permission required',
+                'Sorry, we need camera permissions to make this work!',
+                [
+                  {
+                    text: 'OK',
+                    onPress: () => undefined,
+                    style: 'cancel',
+                  },
+                ]
+              );
+            }
+          } else {
+            // Image permission
+            if (!AsyncStorage.getItem('@imagePerm')) {
+              const {
+                status,
+              } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+              AsyncStorage.setItem('@imagePerm', String(status === 'granted'));
+            }
+            if (!AsyncStorage.getItem('@imagePerm')) {
+              return Alert.alert(
+                'Image Permission required',
+                'Sorry, we need to access your gallery in order to make this work!',
+                [
+                  {
+                    text: 'OK',
+                    onPress: () => undefined,
+                    style: 'cancel',
+                  },
+                ]
+              );
+            }
           }
         }
       },

@@ -29,7 +29,7 @@ export default function ProfileStack() {
       <Stack.Screen
         name="EditProfile"
         component={EditProfileScreen}
-        options={() => BackableHeader('EditProfile')}
+        options={() => BackableHeader('Edit Profile')}
       />
       <Stack.Screen
         name="Settings"
@@ -39,12 +39,12 @@ export default function ProfileStack() {
       <Stack.Screen
         name="AboutUs"
         component={AboutUsScreen}
-        options={() => BackableHeader('AboutUs')}
+        options={() => BackableHeader('About Us')}
       />
       <Stack.Screen
         name="EditPost"
         component={EditPostScreen}
-        options={() => BackableHeader('EditPost')}
+        options={() => BackableHeader('Edit Post')}
       />
       <Stack.Screen
         name="Follower"
