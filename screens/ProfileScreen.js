@@ -267,18 +267,33 @@ export default function ProfileScreen() {
                 {'\n'}
               </Text>
             </Row>
-            <Row style={{ justifyContent: 'center' }}>
+            <Row
+              style={{
+                justifyContent: 'center',
+                flexDirection: 'column',
+                alignContent: 'center',
+                alignItems: 'center',
+              }}
+            >
               <View style={Style.bioContainerPC}>
                 <Text
                   style={{
-                    marginBottom: '2%',
+                    paddingBottom: '2%',
                     fontSize: 16,
                     borderBottomWidth: 1,
                   }}
                 >
                   Biography:
                 </Text>
-                <Text>{bio}</Text>
+              </View>
+              <View
+                style={{
+                  maxWidth: '85%',
+                  minWidth: '85%',
+                  paddingHorizontal: '4%',
+                }}
+              >
+                <Text style={{ padding: '2%' }}>{bio}</Text>
               </View>
             </Row>
             <Row size={2} style={Style.editProfileButtonPC}>

@@ -80,7 +80,7 @@ export default function EditPostForm({ post }) {
       <Text style={Style.editPostHeading}>Edit your post below!</Text>
       <View style={Style.editPostSection}>
         <View style={Style.editPostSectionText}>
-          <Text>Post Title: </Text>
+          <Text style={{ alignSelf: 'center' }}>Title: </Text>
         </View>
         <TextInput
           style={Style.SectionStyle}
@@ -94,7 +94,7 @@ export default function EditPostForm({ post }) {
           <Text style={{ alignSelf: 'center' }}>Post: </Text>
         </View>
         <TextInput
-          style={Style.createPostBox}
+          style={Style.editPostContentBox}
           multiline
           scrollEnabled
           enablesReturnKeyAutomatically
@@ -104,7 +104,9 @@ export default function EditPostForm({ post }) {
         />
       </View>
       <TagsPicker callback={setNewTags} value={newTags} />
-      <Button title="Save" onPress={editPost} />
+      <View style={{ marginHorizontal: '40%', marginVertical: 10 }}>
+        <Button title="Save" onPress={editPost} />
+      </View>
     </View>
   );
 }

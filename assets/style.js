@@ -152,10 +152,8 @@ export default StyleSheet.create({
     textAlign: 'left',
     textAlignVertical: 'top',
     alignSelf: 'center',
-    borderRadius: 10,
     minWidth: '75%',
     maxWidth: '75%',
-    padding: '2%',
     marginVertical: 15,
   },
 
@@ -188,15 +186,16 @@ export default StyleSheet.create({
   },
 
   postTextInputPC: {
+    padding: '2%',
     height: '100%',
-    ...hideOutline(windowWidth),
   },
 
   // Styles of Edit Post Page
   editPostContainer: {
     justifyContent: 'center',
     alignContent: 'center',
-    minWidth: '96%',
+    maxWidth: windowWidth < 800 ? '96%' : 600,
+    minWidth: windowWidth < 800 ? '96%' : 600,
     marginHorizontal: '5%',
   },
 
@@ -206,13 +205,20 @@ export default StyleSheet.create({
   },
 
   editPostSection: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'center',
+    marginVertical: 5,
   },
 
   editPostSectionText: {
-    alignSelf: 'center',
+    alignSelf: 'flex-start',
     width: '20%',
+  },
+
+  tagsTitle: {
+    alignSelf: 'flex-start',
+    width: '20%',
+    marginVertical: 5,
   },
 
   pickerTitle: {
@@ -221,6 +227,20 @@ export default StyleSheet.create({
     fontFamily: 'Roboto',
     marginTop: '1%',
     marginBottom: '2%',
+  },
+
+  editPostContentBox: {
+    flexDirection: 'row',
+    backgroundColor: '#ffffff',
+    borderWidth: 1,
+    borderColor: '#000000',
+    minWidth: '75%',
+    maxWidth: '75%',
+    height: 100,
+    borderRadius: 5,
+    paddingHorizontal: '1%',
+    marginVertical: '4%',
+    alignSelf: 'center',
   },
 
   // Styles of Profile Page for PC
@@ -252,13 +272,11 @@ export default StyleSheet.create({
   },
 
   bioContainerPC: {
-    borderBottomWidth: 1,
     paddingHorizontal: '4%',
-    paddingVertical: '1%',
     maxWidth: '85%',
     minWidth: '85%',
     fontSize: 17,
-    marginBottom: 20,
+    marginBottom: 2,
   },
 
   // Styles of Profile Page for Phone

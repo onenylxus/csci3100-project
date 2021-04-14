@@ -25,40 +25,6 @@ export default function EditProfileForm() {
 
   const windowWidth = Dimensions.get('window').width;
 
-  /* function styleByDevice(widthOfDevice, component) {
-    if (widthOfDevice < 800) {
-      // Style of Small Screen
-      switch (component) {
-        case 'width':
-          return '100%';
-
-        case 'pickerWidth':
-          return '100%';
-
-        case 'scrollBar':
-          return false;
-
-        default:
-          break;
-      }
-    }
-
-    // Style of Large Screen
-    switch (component) {
-      case 'width':
-        return 550;
-
-      case 'pickerWidth':
-        return 250;
-
-      case 'scrollBar':
-        return true;
-
-      default:
-        break;
-    }
-  } */
-
   function fetchData() {
     (async () => {
       if (!fetched.current) {

@@ -6,19 +6,36 @@ exports[`TagsPicker matches snapshot 1`] = `
     style={
       Object {
         "flexDirection": "column",
-        "marginVertical": 40,
         "width": "100%",
       }
     }
   >
-    <Text>
-      Tag: 
-    </Text>
+    <View
+      style={
+        Object {
+          "alignSelf": "flex-start",
+          "marginVertical": 5,
+          "width": "20%",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "alignSelf": "center",
+            "marginVertical": 5,
+          }
+        }
+      >
+        Tag: 
+      </Text>
+    </View>
     <View>
       <View
         style={
           Object {
             "alignSelf": "center",
+            "marginVertical": 5,
             "width": "100%",
           }
         }
