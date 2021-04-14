@@ -53,7 +53,7 @@ module.exports = function fetchPost(req, res) {
       client.then((data1) => {
         bool |= !data1;
         if (!bool) {
-          arr.push(data1);
+          arr.push(data1.profileImage);
         }
       });
     }
