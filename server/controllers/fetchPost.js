@@ -33,6 +33,7 @@ module.exports = function fetchPost(req, res) {
           console.log('item.username: ' + item.username);
           const client = Client.findOne({ username: item.username });
           client.then((data1) => {
+            console.log('data1: ' + data1);
             if (!data1) {
               return res.status(422).send({
                 error: 'no client in database.',
@@ -65,7 +66,9 @@ module.exports = function fetchPost(req, res) {
         data.forEach((item) => {
           console.log('item.username: ' + item.username);
           const client = Client.findOne({ username: item.username });
+          console.log('client: ' + client);
           client.then((data1) => {
+            console.log('data1: ' + data1);
             if (!data1) {
               return res.status(422).send({
                 error: 'no client in database.',
@@ -99,6 +102,7 @@ module.exports = function fetchPost(req, res) {
           console.log('item.username: ' + item.username);
           const client = Client.findOne({ username: item.username });
           client.then((data1) => {
+            console.log('data1: ' + data1);
             if (!data1) {
               return res.status(422).send({
                 error: 'no client in database.',
@@ -133,6 +137,7 @@ module.exports = function fetchPost(req, res) {
         console.log('item.username: ' + item.username);
         const client = Client.findOne({ username: item.username });
         client.then((data1) => {
+          console.log('data1: ' + data1);
           if (!data1) {
             return res.status(422).send({
               error: 'no client in database.',
