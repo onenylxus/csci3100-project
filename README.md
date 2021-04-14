@@ -47,11 +47,11 @@ This will open the metro bundler in `localhost:19002`.
 It is recommended to scan the QR code using **Expo Go** app and run the application on your Android device. If you are using iOS device, you can use camera apps to scan the QR code. If the QR code does not work for LAN option, you can change it to Tunnel option and try again.
 
 ## Progress
-*(until March 19, 2021)*
+*(until April 14, 2021)*
 
-Until now we have finished working on the basic structure of the application. The screens and stacks are mainly done with successful transitions. 
+Until now we have basically finishd the structure of the whole application and most functions work properly on iOS and Android devices. Minor bugfixes are yet to be delivered but the general user interface and database has been well setup and good to go. 
 
-We are currently working on the registration process and login process of the application. Now the application is connected with the database and account creation is possible. The email verification is also almost done.
+We are currently working on moving some mobile-compatible features to the web version of the application because some features fails to function properly. Moreover, testing are yet to be designed and implemented to validate our app.
 
 ## License
 This project is under **Apache-2.0 License**. For more details, visit [`LICENSE.md`](https://github.com/onenylxus/csci3100-project/blob/master/LICENSE.md).
