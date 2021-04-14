@@ -63,6 +63,7 @@ export default function ProfileScreen() {
     (async () => {
       if (refreshing) {
         if (!fetched.current) {
+          console.log(image.substr(0, 20));
           await fetch('https://cu-there-server.herokuapp.com/editProfile', {
             method: 'POST',
             headers: {

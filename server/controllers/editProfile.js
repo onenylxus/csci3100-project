@@ -23,12 +23,14 @@ module.exports = function editProfile(req, res) {
     data
       .update({
         $set: {
-          name,
-          gender,
-          major,
-          college,
-          bio,
-          profileImage: Buffer.from(image, 'base64'),
+          name: !name ? data.name : name,
+          gender: !gender ? data.gender : gender,
+          major: !major ? data.major : major,
+          college: !college ? data.college : college,
+          bio: !bio ? data.bio : bio,
+          profileImage: image
+            ? Buffer.from(image, 'base64')
+            : Buffer.from([], 'base64'),
         },
       })
       .exec()
