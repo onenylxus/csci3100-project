@@ -27,7 +27,8 @@ exports[`TagsPicker matches snapshot 1`] = `
           }
         }
       >
-        Tag: 
+        Tag:
+         
       </Text>
     </View>
     <View>
