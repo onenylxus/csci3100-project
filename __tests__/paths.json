@@ -34,7 +34,8 @@
     "tagsList.json"
   ],
   "components": [
-    "AddInfoForm.js",
+    "AddInfoForm.native.js",
+    "AddInfoForm.web.js",
     "AuthContext.js",
     "CollegePicker.js",
     "Comment.js",

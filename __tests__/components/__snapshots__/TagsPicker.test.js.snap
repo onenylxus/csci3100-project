@@ -44,7 +44,7 @@ exports[`TagsPicker matches snapshot 1`] = `
           items={
             Array [
               Object {
-                "label": "Choose a tag",
+                "label": "Choose a channel!",
                 "textColor": undefined,
                 "value": "",
               },

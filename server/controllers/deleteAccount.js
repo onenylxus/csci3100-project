@@ -8,7 +8,8 @@ require('../schemas/Comment');
 
 // Models
 const Client = mongoose.model('client');
-// const Post = mongoose.model('post');
+const Comment = mongoose.model('comment');
+const Post = mongoose.model('post');
 
 // Exports
 module.exports = function deleteAccount(req, res) {
@@ -17,8 +18,6 @@ module.exports = function deleteAccount(req, res) {
 
   // Fetch client
   const client = Client.findOne({ username });
-  // const comment = Comment.find({ username });
-  // const post = Post.find({ username });
 
   client.then((data) => {
     console.log('data: ' + data);
@@ -27,31 +26,24 @@ module.exports = function deleteAccount(req, res) {
     }
     data.deleteOne({});
 
-    /*
-    comment.then((data1) => {
-      if (data1) {
-        console.log('data1 before delete: ' + data1);
-        data1.updateMany({ $set: { username: 'Deleted User' } }).exec();
+    Comment.update(
+      { username },
+      { $set: { username: 'deleted account' } },
+      { multi: true },
+      (err) => {
+        console.log(err);
       }
-      console.log('data1 after delete: ' + data1);
-    });
-    */
+    );
 
-    /*
-    post.then((data2) => {
-      if (data2) {
-        console.log('data2: ' + data2);
-        data2[0]
-          .update({
-            $set: { username: 'Deleted User' },
-          })
-          .exec();
+    Post.update(
+      { username },
+      { $set: { username: 'deleted account' } },
+      { multi: true },
+      (err) => {
+        console.log(err);
       }
-    });
-    */
+    );
 
-    // const post = Post.updateMany({ username }, { username: 'Deleted User' });
-    // Post.where({ username }).update({ $set: { username: 'Deleted' } });
     return res.status(200).send({ msg: 'Deleted post and comment' });
   });
 };

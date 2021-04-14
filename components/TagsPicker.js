@@ -60,7 +60,7 @@ export default function TagPicker({ callback, value }) {
             onValueChange={(itemValue) => callback(itemValue)}
           >
             {[
-              <Picker.Item label="Choose a tag" value="" key="" />,
+              <Picker.Item label="Choose a channel!" value="" key="" />,
               ...Object.keys(TagsList).map((item) => (
                 <Picker.Item label={TagsList[item]} value={item} key={item} />
               )),

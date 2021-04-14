@@ -1,11 +1,21 @@
 // Import
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, Text, View, TouchableOpacity } from 'react-native';
 import { Col, Grid } from 'react-native-easy-grid';
+import { useNavigation } from '@react-navigation/native';
+import AuthContext from './AuthContext';
 import Style from '../assets/style';
 
 // Export Comment
 export default function Comment({ comment }) {
+  const navigation = useNavigation();
+  const { getUser } = React.useContext(AuthContext);
+
+  const [username, setUsername] = React.useState('');
+  const [commentUsername, setCommentUsername] = React.useState(
+    comment.username
+  );
+
   const date = React.useRef(new Date(comment.timestamp));
   const monthString = React.useRef(date.current.getMonth() + 1);
   const dateString = React.useRef(
@@ -20,19 +30,41 @@ export default function Comment({ comment }) {
       date.current.getFullYear().toString()
   );
 
+  getUser(setUsername);
+
+  function nav(other) {
+    if (username !== other) {
+      navigation.navigate('OtherProfile', { other });
+    } else navigation.navigate('Profile');
+  }
+
   return (
     <View style={Style.Comment}>
       <View style={{ flexDirection: 'row' }}>
         <Grid>
           <Col style={{ flexDirection: 'row', marginTop: 5 }}>
-            <Image
-              style={Style.userIcon}
-              source={require('../assets/images/profile.png')}
-            />
+            <TouchableOpacity
+              onPress={() => {
+                setCommentUsername(comment.username);
+                nav(commentUsername);
+              }}
+            >
+              <Image
+                style={Style.userIcon}
+                source={require('../assets/images/profile.png')}
+              />
+            </TouchableOpacity>
             <View style={{ flexDirection: 'column' }}>
-              <Text style={{ fontSize: 14, fontWeight: 'bold' }}>
-                {comment.username}
-              </Text>
+              <TouchableOpacity
+                onPress={() => {
+                  setCommentUsername(comment.username);
+                  nav(commentUsername);
+                }}
+              >
+                <Text style={{ fontSize: 14, fontWeight: 'bold' }}>
+                  {comment.username}
+                </Text>
+              </TouchableOpacity>
               <Text style={{ fontSize: 10 }}>{dateString.current}</Text>
               <Text>{comment.content}</Text>
             </View>

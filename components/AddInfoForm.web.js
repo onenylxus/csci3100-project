@@ -10,6 +10,8 @@ import Style from '../assets/style';
 
 // Export add info form
 export default function AddInfoForm() {
+  const navigation = useNavigation();
+
   const route = useRoute();
   const { login } = React.useContext(AuthContext);
 
@@ -101,7 +103,7 @@ export default function AddInfoForm() {
   return (
     <View>
       {/* Name */}
-      <Text style={Style.sectionText}>Name:</Text>
+      <Text style={Style.sectionText}>Name: (required)</Text>
       <View style={Style.SectionStyle}>
         <TextInput
           style={Style.textInput}

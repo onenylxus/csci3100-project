@@ -208,6 +208,14 @@ export default function OtherProfileScreen() {
 
   React.useEffect(fetchPost, [followState, other, refreshing, username]);
 
+  if (other === 'deleted account') {
+    return (
+      <View>
+        <Text>This user is no longer avaliable</Text>
+      </View>
+    );
+  }
+
   if (windowWidth < 800) {
     return (
       <ScrollView
