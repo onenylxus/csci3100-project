@@ -13,7 +13,7 @@ const port = process.env.PORT || 8080;
 app.use(cors({ origin: '*' }));
 
 // Use express JSON
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 
 // Mongoose setup
 mongoose.connect(uri, {

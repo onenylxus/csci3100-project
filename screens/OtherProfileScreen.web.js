@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { Row, Grid } from 'react-native-easy-grid';
 import { useRoute } from '@react-navigation/native';
-import AuthContext from '../components/AuthContext';
+import AppContext from '../components/AppContext';
 import CollegeList from '../assets/json/collegeList.json';
 import MajorList from '../assets/json/majorList.json';
 import PostContainer from '../components/PostContainer';
@@ -22,8 +22,8 @@ import Style from '../assets/style';
 export default function OtherProfileScreen() {
   const route = useRoute();
 
-  const { other } = route.params;
-  const { getUser } = React.useContext(AuthContext);
+  const { author } = route.params;
+  const { getUser } = React.useContext(AppContext);
 
   const [username, setUsername] = React.useState('');
   const [followState, setFollowState] = React.useState(false);
@@ -54,7 +54,7 @@ export default function OtherProfileScreen() {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              username: other,
+              username: author,
             }),
           })
             .then((res) => {
@@ -88,7 +88,7 @@ export default function OtherProfileScreen() {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              other,
+              other: author,
             }),
           })
             .then((res) => {
@@ -123,7 +123,7 @@ export default function OtherProfileScreen() {
       body: JSON.stringify({
         followState,
         self: username,
-        other,
+        other: author,
       }),
     })
       .then((res) => {
@@ -161,7 +161,7 @@ export default function OtherProfileScreen() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            username: other,
+            username: author,
             page,
             tags: '',
           }),
@@ -200,13 +200,13 @@ export default function OtherProfileScreen() {
     setTimeout(() => setRefreshing(false), 30000);
   }, []);
 
-  React.useEffect(fetchData, [refreshing, other]);
+  React.useEffect(fetchData, [refreshing, author]);
 
-  React.useEffect(fetchFollow, [followState, other, refreshing, username]);
+  React.useEffect(fetchFollow, [followState, author, refreshing, username]);
 
-  React.useEffect(fetchPost, [followState, other, refreshing, username]);
+  React.useEffect(fetchPost, [followState, author, refreshing, username]);
 
-  if (other === 'deleted account') {
+  if (author === 'deleted account') {
     return (
       <View>
         <Text>This user is no longer avaliable</Text>
@@ -235,7 +235,7 @@ export default function OtherProfileScreen() {
               />
               <Text style={Style.userInfoPC}>
                 <Text style={{ fontWeight: 'bold' }}>
-                  {other} {'\n'}
+                  {author} {'\n'}
                 </Text>
                 Major:{' '}
                 {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}

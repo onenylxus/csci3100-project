@@ -6,11 +6,11 @@ import { fireEvent, render, waitFor } from '@testing-library/react-native';
 import fetchMock from 'jest-fetch-mock';
 
 // Import target component
-import AuthContext from '../../components/AuthContext';
+import AppContext from '../../components/AppContext';
 import LoginForm from '../../components/LoginForm';
 
 // Mock authentication method
-const AuthMethodMock = {
+const AppMethodMock = {
   login: jest.fn(),
   logout: jest.fn(),
   getUser: jest.fn(),
@@ -23,7 +23,7 @@ jest.mock('@fortawesome/react-native-fontawesome', () => ({
 
 // Spy on alert
 jest.spyOn(Alert, 'alert');
-jest.spyOn(AuthMethodMock, 'login');
+jest.spyOn(AppMethodMock, 'login');
 
 // Run jest tests
 describe('LoginForm', () => {
@@ -56,9 +56,9 @@ describe('LoginForm', () => {
     // Render
     element = render(
       <NavigationContainer>
-        <AuthContext.Provider value={AuthMethodMock}>
+        <AppContext.Provider value={AppMethodMock}>
           <LoginForm />
-        </AuthContext.Provider>
+        </AppContext.Provider>
       </NavigationContainer>
     );
   });
@@ -137,7 +137,7 @@ describe('LoginForm', () => {
     fireEvent.changeText(password, 'testpw');
     fireEvent.press(button);
     await waitFor(() => expect(Alert.alert).toHaveBeenCalled());
-    // await waitFor(() => expect(AuthMethodMock.login).toHaveBeenCalled());
+    // await waitFor(() => expect(AppMethodMock.login).toHaveBeenCalled());
   });
 
   it('matches snapshot', () => {

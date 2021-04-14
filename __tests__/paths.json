@@ -36,7 +36,7 @@
   "components": [
     "AddInfoForm.native.js",
     "AddInfoForm.web.js",
-    "AuthContext.js",
+    "AppContext.js",
     "CollegePicker.native.js",
     "CollegePicker.web.js",
     "Comment.js",
@@ -86,7 +86,8 @@
     "ResetPasswordScreen.js",
     "SeeFollowerScreen.js",
     "SeeFollowingScreen.js",
-    "SettingsScreen.js",
+    "SettingsScreen.native.js",
+    "SettingsScreen.web.js",
     "VerificationScreen.js"
   ],
   "screens/stacks": [

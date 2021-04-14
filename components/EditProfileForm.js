@@ -3,7 +3,7 @@ import React from 'react';
 import { Button, Dimensions, Text, TextInput, View } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-import AuthContext from './AuthContext';
+import AppContext from './AppContext';
 import CollegePicker from './CollegePicker';
 import MajorPicker from './MajorPicker';
 import Style from '../assets/style';
@@ -11,7 +11,7 @@ import Style from '../assets/style';
 // Export edit profile form
 export default function EditProfileForm() {
   const navigation = useNavigation();
-  const { getUser } = React.useContext(AuthContext);
+  const { getUser } = React.useContext(AppContext);
 
   const [username, setUsername] = React.useState('');
   const [name, setName] = React.useState('');

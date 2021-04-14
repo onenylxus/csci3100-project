@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { Row, Grid } from 'react-native-easy-grid';
 import { useRoute } from '@react-navigation/native';
-import AuthContext from '../components/AuthContext';
+import AppContext from '../components/AppContext';
 import CollegeList from '../assets/json/collegeList.json';
 import MajorList from '../assets/json/majorList.json';
 import PostContainer from '../components/PostContainer';
@@ -23,7 +23,7 @@ export default function OtherProfileScreen() {
   const route = useRoute();
 
   const { other } = route.params;
-  const { getUser } = React.useContext(AuthContext);
+  const { getUser } = React.useContext(AppContext);
 
   const [username, setUsername] = React.useState('');
   const [followState, setFollowState] = React.useState(false);

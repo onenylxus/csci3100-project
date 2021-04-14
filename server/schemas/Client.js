@@ -35,11 +35,7 @@ const ClientSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  profilePicture: {
-    data: Buffer,
-    contentType: String,
-    required: false,
-  },
+  profilePicture: Buffer,
   status: {
     type: String,
     required: false,

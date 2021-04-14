@@ -1,5 +1,6 @@
 // Import
 import React from 'react';
+import { Alert, Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -12,10 +13,10 @@ import {
   faPlus,
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { loadAsync } from 'expo-font';
-// import AppLoading from 'expo-app-loading';
-import AuthContext from './components/AuthContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as ImagePicker from 'expo-image-picker';
+import AppContext from './components/AppContext';
 import ChannelStack from './screens/stacks/ChannelStack';
 import CreatePostStack from './screens/stacks/CreatePostStack';
 import FeedStack from './screens/stacks/FeedStack';
@@ -37,8 +38,11 @@ export default function App({ testState }) {
   // Login state
   const [isLogin, setIsLogin] = React.useState(false);
 
+  // Platform
+  const platform = React.useRef(Platform.OS);
+
   // Authentication method
-  const authMethod = React.useMemo(
+  const AppMethod = React.useMemo(
     () => ({
       login: async (data) => {
         await AsyncStorage.setItem('@username', data.username);
@@ -48,10 +52,75 @@ export default function App({ testState }) {
         await AsyncStorage.setItem('@username', '');
         setIsLogin(false);
       },
+      askPerm: async (type) => {
+        if (AsyncStorage.getItem('@platform') !== 'web') {
+          if (type === 'camera') {
+            // Camera permission
+            if (!AsyncStorage.getItem('@cameraPerm')) {
+              const {
+                status,
+              } = await ImagePicker.requestCameraPermissionsAsync();
+              AsyncStorage.setItem('@cameraPerm', String(status === 'granted'));
+            }
+            if (!AsyncStorage.getItem('@cameraPerm')) {
+              return Alert.alert(
+                'Camera Permission required',
+                'Sorry, we need camera permissions to make this work!',
+                [
+                  {
+                    text: 'OK',
+                    onPress: () => undefined,
+                    style: 'cancel',
+                  },
+                ]
+              );
+            }
+          } else {
+            // Image permission
+            if (!AsyncStorage.getItem('@imagePerm')) {
+              const {
+                status,
+              } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+              AsyncStorage.setItem('@imagePerm', String(status === 'granted'));
+            }
+            if (!AsyncStorage.getItem('@imagePerm')) {
+              return Alert.alert(
+                'Image Permission required',
+                'Sorry, we need to access your gallery in order to make this work!',
+                [
+                  {
+                    text: 'OK',
+                    onPress: () => undefined,
+                    style: 'cancel',
+                  },
+                ]
+              );
+            }
+          }
+        }
+      },
       getUser: async (setter) => {
         const user = await AsyncStorage.getItem('@username');
         if (user !== null) {
           setter(user);
+        }
+      },
+      getPlatform: async (setter) => {
+        const plat = await AsyncStorage.getItem('@platform');
+        if (plat !== null) {
+          setter(plat);
+        }
+      },
+      getCameraPerm: async (setter) => {
+        const perm = await AsyncStorage.getItem('@cameraPerm');
+        if (perm !== null) {
+          setter(perm);
+        }
+      },
+      getImagePerm: async (setter) => {
+        const perm = await AsyncStorage.getItem('@imagePerm');
+        if (perm !== null) {
+          setter(perm);
         }
       },
     }),
@@ -76,6 +145,13 @@ export default function App({ testState }) {
       if (!keys.includes('@username')) {
         AsyncStorage.setItem('@username', '');
       }
+      if (!keys.includes('@cameraPerm')) {
+        AsyncStorage.setItem('@cameraPerm', 'false');
+      }
+      if (!keys.includes('@imagePerm')) {
+        AsyncStorage.setItem('@imagePerm', 'false');
+      }
+      AsyncStorage.setItem('@platform', platform.current);
     });
 
     // Login automation
@@ -93,7 +169,7 @@ export default function App({ testState }) {
 
   return (
     <NavigationContainer>
-      <AuthContext.Provider value={authMethod}>
+      <AppContext.Provider value={AppMethod}>
         {isLogin ? (
           <Tab.Navigator
             initialRouteName="Feed"
@@ -151,7 +227,7 @@ export default function App({ testState }) {
             />
           </Stack.Navigator>
         )}
-      </AuthContext.Provider>
+      </AppContext.Provider>
       <StatusBar style="auto" />
     </NavigationContainer>
   );

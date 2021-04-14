@@ -9,10 +9,12 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
+  Modal,
 } from 'react-native';
 import { Row, Grid } from 'react-native-easy-grid';
 import { useNavigation } from '@react-navigation/native';
-import AuthContext from '../components/AuthContext';
+import * as ImagePicker from 'expo-image-picker';
+import AppContext from '../components/AppContext';
 import CollegeList from '../assets/json/collegeList.json';
 import MajorList from '../assets/json/majorList.json';
 import PostContainer from '../components/PostContainer';
@@ -22,25 +24,73 @@ import Style from '../assets/style';
 export default function ProfileScreen() {
   const windowWidth = Dimensions.get('window').width;
   const navigation = useNavigation();
-  const { getUser } = React.useContext(AuthContext);
+  const {
+    askPerm,
+    getUser,
+    getPlatform,
+    getCameraPerm,
+    getImagePerm,
+  } = React.useContext(AppContext);
+
+  const [refreshing, setRefreshing] = React.useState(true);
+  const [showModal, setShowModal] = React.useState(false);
+  const [platform, setPlatform] = React.useState('');
+  const [cameraPerm, setCameraPerm] = React.useState(false);
+  const [imagePerm, setImagePerm] = React.useState(false);
 
   const [username, setUsername] = React.useState('');
   const [numOfFollower, setNumOfFollower] = React.useState(0);
   const [numOfFollowing, setNumOfFollowing] = React.useState(0);
-  const [refreshing, setRefreshing] = React.useState(true);
-  const [list, setList] = React.useState([]);
   const [college, setCollege] = React.useState('');
-  // const [gender, setGender] = React.useState('');
+  const [image, setImage] = React.useState('');
   const [major, setMajor] = React.useState('');
   const [bio, setBio] = React.useState('');
+
+  const [list, setList] = React.useState([]);
 
   const page = React.useRef(0);
   const fetched = React.useRef(false);
   const status = React.useRef(0);
   const showButton = React.useRef(true);
 
-  // Get username
+  // Get from context
   getUser(setUsername);
+  getPlatform(setPlatform);
+  getCameraPerm(setCameraPerm);
+  getImagePerm(setImagePerm);
+
+  function editProfile() {
+    (async () => {
+      if (refreshing) {
+        if (!fetched.current) {
+          console.log(image.substr(0, 10));
+          await fetch('https://cu-there-server.herokuapp.com/editProfile', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              username,
+              image,
+            }),
+          })
+            .then((res) => {
+              status.current = res.status;
+              return res;
+            })
+            .then((res) => res.json())
+            .then((res) => {
+              if (status.current === 200) {
+                console.log(res);
+              } else if (status.current === 422) {
+                console.log(res.error);
+              }
+            })
+            .catch((err) => console.log(err));
+        }
+      }
+    })();
+  }
 
   function fetchData() {
     (async () => {
@@ -62,10 +112,10 @@ export default function ProfileScreen() {
             .then((res) => res.json())
             .then((res) => {
               if (status.current === 200) {
-                // setGender(res.gender);
                 setMajor(res.major);
                 setCollege(res.college);
                 setBio(res.bio);
+                setImage(res.image);
               } else if (status.current === 422) {
                 console.log(res.error);
               }
@@ -141,6 +191,57 @@ export default function ProfileScreen() {
     })();
   }
 
+  const onRefresh = React.useCallback(async () => {
+    setRefreshing(true);
+    setTimeout(() => setRefreshing(false), 30000);
+  }, []);
+
+  async function changePic(type) {
+    if (type === 'gallery') {
+      if (!imagePerm && platform !== 'web') {
+        await askPerm(type);
+        await getImagePerm(setImagePerm);
+      }
+      if (imagePerm) {
+        const res = await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.Images,
+          allowEditing: true,
+          aspect: [1, 1],
+          quality: 1,
+          base64: true,
+        });
+        if (!res.cancelled) {
+          console.log(res.base64.substr(0, 20));
+          fetched.current = false;
+          setImage(res.base64);
+        }
+      }
+      setShowModal(false);
+      await onRefresh();
+    } else {
+      if (!cameraPerm && platform !== 'web') {
+        await askPerm(type);
+        await getCameraPerm(setCameraPerm);
+      }
+      if (cameraPerm) {
+        const res = await ImagePicker.launchCameraAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.Images,
+          allowEditing: true,
+          aspect: [1, 1],
+          quality: 1,
+          base64: true,
+        });
+        if (!res.cancelled) {
+          console.log(res.base64.substr(0, 20));
+          fetched.current = false;
+          setImage(res.base64);
+        }
+      }
+      setShowModal(false);
+      await onRefresh();
+    }
+  }
+
   function generate() {
     return list.map((post) => (
       <PostContainer
@@ -151,91 +252,108 @@ export default function ProfileScreen() {
     ));
   }
 
-  const onRefresh = React.useCallback(async () => {
-    setRefreshing(true);
-    setTimeout(() => setRefreshing(false), 30000);
-  }, []);
-
+  React.useEffect(editProfile, [refreshing, username, image]);
   React.useEffect(fetchData, [refreshing, username]);
-
   React.useEffect(fetchFollow, [refreshing, username]);
-
   React.useEffect(fetchPost, [refreshing, username]);
 
   // Small screen
   if (windowWidth < 800) {
     return (
-      <ScrollView
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
-      >
-        <View style={{ flex: 1 }}>
-          <Grid style={Style.profileContainerPhone}>
-            <View style={Style.infoLayerPhone}>
-              <Row size={1} style={Style.profilePicturePhone}>
-                <Image
-                  style={{
-                    width: 64,
-                    height: 64,
-                    margin: 8,
-                    borderRadius: 32,
-                  }}
-                  source={require('../assets/images/profile.png')}
-                />
-                <Text style={Style.userInfoPhone}>
-                  {username} {'\n'}
-                  Major:{' '}
-                  {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
-                  {'\n'}
-                  College:{' '}
-                  {CollegeList.hasOwnProperty(college)
-                    ? CollegeList[college]
-                    : 'N/A'}
-                  {'\n'}
-                </Text>
-              </Row>
-              <Row>
-                <View>
-                  <Text
-                    style={{
-                      paddingHorizontal: '10%',
-                      marginBottom: '2%',
-                      fontSize: 16,
-                    }}
-                  >
-                    Biography:
+      <View>
+        <Modal visible={showModal}>
+          <Button
+            title="Choose from gallery"
+            onPress={() => changePic('gallery')}
+          />
+          <Button
+            title="Choose from camera"
+            onPress={() => changePic('camera')}
+          />
+          <Button title="Cancel" onPress={() => setShowModal(false)} />
+        </Modal>
+        <ScrollView
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+        >
+          <View style={{ flex: 1 }}>
+            <Grid style={Style.profileContainerPhone}>
+              <View style={Style.infoLayerPhone}>
+                <Row size={1} style={Style.profilePicturePhone}>
+                  <TouchableOpacity onPress={() => setShowModal(true)}>
+                    <Image
+                      style={{
+                        width: 64,
+                        height: 64,
+                        margin: 8,
+                        borderRadius: 32,
+                      }}
+                      source={
+                        image && image.length > 0
+                          ? {
+                              uri: `data:image/jpeg;base64,${image}`,
+                            }
+                          : require('../assets/images/profile.png')
+                      }
+                    />
+                  </TouchableOpacity>
+                  <Text style={Style.userInfoPhone}>
+                    {username} {'\n'}
+                    {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
+                    {'\n'}
+                    {CollegeList.hasOwnProperty(college)
+                      ? CollegeList[college]
+                      : 'N/A'}
+                    {'\n'}
                   </Text>
-                </View>
-              </Row>
-              <Row style={{ justifyContent: 'center' }}>
-                <View style={Style.bioContainerPhone}>
-                  <Text>{bio}</Text>
-                </View>
-              </Row>
-              <Row size={2} style={Style.editProfileButtonPhone}>
-                <Button
-                  title="Edit Profile"
-                  onPress={() => navigation.navigate('EditProfile')}
-                />
-                <TouchableOpacity
-                  style={{ marginHorizontal: 15 }}
-                  onPress={() => navigation.navigate('Follower', { username })}
-                >
-                  <Text>{numOfFollower} Followers</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={{ marginHorizontal: 15 }}
-                  onPress={() => navigation.navigate('Following', { username })}
-                >
-                  <Text>{numOfFollowing} Following</Text>
-                </TouchableOpacity>
-              </Row>
-            </View>
-          </Grid>
-        </View>
-        <View>{generate()}</View>
-      </ScrollView>
+                </Row>
+                <Row>
+                  <View>
+                    <Text
+                      style={{
+                        paddingHorizontal: '10%',
+                        marginBottom: '2%',
+                        fontSize: 16,
+                      }}
+                    >
+                      Biography:
+                    </Text>
+                  </View>
+                </Row>
+                <Row style={{ justifyContent: 'center' }}>
+                  <View style={Style.bioContainerPhone}>
+                    <Text>{bio}</Text>
+                  </View>
+                </Row>
+                <Row size={2} style={Style.editProfileButtonPhone}>
+                  <Button
+                    title="Edit Profile"
+                    onPress={() => navigation.navigate('EditProfile')}
+                  />
+                  <TouchableOpacity
+                    style={{ marginHorizontal: 15 }}
+                    onPress={() =>
+                      navigation.navigate('Follower', { username })
+                    }
+                  >
+                    <Text>{numOfFollower} Followers</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={{ marginHorizontal: 15 }}
+                    onPress={() =>
+                      navigation.navigate('Following', { username })
+                    }
+                  >
+                    <Text>{numOfFollowing} Following</Text>
+                  </TouchableOpacity>
+                </Row>
+              </View>
+            </Grid>
+          </View>
+          <View>{generate()}</View>
+        </ScrollView>
+      </View>
     );
   }
 
@@ -250,15 +368,17 @@ export default function ProfileScreen() {
         <Grid style={Style.profileContainerPC}>
           <View>
             <Row size={10} style={Style.profilePicturePC}>
-              <Image
-                style={{
-                  width: 128,
-                  height: 128,
-                  margin: 8,
-                  borderRadius: 70,
-                }}
-                source={require('../assets/images/profile.png')}
-              />
+              <TouchableOpacity>
+                <Image
+                  style={{
+                    width: 128,
+                    height: 128,
+                    margin: 8,
+                    borderRadius: 70,
+                  }}
+                  source={require('../assets/images/profile.png')}
+                />
+              </TouchableOpacity>
               <Text style={Style.userInfoPC}>
                 {username} {'\n'}
                 Major:{' '}

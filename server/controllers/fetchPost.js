@@ -3,75 +3,77 @@ const mongoose = require('mongoose');
 
 // Schemas
 require('../schemas/Post');
+require('../schemas/Client');
 
 // Models
 const Post = mongoose.model('post');
+const Client = mongoose.model('client');
+
+// Set global buffer
+global.Buffer = global.Buffer || require('buffer').Buffer;
 
 // Exports
 module.exports = function fetchPost(req, res) {
   // Fetch request body
   const { page, tags, username } = req.body;
+  let post;
   if (username === '') {
     if (tags === 'Newest') {
-      const post = Post.find({})
+      post = Post.find({})
         .sort({ timestamp: -1 })
         .skip(25 * page)
         .limit(25);
-
-      post.then((data) => {
-        if (!data) {
-          return res.status(422).send({
-            error: 'no post in database.',
-          });
-        }
-
-        return res.status(200).send({ msg: 'Post fetched.', posts: data });
-      });
     } else if (tags === 'Trending') {
-      const post = Post.find({})
+      post = Post.find({})
         .sort({ popularity: -1 })
         .skip(25 * page)
         .limit(25);
-
-      post.then((data) => {
-        if (!data) {
-          return res.status(422).send({
-            error: 'no post in database.',
-          });
-        }
-
-        return res.status(200).send({ msg: 'Post fetched.', posts: data });
-      });
     } else {
-      const post = Post.find({ tags })
+      post = Post.find({ tags })
         .sort({ timestamp: -1 })
         .skip(25 * page)
         .limit(25);
-
-      post.then((data1) => {
-        if (!data1) {
-          return res.status(422).send({
-            error: 'no post in database.',
-          });
-        }
-
-        return res.status(200).send({ msg: 'Post fetched.', posts: data1 });
-      });
     }
   } else {
-    const post = Post.find({ username })
+    // profile screen
+    post = Post.find({ username })
       .sort({ timestamp: -1 })
       .skip(25 * page)
       .limit(25);
+  }
 
-    post.then((data2) => {
-      if (!data2) {
-        return res.status(422).send({
-          error: 'no post in database.',
+  post.then(async (data) => {
+    if (!data) {
+      return res.status(422).send({
+        error: 'no post in database.',
+      });
+    }
+
+    const arr = [];
+    let bool = false;
+    for (const item of data) {
+      console.log(item.username);
+      if (item.username === 'Anonymous') {
+        arr.push(undefined);
+      } else {
+        const client = Client.findOne({ username: item.username });
+        client.then((data1) => {
+          bool |= !data1;
+          if (!bool) {
+            arr.push(data1.profilePicture);
+          }
         });
       }
+    }
+    console.log(arr);
+    if (bool) {
+      return res.status(422).send({
+        error: 'no client in database',
+      });
+    }
 
-      return res.status(200).send({ msg: 'Post fetched.', posts: data2 });
-    });
-  }
+    return res
+      .status(200)
+      .send({ msg: 'Post fetched.', posts: data, clients: arr });
+  });
 };

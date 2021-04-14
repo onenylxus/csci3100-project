@@ -10,20 +10,18 @@ import {
   faExclamation,
   faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
-import AuthContext from './AuthContext';
+import AppContext from './AppContext';
 import CommentContainer from './CommentContainer';
 import LikeContainer from './LikeContainer';
 import Style from '../assets/style';
 
 // Export post container
-export default function PostContainer({ post, showButton }) {
+export default function PostContainer({ post, image, showButton }) {
   const navigation = useNavigation();
-  const { getUser } = React.useContext(AuthContext);
+  const { getUser } = React.useContext(AppContext);
 
   const [username, setUsername] = React.useState('');
-
   const [showComment, setShowComment] = React.useState(false);
-  const [postUsername, setPostUsername] = React.useState(post.username);
 
   const status = React.useRef(0);
   const date = React.useRef(new Date(post.timestamp));
@@ -127,9 +125,11 @@ export default function PostContainer({ post, showButton }) {
   }
 
   function nav(other) {
-    if (username !== other) {
+    if (username.current !== other) {
       navigation.navigate('OtherProfile', { other });
-    } else navigation.navigate('Profile');
+    } else {
+      navigation.navigate('Profile');
+    }
   }
 
   return (
@@ -137,26 +137,22 @@ export default function PostContainer({ post, showButton }) {
       <View>
         <Grid>
           <Col style={{ flexDirection: 'row', marginTop: 15 }}>
-            <TouchableOpacity
-              onPress={() => {
-                setPostUsername(post.username);
-                nav(postUsername);
-              }}
-            >
+            <TouchableOpacity onPress={() => nav(post.username)}>
               <Image
                 style={Style.userIcon}
-                source={require('../assets/images/profile.png')}
+                source={
+                  image ||
+                  post.username === 'Anonymous' ||
+                  post.username === 'deleted account'
+                    ? { uri: `data:image/jpeg;base64,${image}` }
+                    : require('../assets/images/profile.png')
+                }
               />
             </TouchableOpacity>
             <View style={{ flexDirection: 'column' }}>
-              <TouchableOpacity
-                onPress={() => {
-                  setPostUsername(post.username);
-                  nav(postUsername);
-                }}
-              >
+              <TouchableOpacity onPress={() => nav(post.username)}>
                 <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                  {postUsername}
+                  {post.username}
                 </Text>
               </TouchableOpacity>
               <View style={{ flexDirection: 'row' }}>
