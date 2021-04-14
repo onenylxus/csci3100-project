@@ -54,13 +54,13 @@ module.exports = function fetchPost(req, res) {
     for (const item of data) {
       console.log(item.username);
       if (item.username === 'Anonymous') {
-        arr.push(Buffer.from([], 'base64'));
+        arr.push(undefined);
       } else {
         const client = Client.findOne({ username: item.username });
         client.then((data1) => {
           bool |= !data1;
           if (!bool) {
-            arr.push(Buffer.from(data1.profileImage));
+            arr.push(data1.profilePicture);
           }
         });
       }

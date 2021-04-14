@@ -16,14 +16,12 @@ import LikeContainer from './LikeContainer';
 import Style from '../assets/style';
 
 // Export post container
-export default function PostContainer({ post, showButton }) {
+export default function PostContainer({ post, image, showButton }) {
   const navigation = useNavigation();
   const { getUser } = React.useContext(AppContext);
 
   const [username, setUsername] = React.useState('');
   const [showComment, setShowComment] = React.useState(false);
-
-  // const image = React.useRef(client.profilePicture);
 
   const status = React.useRef(0);
   const date = React.useRef(new Date(post.timestamp));
@@ -142,7 +140,13 @@ export default function PostContainer({ post, showButton }) {
             <TouchableOpacity onPress={() => nav(post.username)}>
               <Image
                 style={Style.userIcon}
-                source={require('../assets/images/profile.png')}
+                source={
+                  image ||
+                  post.username === 'Anonymous' ||
+                  post.username === 'deleted account'
+                    ? { uri: `data:image/jpeg;base64,${image}` }
+                    : require('../assets/images/profile.png')
+                }
               />
             </TouchableOpacity>
             <View style={{ flexDirection: 'column' }}>
