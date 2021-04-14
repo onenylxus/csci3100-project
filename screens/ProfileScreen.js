@@ -287,7 +287,7 @@ export default function ProfileScreen() {
                         borderRadius: 32,
                       }}
                       source={
-                        image.length > 0
+                        image && image.length > 0
                           ? {
                               uri: `data:image/jpeg;base64,${image}`,
                             }
