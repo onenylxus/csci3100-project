@@ -20,9 +20,6 @@ import MajorList from '../assets/json/majorList.json';
 import PostContainer from '../components/PostContainer';
 import Style from '../assets/style';
 
-// Set global buffer
-global.Buffer = global.Buffer || require('buffer').Buffer;
-
 // Export profile screen
 export default function ProfileScreen() {
   const windowWidth = Dimensions.get('window').width;
@@ -45,7 +42,7 @@ export default function ProfileScreen() {
   const [numOfFollower, setNumOfFollower] = React.useState(0);
   const [numOfFollowing, setNumOfFollowing] = React.useState(0);
   const [college, setCollege] = React.useState('');
-  const [image, setImage] = React.useState(Buffer.from([], 'base64'));
+  const [image, setImage] = React.useState('');
   const [major, setMajor] = React.useState('');
   const [bio, setBio] = React.useState('');
 
@@ -212,7 +209,7 @@ export default function ProfileScreen() {
           base64: true,
         });
         if (!res.cancelled) {
-          setImage(Buffer.from(res.base64, 'base64'));
+          setImage(res.base64);
         }
       }
       setShowModal(false);
@@ -230,7 +227,7 @@ export default function ProfileScreen() {
           base64: true,
         });
         if (!res.cancelled) {
-          setImage(Buffer.from(res.base64, 'base64'));
+          setImage(res.base64);
         }
       }
       setShowModal(false);
@@ -290,11 +287,9 @@ export default function ProfileScreen() {
                         borderRadius: 32,
                       }}
                       source={
-                        image && image.byteLength > 0
+                        image.length > 0
                           ? {
-                              uri:
-                                'data:image/jpeg;base64,' +
-                                image.toString('base64'),
+                              uri: `data:image/jpeg;base64,${image}`,
                             }
                           : require('../assets/images/profile.png')
                       }
