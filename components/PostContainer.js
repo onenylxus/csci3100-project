@@ -124,13 +124,13 @@ export default function PostContainer({ post, image, showButton }) {
     );
   }
 
-  function nav(other) {
+  function nav(user) {
     if (
-      username.current !== other &&
-      other !== 'Anonymous' &&
-      other !== 'deleted account'
+      username.current !== user &&
+      user !== 'Anonymous' &&
+      user !== 'deleted account'
     ) {
-      navigation.navigate('OtherProfile', { other });
+      navigation.navigate('OtherProfile', { user });
     } else {
       navigation.navigate('Profile');
     }

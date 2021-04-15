@@ -7,6 +7,15 @@ export default function AboutUsScreen() {
   return (
     <SafeAreaView>
       <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <Image
+          style={{
+            width: 250,
+            height: 250,
+            marginTop: '5%',
+            borderRadius: 1024,
+          }}
+          source={require('../assets/icons/adaptive-icon.png')}
+        />
         <Text
           style={{
             fontSize: 16,
@@ -27,15 +36,6 @@ export default function AboutUsScreen() {
           the leaderboard. We hope you can find this application useful and
           entertaining, and most importantly, get to know more CUHK members.
         </Text>
-        <Image
-          style={{
-            width: 250,
-            height: 250,
-            margin: 0,
-            borderRadius: 1024,
-          }}
-          source={require('../assets/icons/adaptive-icon.png')}
-        />
       </View>
     </SafeAreaView>
   );

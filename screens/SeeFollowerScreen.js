@@ -7,7 +7,7 @@ import FollowerContainer from '../components/FollowerContainer';
 // Export seeFollower screen
 export default function SeeFollowerScreen() {
   const route = useRoute();
-  const { username } = route.params;
+  const { user } = route.params;
   const [list, setList] = React.useState([]);
 
   const status = React.useRef(0);
@@ -20,7 +20,7 @@ export default function SeeFollowerScreen() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          other: username,
+          user,
         }),
       })
         .then((res) => {

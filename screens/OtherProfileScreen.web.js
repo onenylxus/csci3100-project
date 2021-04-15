@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Row, Grid } from 'react-native-easy-grid';
-import { useRoute } from '@react-navigation/native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 import AppContext from '../components/AppContext';
 import CollegeList from '../assets/json/collegeList.json';
 import MajorList from '../assets/json/majorList.json';
@@ -21,8 +21,9 @@ import Style from '../assets/style';
 // Export other profile screen
 export default function OtherProfileScreen() {
   const route = useRoute();
+  const navigation = useNavigation();
 
-  const { other } = route.params;
+  const { user } = route.params;
   const { getUser } = React.useContext(AppContext);
 
   const [username, setUsername] = React.useState('');
@@ -32,7 +33,7 @@ export default function OtherProfileScreen() {
   const [refreshing, setRefreshing] = React.useState(true);
   const [list, setList] = React.useState([]);
   const [college, setCollege] = React.useState('');
-  // const [gender, setGender] = React.useState('');
+  const [image, setImage] = React.useState('');
   const [major, setMajor] = React.useState('');
   const [bio, setBio] = React.useState('');
 
@@ -54,7 +55,7 @@ export default function OtherProfileScreen() {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              username: other,
+              username: user,
             }),
           })
             .then((res) => {
@@ -68,6 +69,7 @@ export default function OtherProfileScreen() {
                 setMajor(res.major);
                 setCollege(res.college);
                 setBio(res.bio);
+                setImage(res.image);
               } else if (status.current === 422) {
                 console.log(res.error);
               }
@@ -88,7 +90,7 @@ export default function OtherProfileScreen() {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              other,
+              user,
             }),
           })
             .then((res) => {
@@ -123,7 +125,7 @@ export default function OtherProfileScreen() {
       body: JSON.stringify({
         followState,
         self: username,
-        other,
+        other: user,
       }),
     })
       .then((res) => {
@@ -161,7 +163,7 @@ export default function OtherProfileScreen() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            username: other,
+            username: user,
             page,
             tags: '',
           }),
@@ -200,13 +202,13 @@ export default function OtherProfileScreen() {
     setTimeout(() => setRefreshing(false), 30000);
   }, []);
 
-  React.useEffect(fetchData, [refreshing, other]);
+  React.useEffect(fetchData, [refreshing, user]);
 
-  React.useEffect(fetchFollow, [followState, other, refreshing, username]);
+  React.useEffect(fetchFollow, [followState, user, refreshing, username]);
 
-  React.useEffect(fetchPost, [followState, other, refreshing, username]);
+  React.useEffect(fetchPost, [followState, user, refreshing, username]);
 
-  if (other === 'deleted account') {
+  if (user === 'deleted account') {
     return (
       <View>
         <Text>This user is no longer avaliable</Text>
@@ -226,16 +228,22 @@ export default function OtherProfileScreen() {
             <Row size={10} style={Style.profilePicturePC}>
               <Image
                 style={{
-                  width: 128,
-                  height: 128,
+                  width: 64,
+                  height: 64,
                   margin: 8,
-                  borderRadius: 70,
+                  borderRadius: 32,
                 }}
-                source={require('../assets/images/profile.png')}
+                source={
+                  image &&
+                  username !== 'Anonymous' &&
+                  username !== 'deleted account'
+                    ? { uri: `data:image/jpeg;base64,${image}` }
+                    : require('../assets/images/profile.png')
+                }
               />
               <Text style={Style.userInfoPC}>
                 <Text style={{ fontWeight: 'bold' }}>
-                  {other} {'\n'}
+                  {user} {'\n'}
                 </Text>
                 Major:{' '}
                 {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
@@ -302,10 +310,16 @@ export default function OtherProfileScreen() {
                   }}
                 />
               )}
-              <TouchableOpacity style={{ marginHorizontal: 15 }}>
+              <TouchableOpacity
+                style={{ marginHorizontal: 15 }}
+                onPress={() => navigation.navigate('Follower', { user })}
+              >
                 <Text>{numOfFollower} Followers</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={{ marginHorizontal: 15 }}>
+              <TouchableOpacity
+                style={{ marginHorizontal: 15 }}
+                onPress={() => navigation.navigate('Following', { user })}
+              >
                 <Text>{numOfFollowing} Following</Text>
               </TouchableOpacity>
             </Row>

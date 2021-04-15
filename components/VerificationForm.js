@@ -112,7 +112,9 @@ export default function VerificationForm() {
 
   React.useEffect(() => {
     const back = navigation.addListener('beforeRemove', (e) => {
-      e.preventDefault();
+      if (status !== 200) {
+        e.preventDefault();
+      }
       back();
 
       Alert.alert(

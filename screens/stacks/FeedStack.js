@@ -6,6 +6,8 @@ import FeedScreen from '../FeedScreen';
 import OtherProfileScreen from '../OtherProfileScreen';
 import Header from '../../assets/headers/Header';
 import BackableHeader from '../../assets/headers/BackableHeader';
+import SeeFollowerScreen from '../SeeFollowerScreen';
+import SeeFollowingScreen from '../SeeFollowingScreen';
 
 // Stack
 const Stack = createStackNavigator();
@@ -28,6 +30,16 @@ export default function FeedStack() {
         name="OtherProfile"
         component={OtherProfileScreen}
         options={() => BackableHeader('Profile')}
+      />
+      <Stack.Screen
+        name="Follower"
+        component={SeeFollowerScreen}
+        options={() => BackableHeader('Follower')}
+      />
+      <Stack.Screen
+        name="Following"
+        component={SeeFollowingScreen}
+        options={() => BackableHeader('Following')}
       />
     </Stack.Navigator>
   );

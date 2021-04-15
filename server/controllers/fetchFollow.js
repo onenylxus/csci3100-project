@@ -10,8 +10,8 @@ const Client = mongoose.model('client');
 // Exports
 module.exports = function fetchFollow(req, res) {
   // Fetch request body
-  const { other } = req.body;
-  const otherClient = Client.findOne({ username: other });
+  const { user } = req.body;
+  const otherClient = Client.findOne({ username: user });
 
   otherClient.then((data) => {
     if (!data) {

@@ -66,7 +66,9 @@ export default function AddInfoForm() {
 
   React.useEffect(() => {
     const back = navigation.addListener('beforeRemove', (e) => {
-      e.preventDefault();
+      if (status !== 200) {
+        e.preventDefault();
+      }
       back();
     });
   }, [navigation, submitData]);
@@ -74,7 +76,7 @@ export default function AddInfoForm() {
   return (
     <View>
       {/* Name */}
-      <Text style={Style.sectionText}>Name: (required)</Text>
+      <Text style={Style.sectionText}>Name:</Text>
       <View style={Style.SectionStyle}>
         <TextInput
           style={{ minWidth: '100%', maxWidth: '100%', outline: 'none' }}
@@ -85,7 +87,7 @@ export default function AddInfoForm() {
 
       {/* Gender */}
       <View>
-        <Text style={Style.sectionText}>Gender: (required)</Text>
+        <Text style={Style.sectionText}>Gender:</Text>
         <View style={{ margin: '5%' }}>
           <RadioButton.Group
             onValueChange={(newValue) => setGender(newValue)}

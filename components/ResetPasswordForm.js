@@ -87,7 +87,9 @@ export default function ResetPasswordForm() {
 
   React.useEffect(() => {
     const back = navigation.addListener('beforeRemove', (e) => {
-      e.preventDefault();
+      if (status !== 200) {
+        e.preventDefault();
+      }
       back();
 
       Alert.alert(

@@ -136,7 +136,7 @@ export default function ProfileScreen() {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              other: username,
+              user: username,
             }),
           })
             .then((res) => {
@@ -299,7 +299,9 @@ export default function ProfileScreen() {
                     />
                   </TouchableOpacity>
                   <Text style={Style.userInfoPhone}>
-                    {username} {'\n'}
+                    <Text style={{ fontWeight: 'bold' }}>
+                      {username} {'\n'}
+                    </Text>
                     Major:{' '}
                     {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
                     {'\n'}
@@ -369,7 +371,9 @@ export default function ProfileScreen() {
                 />
               </TouchableOpacity>
               <Text style={Style.userInfoPC}>
-                {username} {'\n'}
+                <Text style={{ fontWeight: 'bold' }}>
+                  {username} {'\n'}
+                </Text>
                 Major:{' '}
                 {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
                 {'\n'}
