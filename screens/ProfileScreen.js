@@ -148,7 +148,6 @@ export default function ProfileScreen() {
               if (status.current === 200) {
                 setNumOfFollower(res.follower.length);
                 setNumOfFollowing(res.following.length);
-                fetched.current = true;
               } else if (status.current === 422) {
                 console.log(res.error);
               }
@@ -325,7 +324,7 @@ export default function ProfileScreen() {
                   <TouchableOpacity
                     style={{ marginHorizontal: 15 }}
                     onPress={() =>
-                      navigation.navigate('Follower', { username })
+                      navigation.navigate('Follower', { user: username })
                     }
                   >
                     <Text>{numOfFollower} Followers</Text>
@@ -333,7 +332,7 @@ export default function ProfileScreen() {
                   <TouchableOpacity
                     style={{ marginHorizontal: 15 }}
                     onPress={() =>
-                      navigation.navigate('Following', { username })
+                      navigation.navigate('Following', { user: username })
                     }
                   >
                     <Text>{numOfFollowing} Following</Text>

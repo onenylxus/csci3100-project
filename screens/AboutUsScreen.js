@@ -9,23 +9,23 @@ export default function AboutUsScreen() {
       <View style={{ justifyContent: 'center', alignItems: 'center' }}>
         <Image
           style={{
-            width: 250,
-            height: 250,
-            marginTop: '5%',
+            width: 128,
+            height: 128,
+            marginTop: '6%',
             borderRadius: 1024,
           }}
-          source={require('../assets/icons/adaptive-icon.png')}
+          source={require('../assets/icons/icon.png')}
         />
         <Text
           style={{
             fontSize: 16,
             textAlign: 'justify',
-            marginTop: 48,
-            width: 300,
+            marginTop: 30,
+            width: '75%',
           }}
         >
-          We are 5 students from the Chinese University of Hong Kong (CUHK) that
-          minors in Computer Science. A while ago we decide to launch this
+          We are 5 students from the Chinese University of Hong Kong (CUHK)
+          minoring in Computer Science. A while ago we decided to launch this
           project CU There in order to practice our skills on software design
           and programming. In this project, we create an online discussion forum
           for CUHK members to exchange their ideas. We believe that CUHK is a

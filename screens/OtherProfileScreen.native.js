@@ -104,7 +104,6 @@ export default function OtherProfileScreen() {
                 }
                 setNumOfFollower(res.follower.length);
                 setNumOfFollowing(res.following.length);
-                fetched.current = true;
               } else if (status.current === 422) {
                 console.log(res.error);
               }
