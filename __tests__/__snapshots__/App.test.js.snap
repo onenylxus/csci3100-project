@@ -1040,7 +1040,7 @@ exports[`App matches snapshot on login mode 1`] = `
                                       onStartShouldSetResponder={[Function]}
                                       style={
                                         Object {
-                                          "borderBottomWidth": 1,
+                                          "borderBottomWidth": 2,
                                           "borderColor": "#546eff",
                                           "margin": 15,
                                           "opacity": 1,
@@ -1067,6 +1067,19 @@ exports[`App matches snapshot on login mode 1`] = `
                                     }
                                   }
                                 >
+                                  <View />
+                                </View>
+                                <Text
+                                  style={
+                                    Object {
+                                      "alignSelf": "center",
+                                    }
+                                  }
+                                >
+                                  Page 1
+                                </Text>
+                                <View>
+                                  <View />
                                   <View />
                                 </View>
                               </View>

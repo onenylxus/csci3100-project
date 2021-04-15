@@ -22,7 +22,7 @@ import Style from '../assets/style';
 export default function OtherProfileScreen() {
   const route = useRoute();
 
-  const { author } = route.params;
+  const { other } = route.params;
   const { getUser } = React.useContext(AppContext);
 
   const [username, setUsername] = React.useState('');
@@ -54,7 +54,7 @@ export default function OtherProfileScreen() {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              username: author,
+              username: other,
             }),
           })
             .then((res) => {
@@ -88,7 +88,7 @@ export default function OtherProfileScreen() {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              other: author,
+              other,
             }),
           })
             .then((res) => {
@@ -123,7 +123,7 @@ export default function OtherProfileScreen() {
       body: JSON.stringify({
         followState,
         self: username,
-        other: author,
+        other,
       }),
     })
       .then((res) => {
@@ -161,7 +161,7 @@ export default function OtherProfileScreen() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            username: author,
+            username: other,
             page,
             tags: '',
           }),
@@ -200,13 +200,13 @@ export default function OtherProfileScreen() {
     setTimeout(() => setRefreshing(false), 30000);
   }, []);
 
-  React.useEffect(fetchData, [refreshing, author]);
+  React.useEffect(fetchData, [refreshing, other]);
 
-  React.useEffect(fetchFollow, [followState, author, refreshing, username]);
+  React.useEffect(fetchFollow, [followState, other, refreshing, username]);
 
-  React.useEffect(fetchPost, [followState, author, refreshing, username]);
+  React.useEffect(fetchPost, [followState, other, refreshing, username]);
 
-  if (author === 'deleted account') {
+  if (other === 'deleted account') {
     return (
       <View>
         <Text>This user is no longer avaliable</Text>
@@ -235,7 +235,7 @@ export default function OtherProfileScreen() {
               />
               <Text style={Style.userInfoPC}>
                 <Text style={{ fontWeight: 'bold' }}>
-                  {author} {'\n'}
+                  {other} {'\n'}
                 </Text>
                 Major:{' '}
                 {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}

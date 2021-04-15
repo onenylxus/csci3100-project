@@ -7,7 +7,7 @@ import AppContext from './AppContext';
 import Style from '../assets/style';
 
 // Export Comment
-export default function Comment({ comment }) {
+export default function Comment({ comment, image }) {
   const navigation = useNavigation();
   const { getUser } = React.useContext(AppContext);
 
@@ -33,9 +33,15 @@ export default function Comment({ comment }) {
   getUser(setUsername);
 
   function nav(other) {
-    if (username !== other) {
+    if (
+      username !== other &&
+      other !== 'Anonymous' &&
+      other !== 'deleted account'
+    ) {
       navigation.navigate('OtherProfile', { other });
-    } else navigation.navigate('Profile');
+    } else {
+      navigation.navigate('Profile');
+    }
   }
 
   return (
@@ -51,7 +57,13 @@ export default function Comment({ comment }) {
             >
               <Image
                 style={Style.userIcon}
-                source={require('../assets/images/profile.png')}
+                source={
+                  image &&
+                  username !== 'Anonymous' &&
+                  username !== 'deleted account'
+                    ? { uri: `data:image/jpeg;base64,${image}` }
+                    : require('../assets/images/profile.png')
+                }
               />
             </TouchableOpacity>
             <View style={{ flexDirection: 'column' }}>

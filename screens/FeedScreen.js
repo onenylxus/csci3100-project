@@ -1,6 +1,7 @@
 // Import
 import React from 'react';
 import {
+  Button,
   Text,
   RefreshControl,
   ScrollView,
@@ -29,7 +30,7 @@ export default function FeedScreen() {
           },
           body: JSON.stringify({
             username: '',
-            page,
+            page: page.current,
             tags,
           }),
         })
@@ -66,12 +67,12 @@ export default function FeedScreen() {
   function underlineTag(clickingTag, tag) {
     if (clickingTag === 'Trending') {
       if (tag === 'Trending') {
-        return 1;
+        return 2;
       }
       return 0;
     }
     if (tag === 'Newest') {
-      return 1;
+      return 2;
     }
     return 0;
   }
@@ -143,6 +144,31 @@ export default function FeedScreen() {
       </View>
       <View style={{ flex: 1 }}>
         <View>{generate()}</View>
+      </View>
+      <Text style={{ alignSelf: 'center' }}>{`Page ${page.current + 1}`}</Text>
+      <View>
+        {page.current > 0 ? (
+          <Button
+            title="Previous page"
+            onPress={() => {
+              page.current--;
+              onRefresh(true);
+            }}
+          />
+        ) : (
+          <View />
+        )}
+        {postList.length === 25 ? (
+          <Button
+            title="Next page"
+            onPress={() => {
+              page.current++;
+              onRefresh(true);
+            }}
+          />
+        ) : (
+          <View />
+        )}
       </View>
     </ScrollView>
   );

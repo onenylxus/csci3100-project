@@ -77,7 +77,7 @@ export default function AddInfoForm() {
       <Text style={Style.sectionText}>Name: (required)</Text>
       <View style={Style.SectionStyle}>
         <TextInput
-          style={Style.textInput}
+          style={{ minWidth: '100%', maxWidth: '100%', outline: 'none' }}
           placeholder="Name"
           onChangeText={(text) => setName(text)}
         />

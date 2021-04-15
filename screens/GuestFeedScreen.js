@@ -1,11 +1,12 @@
 // Import
 import React from 'react';
-import { RefreshControl, ScrollView, View } from 'react-native';
+import { Button, RefreshControl, ScrollView, Text, View } from 'react-native';
 import PostContainer from '../components/PostContainer';
 
 // Export guest feed screen
 export default function GuestFeedScreen() {
   const [refreshing, setRefreshing] = React.useState(true);
+  const [postList, setPostList] = React.useState([]);
   const [list, setList] = React.useState([]);
 
   const page = React.useRef(0);
@@ -21,7 +22,7 @@ export default function GuestFeedScreen() {
           },
           body: JSON.stringify({
             username: '',
-            page,
+            page: page.current,
             tags: '',
           }),
         })
@@ -32,6 +33,7 @@ export default function GuestFeedScreen() {
           .then((res) => res.json())
           .then((res) => {
             if (status.current === 200) {
+              setPostList(res.posts);
               setList(res.posts);
               setRefreshing(false);
             } else if (status.current === 422) {
@@ -61,7 +63,34 @@ export default function GuestFeedScreen() {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
       >
-        <View>{generate()}</View>
+        <View style={{ flex: 1 }}>
+          <View>{generate()}</View>
+        </View>
+        <Text style={{ alignSelf: 'center' }}>{`Page ${
+          page.current + 1
+        }`}</Text>
+        {page.current > 0 ? (
+          <Button
+            title="Previous page"
+            onPress={() => {
+              page.current--;
+              onRefresh();
+            }}
+          />
+        ) : (
+          <View />
+        )}
+        {postList.length === 25 ? (
+          <Button
+            title="Next page"
+            onPress={() => {
+              page.current++;
+              onRefresh();
+            }}
+          />
+        ) : (
+          <View />
+        )}
       </ScrollView>
     </View>
   );

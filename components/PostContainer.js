@@ -125,7 +125,11 @@ export default function PostContainer({ post, image, showButton }) {
   }
 
   function nav(other) {
-    if (username.current !== other) {
+    if (
+      username.current !== other &&
+      other !== 'Anonymous' &&
+      other !== 'deleted account'
+    ) {
       navigation.navigate('OtherProfile', { other });
     } else {
       navigation.navigate('Profile');
@@ -141,9 +145,9 @@ export default function PostContainer({ post, image, showButton }) {
               <Image
                 style={Style.userIcon}
                 source={
-                  image ||
-                  post.username === 'Anonymous' ||
-                  post.username === 'deleted account'
+                  image &&
+                  post.username !== 'Anonymous' &&
+                  post.username !== 'deleted account'
                     ? { uri: `data:image/jpeg;base64,${image}` }
                     : require('../assets/images/profile.png')
                 }

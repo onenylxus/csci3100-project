@@ -144,6 +144,7 @@ export default StyleSheet.create({
     margin: '5%',
     alignContent: 'center',
     justifyContent: 'center',
+    alignSelf: 'center',
   },
 
   verificationCode: {

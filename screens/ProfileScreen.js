@@ -300,26 +300,15 @@ export default function ProfileScreen() {
                   </TouchableOpacity>
                   <Text style={Style.userInfoPhone}>
                     {username} {'\n'}
+                    Major:{' '}
                     {MajorList.hasOwnProperty(major) ? MajorList[major] : 'N/A'}
                     {'\n'}
+                    College:{' '}
                     {CollegeList.hasOwnProperty(college)
                       ? CollegeList[college]
                       : 'N/A'}
                     {'\n'}
                   </Text>
-                </Row>
-                <Row>
-                  <View>
-                    <Text
-                      style={{
-                        paddingHorizontal: '10%',
-                        marginBottom: '2%',
-                        fontSize: 16,
-                      }}
-                    >
-                      Biography:
-                    </Text>
-                  </View>
                 </Row>
                 <Row style={{ justifyContent: 'center' }}>
                   <View style={Style.bioContainerPhone}>

@@ -32,7 +32,7 @@ export default function OtherProfileScreen() {
   const [refreshing, setRefreshing] = React.useState(true);
   const [list, setList] = React.useState([]);
   const [college, setCollege] = React.useState('');
-  // const [gender, setGender] = React.useState('');
+  const [image, setImage] = React.useState('');
   const [major, setMajor] = React.useState('');
   const [bio, setBio] = React.useState('');
 
@@ -64,10 +64,10 @@ export default function OtherProfileScreen() {
             .then((res) => res.json())
             .then((res) => {
               if (status.current === 200) {
-                // setGender(res.gender);
                 setMajor(res.major);
                 setCollege(res.college);
                 setBio(res.bio);
+                setImage(res.image);
               } else if (status.current === 422) {
                 console.log(res.error);
               }
@@ -231,7 +231,13 @@ export default function OtherProfileScreen() {
                   margin: 8,
                   borderRadius: 32,
                 }}
-                source={require('../assets/images/profile.png')}
+                source={
+                  image &&
+                  username !== 'Anonymous' &&
+                  username !== 'deleted account'
+                    ? { uri: `data:image/jpeg;base64,${image}` }
+                    : require('../assets/images/profile.png')
+                }
               />
               <Text style={Style.userInfoPhone}>
                 <Text style={{ fontWeight: 'bold' }}>
@@ -245,18 +251,6 @@ export default function OtherProfileScreen() {
                   ? CollegeList[college]
                   : 'N/A'}
                 {'\n'}
-              </Text>
-            </Row>
-            <Row size={1}>
-              <Text
-                style={{
-                  paddingHorizontal: '10%',
-                  marginBottom: '2%',
-                  fontSize: 16,
-                  borderBottomWidth: 5,
-                }}
-              >
-                Biography:
               </Text>
             </Row>
             <Row style={{ justifyContent: 'center' }} size={1}>

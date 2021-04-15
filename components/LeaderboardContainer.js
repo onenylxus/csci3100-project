@@ -7,7 +7,12 @@ import { faMedal } from '@fortawesome/free-solid-svg-icons';
 import Style from '../assets/style';
 
 // Export Leaderboard
-export default function LeaderboardContainer({ username, popularity, rank }) {
+export default function LeaderboardContainer({
+  username,
+  image,
+  popularity,
+  rank,
+}) {
   // Medal and Ranking
   function showMedal(ranking) {
     if (ranking === 1) {
@@ -48,7 +53,13 @@ export default function LeaderboardContainer({ username, popularity, rank }) {
           <Col style={{ flexDirection: 'row', marginVertical: 20 }}>
             <Image
               style={Style.userIcon}
-              source={require('../assets/images/profile.png')}
+              source={
+                image &&
+                username !== 'Anonymous' &&
+                username !== 'deleted account'
+                  ? { uri: `data:image/jpeg;base64,${image}` }
+                  : require('../assets/images/profile.png')
+              }
             />
             <View style={{ flexDirection: 'column' }}>
               <Text style={{ fontSize: 18, fontWeight: 'bold' }}>

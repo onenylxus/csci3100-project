@@ -55,6 +55,9 @@ export default function CreatePostForm() {
       .then((res) => {
         console.log(res);
         if (status.current === 200) {
+          setContent('');
+          setTitle('');
+          setTags('');
           navigation.navigate('Profile');
         } else if (status.current === 422) {
           switch (res.error) {

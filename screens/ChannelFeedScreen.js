@@ -59,14 +59,12 @@ export default function ChannelFeedScreen() {
   React.useEffect(fetchPost, [refreshing, tags]);
 
   return (
-    <View style={{ marginBottom: 50 }}>
-      <ScrollView
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
-      >
-        <View>{generate()}</View>
-      </ScrollView>
-    </View>
+    <ScrollView
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+    >
+      <View>{generate()}</View>
+    </ScrollView>
   );
 }
