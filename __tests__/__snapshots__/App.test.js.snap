@@ -1078,7 +1078,14 @@ exports[`App matches snapshot on login mode 1`] = `
                                 >
                                   Page 1
                                 </Text>
-                                <View>
+                                <View
+                                  style={
+                                    Object {
+                                      "flexDirection": "row",
+                                      "justifyContent": "center",
+                                    }
+                                  }
+                                >
                                   <View />
                                   <View />
                                 </View>

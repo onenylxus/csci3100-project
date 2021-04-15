@@ -13,6 +13,7 @@ import PostContainer from '../components/PostContainer';
 // Export feed screen
 export default function FeedScreen() {
   const [refreshing, setRefreshing] = React.useState(true);
+  const [scrollRef, setScrollRef] = React.useState(null);
   const [clientList, setClientList] = React.useState([]);
   const [postList, setPostList] = React.useState([]);
   const [tags, setTags] = React.useState('Trending');
@@ -86,6 +87,7 @@ export default function FeedScreen() {
 
   return (
     <ScrollView
+      ref={(ref) => setScrollRef(ref)}
       stickyHeaderIndices={[0]}
       style={{ marginBottom: '1%' }}
       refreshControl={
@@ -146,26 +148,38 @@ export default function FeedScreen() {
         <View>{generate()}</View>
       </View>
       <Text style={{ alignSelf: 'center' }}>{`Page ${page.current + 1}`}</Text>
-      <View>
+      <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
         {page.current > 0 ? (
-          <Button
-            title="Previous page"
-            onPress={() => {
-              page.current--;
-              onRefresh(true);
-            }}
-          />
+          <View style={{ maxWidth: '40%', alignSelf: 'center' }}>
+            <Button
+              title="Previous page"
+              onPress={() => {
+                page.current--;
+                scrollRef.scrollTo({ x: 0, y: 0, animated: true });
+                onRefresh(true);
+              }}
+            />
+          </View>
         ) : (
           <View />
         )}
         {postList.length === 25 ? (
-          <Button
-            title="Next page"
-            onPress={() => {
-              page.current++;
-              onRefresh(true);
+          <View
+            style={{
+              justifyContent: 'flex-end',
+              maxWidth: '40%',
+              alignSelf: 'center',
             }}
-          />
+          >
+            <Button
+              title="Next page"
+              onPress={() => {
+                page.current++;
+                scrollRef.scrollTo({ x: 0, y: 0, animated: true });
+                onRefresh(true);
+              }}
+            />
+          </View>
         ) : (
           <View />
         )}

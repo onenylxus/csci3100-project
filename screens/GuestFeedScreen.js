@@ -1,13 +1,22 @@
 // Import
 import React from 'react';
-import { Button, RefreshControl, ScrollView, Text, View } from 'react-native';
+import {
+  Button,
+  RefreshControl,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import PostContainer from '../components/PostContainer';
 
 // Export guest feed screen
 export default function GuestFeedScreen() {
   const [refreshing, setRefreshing] = React.useState(true);
+  const [scrollRef, setScrollRef] = React.useState(null);
   const [postList, setPostList] = React.useState([]);
   const [list, setList] = React.useState([]);
+  const [tags, setTags] = React.useState('Trending');
 
   const page = React.useRef(0);
   const status = React.useRef(0);
@@ -23,7 +32,7 @@ export default function GuestFeedScreen() {
           body: JSON.stringify({
             username: '',
             page: page.current,
-            tags: '',
+            tags,
           }),
         })
           .then((res) => {
@@ -49,49 +58,125 @@ export default function GuestFeedScreen() {
     return list.map((post) => <PostContainer key={post._id} post={post} />);
   }
 
+  function underlineTag(clickingTag, tag) {
+    if (clickingTag === 'Trending') {
+      if (tag === 'Trending') {
+        return 2;
+      }
+      return 0;
+    }
+    if (tag === 'Newest') {
+      return 2;
+    }
+    return 0;
+  }
+
   const onRefresh = React.useCallback(async () => {
     setRefreshing(true);
     setTimeout(() => setRefreshing(false), 30000);
   }, []);
 
-  React.useEffect(fetchPost, [refreshing]);
+  React.useEffect(fetchPost, [refreshing, tags]);
 
   return (
-    <View style={{ marginBottom: 50 }}>
-      <ScrollView
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
-      >
-        <View style={{ flex: 1 }}>
-          <View>{generate()}</View>
-        </View>
-        <Text style={{ alignSelf: 'center' }}>{`Page ${
-          page.current + 1
-        }`}</Text>
-        {page.current > 0 ? (
-          <Button
-            title="Previous page"
+    <ScrollView
+      ref={(ref) => setScrollRef(ref)}
+      stickyHeaderIndices={[0]}
+      style={{ marginBottom: '1%' }}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+    >
+      <View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            backgroundColor: '#f2f2f2',
+          }}
+        >
+          <TouchableOpacity
             onPress={() => {
-              page.current--;
+              setTags('Newest');
               onRefresh();
             }}
-          />
+            style={{
+              margin: 15,
+              borderBottomWidth: underlineTag('Newest', tags),
+              borderColor: '#546eff',
+            }}
+          >
+            <Text
+              style={{
+                color: '#546eff',
+                fontSize: 18,
+              }}
+            >
+              Latest
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setTags('Trending');
+              onRefresh();
+            }}
+            style={{
+              margin: 15,
+              borderBottomWidth: underlineTag('Trending', tags),
+              borderColor: '#546eff',
+            }}
+          >
+            <Text
+              style={{
+                color: '#546eff',
+                fontSize: 18,
+              }}
+            >
+              Trending
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View style={{ flex: 1 }}>
+        <View>{generate()}</View>
+      </View>
+      <Text style={{ alignSelf: 'center' }}>{`Page ${page.current + 1}`}</Text>
+      <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+        {page.current > 0 ? (
+          <View style={{ maxWidth: '40%', alignSelf: 'center' }}>
+            <Button
+              title="Previous page"
+              onPress={() => {
+                page.current--;
+                scrollRef.scrollTo({ x: 0, y: 0, animated: true });
+                onRefresh(true);
+              }}
+            />
+          </View>
         ) : (
           <View />
         )}
         {postList.length === 25 ? (
-          <Button
-            title="Next page"
-            onPress={() => {
-              page.current++;
-              onRefresh();
+          <View
+            style={{
+              justifyContent: 'flex-end',
+              maxWidth: '40%',
+              alignSelf: 'center',
             }}
-          />
+          >
+            <Button
+              title="Next page"
+              onPress={() => {
+                page.current++;
+                scrollRef.scrollTo({ x: 0, y: 0, animated: true });
+                onRefresh(true);
+              }}
+            />
+          </View>
         ) : (
           <View />
         )}
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 }
