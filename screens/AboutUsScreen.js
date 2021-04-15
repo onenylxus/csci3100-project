@@ -29,12 +29,12 @@ export default function AboutUsScreen() {
           project CU There in order to practice our skills on software design
           and programming. In this project, we create an online discussion forum
           for CUHK members to exchange their ideas. We believe that CUHK is a
-          place with cultural diversity and freedom of speech. Hence in in this
-          application users are free to express their own ideas amongst each
-          other. Users can also accumulate the number of likes and comments in
-          in their posts to gain popularity and get a chance to be displayed on
-          the leaderboard. We hope you can find this application useful and
-          entertaining, and most importantly, get to know more CUHK members.
+          place with cultural diversity and freedom of speech. Hence, in this
+          application, users are free to express their own ideas with each
+          other. Users can also receive likes and comments in their posts to
+          gain popularity and get a chance to be displayed on the leaderboard.
+          We hope you can find this application useful and entertaining, and
+          most importantly, get to know more CUHK members.
         </Text>
       </View>
     </SafeAreaView>
