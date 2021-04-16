@@ -2,7 +2,7 @@
   "expo": {
     "name": "csci3100-project",
     "slug": "csci3100-project",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "orientation": "portrait",
     "icon": "./assets/icons/icon.png",
     "splash": {
@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.csci3100cuthere.csci3100project"
     },
     "web": {
       "favicon": "./assets/icons/favicon.png"
