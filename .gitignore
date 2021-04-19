@@ -25,5 +25,8 @@ npm-debug.*
 # Jest files
 /coverage
 
+# JSDoc files
+/docs
+
 # Error files
 /yarn-error.log

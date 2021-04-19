@@ -1,0 +1,22 @@
+{
+  "source": {
+    "includePattern": ".js(x)?$",
+    "include": [".", "package.json", "README.md"],
+    "exclude": ["node_modules", "docs"]
+  },
+  "plugins": ["plugins/markdown"],
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": true,
+    "useLongnameInNav": false,
+    "showInheritedInNav": true
+  },
+  "recurseDepth": 3,
+  "opts": {
+    "destination": "./docs/",
+    "encoding": "utf8",
+    "private": true,
+    "recurse": true,
+    "template": "node_modules/minami"
+  }
+}
