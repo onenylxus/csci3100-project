@@ -2,3 +2,5 @@
 __tests__
 node_modules
 web-build
+count.js
+setupTests.js

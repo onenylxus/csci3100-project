@@ -1,5 +1,5 @@
 // Import
-import count from './count';
+import count from '../count';
 
 // Run jest tests
 describe('Assets', () => {

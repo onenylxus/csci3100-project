@@ -21,6 +21,9 @@ jest.mock('@fortawesome/react-native-fontawesome', () => ({
   FontAwesomeIcon: '',
 }));
 
+// Enable fetch mocks
+fetchMock.enableMocks();
+
 // Spy on alert
 jest.spyOn(Alert, 'alert');
 jest.spyOn(AppMethodMock, 'login');
@@ -31,27 +34,7 @@ describe('LoginForm', () => {
 
   beforeEach(() => {
     // Mock fetch function
-    fetchMock.enableMocks();
-    fetchMock.mockIf('https://cu-there-server.herokuapp.com/login', (req) => {
-      const { username, password } = req.body;
-
-      if (username === 'testac' && password === 'testpw') {
-        return {
-          status: 200,
-          body: JSON.stringify({ msg: 'User is verified' }),
-        };
-      } else if (username !== 'testac') {
-        return {
-          status: 422,
-          body: JSON.stringify({ error: 'accountError' }),
-        };
-      } else {
-        return {
-          status: 422,
-          body: JSON.stringify({ error: 'passwordError' }),
-        };
-      }
-    });
+    fetch.resetMocks();
 
     // Render
     element = render(
@@ -64,6 +47,14 @@ describe('LoginForm', () => {
   });
 
   it('changes username when type', () => {
+    /**
+     * Condition:
+     * User types 'testac' into the username text input box
+     *
+     * Expect:
+     * The application should show 'testac' at username text input box
+     */
+
     const username = element.getByTestId('username');
 
     fireEvent.changeText(username, 'testac');
@@ -71,6 +62,14 @@ describe('LoginForm', () => {
   });
 
   it('changes password when type', () => {
+    /**
+     * Condition:
+     * User types 'testpw' into the password text input box
+     *
+     * Expect:
+     * The application should show 'testpw' at password text input box
+     */
+
     const password = element.getByTestId('password');
 
     fireEvent.changeText(password, 'testpw');
@@ -78,6 +77,14 @@ describe('LoginForm', () => {
   });
 
   it('toggles password visibility when eye button is pressed', () => {
+    /**
+     * Condition:
+     * User types 'testpw' into the password text input box
+     *
+     * Expect:
+     * The application should show 'testpw' at password text input box
+     */
+
     const eye = element.getByTestId('eye');
     const password = element.getByTestId('password');
 
@@ -89,6 +96,14 @@ describe('LoginForm', () => {
   });
 
   it('rejects login with empty username', async () => {
+    /**
+     * Condition:
+     * User types 'testpw' for password, leaves empty for username and presses the login button
+     *
+     * Expect:
+     * The application gives the user an alert
+     */
+
     const password = element.getByTestId('password');
     const button = element.getByTestId('login');
 
@@ -98,6 +113,14 @@ describe('LoginForm', () => {
   });
 
   it('rejects login with empty password', async () => {
+    /**
+     * Condition:
+     * User types 'testac' for username, leaves empty for password and presses the login button
+     *
+     * Expect:
+     * The application gives the user an alert
+     */
+
     const username = element.getByTestId('username');
     const button = element.getByTestId('login');
 
@@ -107,9 +130,23 @@ describe('LoginForm', () => {
   });
 
   it('rejects login with unregistered account', async () => {
+    /**
+     * Condition:
+     * Assume the database does not have account with username 'a'
+     * User types 'a' for username, 'testpw' for password and presses the login button.
+     *
+     * Expect:
+     * The application gives the user an alert
+     */
+
     const username = element.getByTestId('username');
     const password = element.getByTestId('password');
     const button = element.getByTestId('login');
+
+    fetch.mockResponses([
+      JSON.stringify({ error: 'accountError' }),
+      { status: 422 },
+    ]);
 
     fireEvent.changeText(username, 'a');
     fireEvent.changeText(password, 'testpw');
@@ -118,9 +155,23 @@ describe('LoginForm', () => {
   });
 
   it('rejects login with wrong password', async () => {
+    /**
+     * Condition:
+     * Assume the database has account with username 'testac' and password 'testpw'
+     * User types 'testac' for username, 'a' for password and presses the login button.
+     *
+     * Expect:
+     * The application gives the user an alert
+     */
+
     const username = element.getByTestId('username');
     const password = element.getByTestId('password');
     const button = element.getByTestId('login');
+
+    fetch.mockResponses([
+      JSON.stringify({ error: 'passwordError' }),
+      { status: 422 },
+    ]);
 
     fireEvent.changeText(username, 'testac');
     fireEvent.changeText(password, 'a');
@@ -129,18 +180,35 @@ describe('LoginForm', () => {
   });
 
   it('logs in with correct data', async () => {
+    /**
+     * Condition:
+     * Assume the database has account with username 'testac' and password 'testpw'
+     * User types 'testac' for username, 'testpw' for password and presses the login button.
+     *
+     * Expect:
+     * The application allows user to login via global login method
+     */
+
     const username = element.getByTestId('username');
     const password = element.getByTestId('password');
     const button = element.getByTestId('login');
 
+    fetch.mockResponses([
+      JSON.stringify({ msg: 'User is verified' }),
+      { status: 200 },
+    ]);
+
     fireEvent.changeText(username, 'testac');
     fireEvent.changeText(password, 'testpw');
     fireEvent.press(button);
-    await waitFor(() => expect(Alert.alert).toHaveBeenCalled());
-    // await waitFor(() => expect(AppMethodMock.login).toHaveBeenCalled());
+    await waitFor(() => expect(AppMethodMock.login).toHaveBeenCalled());
   });
 
   it('matches snapshot', () => {
+    /**
+     * Snapshot test
+     */
+
     expect(element.toJSON()).toMatchSnapshot();
   });
 });

@@ -8,7 +8,7 @@ export default function count(path, type = '') {
     const dir = fs.readdirSync(path).filter((file) => file.endsWith(type));
 
     // Check file existence
-    paths[path].forEach(file => {
+    paths[path].forEach((file) => {
       it(file, () => {
         expect(dir).toEqual(expect.arrayContaining([file]));
       });
