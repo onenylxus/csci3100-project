@@ -11,7 +11,11 @@ import Comment from '../../components/Comment';
 const AppMethodMock = {
   login: jest.fn(),
   logout: jest.fn(),
+  askPerm: jest.fn(),
   getUser: jest.fn(),
+  getPlatform: jest.fn(),
+  getCameraPerm: jest.fn(),
+  getImagePerm: jest.fn(),
 };
 
 // Mock navigation route
@@ -43,7 +47,7 @@ describe('Comment', () => {
       timestamp: new Date(2021, 4, 1),
       content: '',
       username: 'testac',
-    }
+    };
 
     // Render
     element = render(

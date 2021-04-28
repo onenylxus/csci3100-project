@@ -11,7 +11,11 @@ import EditProfileForm from '../../components/EditProfileForm';
 const AppMethodMock = {
   login: jest.fn(),
   logout: jest.fn(),
+  askPerm: jest.fn(),
   getUser: jest.fn(),
+  getPlatform: jest.fn(),
+  getCameraPerm: jest.fn(),
+  getImagePerm: jest.fn(),
 };
 
 // Mock FontAwesome icons
