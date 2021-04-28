@@ -63,6 +63,7 @@
     "jsdoc": "^3.6.6",
     "lint-staged": "^10.5.4",
     "minami": "^1.2.3",
+    "plato": "^1.7.0",
     "prettier": "^2.2.1",
     "react-test-renderer": "16.14.0"
   },
@@ -73,6 +74,7 @@
     "snap": "jest -u --coverage=false",
     "test": "jest --verbose",
     "docs": "jsdoc -c conf.json",
+    "report": "plato -r -d report App.js components screens server assets",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",

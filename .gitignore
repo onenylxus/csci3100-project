@@ -28,5 +28,8 @@ npm-debug.*
 # JSDoc files
 /docs
 
+# Plato files
+/report
+
 # Error files
 /yarn-error.log
