@@ -9,6 +9,14 @@ import fetchMock from 'jest-fetch-mock';
 import AppContext from '../../components/AppContext';
 import LoginForm from '../../components/LoginForm';
 
+// Enable fetch mocks
+fetchMock.enableMocks();
+
+// Mock FontAwesome icons
+jest.mock('@fortawesome/react-native-fontawesome', () => ({
+  FontAwesomeIcon: '',
+}));
+
 // Mock authentication method
 const AppMethodMock = {
   login: jest.fn(),
@@ -19,14 +27,6 @@ const AppMethodMock = {
   getCameraPerm: jest.fn(),
   getImagePerm: jest.fn(),
 };
-
-// Mock FontAwesome icons
-jest.mock('@fortawesome/react-native-fontawesome', () => ({
-  FontAwesomeIcon: '',
-}));
-
-// Enable fetch mocks
-fetchMock.enableMocks();
 
 // Spy on alert
 jest.spyOn(Alert, 'alert');
@@ -49,6 +49,11 @@ describe('LoginForm', () => {
       </NavigationContainer>
     );
   });
+
+  afterEach(() => {
+    // Unmount
+    element.unmount();
+  })
 
   it('changes username when type', () => {
     /**
@@ -83,10 +88,12 @@ describe('LoginForm', () => {
   it('toggles password visibility when eye button is pressed', () => {
     /**
      * Condition:
-     * User types 'testpw' into the password text input box
+     * User presses the eye button twice
      *
      * Expect:
-     * The application should show 'testpw' at password text input box
+     * The application should show asterisks at password text input box before the user presses the button
+     * The application should show text at password text input box after the first press
+     * The application should show asterisks at password text input box after the second press
      */
 
     const eye = element.getByTestId('eye');
@@ -102,7 +109,8 @@ describe('LoginForm', () => {
   it('rejects login with empty username', async () => {
     /**
      * Condition:
-     * User types 'testpw' for password, leaves empty for username and presses the login button
+     * User types 'testpw' for password and leaves empty for username
+     * User presses the login button
      *
      * Expect:
      * The application gives the user an alert
@@ -119,7 +127,8 @@ describe('LoginForm', () => {
   it('rejects login with empty password', async () => {
     /**
      * Condition:
-     * User types 'testac' for username, leaves empty for password and presses the login button
+     * User types 'testac' for username and leaves empty for password
+     * User presses the login button
      *
      * Expect:
      * The application gives the user an alert
@@ -137,7 +146,8 @@ describe('LoginForm', () => {
     /**
      * Condition:
      * Assume the database does not have account with username 'a'
-     * User types 'a' for username, 'testpw' for password and presses the login button.
+     * User types 'a' for username and 'testpw' for password
+     * User presses the login button.
      *
      * Expect:
      * The application gives the user an alert
@@ -162,7 +172,8 @@ describe('LoginForm', () => {
     /**
      * Condition:
      * Assume the database has account with username 'testac' and password 'testpw'
-     * User types 'testac' for username, 'a' for password and presses the login button.
+     * User types 'testac' for username and 'a' for password
+     * User presses the login button
      *
      * Expect:
      * The application gives the user an alert
@@ -187,7 +198,8 @@ describe('LoginForm', () => {
     /**
      * Condition:
      * Assume the database has account with username 'testac' and password 'testpw'
-     * User types 'testac' for username, 'testpw' for password and presses the login button.
+     * User types 'testac' for username and 'testpw' for password
+     * User presses the login button.
      *
      * Expect:
      * The application allows user to login via global login method
@@ -213,6 +225,8 @@ describe('LoginForm', () => {
      * Snapshot test
      */
 
-    expect(element.toJSON()).toMatchSnapshot();
+    let structure = element.toJSON();
+    expect(structure).not.toBe(null);
+    expect(structure).toMatchSnapshot();
   });
 });

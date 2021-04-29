@@ -13,6 +13,7 @@
  * Will be used by the login screen
  * PURPOSE: Performs check of whether the user exists and blocks wrong entry
  */
+
 // Import
 import React from 'react';
 import {
