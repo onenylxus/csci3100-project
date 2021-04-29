@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FollowerContainer matches snapshot 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "marginVertical": 20,
+      }
+    }
+  >
+    <Image
+      source={1}
+      style={
+        Object {
+          "alignSelf": "center",
+          "borderRadius": 28,
+          "height": 32,
+          "marginHorizontal": 8,
+          "width": 32,
+        }
+      }
+    />
+    <View>
+      <Text
+        style={
+          Object {
+            "alignSelf": "center",
+            "fontSize": 18,
+            "fontWeight": "bold",
+          }
+        }
+      />
+    </View>
+  </View>
+</View>
+`;

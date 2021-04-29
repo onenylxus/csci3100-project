@@ -102,6 +102,7 @@
       "!**/jest.setup.js",
       "!**/assets/**",
       "!**/docs/**",
+      "!**/report/**",
       "!**/server/**"
     ]
   },

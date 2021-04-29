@@ -160,7 +160,9 @@ export default function RegisterForm() {
           <TextInput
             style={{ minWidth: '85%', maxWidth: '85%', outline: 'none' }}
             placeholder="Username"
+            value={username}
             onChangeText={(text) => changeUsername(text)}
+            testID="username"
           />
         </View>
         <View
@@ -188,10 +190,12 @@ export default function RegisterForm() {
           <TextInput
             style={{ minWidth: '77%', maxWidth: '77%', outline: 'none' }}
             placeholder="Password"
+            value={password}
             onChangeText={(text) => changePassword(text)}
             secureTextEntry={visibility}
             clearTextOnFocus={false}
             enablesReturnKeyAutomatically
+            testID="password"
           />
           <TouchableOpacity onPress={() => setVisibility(!visibility)}>
             <FontAwesomeIcon
@@ -226,7 +230,9 @@ export default function RegisterForm() {
           <TextInput
             style={{ minWidth: '85%', maxWidth: '85%', outline: 'none' }}
             placeholder="CUHK link email"
+            value={email}
             onChangeText={(text) => changeEmail(text)}
+            testID="email"
           />
         </View>
         <View

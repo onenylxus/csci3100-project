@@ -1,7 +1,6 @@
 // Import
 import React from 'react';
 import { View, ScrollView } from 'react-native';
-// eslint-disable-next-line import/extensions
 import CreateCommentForm from './CreateCommentForm';
 import Comment from './Comment';
 
