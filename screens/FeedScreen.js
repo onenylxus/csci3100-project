@@ -1,3 +1,21 @@
+/**
+ * CU There Team
+ * @Component FeedScreen - A screen displaying all the posts created
+ *
+ * @version 0.3.0
+ * @author Tse Shun Chi (1155125630)
+ * @author Tsang Man Yi (1155125860)
+ * @author Ng Wing Yin (1155127101)
+ * @author Liu Hoi Pan (1155127464)
+ * @author Lam Wai To Keith (1155133260)
+ * @license Apache-2.0
+ *
+ * Navigated from FeedStack
+ *
+ * PURPOSE: This is the FeedScreen in which all the posts regardless of their channel tags
+ * are displayed and sorted according the time or popularity of the posts
+ */
+
 // Import
 import React from 'react';
 import {
@@ -21,6 +39,7 @@ export default function FeedScreen() {
   const page = React.useRef(0);
   const status = React.useRef(0);
 
+  // Fetch all posts
   function fetchPost() {
     (async () => {
       if (refreshing) {
@@ -54,6 +73,7 @@ export default function FeedScreen() {
     })();
   }
 
+  // Generate all the posts fetched
   function generate() {
     return postList.map((post, index) => (
       <PostContainer
@@ -65,6 +85,7 @@ export default function FeedScreen() {
     ));
   }
 
+  // Style for the sorting criteria "Newest" and "Trending"
   function underlineTag(clickingTag, tag) {
     if (clickingTag === 'Trending') {
       if (tag === 'Trending') {
@@ -86,6 +107,7 @@ export default function FeedScreen() {
   React.useEffect(fetchPost, [refreshing, tags]);
 
   return (
+    // Enable ScrollView
     <ScrollView
       ref={(ref) => setScrollRef(ref)}
       stickyHeaderIndices={[0]}
@@ -94,6 +116,7 @@ export default function FeedScreen() {
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }
     >
+      {/*  Newest and Trending button */}
       <View>
         <View
           style={{
@@ -145,12 +168,15 @@ export default function FeedScreen() {
         </View>
       </View>
       <View style={{ flex: 1 }}>
+        {/* Generate all the posts fetched */}
         <View>{generate()}</View>
       </View>
+
       <Text style={{ alignSelf: 'center' }}>{`Page ${page.current + 1}`}</Text>
       <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
         {page.current > 0 ? (
           <View style={{ maxWidth: '40%', alignSelf: 'center' }}>
+            {/* Previous Page button */}
             <Button
               title="Previous page"
               onPress={() => {
@@ -171,6 +197,7 @@ export default function FeedScreen() {
               alignSelf: 'center',
             }}
           >
+            {/* Next Page button */}
             <Button
               title="Next page"
               onPress={() => {

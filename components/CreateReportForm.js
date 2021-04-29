@@ -1,3 +1,18 @@
+/**
+ * CU There Team
+ * @Component CreateReportForm - Users can input reports and send to database
+ *
+ * @version 0.3.0
+ * @author Tse Shun Chi (1155125630)
+ * @author Tsang Man Yi (1155125860)
+ * @author Ng Wing Yin (1155127101)
+ * @author Liu Hoi Pan (1155127464)
+ * @author Lam Wai To Keith (1155133260)
+ * @license Apache-2.0
+ *
+ * Locate in ReportScreen, uses the createReport controller
+ * PURPOSE: This module creates a report in database
+ */
 // Import
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';

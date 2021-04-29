@@ -1,3 +1,20 @@
+/**
+ * CU There Team
+ * @component OtherProfileScreen - A screen shows the profile information of other client
+ *
+ * @version 0.3.0
+ * @author Tse Shun Chi (1155125630)
+ * @author Tsang Man Yi (1155125860)
+ * @author Ng Wing Yin (1155127101)
+ * @author Liu Hoi Pan (1155127464)
+ * @author Lam Wai To Keith (1155133260)
+ * @license Apache-2.0
+ *
+ * Navigated from ProfileStack
+ * PURPOSE: This screen shows the profile information of other client
+ * This is the web version of the module
+ */
+
 // Import
 import React from 'react';
 import {

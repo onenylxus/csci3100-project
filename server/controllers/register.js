@@ -1,3 +1,21 @@
+/**
+ * CU There Team
+ * @component register - Creates new token entry when no repeated entry with token and client database
+ *
+ * @version 0.3.0
+ * @author Tse Shun Chi (1155125630)
+ * @author Tsang Man Yi (1155125860)
+ * @author Ng Wing Yin (1155127101)
+ * @author Liu Hoi Pan (1155127464)
+ * @author Lam Wai To Keith (1155133260)
+ * @license Apache-2.0
+ *
+ * Used by RegisterForm
+ * PURPOSE: This controller checks if there are any repeated username
+ *          or email and create new token in token and client database
+ *          for further verification process
+ */
+
 // Require
 const mongoose = require('mongoose');
 const cipher = require('../cipher');

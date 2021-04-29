@@ -1,3 +1,18 @@
+/**
+ * CU There Team
+ * @Component LoginForm - Prompts username and password to proceed login process
+ *
+ * @version 0.3.0
+ * @author Tse Shun Chi (1155125630)
+ * @author Tsang Man Yi (1155125860)
+ * @author Ng Wing Yin (1155127101)
+ * @author Liu Hoi Pan (1155127464)
+ * @author Lam Wai To Keith (1155133260)
+ * @license Apache-2.0
+ *
+ * Will be used by the login screen
+ * PURPOSE: Performs check of whether the user exists and blocks wrong entry
+ */
 // Import
 import React from 'react';
 import {

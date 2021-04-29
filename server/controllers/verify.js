@@ -1,3 +1,20 @@
+/**
+ * CU There Team
+ * @controller verify - performs actions after successful verification,
+ *                      including removing token and creating new client
+ *
+ * @version 0.3.0
+ * @author Tse Shun Chi (1155125630)
+ * @author Tsang Man Yi (1155125860)
+ * @author Ng Wing Yin (1155127101)
+ * @author Liu Hoi Pan (1155127464)
+ * @author Lam Wai To Keith (1155133260)
+ *
+ * Used by VerificationForm and ForgotPasswordForm
+ * PURPOSE: This controller creates new client if request is registration,
+ *          delete token if finishes forgot password verification
+ */
+
 // Require
 const mongoose = require('mongoose');
 

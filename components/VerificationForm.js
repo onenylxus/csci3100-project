@@ -1,3 +1,18 @@
+/**
+ * CU There Team
+ * @component VerificationForm - Prompts user's verification code from email, see if valid
+ *
+ * @version 0.3.0
+ * @author Tse Shun Chi (1155125630)
+ * @author Tsang Man Yi (1155125860)
+ * @author Ng Wing Yin (1155127101)
+ * @author Liu Hoi Pan (1155127464)
+ * @author Lam Wai To Keith (1155133260)
+ * @license Apache-2.0
+ *
+ * Will be used by the verification screen
+ * PURPOSE: Check if user enter a correct verification code, if yes then navigate to AddInfoScreen
+ */
 // Import
 import React from 'react';
 import { Alert, Button, Text, TextInput, View, Dimensions } from 'react-native';

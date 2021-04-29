@@ -1,3 +1,19 @@
+/**
+ * CU There Team
+ * @Component PostConatiner - Displays each posts according to where they are located
+ *
+ * @version 0.3.0
+ * @author Tse Shun Chi (1155125630)
+ * @author Tsang Man Yi (1155125860)
+ * @author Ng Wing Yin (1155127101)
+ * @author Liu Hoi Pan (1155127464)
+ * @author Lam Wai To Keith (1155133260)
+ * @license Apache-2.0
+ *
+ * Located in feed, channel feed, profile and other profile screen
+ * PURPOSE: Displays post content, and if it is in feed or channel feed screen, hide edit and delete function, display report. Otherwise display edit and delete function, hide report.
+ * Also includes interactions like navigate to other profiles and includes like and comment container.
+ */
 // Import
 import React from 'react';
 import { Alert, Text, View, TouchableOpacity, Image } from 'react-native';

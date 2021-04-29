@@ -1,3 +1,20 @@
+/**
+ * CU There Team
+ * @Component ChannelScreen - A screen for showing all the channel available
+ *
+ * @version 0.3.0
+ * @author Tse Shun Chi (1155125630)
+ * @author Tsang Man Yi (1155125860)
+ * @author Ng Wing Yin (1155127101)
+ * @author Liu Hoi Pan (1155127464)
+ * @author Lam Wai To Keith (1155133260)
+ * @license Apache-2.0
+ *
+ * Navigated from ChannelStack
+ * PURPOSE: This ChannelScreen displayed all the available categories
+ * and direct user to ChannelFeenScreen
+ */
+
 // Import
 import React from 'react';
 import { TouchableOpacity, Text, View, ScrollView } from 'react-native';
@@ -15,12 +32,11 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Header from '../assets/headers/Header';
 
-// Stack
-
-// Export Channels screen
+// Export ChannelsScreen
 export default function ChannelsScreen() {
   const navigation = useNavigation();
 
+  // Define channels
   const categories = [
     { title: 'Academics', icon: faBook },
     { title: 'CU-Related', icon: faSchool },
@@ -32,8 +48,7 @@ export default function ChannelsScreen() {
     { title: 'Sports', icon: faRunning },
   ];
 
-  // const channelCategories = []; { tags: { title } }
-
+  // Display all the channel tags
   const Item = categories.map((data) => (
     <View style={{ paddingHorizontal: 10 }} key={data.title}>
       <TouchableOpacity
@@ -55,6 +70,7 @@ export default function ChannelsScreen() {
   ));
 
   return (
+    // Enable ScrollView
     <ScrollView>
       <View>{Item}</View>
     </ScrollView>

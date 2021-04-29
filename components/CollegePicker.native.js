@@ -1,6 +1,23 @@
+/**
+ * CU There Team
+ * @Component CollegePicker - User can update college of its client database
+ *
+ * @version 0.3.0
+ * @author Tse Shun Chi (1155125630)
+ * @author Tsang Man Yi (1155125860)
+ * @author Ng Wing Yin (1155127101)
+ * @author Liu Hoi Pan (1155127464)
+ * @author Lam Wai To Keith (1155133260)
+ * @license Apache-2.0
+ *
+ * Locate in AddInfoForm and EditProfileScreen
+ * PURPOSE: This module provides a picker for users to pick a college
+ * This is the native version of the module
+ */
+
 // Import
 import React from 'react';
-import { Text, View, Dimensions } from 'react-native';
+import { Dimensions, Text, View } from 'react-native';
 import { Picker } from '@react-native-community/picker';
 import CollegeList from '../assets/json/collegeList.json';
 import Style from '../assets/style';
@@ -11,7 +28,7 @@ export default function CollegePicker({ callback, value }) {
 
   function styleByDevice(widthOfDevice, component) {
     if (widthOfDevice < 1100) {
-      // Style of Small Screen
+      // Style for Small Screen
       switch (component) {
         case 'width':
           return '100%';
@@ -24,7 +41,7 @@ export default function CollegePicker({ callback, value }) {
       }
     }
 
-    // Style of Large Screen
+    // Style for Large Screen
     switch (component) {
       case 'width':
         return 550;
@@ -37,12 +54,12 @@ export default function CollegePicker({ callback, value }) {
     }
   }
 
+  // Render College Picker
   return (
     <View>
       {/* College */}
       <View
         style={{
-          // marginVertical: '1%',
           flexDirection: 'column',
           width: styleByDevice(windowWidth, 'width'),
         }}

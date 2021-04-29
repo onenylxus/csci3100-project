@@ -1,3 +1,21 @@
+/**
+ * CU There Team
+ * @component AddInfoForm - User can update its client database
+ *
+ * @version 0.3.0
+ * @author Tse Shun Chi (1155125630)
+ * @author Tsang Man Yi (1155125860)
+ * @author Ng Wing Yin (1155127101)
+ * @author Liu Hoi Pan (1155127464)
+ * @author Lam Wai To Keith (1155133260)
+ * @license Apache-2.0
+ *
+ * Navigate from VerificationScreen
+ * PURPOSE: This module provide a form for users who just registered to fill
+ * in some important information like real name, gender, major and college
+ * This is the native version of the module
+ */
+
 // Import
 import React from 'react';
 import { Alert, Button, Text, TextInput, View } from 'react-native';
@@ -8,7 +26,7 @@ import CollegePicker from './CollegePicker';
 import MajorPicker from './MajorPicker';
 import Style from '../assets/style';
 
-// Export add info form
+// Export AddInfoForm
 export default function AddInfoForm() {
   const navigation = useNavigation();
 
@@ -24,6 +42,7 @@ export default function AddInfoForm() {
   const status = React.useRef(0);
   const username = React.useRef('');
 
+  // Handle submitted data in Add Info page
   const submitData = React.useCallback(async () => {
     await fetch('https://cu-there-server.herokuapp.com/addInfo', {
       method: 'POST',
@@ -53,6 +72,7 @@ export default function AddInfoForm() {
       .catch((err) => console.log(err));
   }, [college, email, gender, login, major, name]);
 
+  // Check for missing data and alert
   async function confirmAddInfo() {
     if ([gender, college, name, major].every((data) => data.length > 0)) {
       submitData();
@@ -76,6 +96,7 @@ export default function AddInfoForm() {
     }
   }
 
+  // Continue to submit data
   React.useEffect(() => {
     const back = navigation.addListener('beforeRemove', (e) => {
       if (status !== 200) {

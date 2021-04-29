@@ -1,3 +1,21 @@
+/**
+ * CU There Team
+ * @component GuestFeedScreen - A screen displaying all the posts created for guest users
+ *
+ * @version 0.3.0
+ * @author Tse Shun Chi (1155125630)
+ * @author Tsang Man Yi (1155125860)
+ * @author Ng Wing Yin (1155127101)
+ * @author Liu Hoi Pan (1155127464)
+ * @author Lam Wai To Keith (1155133260)
+ * @license Apache-2.0
+ *
+ * Navigated from GuestFeedStack
+ * PURPOSE: This is the GuestFeedScreen in which all the posts regardless of their channel tags
+ * are displayed and sorted according the time or popularity of the posts
+ * Some of the features, e.g. like or comment are not available for guest users
+ */
+
 // Import
 import React from 'react';
 import {
@@ -21,6 +39,7 @@ export default function GuestFeedScreen() {
   const page = React.useRef(0);
   const status = React.useRef(0);
 
+  // Fetch all posts
   function fetchPost() {
     (async () => {
       if (refreshing) {
@@ -54,10 +73,12 @@ export default function GuestFeedScreen() {
     })();
   }
 
+  // Generate all the posts fetched
   function generate() {
     return list.map((post) => <PostContainer key={post._id} post={post} />);
   }
 
+  // Style for the sorting criteria "Newest" and "Trending"
   function underlineTag(clickingTag, tag) {
     if (clickingTag === 'Trending') {
       if (tag === 'Trending') {
@@ -79,6 +100,7 @@ export default function GuestFeedScreen() {
   React.useEffect(fetchPost, [refreshing, tags]);
 
   return (
+    // Enable ScrollView
     <ScrollView
       ref={(ref) => setScrollRef(ref)}
       stickyHeaderIndices={[0]}
@@ -106,6 +128,7 @@ export default function GuestFeedScreen() {
               borderColor: '#546eff',
             }}
           >
+            {/*  Newest button */}
             <Text
               style={{
                 color: '#546eff',
@@ -126,6 +149,7 @@ export default function GuestFeedScreen() {
               borderColor: '#546eff',
             }}
           >
+            {/*  Trending button */}
             <Text
               style={{
                 color: '#546eff',
@@ -138,12 +162,14 @@ export default function GuestFeedScreen() {
         </View>
       </View>
       <View style={{ flex: 1 }}>
+        {/* Generate all the posts fetched */}
         <View>{generate()}</View>
       </View>
       <Text style={{ alignSelf: 'center' }}>{`Page ${page.current + 1}`}</Text>
       <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
         {page.current > 0 ? (
           <View style={{ maxWidth: '40%', alignSelf: 'center' }}>
+            {/* Previous Page button */}
             <Button
               title="Previous page"
               onPress={() => {
@@ -164,6 +190,7 @@ export default function GuestFeedScreen() {
               alignSelf: 'center',
             }}
           >
+            {/* Next Page button */}
             <Button
               title="Next page"
               onPress={() => {

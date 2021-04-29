@@ -1,3 +1,19 @@
+/**
+ * CU There Team
+ * @component forgotPassword - verifiy if email is correct and send email if it is correct
+ *
+ * @version 0.3.0
+ * @author Tse Shun Chi (1155125630)
+ * @author Tsang Man Yi (1155125860)
+ * @author Ng Wing Yin (1155127101)
+ * @author Liu Hoi Pan (1155127464)
+ * @author Lam Wai To Keith (1155133260)
+ * @license Apache-2.0
+ *
+ * Used by forgotPasswordForm
+ * PURPOSE: Control whether they should send an email to the user provided email address
+ */
+
 // Require
 const mongoose = require('mongoose');
 const sender = require('../sender');
