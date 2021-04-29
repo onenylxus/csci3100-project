@@ -1,3 +1,9 @@
+/**
+* @Component Comment - A comment from database
+* Programmer: CU There team
+* Comment is inside CommentContainer, CommentContainer is inside PostContainer
+* VERSION 1: written 16-4-2021
+*/
 // Import
 import React from 'react';
 import { Image, Text, View, TouchableOpacity } from 'react-native';
