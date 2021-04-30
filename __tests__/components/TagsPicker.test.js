@@ -14,6 +14,10 @@ describe('TagsPicker', () => {
     element = render(<TagsPicker />);
   });
 
+  afterEach(() => {
+    element.unmount();
+  });
+
   it('matches snapshot', () => {
     expect(element.toJSON()).toMatchSnapshot();
   });

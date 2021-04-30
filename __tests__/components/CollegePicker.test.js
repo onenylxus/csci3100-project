@@ -14,6 +14,10 @@ describe('CollegePicker', () => {
     element = render(<CollegePicker />);
   });
 
+  afterEach(() => {
+    element.unmount();
+  });
+
   it('matches snapshot', () => {
     expect(element.toJSON()).toMatchSnapshot();
   });

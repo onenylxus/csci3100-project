@@ -23,6 +23,10 @@ describe('Comment', () => {
     element = render(<LeaderboardContainer username={usernameMock} popularity={popularityMock} />);
   });
 
+  afterEach(() => {
+    element.unmount();
+  });
+
   it('matches snapshot', () => {
     expect(element.toJSON()).toMatchSnapshot();
   });

@@ -45,6 +45,10 @@ describe('LikeContainer', () => {
     );
   });
 
+  afterEach(() => {
+    element.unmount();
+  });
+
   it('matches snapshot', () => {
     expect(element.toJSON()).toMatchSnapshot();
   });

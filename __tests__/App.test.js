@@ -1,6 +1,6 @@
 // Import
 import React from 'react';
-import { act, render } from '@testing-library/react-native';
+import { render } from '@testing-library/react-native';
 
 // Import target component
 import App from '../App';
@@ -16,15 +16,25 @@ describe('App', () => {
 
   beforeEach(() => {
     element = render(<App />);
-  })
+  });
+
+  afterEach(() => {
+    element.unmount();
+  });
 
   it('matches snapshot on guest mode', () => {
     element = render(<App testState={false} />);
-    expect(element.toJSON()).toMatchSnapshot();
+
+    let structure = element.toJSON();
+    expect(structure).not.toBe(null);
+    expect(structure).toMatchSnapshot();
   });
 
   it('matches snapshot on login mode', () => {
     element = render(<App testState={true} />);
-    expect(element.toJSON()).toMatchSnapshot();
+
+    let structure = element.toJSON();
+    expect(structure).not.toBe(null);
+    expect(structure).toMatchSnapshot();
   });
 });

@@ -36,6 +36,10 @@ describe('CreateReportForm', () => {
     );
   });
 
+  afterEach(() => {
+    element.unmount();
+  });
+
   it('matches snapshot', () => {
     expect(element.toJSON()).toMatchSnapshot();
   });

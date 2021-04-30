@@ -9,12 +9,12 @@
  * Will be used by the AddInfoForm and EditProfileForm
  * @version 0.3.0
  */
-/*
+
 // Import
 import React from 'react';
 import { TextInput, TouchableOpacity, View, Text } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import Style from '../assets/style';
 
 // Export Message Bar
@@ -42,4 +42,3 @@ export default function MessageBar() {
     </View>
   );
 }
-*/

@@ -27,6 +27,10 @@ describe('RegisterForm', () => {
     );
   });
 
+  afterEach(() => {
+    element.unmount();
+  });
+
   it('changes username when type', () => {
     /**
      * Condition:

@@ -24,6 +24,10 @@ describe('FollowerContainer', () => {
     element = render(<FollowerContainer post={postMock} />);
   });
 
+  afterEach(() => {
+    element.unmount();
+  });
+
   it('matches snapshot', () => {
     expect(element.toJSON()).toMatchSnapshot();
   });
