@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component EditPostScreen - A screen which provide a EditPostForm for users to edit their own posts
+ * @component EditPostScreen - A screen which provide a EditPostForm for users to edit their own posts
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -12,7 +12,7 @@
  *
  * Navigated from ProfileScreen
  * PURPOSE: This is the EditPostScreen in which another component EditPostForm is used to
- * allow users to make ammendments including modifying the content and title to their own posts
+ *          allow users to make ammendments including modifying the content and title to their own posts
  */
 
 // Import

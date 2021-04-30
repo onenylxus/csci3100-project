@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component FeedScreen - A screen displaying all the posts created
+ * @component FeedScreen - A screen displaying all the posts created
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -13,7 +13,7 @@
  * Navigated from FeedStack
  *
  * PURPOSE: This is the FeedScreen in which all the posts regardless of their channel tags
- * are displayed and sorted according the time or popularity of the posts
+ *          are displayed and sorted according the time or popularity of the posts
  */
 
 // Import

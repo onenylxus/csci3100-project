@@ -9,6 +9,7 @@
  * Will be used by the AddInfoForm and EditProfileForm
  * @version 0.3.0
  */
+/*
 // Import
 import React from 'react';
 import { TextInput, TouchableOpacity, View, Text } from 'react-native';
@@ -41,3 +42,4 @@ export default function MessageBar() {
     </View>
   );
 }
+*/

@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component LeaderboardStack - A stack for Leaderboard
+ * @component LeaderboardStack - A stack for Leaderboard
 
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)

@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component EditProfileScreen - A screen which provide a EditProfileForm for users to edit their own profile
+ * @component EditProfileScreen - A screen which provide a EditProfileForm for users to edit their own profile
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -13,7 +13,7 @@
  * Navigated from ProfileScreen
  *
  * PURPOSE: This is the EditProfileScreen in which another component EditProfileForm is used to
- * allow users to make ammendments including modifying their biography, name, major, etc in their profile
+ *          allow users to make ammendments including modifying their biography, name, major, etc in their profile
  */
 
 // Import

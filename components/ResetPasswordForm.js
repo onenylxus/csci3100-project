@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component ResetPasswordForm - Prompts user's new password
+ * @component ResetPasswordForm - Prompts user's new password
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -10,9 +10,10 @@
  * @author Lam Wai To Keith (1155133260)
  * @license Apache-2.0
  *
- * Will be used by the Reset password screen
+ * Locate in ResetPasswordScreen
  * PURPOSE: Ask for user information and blocks invalid input to controller
  */
+
 // Import
 import React from 'react';
 import {

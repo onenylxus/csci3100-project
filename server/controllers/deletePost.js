@@ -11,7 +11,7 @@
  * @license Apache-2.0
  *
  * Used by SettingScreen
- * PURPOSE: This controller delete client in client database
+ * PURPOSE: This controller deletes client in client database
  */
 
 // Require

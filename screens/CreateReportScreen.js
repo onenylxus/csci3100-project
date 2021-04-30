@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component CreateReportScreen - A screen which provide a CreateReportForm for users to report posts
+ * @component CreateReportScreen - A screen which provide a CreateReportForm for users to report posts
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -11,8 +11,8 @@
  * @license Apache-2.0
  *
  * Navigated from FeedScreen
- * PURPOSE: This is the CreateReportScreen in which another component CreateReportForm is used to
- * allow users to put down their reasons for reporting post
+ * PURPOSE: This is the CreateReportScreen in which another component CreateReportForm
+ *          is used to allow users to put down their reasons for reporting post
  */
 
 // Import

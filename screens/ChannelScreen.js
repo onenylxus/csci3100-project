@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component ChannelScreen - A screen for showing all the channel available
+ * @component ChannelScreen - A screen for showing all the channel available
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -12,7 +12,7 @@
  *
  * Navigated from ChannelStack
  * PURPOSE: This ChannelScreen displayed all the available categories
- * and direct user to ChannelFeenScreen
+ *          and direct user to ChannelFeenScreen
  */
 
 // Import

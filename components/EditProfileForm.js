@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component EditProfileForm - Users can edit their profile and update entry to database
+ * @component EditProfileForm - Users can edit their profile and update entry to database
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -10,9 +10,10 @@
  * @author Lam Wai To Keith (1155133260)
  * @license Apache-2.0
  *
- * Locate in EditProfileScreen, uses fetchData controller
+ * Locate in EditProfileScreen
  * PURPOSE: This module updates the client database
  */
+
 // Import
 import React from 'react';
 import { Button, Dimensions, Text, TextInput, View } from 'react-native';

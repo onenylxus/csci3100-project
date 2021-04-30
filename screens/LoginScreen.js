@@ -12,7 +12,7 @@
  *
  * LoginScreen is the Homepage of the application
  * PURPOSE: This is the LoginScreen in which another component LoginForm is used to
- * proceed the login process or register or continue as guest or reset password
+ *          proceed the login process or register or continue as guest or reset password
  */
 
 // Import

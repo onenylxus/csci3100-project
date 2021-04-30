@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component CollegePicker - User can update college of its client database
+ * @component CollegePicker - User can update college of its client database
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)

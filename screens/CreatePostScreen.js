@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component CreatePostScreen - A screen which provide a CreatePostForm for users to create posts
+ * @component CreatePostScreen - A screen which provide a CreatePostForm for users to create posts
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -11,8 +11,8 @@
  * @license Apache-2.0
  *
  * Navigated from CreatePostStack
- * PURPOSE: This is the CreatePostScreen in which another component CreatePostForm is used to
- * allow users to create post to any channel
+ * PURPOSE: This is the CreatePostScreen in which another component CreatePostForm
+ *          is used to allow users to create post to any channel
  */
 
 // Import

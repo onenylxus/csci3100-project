@@ -11,7 +11,7 @@
  * @license Apache-2.0
  *
  * Used by EditProfileForm
- * PURPOSE: This controller update profile information in client database
+ * PURPOSE: This controller updates profile information in client database
  */
 
 // Require

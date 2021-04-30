@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component TagsPicker - Style for picking channels when editing or adding information, lists all channels
+ * @component TagsPicker - Style for picking channels when editing or adding information, lists all channels
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -10,8 +10,10 @@
  * @author Lam Wai To Keith (1155133260)
  * @license Apache-2.0
  *
- * Will be used by the createPostForm and editPostForm
+ * Locate in CreatePostForm and EditPostForm
+ * PURPOSE: This module provides a picker for users to pick a tag
  */
+
 // Import
 import React from 'react';
 import { Text, View, Dimensions } from 'react-native';

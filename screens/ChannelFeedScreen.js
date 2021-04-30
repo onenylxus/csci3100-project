@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component ChannelFeedScreen - A screen for displaying all the posts of a particular channel
+ * @component ChannelFeedScreen - A screen for displaying all the posts of a particular channel
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -12,7 +12,7 @@
  *
  * Navigated from ChannelScreen
  * PURPOSE: This is the ChannelFeedScreen in which it will call and display all the PostContainer
- * with specific channel tag
+ *          with specific channel tag
  */
 
 // Import

@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component ForgotPasswordForm - Prompts user email to proceed forgot password process, checks with database
+ * @component ForgotPasswordForm - Prompts user email to proceed forgot password process, checks with database
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -14,6 +14,7 @@
  * PURPOSE: This module updates client database
  * This is the native version of the module.
  */
+
 // Import
 import React from 'react';
 import { Alert, Button, TextInput, View } from 'react-native';

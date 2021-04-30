@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component AboutUsScreen - A screen for showing information of CU There team
+ * @component AboutUsScreen - A screen for showing information of CU There team
 
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -11,7 +11,8 @@
  * @license Apache-2.0
  * 
  * Navigate from SettingsScreen
- * PURPOSE: This AboutUsScreen displayed the logo of CU there and a description explaining the motivation of our team in developing CU There.
+ * PURPOSE: This AboutUsScreen displayed the logo of CU there and a description 
+ *          explaining the motivation of our team in developing CU There.
  */
 
 // Import

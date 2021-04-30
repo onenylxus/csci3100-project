@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component RegisterStack - A stack for Register
+ * @component RegisterStack - A stack for Register
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)

@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component ProfileStack - A stack for Profile
+ * @component ProfileStack - A stack for Profile
 
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)

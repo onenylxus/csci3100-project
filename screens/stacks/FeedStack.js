@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component FeedStack - A stack for Feed
+ * @component FeedStack - A stack for Feed
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)

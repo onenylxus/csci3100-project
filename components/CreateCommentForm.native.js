@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component CreateCommentForm - Users can input comments and send to database here
+ * @component CreateCommentForm - Users can input comments and send to database here
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -14,6 +14,7 @@
  * PURPOSE: This module creates a comment in database
  * This is the native version of the module.
  */
+
 // Import
 import React from 'react';
 import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native';

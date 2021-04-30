@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component GuessFeedStack - A stack for GuestFeed
+ * @component GuessFeedStack - A stack for GuestFeed
 
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)

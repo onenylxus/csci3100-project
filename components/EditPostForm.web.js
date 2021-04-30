@@ -10,10 +10,11 @@
  * @author Lam Wai To Keith (1155133260)
  * @license Apache-2.0
  *
- * Locate in PostContainer (in ProfileScreen), uses editPost controller
+ * Locate in PostContainer (in ProfileScreen)
  * PURPOSE: This module updates the post database
  * This is the web version of the module.
  */
+
 // Import
 import React from 'react';
 import { Button, Text, TextInput, View } from 'react-native';

@@ -11,7 +11,7 @@
  *
  * Navigated from GuestFeedStack
  * PURPOSE: This is the GuestFeedScreen in which all the posts regardless of their channel tags
- * are displayed and sorted according the time or popularity of the posts
+ *          are displayed and sorted according the time or popularity of the posts
  * Some of the features, e.g. like or comment are not available for guest users
  */
 

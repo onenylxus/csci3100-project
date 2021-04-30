@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component CreatePostForm - User can create post
+ * @component CreatePostForm - User can create post
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -13,6 +13,7 @@
  * Locate in CreatePostScreen
  * PURPOSE: This module creates a post in database
  */
+
 // Import
 import React from 'react';
 import {

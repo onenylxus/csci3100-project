@@ -11,7 +11,7 @@
  * @license Apache-2.0
  *
  * Used by CreateCommentForm
- * PURPOSE: This controller create comment in comment database
+ * PURPOSE: This controller creates comment in comment database
  */
 
 // Require

@@ -11,7 +11,7 @@
  * @license Apache-2.0
  *
  * Used by CreateReportForm
- * PURPOSE: This controller create report in report database
+ * PURPOSE: This controller creates report in report database
  */
 
 // Require

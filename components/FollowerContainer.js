@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component FollowerContainer - The design to fit the followers in the followers screen
+ * @component FollowerContainer - The design to fit the followers in the followers screen
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -13,6 +13,7 @@
  * Locate in the SeeFollowerScreen
  * PURPOSE: This module shows followers in the screen
  */
+
 // Import
 import React from 'react';
 import { Image, Text, View } from 'react-native';

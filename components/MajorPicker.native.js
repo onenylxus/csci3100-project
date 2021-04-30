@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component MajorPicker - Style for picking major when editing or adding information, lists all majors in CUHK
+ * @component MajorPicker - User can update major of its client database
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -10,9 +10,11 @@
  * @author Lam Wai To Keith (1155133260)
  * @license Apache-2.0
  *
- * Will be used by the AddInfoForm and EditProfileForm
+ * Locate in AddInfoForm and EditProfileForm
+ * PURPOSE: This module provides a picker for users to pick a major
  * This is the native version of the module.
  */
+
 // Import
 import React from 'react';
 import { Text, View } from 'react-native';

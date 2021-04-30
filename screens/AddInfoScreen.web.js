@@ -12,7 +12,7 @@
  * 
  * Navigated from RegisterStack
  * PURPOSE: This is the AddInfoScreen in which another component AddInfoForm is used to
- * allow users who just registered to fill in some important information like real name, gender, major and college.
+ *          allow users who just registered to fill in some important information like real name, gender, major and college.
  * This is the web version of the module
  */
 

@@ -11,7 +11,7 @@
  * @license Apache-2.0
  *
  * Used by CommentContainer
- * PURPOSE: This controller fetch comment in comment database
+ * PURPOSE: This controller fetches comment in comment database
  */
 
 // Require

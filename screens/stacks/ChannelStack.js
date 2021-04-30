@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component ChannelStack - A stack for Channel
+ * @component ChannelStack - A stack for Channel
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)

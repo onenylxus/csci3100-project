@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component LikeContainer - The module that controls the interaction of likes with database and display like contents
+ * @component LikeContainer - The module that controls the interaction of likes with database and display like contents
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -13,6 +13,7 @@
  * Locate in PostContainer
  * PURPOSE: This module fetches the number of likes and perform updates when a user likes or unlikes a post
  */
+
 // Import
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';

@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component CreatePostStack - A stack for Create Post
+ * @component CreatePostStack - A stack for Create Post
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)

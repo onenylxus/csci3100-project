@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component AppContext - Application authentication context
+ * @component AppContext - Application authentication context
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)

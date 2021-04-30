@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component ForgotPasswordScreen - A screen which provide a ForgotPasswordForm for users to reset password
+ * @component ForgotPasswordScreen - A screen which provide a ForgotPasswordForm for users to reset password
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)

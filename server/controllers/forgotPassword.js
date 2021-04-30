@@ -11,7 +11,7 @@
  * @license Apache-2.0
  *
  * Used by forgotPasswordForm
- * PURPOSE: Control whether they should send an email to the user provided email address
+ * PURPOSE: This controller controls whether they should send an email to the user provided email address
  */
 
 // Require

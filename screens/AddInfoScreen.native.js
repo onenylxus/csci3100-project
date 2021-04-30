@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component AddInfoScreen - A screen for showing the AddInfoForm in collecting user information
+ * @component AddInfoScreen - A screen for showing the AddInfoForm in collecting user information
 
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -12,7 +12,7 @@
  * 
  * Navigated from RegisterStack
  * PURPOSE: This is the AddInfoScreen in which another component AddInfoForm is used to
- * allow users who just registered to fill in some important information like real name, gender, major and college.
+ *          allow users who just registered to fill in some important information like real name, gender, major and college.
  * This is the native version of the module
  */
 

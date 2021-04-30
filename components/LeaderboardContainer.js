@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component LeaderboardContainer - displays top 10 users with most popularity, fetch users from database
+ * @component LeaderboardContainer - displays top 10 users with most popularity, fetch users from database
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -13,6 +13,7 @@
  * Locate in LeaderboardScreen
  * PURPOSE: This module shows leaderboard data
  */
+
 // Import
 import React from 'react';
 import { Image, Text, View } from 'react-native';

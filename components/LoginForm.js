@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component LoginForm - Prompts username and password to proceed login process
+ * @component LoginForm - Prompts username and password to proceed login process
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -10,7 +10,7 @@
  * @author Lam Wai To Keith (1155133260)
  * @license Apache-2.0
  *
- * Will be used by the login screen
+ * Locate in LoginScreen
  * PURPOSE: Performs check of whether the user exists and blocks wrong entry
  */
 

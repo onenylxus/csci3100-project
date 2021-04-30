@@ -10,9 +10,10 @@
  * @author Lam Wai To Keith (1155133260)
  * @license Apache-2.0
  *
- * Will be used by the verification screen
- * PURPOSE: Check if user enter a correct verification code, if yes then navigate to AddInfoScreen
+ * Locate in VerificationScreen
+ * PURPOSE: This module checks if user enter a correct verification code, if yes then navigate to AddInfoScreen
  */
+
 // Import
 import React from 'react';
 import { Alert, Button, Text, TextInput, View, Dimensions } from 'react-native';

@@ -13,6 +13,7 @@
  * Locate in CommentContainer
  * PURPOSE: This module fetches comment from database
  */
+
 // Import
 import React from 'react';
 import { Image, Text, View, TouchableOpacity } from 'react-native';

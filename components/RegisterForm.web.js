@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component RegisterForm - Prompts user's username, password and email when registering a new account
+ * @component RegisterForm - Prompts user's username, password and email when registering a new account
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -10,10 +10,11 @@
  * @author Lam Wai To Keith (1155133260)
  * @license Apache-2.0
  *
- * Will be used by the register screen
+ * Locate in RegisterScreen
  * PURPOSE: Ask for user information and blocks invalid input to controller
  * This is the web version of the module.
  */
+
 // Import
 import React from 'react';
 import {

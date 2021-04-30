@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component AddInfoForm - User can update its client database
+ * @component AddInfoForm - User can update its client database
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)

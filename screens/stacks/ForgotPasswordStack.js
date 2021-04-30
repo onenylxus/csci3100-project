@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component ForgotPasswordStack - A stack for Forget Password
+ * @component ForgotPasswordStack - A stack for Forget Password
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)

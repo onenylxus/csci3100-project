@@ -1,6 +1,6 @@
 /**
  * CU There Team
- * @Component CreateCommentForm - Users can input comments and send to database here
+ * @component CreateCommentForm - Users can input comments and send to database here
  *
  * @version 0.3.0
  * @author Tse Shun Chi (1155125630)
@@ -10,7 +10,7 @@
  * @author Lam Wai To Keith (1155133260)
  * @license Apache-2.0
  *
- * Will be used by the comment container
+ * Locate in CommentContainer
  * PURPOSE: This module creates a comment in database
  * This is the web version of the module.
  */
