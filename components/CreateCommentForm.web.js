@@ -14,6 +14,7 @@
  * PURPOSE: This module creates a comment in database
  * This is the web version of the module.
  */
+
 // Import
 import React from 'react';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
@@ -78,10 +79,13 @@ export default function CreateCommentForm({ post }) {
         style={{ width: '85%', outline: 'none' }}
         value={comment}
         onChangeText={(value) => setComment(value)}
+        testID="comment"
       />
       {comment !== '' ? (
         <TouchableOpacity style={Style.sendMessageButtom} onPress={submitData}>
-          <Text style={{ color: 'blue', marginRight: 5 }}>Send</Text>
+          <Text style={{ color: 'blue', marginRight: 5 }} testID="send">
+            Send
+          </Text>
         </TouchableOpacity>
       ) : (
         <TouchableOpacity
@@ -89,7 +93,9 @@ export default function CreateCommentForm({ post }) {
           onPress={submitData}
           disabledw
         >
-          <Text style={{ color: 'blue', marginRight: 5 }}>Send</Text>
+          <Text style={{ color: 'blue', marginRight: 5 }} testID="send">
+            Send
+          </Text>
         </TouchableOpacity>
       )}
       <AwesomeAlert

@@ -33,7 +33,7 @@ import {
 import Header from '../assets/headers/Header';
 
 // Export ChannelsScreen
-export default function ChannelsScreen() {
+export default function ChannelScreen() {
   const navigation = useNavigation();
 
   // Define channels

@@ -103,6 +103,7 @@ export default function AddInfoForm() {
           style={{ minWidth: '100%', maxWidth: '100%', outline: 'none' }}
           placeholder="Name"
           onChangeText={(text) => setName(text)}
+          testID="name"
         />
       </View>
 

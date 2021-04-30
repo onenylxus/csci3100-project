@@ -92,9 +92,12 @@ export default function CreateCommentForm({ post }) {
         style={{ width: '75%' }}
         value={comment}
         onChangeText={(value) => setComment(value)}
+        testID="comment"
       />
       <TouchableOpacity style={Style.sendMessageButtom} onPress={submitData}>
-        <Text style={{ color: 'blue' }}>Send</Text>
+        <Text style={{ color: 'blue' }} testID="send">
+          Send
+        </Text>
       </TouchableOpacity>
     </View>
   );

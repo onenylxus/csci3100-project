@@ -52,6 +52,7 @@ exports[`CommentContainer matches snapshot 1`] = `
               "width": "75%",
             }
           }
+          testID="comment"
           underlineColorAndroid="transparent"
           value=""
         />
@@ -80,6 +81,7 @@ exports[`CommentContainer matches snapshot 1`] = `
                 "color": "blue",
               }
             }
+            testID="send"
           >
             Send
           </Text>

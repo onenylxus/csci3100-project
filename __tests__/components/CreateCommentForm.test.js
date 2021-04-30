@@ -1,10 +1,15 @@
 // Import
 import React from 'react';
-import { render } from '@testing-library/react-native';
+import { Alert } from 'react-native';
+import { fireEvent, render, waitFor } from '@testing-library/react-native';
+import fetchMock from 'jest-fetch-mock';
 
 // Import target component
 import AppContext from '../../components/AppContext';
 import CreateCommentForm from '../../components/CreateCommentForm';
+
+// Enable fetch mocks
+fetchMock.enableMocks();
 
 // Mock authentication method
 const AppMethodMock = {
@@ -16,6 +21,9 @@ const AppMethodMock = {
   getCameraPerm: jest.fn(),
   getImagePerm: jest.fn(),
 };
+
+// Spy on alert
+jest.spyOn(Alert, 'alert');
 
 // Mock FontAwesome icons
 jest.mock('@fortawesome/react-native-fontawesome', () => ({
@@ -37,6 +45,9 @@ describe('CreateCommentForm', () => {
       peopleDislike: [],
     };
 
+    // Mock fetch function
+    fetch.resetMocks();
+
     // Render
     element = render(
       <AppContext.Provider value={AppMethodMock}>
@@ -49,7 +60,52 @@ describe('CreateCommentForm', () => {
     element.unmount();
   });
 
+  it('rejects comment with empty comment', async () => {
+    /**
+     * Condition:
+     * User leaves the comment text input box empty.
+     * User presses the submit button.
+     *
+     * Expect:
+     * The application gives the user an alert
+     */
+
+    const comment = element.getByTestId('comment');
+    const button = element.getByTestId('send');
+
+    fireEvent.changeText(comment, 'testcomment');
+    fireEvent.press(button);
+
+    // await waitFor(() => expect(Alert.alert).toHaveBeenCalled());
+  });
+
+  it('allows users to comment', async () => {
+    /**
+     * Condition:
+     * User types 'testcomment' into the comment text input box.
+     * User presses the submit button.
+     *
+     * Expect:
+     * The application allows user to leave a comment by controller
+     */
+
+    const comment = element.getByTestId('comment');
+    const button = element.getByTestId('send');
+
+    fetch.mockResponses([
+      JSON.stringify({ msg: 'Comment created with popularity updated' }),
+      { status: 200 },
+    ]);
+
+    fireEvent.changeText(comment, 'testcomment');
+    fireEvent.press(button);
+    
+  });
+
   it('matches snapshot', () => {
+    /**
+     * Snapshot test
+     */
     expect(element.toJSON()).toMatchSnapshot();
   });
 });

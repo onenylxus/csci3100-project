@@ -132,6 +132,7 @@ export default function AddInfoForm() {
           style={Style.textInput}
           placeholder="Name"
           onChangeText={(text) => setName(text)}
+          testID="name"
         />
       </View>
 

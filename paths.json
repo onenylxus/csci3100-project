@@ -79,7 +79,7 @@
     "GuestFeedScreen.js",
     "LeaderboardScreen.js",
     "LoginScreen.js",
-    "OtherProfileScreen.native.js",
+    "OtherProfileScreen.js",
     "OtherProfileScreen.web.js",
     "ProfileScreen.js",
     "RegisterScreen.js",
